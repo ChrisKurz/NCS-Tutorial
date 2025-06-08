@@ -17,4 +17,4 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.0.0.
 
 ### Basics
 
-- [__iBeacon__](#NCSv3.0.0/basics_beacon.md) - initialize Bluetooth stack and realize a broadcaster
+- [__iBeacon__](NCSv3.0.0/basics_beacon.md) - initialize Bluetooth stack and realize a broadcaster
