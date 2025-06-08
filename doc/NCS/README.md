@@ -23,3 +23,11 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.0.0.
 - [__Copying and opening an existing sample__](NCSv3.0.0/DEV_OpenSample.md) - This step-by-step description explains how to create a copy of an existing sample project and open this copy.
 
 - [__Creating a Project from Scratch__](NCSv3.0.0/DEV_ProjectFromScratch.md) - This hands-on shows how to create a minimal project from scratch.
+
+### KConfig
+
+- [__User-defined KCONFIG symbols__](NCSv3.0.0/DEV_kconfig_UserDefined.md) - You can use KCONFIG to add software modules from Zephyr repository or other repositories. You can also define your own KCONFIG symbols. This practical exercise demonstrates how to do this. It uses custom KCONFIG in C code.
+
+### DeviceTree
+
+- [__Getting DeviceTree Properties__](NCSv3.0.0/DEV_DeviceTree.md) - This example shows how to read DeviceTree properties from C code. 
