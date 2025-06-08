@@ -12,6 +12,8 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.0.0.
 
 - [Basics - Developing with _nRF Connect SDK_ and _Zephyr_](#developing-with-zephyr)
 
+- [Zephyr Device Drivers](#zephyr-device-drivers)
+
 --------
 
 ## Basics - Developing with _nRF Connect SDK_ and Zephyr
@@ -31,3 +33,12 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.0.0.
 ### DeviceTree
 
 - [__Getting DeviceTree Properties__](NCSv3.0.0/DEV_DeviceTree.md) - This example shows how to read DeviceTree properties from C code. 
+
+
+## Zephyr Device Drivers
+
+### Sensor Device Drivers
+
+- [**Basics: Initializing Sensor Driver during Zephyr Start-up**](NCSv3.0.0/ZDD_sensor_basics_initZephyr.md) - In this first basic hands-on we will explain how to initialize and start the sensor driver. There are various ways to start the driver. Here we look at how the driver is automatically started during Zephyr RTOS startup.
+
+- [**Basics: Initializing Sensor Driver within user Code**](NCSv3.0.0/ZDD_sensor_basics_initApp.md) - Here we describe another way to initialize and start the sensor driver. In this case, the driver is started in the user application.
