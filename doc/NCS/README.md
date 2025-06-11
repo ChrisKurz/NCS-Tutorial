@@ -52,6 +52,8 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.0.0.
 
 #### Version
 
+- [__Getting Zephyr version from application software__](NCSv3.0.0/ZKS_other_version.md) - This example shows how the version number of Zephyr can be retrieved in an application software.
+
 - [__Getting _nRF Connect SDK_ version__](NCSv3.0.0/ZKS_other_version_ncs.md) - The application software can also read out the _nRF Connect SDK_ version used in the project. This example shows how.
 
 - [__Getting Application Firmware Version__](NCSv3.0.0/ZKS_other_version_app.md) - Zephyr contains a version management for applications  since _nRF Connect SDK v2.5.0_. This example shows how to use it.
