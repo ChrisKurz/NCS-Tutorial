@@ -74,6 +74,8 @@ Here we will create an new thread during runtime. This way may be used to create
 
        #define MYTHREAD1_PRIORITY 5
 
+   > __NOTE:__ In this simple example, we have not really considered the thread priority. We will take a closer look at this in a later hands-on. Since a priority must also be specified for the definition of a thread, we simply use priority level 5 here. 
+
 
 ### Create second Thread (myThread2)
 
@@ -116,7 +118,7 @@ In case the thread can be created during OS initialization, then using the K_THR
 
     #define MYTHREAD2_PRIORITY 5
 
- 
+   > __NOTE:__ In this simple example, we have not really considered the thread priority. We will take a closer look at this in a later hands-on. Since a priority must also be specified for the definition of a thread, we simply use priority level 5 here. 
 
 
 ## Testing
