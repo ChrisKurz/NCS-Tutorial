@@ -56,6 +56,8 @@ Here we will create an new thread during runtime. This way may be used to create
 
        K_THREAD_STACK_DEFINE(mythread1_stack_area, MYTHREAD1_STACK_SIZE);
 
+  > __Note:__ The thread stack size was defined here as 500. This value is not optimized and is much larger than actually required. We will optimize the stack size in a later hands-on.
+
 6) The code that is processed with respect to this thread is written in a function. When creating the thread, the entry point address of this function is given. 
 
    <sup>_C:/Nordic/Workspace/threads_create/src/main.c_</sup>
@@ -99,6 +101,8 @@ In case the thread can be created during OS initialization, then using the K_THR
    <sup>_C:/Nordic/Workspace/threads_create/src/main.c_</sup>
 
        #define MYTHREAD2_STACK_SIZE 500
+
+  > __Note:__ The thread stack size was defined here as 500. This value is not optimized and is much larger than actually required. We will optimize the stack size in a later hands-on.
 
 10) Let's define the Thread function. 
 
