@@ -12,6 +12,9 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.0.0.
 
 - [Basics - Developing with _nRF Connect SDK_ and _Zephyr_](#developing-with-zephyr)
 
+- [Zephyr Kernel Services](#zephyr-kernel-services)
+    > [Threads](#threads)
+  
 - [Zephyr Device Drivers](#zephyr-device-drivers)
 
 --------
