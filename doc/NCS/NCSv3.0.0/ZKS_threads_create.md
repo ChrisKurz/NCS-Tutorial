@@ -123,6 +123,6 @@ In case the thread can be created during OS initialization, then using the K_THR
 
 12) Download the project to the connect nRF52 development board. Use a terminal program to check the debug ouptut. You should see something like this:
 
-   ![image](images/ZKS_threads_basics/Testing.jpg)
+   ![image](images/ZKS_threads_create/Testing.jpg)
    
    Thread 1 is printing each second, while Thread 2 is printing each 700 ms. That's why Thread 2 is sometimes output twice in a row. 
