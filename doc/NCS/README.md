@@ -35,6 +35,13 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.0.0.
 - [__Getting DeviceTree Properties__](NCSv3.0.0/DEV_DeviceTree.md) - This example shows how to read DeviceTree properties from C code. 
 
 
+## Zephyr Kernel Services
+
+### Threads
+
+- [__Thread: Creating a Thread__](NCSv3.0.0/ZKS_threads_create.md) - This hands-on shows how to create a Thread.
+
+
 ## Zephyr Device Drivers
 
 ### Sensor Device Drivers
