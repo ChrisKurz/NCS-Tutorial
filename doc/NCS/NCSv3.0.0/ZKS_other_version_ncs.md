@@ -43,6 +43,6 @@ Maybe you want also to read out the version number of the used _nRF Conned SDK_.
 
    ![image](images/ZKS_other_version_ncs/Terminal.jpg)
 
-Note: You can read the nRF Connect SDK version number better if you convert them to hexadecimal. 
-
-  133376 (decimal) = 0x020900 (hexadecimal)
+> __Note:__ You can read the version number of the nRF Connect SDK more easily if you convert it to hexadecimal numbers.
+>
+>  196608 (decimal) = 0x030000 (hexadecimal)
