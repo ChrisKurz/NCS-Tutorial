@@ -1,4 +1,4 @@
-<sup>SDK version: NCS v3.0.0  -  Link to Hands-on solution: https://github.com/ChrisKurz/Modules/tree/main/Workspace/NCSv3.0.0/zcbor_HelloWorld</sup>
+<sup>SDK version: NCS v3.0.0  -  Link to Hands-on solution: https://github.com/ChrisKurz/Modules/tree/main/Workspace/NCS/NCSv3.0.0/zcbor_HelloWorld</sup>
 
 # Add ZCBOR to project and handling of Encoding/Decoding
 
