@@ -1,4 +1,4 @@
-<sup>SDK version: NCS v3.0.0  -  Link to Hands-on solution: https://github.com/ChrisKurz/NCS-Tutorial/tree/main/Workspace/NCSv3.0.0/upTime</sup>
+<sup>SDK version: NCS v3.0.0  -  Link to Hands-on solution: https://github.com/ChrisKurz/NCS-Tutorial/tree/main/Workspace/NCS/NCSv3.0.0/upTime</sup>
 
 # Zephyr Kernel Services: Timing - Uptime
 
