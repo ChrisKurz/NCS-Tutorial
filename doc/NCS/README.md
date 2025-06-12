@@ -48,6 +48,11 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.0.0.
 - [__Thread: Creating a Thread__](NCSv3.0.0/ZKS_threads_create.md) - This hands-on shows how to create a Thread.
 
 
+### Timing
+
+- [__UpTime__](NCSv3.0.0/ZKS_timing_UpTime.md) - Zephyr enables the application to access an operating time counter. This example demonstrates the available API functions.
+
+
 ### Other
 
 #### Version
