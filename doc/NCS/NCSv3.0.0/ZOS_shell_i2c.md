@@ -1,4 +1,4 @@
-<sup>SDK version: NCS v3.0.0  -  Link to Hands-on solution: https://github.com/ChrisKurz/nRF_Connect_SDK/tree/main/Workspace/NCS/NCSv3.0.0/shell_i2c</sup>
+<sup>SDK version: NCS v3.0.0  -  Link to Hands-on solution: https://github.com/ChrisKurz/NCS-Tutorial/tree/main/Workspace/NCS/NCSv3.0.0/shell_i2c</sup>
 
 # Zephyr OS Service: Shell - I2C Shell
 
