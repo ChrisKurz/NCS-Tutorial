@@ -57,6 +57,8 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.0.0.
 
 ### Timing
 
+- [__Timers__](NCSv3.0.0/ZKS_timing_timers.md) - This hands-on shows how Zephyr's Timing Kernel Service can be used (Timer for Function trigger).
+
 - [__UpTime__](NCSv3.0.0/ZKS_timing_UpTime.md) - Zephyr enables the application to access an operating time counter. This example demonstrates the available API functions.
 
 
