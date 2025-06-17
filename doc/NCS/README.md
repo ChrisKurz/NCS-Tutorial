@@ -86,6 +86,8 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.0.0.
 
 - [__Zephyr Logging with minimal Memory Footprint__](NCSv3.0.0/ZOS_logging_minimal.md) - This hands-on shows how to optimize memory footprint of Zephyr Logging.
 
+- [__User-defined Log Level KCONFIG__](NCSv3.0.0/ZOS_logging_userKconfig.md) - This practical examples shows how to use the KCONFIG Logging template to allow users to define Log Level via a user-define KCONFIG.
+
 
 ### Shell
 
