@@ -18,7 +18,7 @@ If the module consists of multiple files, then LOG_MODULE_REGISTER() should appe
 
 ### Copy Zephyr Logging Project
 
-1) Let's make a copy of the previous zephyr Logging hands-on project. The previous project can also be found [here](https://github.com/ChrisKurz/nRF-Connect-SDK-HandsOn/tree/main/Workspace/NCS/NCSv3.0.0/logging). 
+1) Let's make a copy of the previous zephyr Logging hands-on project. The previous project can also be found [here](https://github.com/ChrisKurz/NCS-Tutorial/tree/main/Workspace/NCS/NCSv3.0.0/logging). 
 
 
 ### Add another C File to the project
