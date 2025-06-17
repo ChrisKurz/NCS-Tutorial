@@ -20,7 +20,10 @@ Here is a simple comparison of a really simple project. I have used the [Zehpyr 
 
    ![image](images/ZOS_logging_minimal/MinimalMemory.jpg)
 
-If you compare these three projects, you will notice that Zephyr Logging occupies 10996 additional bytes in flash, while minimal Zephyr Logging occupies only 2380 additional bytes in flash. For larger projects, the difference can be much higher due to the much larger number of debug messages. 
+If you compare these three projects, you will notice that Zephyr Logging occupies 10772 additional bytes in flash, while minimal Zephyr Logging occupies only 8248 additional bytes in flash. For larger projects, the difference can be much higher due to the much larger number of debug messages. 
+
+> __Note:__ When these code sizes were determined, default settings were used. The memory size was not optimized!
+
 
 ## Required Hardware/Software
 - Development kit [nRF54L15DK](https://www.nordicsemi.com/Products/Development-hardware/nRF54L15-DK), [nRF52840DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK), [nRF52833DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52833-DK), or [nRF52DK](https://www.nordicsemi.com/Products/Development-hardware/nrf52-dk)
