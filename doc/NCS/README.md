@@ -84,6 +84,9 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.0.0.
 
 - [__Zephyr Logging in modules with multiple files__](NCSv3.0.0/ZOS_logging_declare.md) - This hands-on shows how to add Logging to a module that consist of multiple files.
 
+- [__Zephyr Logging with minimal Memory Footprint__](NCSv3.0.0/ZOS_logging_minimal.md) - This hands-on shows how to optimize memory footprint of Zephyr Logging.
+
+
 ### Shell
 
 - [__Adding Zephyr Shell__](NCSv3.0.0/ZOS_shell.md) - Here we add Zephyr Shell to our project. It is a UNIX-like shell. In this simple hands-on we add our own commands to switch on/off a LED on the used development kit. 
