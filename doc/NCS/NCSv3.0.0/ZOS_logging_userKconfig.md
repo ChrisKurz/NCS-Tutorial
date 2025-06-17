@@ -95,4 +95,4 @@ This is exactly what we will look at on this page.
 
 6) Check the logging output in a terminal program, e.g. _Serial Terminal_. 
 
-7) Open also __nRF KCONFIG GUI__ or __GUICONFIG__ tool in _Visual Studio Code_ and check the CONFIG settings.
+7) Open also __nRF KCONFIG GUI__ or __MENUCONFIG__ tool in _Visual Studio Code_ and check the CONFIG settings.
