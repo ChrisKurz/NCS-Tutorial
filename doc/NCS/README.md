@@ -75,6 +75,10 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.0.0.
 
 ## Zephyr OS Services
 
+### Logging
+
+- [__Adding Zephyr Logging__](NCSv3.0.0/ZOS_logging_uart.md) - Here we add Zephyr Logging to our project. This allows us to get debug messages during runtime. In this sample we use UART backend.
+
 ### Shell
 
 - [__Adding Zephyr Shell__](NCSv3.0.0/ZOS_shell.md) - Here we add Zephyr Shell to our project. It is a UNIX-like shell. In this simple hands-on we add our own commands to switch on/off a LED on the used development kit. 
