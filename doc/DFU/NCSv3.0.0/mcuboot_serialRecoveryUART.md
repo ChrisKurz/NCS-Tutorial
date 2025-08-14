@@ -13,32 +13,25 @@ MCUboot is usually not taking care about upgrade image download. This is usually
 
 ## Hands-on step-by-step description 
 
-### Let's start with the _hello_world_ project
+### Let's start with our previous done _helloWorld_ project
 
-1) Create a new project based on Zephyr's hello_world example (./zephyr/samples/hello_world).
-
-### Add MCUboot to the project
-
-2) Create the file __sysbuild.conf__ in the project folder. This is the same folder where you find __CMakeLists.txt__ file. 
-3) Let's add all needed Bluetooth software modules to prj.conf file. We want to use Bluetooth role _Central_, and the Bluetooth _scan_ library should be enabled. 
-
-    <sup>sysbuild.conf</sup>
-
-       # Add MCUboot to the project
-       SB_CONFIG_BOOTLOADER_MCUBOOT=y
+1) Make a copy of the previouse [_helloWorld_ project](mcuboot_AddToProject.md). 
 
 
 ### Add DFU over UART to MCUboot
 
-4) The serial recovery feature is enabled in the MCUboot project. So we have to do the appropriate settings in MCUboot's __prj.conf__ file. This is done by adding a __sysbuild__ folder in our project. In the sysbuild folder we need the file __mcuboot.conf__. This configuration file is used to overwrite the default MCUboot settings.
-5) And add following KCONIFGs to enable serial recovery.
+2) The serial recovery feature is enabled in the MCUboot project. So we have to do the appropriate settings in MCUboot's __prj.conf__ file. This is done by adding a __sysbuild__ folder in our project. In the sysbuild folder we need the file __mcuboot.conf__. This configuration file is used to overwrite the default MCUboot settings.
+
+> __NOTE:__ We could change the MCUboot prj.conf file in the SDK folder, but this would change the SDK and possibly cause problems later on. What we want to do here is to implement the MCUboot configuration in our own project. This leaves the SDK unchanged and the MCUboot setting is contained in our own project.
+
+3) And add following KCONIFGs to enable serial recovery.
 
     <sup>sysbuild/mcuboot.conf</sup>
 
        CONFIG_MCUBOOT_SERIAL=y
        CONFIG_BOOT_SERIAL_UART=y
 
-6) MCUboot should not use console, because the serial recovery handles the communication. Any log message would cause problems. So, let's disable Console.
+4) MCUboot should not use console, because the serial recovery handles the communication. Any log message would cause problems. So, let's disable Console for MCUboot.
 
     <sup>sysbuild/mcuboot.conf</sup>
     
@@ -47,7 +40,7 @@ MCUboot is usually not taking care about upgrade image download. This is usually
 
 ### Enable Logging for MCUboot (optional)
 
-7) While during development the logging might be quite helpful, you may disable Logging for your software release. Enabling is done by adding following lines to __mcuboot.conf__ file.
+5) While during development the logging might be quite helpful, you may disable Logging for your software release. Enabling is done by adding following lines to __mcuboot.conf__ file.
 
     <sup>sysbuild/mcuboot.conf</sup>
     
@@ -57,17 +50,18 @@ MCUboot is usually not taking care about upgrade image download. This is usually
 > __Note:__ In this case, the Logging is using RTT, because UART will be used by McuMgr for firmware download.
 > 
 
+
 ### Bootloader indication LED and button
 
 We use a button press while a reset to start serial recovery. Moreover we use the bootloader LED indication to highlight when bootloader is in Serial Recovery mode.
 
-8) Adding LED indication is done by the following MCUboot KCONFIG.
+6) Adding LED indication is done by the following MCUboot KCONFIG.
 
     <sup>sysbuild/mcuboot.conf</sup>
 
        CONFIG_MCUBOOT_INDICATION_LED=y
 
-9) We also have to define in DeviceTree which button and which LED is used by MCUboot. So first add in folder __sysbuild__ the file __mcuboot.overlay__.
+7) We also have to define in DeviceTree which button and which LED is used by MCUboot. So first add in folder __sysbuild__ the file __mcuboot.overlay__.
 
     <sup>sysbuild/mcuboot.overlay</sup>
 
@@ -81,8 +75,8 @@ We use a button press while a reset to start serial recovery. Moreover we use th
 
 ### Version number of our application
 
-10) Add the file __VERSION__ to the project folder (same folder where __CMakeLists.txt__ file is stored).
-11) And add following to the __VERSION__ file.
+8) Add the file __VERSION__ to the project folder (same folder where __CMakeLists.txt__ file is stored).
+9) And add following to the __VERSION__ file.
 
     <sup>VERSION</sup>   
 
