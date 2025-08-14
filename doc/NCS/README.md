@@ -1,8 +1,6 @@
 # nRF Connect SDK (NCS)
 
-There are step-by-step instructions for various _nRF Connect SDK_ (NCS) versions. The NCS version numbers can be unhidden in the table of contents by clicking on “click here to unhide NCS version numbers” at the top of this page. It is recommended to work with the latest NCS version if possible. 
-
-The latest _nRF Connect SDK_ version used here is NCS version 3.0.0.
+The _nRF Connect SDK_ version used here is NCS version 3.0.0.
 
 --------
 ## Table of Content

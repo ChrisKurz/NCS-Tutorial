@@ -6,5 +6,14 @@ For the sake of clarity, the descriptions are divided into the following chapter
 1) [nRF Connect SDK](doc/NCS/README.md) general topics (e.g. Zephyr RTOS related topics)
 2) [Bluetooth LE](doc/BLE/README.md) related topics
 
+<br>
+<br>
+
+In the following chapter you find some tips and tricks about Visual Studio Code:
+
+[Visual Studio Code Tips and Tricks](doc/VSC/README.md)
+
+<br>
+<br>
 
 On the following page you will find further helpful links with documentation, descriptions, blogs, videos and training courses. This page can be found here: [usefulLinks.md](usefulLinks.md)
