@@ -44,7 +44,7 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 
 
-&nbsp;  !\[missing image](images/mcuboot_AddToProject/AddBuildConfiguration.jpg)
+![missing image](images/mcuboot_AddToProject/AddBuildConfiguration.jpg)
 
 
 
@@ -154,7 +154,7 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 
 
-&nbsp;  !\[missing image](images/mcuboot_AddToProject/Programmer.jpg)
+   ![missing image](images/mcuboot_AddToProject/Programmer.jpg)
 
 
 
@@ -170,7 +170,7 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 
 
-&nbsp;  !\[missing image](images/mcuboot_AddToProject/Terminal.jpg)
+  ![missing image](images/mcuboot_AddToProject/Terminal.jpg)
 
 
 
