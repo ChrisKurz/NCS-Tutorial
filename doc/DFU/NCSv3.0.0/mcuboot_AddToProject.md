@@ -58,11 +58,9 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 
 
-&nbsp;	<sup>\_src/main.c\_ => main() function</sup>
+   <sup>\_src/main.c\_ => main() function</sup>
 
-
-
-&nbsp;          printf("Image: MCUboot1 \\n");
+       printf("Image: MCUboot1 \\n");
 
 
 
@@ -104,11 +102,9 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 
 
-&nbsp;	<sup>\_sysbuild.conf\_</sup>
+<sup>\_sysbuild.conf\_</sup>
 
-
-
-&nbsp;      SB\_CONFIG\_BOOTLOADER\_MCUBOOT=y
+    SB\_CONFIG\_BOOTLOADER\_MCUBOOT=y
 
 
 
