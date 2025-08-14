@@ -1,21 +1,12 @@
 <sup>SDK version: NCS v3.0.0 - Link to Hands-on solution: \[MCUboot1](https://github.com/ChrisKurz/MCUboot/tree/main/Workspace/NCSv3.0.0/MCUboot1)</sup>
 
-
-
 # MCUboot:  Adding MCUboot to a Project
 
-
-
 ## Introduction
-
-
 
 MCUboot takes care about the boot process. It handles the authentification of the application images and handles to copy the upgrade image to the slot, which is used to execute the code. Download of the upgrade image is handled within the application. 
 
 So, first we will take a look on how to add MCUboot to an own project. 
-
-
-
 
 
 ## Required Hardware/Software
@@ -25,28 +16,17 @@ So, first we will take a look on how to add MCUboot to an own project.
 - install the \_nRF Connect SDK\_ v3.0.0 and \_Visual Studio Code\_. The installation process is described \[here](https://academy.nordicsemi.com/courses/nrf-connect-sdk-fundamentals/lessons/lesson-1-nrf-connect-sdk-introduction/topic/exercise-1-1/).
 
 
-
-
-
 ## Hands-on step-by-step description 
-
-
 
 ### Create first application (which will be replaced later by the firmware update)
 
-
-
-1) Create a new application based on the /zephyr/samples/hello\_world sample project. (e.g. name of new project: "MCUboot1")
+1) Create a new application based on the /zephyr/samples/hello\_world sample project. (e.g. name of new project: "helloWorld")
 
 &nbsp;  
 
 &nbsp;  The Build Configuration should look like this:
 
-
-
 ![missing image](images/mcuboot_AddToProject/AddBuildConfiguration.jpg)
-
-
 
 &nbsp; It is important to select "Use sysbuild" for the System build! 
 
@@ -64,13 +44,10 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 
 
->  __Note:__ In previous hands-on we used the function __printk()__, which is included in the Zephyr kernel. In the Zephyr hello\_world example the \[PICOLIB](https://docs.nordicsemi.com/bundle/ncs-2.8.0/page/zephyr/develop/languages/c/picolibc.html) library is included. This library supports all standard C formatted input and output functions, like _printf()_. This is also the reason why _#include <stdio.h>_ is used in the code example.
-
+>  __Note:__ In previous hands-on we used the function __printk()__, which is included in the Zephyr kernel. In the Zephyr hello\_world example the [PICOLIB](https://docs.nordicsemi.com/bundle/ncs-3.0.0/page/zephyr/develop/languages/c/picolibc.html) library is included. This library supports all standard C formatted input and output functions, like _printf()_. This is also the reason why _#include <stdio.h>_ is used in the code example.
 
 
 3) Now we want to add MCUboot to our project.
-
-
 
 &nbsp;  _Sysbuild_ allows us to handle two independent projects within a single project build. So it is basically doing a multi-image build. The images are:
 
@@ -84,16 +61,12 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 
 
-&nbsp;   _Workspace folder_/MCUboot1<br>
+&nbsp;   _Workspace folder_/helloWorld<br>
 
 &nbsp;   |--- src<br>
-
 &nbsp;   |--- |--- main.c<br>
-
 &nbsp;   |--- CMakeLists.txt<br>
-
 &nbsp;   |--- prj.conf<br>
-
 &nbsp;   |--- **sysbuild.conf**
 
 
