@@ -65,10 +65,13 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 &nbsp;   |--- src<br>
 &nbsp;   |--- |--- main.c<br>
+&nbsp;   |--- _sysbuild_<br>
+&nbsp;   |--- |--- _mcuboot.conf_<br>
 &nbsp;   |--- CMakeLists.txt<br>
 &nbsp;   |--- prj.conf<br>
 &nbsp;   |--- **sysbuild.conf**
 
+> __NOTE:__ The folder and file structure shown above also contains a folder called _sysbuild_ and the file _mcuboot.conf_. This is not really necessary for this hands-on, as we are currently working with the default configuration of MCUboot. Later, we will add further MCUboot-specific KCONFIG settings to the file _sysbuild/mcuboot.conf_.
 
 
 &nbsp;  Adding MCUboot to our project is done by putting **SB\_CONFIG\_BOOTLOADER\_MCUBOOT=y** into the _sysbuild.conf_ file.
