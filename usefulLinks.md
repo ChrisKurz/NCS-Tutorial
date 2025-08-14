@@ -133,6 +133,10 @@ This is a collection of links to useful resources that cover the _nRF Connect SD
 
 [GNU Compiler Collection (GCC)](https://gcc.gnu.org/) - Default compiler in Zephyr. Different compilers could be included. More important for software development is git, CMake, and DeviceTree. 
 
+### Nordic Tools
+
+[nrfutil documentation](https://docs.nordicsemi.com/bundle/nrfutil/page/README.html)
+
 ## Contributing to Zephyr Project
 
 [Contributing to Zephyr](https://docs.zephyrproject.org/latest/contribute/index.html)
