@@ -93,7 +93,7 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 &nbsp;  
 
-&nbsp;  Further generated files are described [here](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/config\_and\_build/configuring\_app/output\_build\_files.html#common\_output\_build\_files).
+&nbsp;  Further generated files are described [here](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/app_dev/config_and_build/output_build_files.html#common_output_build_files).
 
 
 
