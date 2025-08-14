@@ -149,5 +149,6 @@ So, first we will take a look on how to add MCUboot to an own project.
 10) When programming is completed, check the Terminal output. In case nothing is shown in the terminal, press the RESET button on the development kit.
 
   ![missing image](images/mcuboot_AddToProject/Terminal.jpg)
-bsp;  \_\_Note\_\_: The application is printing just once after a reset. So you have to press the Reset button on the development kit to see the output in the terminal window.
+  
+__Note__: The application is printing just once after a reset. So you have to press the Reset button on the development kit to see the output in the terminal window.
 
