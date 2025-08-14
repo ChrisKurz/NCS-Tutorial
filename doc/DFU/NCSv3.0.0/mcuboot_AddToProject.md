@@ -1,4 +1,4 @@
-<sup>SDK version: NCS v3.0.0 - Link to Hands-on solution: \[MCUboot1](https://github.com/ChrisKurz/MCUboot/tree/main/Workspace/NCSv3.0.0/MCUboot1)</sup>
+<sup>SDK version: NCS v3.0.0 - Link to Hands-on solution: [helloWorld](https://github.com/ChrisKurz/NCS-Tutorial/tree/main/Workspace/DFU/NCSv3.0.0/helloWorld)</sup>
 
 # MCUboot:  Adding MCUboot to a Project
 
