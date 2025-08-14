@@ -40,7 +40,7 @@ So, first we will take a look on how to add MCUboot to an own project.
 
    <sup>_src/main.c_ => main() function</sup>
 
-       printf("Image: MCUboot1 \\n");
+       printf("Image: MCUboot1 \n");
 
 
 
