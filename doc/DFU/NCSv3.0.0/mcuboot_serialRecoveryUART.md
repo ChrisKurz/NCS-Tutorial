@@ -15,7 +15,7 @@ MCUboot is usually not taking care about upgrade image download. This is usually
 
 ### Let's start with our previous done _helloWorld_ project
 
-1) Make a copy of the previouse [_helloWorld_ project](mcuboot_AddToProject.md). 
+1) Make a copy of the previous [_helloWorld_ project](mcuboot_AddToProject.md). 
 
 
 ### Add DFU over UART to MCUboot
