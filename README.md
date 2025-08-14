@@ -7,4 +7,9 @@ For the sake of clarity, the descriptions are divided into the following chapter
 2) [Bluetooth LE](doc/BLE/README.md) related topics
 
 
+In the following chapter you find some tips and tricks about Visual Studio Code:
+
+[Visual Studio Code Tips and Tricks](doc/VSC/README.md)
+
+
 On the following page you will find further helpful links with documentation, descriptions, blogs, videos and training courses. This page can be found here: [usefulLinks.md](usefulLinks.md)
