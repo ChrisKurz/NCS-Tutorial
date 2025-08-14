@@ -2,11 +2,11 @@
 
 
 
-\# MCUboot:  Adding MCUboot to a Project
+# MCUboot:  Adding MCUboot to a Project
 
 
 
-\## Introduction
+## Introduction
 
 
 
@@ -18,25 +18,25 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 
 
-\## Required Hardware/Software
+## Required Hardware/Software
 
-\- Development kit \[\[nRF54L15DK](https://www.nordicsemi.com/Products/Development-hardware/nRF54L15-DK), nRF52840DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK), \[nRF52833DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52833-DK), or \[nRF52DK](https://www.nordicsemi.com/Products/Development-hardware/nrf52-dk) 
+- Development kit \[\[nRF54L15DK](https://www.nordicsemi.com/Products/Development-hardware/nRF54L15-DK), nRF52840DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK), \[nRF52833DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52833-DK), or \[nRF52DK](https://www.nordicsemi.com/Products/Development-hardware/nrf52-dk) 
 
-\- install the \_nRF Connect SDK\_ v3.0.0 and \_Visual Studio Code\_. The installation process is described \[here](https://academy.nordicsemi.com/courses/nrf-connect-sdk-fundamentals/lessons/lesson-1-nrf-connect-sdk-introduction/topic/exercise-1-1/).
-
-
+- install the \_nRF Connect SDK\_ v3.0.0 and \_Visual Studio Code\_. The installation process is described \[here](https://academy.nordicsemi.com/courses/nrf-connect-sdk-fundamentals/lessons/lesson-1-nrf-connect-sdk-introduction/topic/exercise-1-1/).
 
 
 
-\## Hands-on step-by-step description 
+
+
+## Hands-on step-by-step description 
 
 
 
-\### Create first application (which will be replaced later by the firmware update)
+### Create first application (which will be replaced later by the firmware update)
 
 
 
-1\) Create a new application based on the /zephyr/samples/hello\_world sample project. (e.g. name of new project: "MCUboot1")
+1) Create a new application based on the /zephyr/samples/hello\_world sample project. (e.g. name of new project: "MCUboot1")
 
 &nbsp;  
 
@@ -58,7 +58,7 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 
 
-2\) Add the following line to main function:
+2) Add the following line to main function:
 
 
 
@@ -74,7 +74,7 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 
 
-3\) Now we want to add MCUboot to our project.
+3) Now we want to add MCUboot to our project.
 
 
 
@@ -116,7 +116,7 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 
 
-4\) Build the project and take a look at the \*\*build\*\*, \*\*build/MCUboot1/zephyr\*\*, and \*\*build/mcuboot/zephyr\*\* folders. Adding MCUboot and the associated activation of a multi-image build results in additional files being generated in these folders. The most important files are:
+4) Build the project and take a look at the \*\*build\*\*, \*\*build/MCUboot1/zephyr\*\*, and \*\*build/mcuboot/zephyr\*\* folders. Adding MCUboot and the associated activation of a multi-image build results in additional files being generated in these folders. The most important files are:
 
 
 
@@ -134,23 +134,23 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 
 
-\## Testing ###
+## Testing ###
 
 
 
-5\) Start "Programmer" in nRF Connect for Desktop. 
+5) Start "Programmer" in nRF Connect for Desktop. 
 
 
 
-6\) Connect to your development kit. 
+6) Connect to your development kit. 
 
 
 
-7\) Click "Add File" and select in your project folder /build/merged.hex file.
+7) Click "Add File" and select in your project folder /build/merged.hex file.
 
 
 
-8\) In the Programmer you should see two blocks:
+8) In the Programmer you should see two blocks:
 
 
 
@@ -162,11 +162,11 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 
 
-9\) In the Programmer tool click "Earse all" and afterwards "Erase \& write".
+9) In the Programmer tool click "Earse all" and afterwards "Erase \& write".
 
 
 
-10\) When programming is completed, check the Terminal output. In case nothing is shown in the terminal, press the RESET button on the development kit.
+10) When programming is completed, check the Terminal output. In case nothing is shown in the terminal, press the RESET button on the development kit.
 
 
 
