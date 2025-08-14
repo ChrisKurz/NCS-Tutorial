@@ -85,3 +85,5 @@ We use a button press while a reset to start serial recovery. Moreover we use th
         PATCHLEVEL = 3
         VERSION_TWEAK = 4
         EXTRAVERSION = 
+
+  > __NOTE:__ The fields _VERSION_MAJOR_, _VERSION_MINOR_, _PATCHLEVEL_, and _VERSION_TWEAK_ require a numerical data type. Its value has to be in the range 0 to 255. The field _EXTRAVERSION_ requires a alphanumerical data type (Lower-case a-z and 0-9, and "." or "-").
