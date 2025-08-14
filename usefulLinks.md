@@ -103,6 +103,12 @@ This is a collection of links to useful resources that cover the _nRF Connect SD
 
 ## Tools
 
+### Visual Studio Code
+
+[Visual Studio Code documentation](https://code.visualstudio.com/docs#vscode)
+
+[_nRF Connect for Visual Studio Code_ extension](https://docs.nordicsemi.com/bundle/nrf-connect-vscode/page/index.html)
+
 ### git
 
 [git Documentation](https://git-scm.com/doc)
