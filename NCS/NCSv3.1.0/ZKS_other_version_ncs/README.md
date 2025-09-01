@@ -41,7 +41,7 @@ Maybe you want also to read out the version number of the used _nRF Conned SDK_.
 4) Build the project and donwload it to your development kit. 
 5) In the terminal you should see following outuput:
 
-   ![image](images/ZKS_other_version_ncs/Terminal.jpg)
+   ![image](images/Terminal.jpg)
 
 > __Note:__ You can read the version number of the nRF Connect SDK more easily if you convert it to hexadecimal numbers.
 >
