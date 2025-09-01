@@ -101,6 +101,6 @@ The kernel also provides a function that allows to get the elapsed time between 
 12) Flash the project to your development kit. 
 13) Check the output in your terminal program. You should see something like this:
 
-   ![image](images/ZKS_timing_UpTime/Terminal.jpg)
+   ![image](images/Terminal.jpg)
 
    NOTE: In the terminal output you find the line "Uptime (64-bit) = 0 cycles". The API function k_cycle_get_64() is used here. This would read out a hardware counter value. However, on the used board (nRF52840DK) the MCU does not have a 64-bit counter. Because of that the value shown in the terminal is 0. You can also check if such a 64-bit counter is available by checking __CONFIG_TIMER_HAS_64BIT_CYCLE_COUNTER__ value in _nRF KCONFIG GUI_ or _GUICONFIG_ tool. 
