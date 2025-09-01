@@ -28,7 +28,7 @@ In this hands-on we start the Sensor driver within the user application.
 
 2) Let's use the same connection as in previous hands-on. The connections are: 
 
-   ![image](images/ZDD_sensor_basics_initApp/BoardConnections.jpg)
+   ![image](images/BoardConnections.jpg)
 
     | __Sensor__ | <-> | __nRF54L15DK__ |
     |------------|-----|----------------|
@@ -48,7 +48,7 @@ In this hands-on we start the Sensor driver within the user application.
 
   So your overlay file should look like this:
   
-   ![image](images/ZDD_sensor_basics_initApp/OverlayFile.jpg)
+   ![image](images/OverlayFile.jpg)
 
 4) In this case the BME280 Sensor Driver was not yet started. We have to do this manually in our application code. Add following lines after the __device_is_ready()__ check. We call __device_is_ready()__ a second time to see how the behaviour changes after enabling the driver. 
 
@@ -68,6 +68,6 @@ In this hands-on we start the Sensor driver within the user application.
 5) Build and download the project.
 6) Start Serial Terminal and reset the nRF54L15DK. And then check the Serial Terminal.
 
-   ![image](images/ZDD_sensor_basics_initApp/Terminal.jpg)
+   ![image](images/Terminal.jpg)
 
    > __Note:__ When the __device_init()__ function was not executed yet, the __device_is_ready()__ function returns a failure. After __device_init()__ was called the sensor is running, and if a sensor is correctly connected to the nRF54L15 the __device_is_ready()__ function returns a "ready". 
