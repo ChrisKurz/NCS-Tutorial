@@ -1,4 +1,4 @@
-<sup>SDK version: NCS v3.0.0  -  Link to Hands-on solution: https://github.com/ChrisKurz/NCS-Tutorial/tree/main/Workspace/BLE/NCSv3.0.0/beacon</sup>
+<sup>SDK version: NCS v3.0.0</sup>
 
 # Bluetooth Low Energy: Creating a Beacon application
 
@@ -30,7 +30,7 @@ Let's start to work on our project.
 
 2) Create the needed files for a minimal project setup:
 	
-   ![image](images/basics_beacon/ProjectFolder.jpg)
+   ![image](images/ProjectFolder.jpg)
 
 3) And here is the content of these files:
 
@@ -156,12 +156,12 @@ Let's start to work on our project.
 
    You should see following output:
    
-   ![image](images/basics_beacon/terminal.jpg)
+   ![image](images/terminal.jpg)
 
 11) Use your smartphone and look for the iBeacon 
 
    I have used the __Locate Beacon__ app on an iPhone. Note that the UUID of your beacon has to be added in the Settings. This is used to filter the output in the app. Here is a screen shot of the UUID filter setting, as well as the scan result output.
    
-   ![image](images/basics_beacon/LocateBeacon.jpg)
+   ![image](images/LocateBeacon.jpg)
 
 >__Note:__ We have not calibrated the RSSI value in the iBeacon protocol. So the shown distance in the smartphone app may vary a lot!
