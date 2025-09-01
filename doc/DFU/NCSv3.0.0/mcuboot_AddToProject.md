@@ -1,4 +1,4 @@
-<sup>SDK version: NCS v3.0.0 - Link to Hands-on solution: \[MCUboot1](https://github.com/ChrisKurz/MCUboot/tree/main/Workspace/NCSv3.0.0/MCUboot1)</sup>
+<sup>SDK version: NCS v3.0.0 - Link to Hands-on solution: [helloWorld](https://github.com/ChrisKurz/NCS-Tutorial/tree/main/Workspace/DFU/NCSv3.0.0/helloWorld)</sup>
 
 # MCUboot:  Adding MCUboot to a Project
 
@@ -11,9 +11,9 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 ## Required Hardware/Software
 
-- Development kit \[\[nRF54L15DK](https://www.nordicsemi.com/Products/Development-hardware/nRF54L15-DK), nRF52840DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK), \[nRF52833DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52833-DK), or \[nRF52DK](https://www.nordicsemi.com/Products/Development-hardware/nrf52-dk) 
+- Development kit [nRF54L15DK](https://www.nordicsemi.com/Products/Development-hardware/nRF54L15-DK), [nRF52840DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK), [nRF52833DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52833-DK), or [nRF52DK](https://www.nordicsemi.com/Products/Development-hardware/nrf52-dk) 
 
-- install the \_nRF Connect SDK\_ v3.0.0 and \_Visual Studio Code\_. The installation process is described \[here](https://academy.nordicsemi.com/courses/nrf-connect-sdk-fundamentals/lessons/lesson-1-nrf-connect-sdk-introduction/topic/exercise-1-1/).
+- install the _nRF Connect SDK_ v3.0.0 and _Visual Studio Code_. The installation process is described [here](https://academy.nordicsemi.com/courses/nrf-connect-sdk-fundamentals/lessons/lesson-1-nrf-connect-sdk-introduction/topic/exercise-1-1/).
 
 
 ## Hands-on step-by-step description 
@@ -32,15 +32,15 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 &nbsp; 
 
-> **NOTE**: The _nRF Connect SDK_ versions up to version v2.6.2 used a multi-image build of the _Child and Parent images_, which is set to [deprecated in \_nRF Connect SDK\_ version 2.7.0](https://docs.nordicsemi.com/bundle/ncs-2.7.0/page/nrf/config\_and\_build/multi\_image.html). It is replaced by the Zephyr's _sysbuild_. In this hands-on we will use _sysbuild_. Multi-image builds functionality based on parent-child images, which was deprecated in nRF Connect SDK v2.7.0 has been removed in _nRF Connect SDK_ V3.0.0. Existing projects must transition to sysbuild (System build).
+> **NOTE**: The _nRF Connect SDK_ versions up to version v2.6.2 used a multi-image build of the _Child and Parent images_, which is set to [deprecated in _nRF Connect SDK_ version 2.7.0](https://docs.nordicsemi.com/bundle/ncs-2.7.0/page/nrf/config\_and\_build/multi\_image.html). It is replaced by the Zephyr's _sysbuild_. In this hands-on we will use _sysbuild_. Multi-image builds functionality based on parent-child images, which was deprecated in nRF Connect SDK v2.7.0 has been removed in _nRF Connect SDK_ V3.0.0. Existing projects must transition to sysbuild (System build).
 
 2) Add the following line to main function:
 
 
 
-   <sup>\_src/main.c\_ => main() function</sup>
+   <sup>_src/main.c_ => main() function</sup>
 
-       printf("Image: MCUboot1 \\n");
+       printf("Image: MCUboot1 \n");
 
 
 
@@ -65,19 +65,22 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 &nbsp;   |--- src<br>
 &nbsp;   |--- |--- main.c<br>
+&nbsp;   |--- _sysbuild_<br>
+&nbsp;   |--- |--- _mcuboot.conf_<br>
 &nbsp;   |--- CMakeLists.txt<br>
 &nbsp;   |--- prj.conf<br>
 &nbsp;   |--- **sysbuild.conf**
 
+> __NOTE:__ The folder and file structure shown above also contains a folder called _sysbuild_ and the file _mcuboot.conf_. This is not really necessary for this hands-on, as we are currently working with the default configuration of MCUboot. Later, we will add further MCUboot-specific KCONFIG settings to the file _sysbuild/mcuboot.conf_.
 
 
 &nbsp;  Adding MCUboot to our project is done by putting **SB\_CONFIG\_BOOTLOADER\_MCUBOOT=y** into the _sysbuild.conf_ file.
 
 
 
-<sup>\_sysbuild.conf\_</sup>
+<sup>_sysbuild.conf_</sup>
 
-    SB\_CONFIG\_BOOTLOADER\_MCUBOOT=y
+    SB_CONFIG_BOOTLOADER_MCUBOOT=y
 
 
 
@@ -93,7 +96,7 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 &nbsp;  
 
-&nbsp;  Further generated files are described [here](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/config\_and\_build/configuring\_app/output\_build\_files.html#common\_output\_build\_files).
+&nbsp;  Further generated files are described [here](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/app_dev/config_and_build/output_build_files.html#common_output_build_files).
 
 
 
