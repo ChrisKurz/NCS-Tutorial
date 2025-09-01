@@ -3,7 +3,7 @@
 In this repository you will find various step-by-step descriptions that explain how to use the software libraries of the Zephyr RTOS and the _nRF Connect SDK_ from Nordic Semiconductor.
 
 For the sake of clarity, the descriptions are divided into the following chapters:
-1) [nRF Connect SDK](doc/NCS/README.md) general topics (e.g. Zephyr RTOS related topics)
+1) [nRF Connect SDK](NCSv3.1.0/README.md) general topics (e.g. Zephyr RTOS related topics)
 2) [Bluetooth LE](doc/BLE/README.md) related topics
 3) [Bootloader and DFU](doc/DFU/NCSv3.0.0/README.md) related topics
 
