@@ -12,7 +12,7 @@ This description covers to installation process of the _nRF Connect SDK_, its to
    
    > Download the installer for your platform from [SEGGER J-Link Software](https://www.segger.com/downloads/jlink/#J-LinkSoftwareAndDocumentationPack). Run the installer; when you reach the ‘Choose Optional Components’ window during installation, be sure to select ‘Install Legacy USB Driver for J-Link’ This driver is necessary for some supported Development Kits.
    >
-   > ![image](images/DEV_installation/jlink.jpg)   
+   > ![image](images/jlink.jpg)   
       
 ### 2) Install _nrfutil_ and the _nrfutil device_ command
 #### 2.1) Install _nrfutil_
@@ -27,7 +27,7 @@ This description covers to installation process of the _nRF Connect SDK_, its to
 
    > (Windows) Update your system’s PATH to include the location where nrfutil is stored. Open Edit environment variable for your account and add the path where you stored the nrfutil binary, as shown below:
    >
-   > ![image](images/DEV_installation/update_PATH.gif)
+   > ![image](images/update_PATH.gif)
 
 ##### 2.1.3) Ensure the latest nrfutil Version is installed
 
