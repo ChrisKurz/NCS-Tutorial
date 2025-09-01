@@ -49,8 +49,7 @@ Creating a project from scratch is quite simple with Zephyr. Here is a descripti
 
     > __Note:__ In the CMAKE file above, the main.c file is added to the project using the CMAKE command _target_sources()_. If there were additional C files in the __src__ directory, they would not be used in the project. They would have to be added explicitly with additional _target_sources()_ CMAKE commands. However, it is possible to add all *.C files in a directory to the project. Instead of the _target_sources()_ CMAKE command used above, the following lines would then be used:
     >
-    > <code> FILE(GLOB app_sources src/*.c)
-    >   target_sources(app PRIVATE ${app_sources})  </code>
+    > ![missing image](images/DEV_ProjectFromScratch/target_sources.jpg)
     > 
 
     <sup>_c:/Nordic/Workspace/hello_world/prj.conf_</sup>
