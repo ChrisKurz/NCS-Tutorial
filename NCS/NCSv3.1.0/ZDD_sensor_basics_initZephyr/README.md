@@ -27,7 +27,7 @@ In this hands-on we use the automatic startup at Zephyr RTOS boot.
 
 2) Let's prepare the hardware setup. You need an BME280 sensor board. Connect the Board to the nRF54L15DK as shown in following picture:
 
-   ![image](images/ZDD_sensor_basics_initZephyr/BoardConnections.jpg)
+   ![image](images/BoardConnections.jpg)
 
     | __Sensor__ | <-> | __nRF54L15DK__ |
     |------------|-----|----------------|
@@ -131,10 +131,10 @@ In this hands-on we use the automatic startup at Zephyr RTOS boot.
 12) Build and download the project.
 13) Start Serial Terminal and reset the nRF54L15DK. You should get the following output.
 
-    ![image](images/ZDD_sensor_basics_initZephyr/Terminal.jpg)
+    ![image](images/Terminal.jpg)
 
 14) Now, we want to check if the device check will fail if the sensor communication is not possible. Remove the sensor and press on nRF54L15DK the Reset button.
 
-    ![image](images/ZDD_sensor_basics_initZephyr/Terminal_fail.jpg)    
+    ![image](images/Terminal_fail.jpg)    
 
 > __Note:__ The first check is still ok. Reason is because it only checks if the DeviceTree entries are correctly done. The function call __device_is_ready()__ however fails. Here the software tries to read the Chip ID from the sensor, which is failing since the sensor is not connected... 
