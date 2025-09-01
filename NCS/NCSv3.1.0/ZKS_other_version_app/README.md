@@ -62,7 +62,7 @@ Note that the Application Version Management is a functionality that was first t
 5) Build the project and donwload it to your development kit. 
 6) In the terminal you should see following outuput:
 
-   ![image](images/ZKS_other_version_app/Terminal.jpg)
+   ![image](images/Terminal.jpg)
 
 >__Note__: You can read the application version and application version number better if you convert them to hexadecimal.
 >
