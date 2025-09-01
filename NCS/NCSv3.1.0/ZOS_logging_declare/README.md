@@ -27,7 +27,7 @@ If the module consists of multiple files, then LOG_MODULE_REGISTER() should appe
 
 3) We have to include this file via the CMakeLists.txt file. So add the _src/function.c_ file name to the target_source list. The CMakeLists.txt file should then look like this:
 
-   ![image](images/ZOS_logging_declare/CMakeLists.jpg)
+   ![image](images/CMakeLists.jpg)
 
 4) The function.c is still blank. Let's add some dummy code.
 
@@ -82,7 +82,7 @@ If the module consists of multiple files, then LOG_MODULE_REGISTER() should appe
 
 10) Use a terminal program on your computer and check the output. Note that some lines are printed after a reset. So you may press the RESET button to see it. 
 
-   ![image](images/ZOS_logging_declare/Terminal.jpg)
+   ![image](images/Terminal.jpg)
 
    What you can see here is that the same "MyApp" software module is used here as output module and that the log level of the new C file is set differently than in the main file.
    

@@ -36,7 +36,7 @@ The Zephyr kernel provides a _Timer_ object that can be used to generate timings
 
    _k_timer_init()_ function description:
    
-   ![image](images/ZKS_timing_timers/KTimerInit.jpg)
+   ![image](images/KTimerInit.jpg)
    
    <sup>https://docs.nordicsemi.com/bundle/ncs-3.0.0/page/zephyr/kernel/services/timing/timers.html#c.k_timer_init</sup>
 
@@ -59,7 +59,7 @@ The Zephyr kernel provides a _Timer_ object that can be used to generate timings
 
    _k_timer_stop()_ function description:
    
-   ![image](images/ZKS_timing_timers/KTimerStop.jpg)
+   ![image](images/KTimerStop.jpg)
    
    <sup>https://docs.nordicsemi.com/bundle/ncs-3.0.0/page/zephyr/kernel/services/timing/timers.html#c.k_timer_stop</sup>
 
@@ -84,7 +84,7 @@ The Zephyr kernel provides a _Timer_ object that can be used to generate timings
        
    _k_timer_start()_ function description:
    
-   ![image](images/ZKS_timing_timers/KTimerStart.jpg)
+   ![image](images/KTimerStart.jpg)
    
    <sup>https://docs.nordicsemi.com/bundle/ncs-3.0.0/page/zephyr/kernel/services/timing/timers.html#c.k_timer_start</sup>
        
@@ -96,7 +96,7 @@ The Zephyr kernel provides a _Timer_ object that can be used to generate timings
 9) Flash the project to your development kit. 
 10) Check the output in your terminal program. You should see something like this:
 
-   ![image](images/ZKS_timing_timers/Terminal.jpg)
+   ![image](images/Terminal.jpg)
    
    Note that first timer expiration should happen around 5 seconds after program start. Afterwards you should see timer expiration each second.
    

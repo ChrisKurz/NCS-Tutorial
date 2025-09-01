@@ -80,4 +80,4 @@ And here is another way to use Zephyr Version numbers.
 6) Build the project and donwload it to your development kit. 
 7) In the terminal you should see following outuput:
 
-   ![image](images/ZKS_other_version_zephyr/Terminal.jpg)
+   ![image](images/Terminal.jpg)

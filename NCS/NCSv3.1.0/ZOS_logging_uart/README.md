@@ -74,13 +74,13 @@ And it can also be used for your own application. We will have a closer look at 
 
 7) Build the project, download the code to a development kit, and check the output via the virtual COM port (Settings: 115200 baud, 8 data bits, 1 stop bit, no partiy, no flow control). Easiest way is to use the _Serial Terminal_ in the _nRF Connect for Desktop_ tool.
 
-   ![image](images/ZOS_logging_uart/Terminal1.jpg)
+   ![image](images/Terminal1.jpg)
 
    > **_Note:_** We have set the Log Level to "LOG_LEVEL_WRN". Because of this the output only shows the _warnings_ and _errors_.
 
 8) Change the log level in the LOG_MODULE_REGISTER instruction and check the debug messages seen on your computer terminal.  
 
-   ![image](images/ZOS_logging_uart/Terminal2.jpg)
+   ![image](images/Terminal2.jpg)
 
    > **_Note:_** In above screen shot the Log Level was set to "LOG_LEVEL_INF". 
 

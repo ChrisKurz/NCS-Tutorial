@@ -23,7 +23,7 @@ Creating a project from scratch is quite simple with Zephyr. Here is a descripti
 
 3) We need the following files in our project folder:
 
-   ![image](images/DEV_ProjectFromScratch/ProjectFolder.jpg)
+   ![image](images/ProjectFolder.jpg)
 
    > __NOTE: You can create these files in Windows File Explorer as follow: open a folder, then click inside this folder with the right mouse button. In context menu select "New" and "Text Document". It is important that the file extension is also changed for some files! You have to enable the file name extensions in the Windows File Explorer menu "View" and ensure a tick is set at "File name extensions".__
 4) Create the following three files in our project directory:
@@ -49,7 +49,7 @@ Creating a project from scratch is quite simple with Zephyr. Here is a descripti
 
     > __Note:__ In the CMAKE file above, the main.c file is added to the project using the CMAKE command _target_sources()_. If there were additional C files in the __src__ directory, they would not be used in the project. They would have to be added explicitly with additional _target_sources()_ CMAKE commands. However, it is possible to add all *.C files in a directory to the project. Instead of the _target_sources()_ CMAKE command used above, the following lines would then be used:
     >
-    > ![missing image](images/DEV_ProjectFromScratch/target_sources.jpg)
+    > ![missing image](images/target_sources.jpg)
     > 
 
     <sup>_c:/Nordic/Workspace/hello_world/prj.conf_</sup>
@@ -79,11 +79,11 @@ Creating a project from scratch is quite simple with Zephyr. Here is a descripti
 
 6) Click on "+ Open an existing application" and select the __hello_world__ folder. (our project folder is the folder in which the files __CMakeLists.txt__ and __prj.conf__ are located.)
 
-   ![image](images/DEV_ProjectFromScratch/AddApplicationToWorkspace.jpg)
+   ![image](images/AddApplicationToWorkspace.jpg)
 
 7) Before we can compile our project, we have to __add build configuration__. This is done by clicking on the line "+ Add build configuration".
 
-   ![image](images/DEV_ProjectFromScratch/GenerateConfiguration.jpg)
+   ![image](images/GenerateConfiguration.jpg)
 
 8) We add the following settings in the __add build configuration__ window:
  
@@ -105,11 +105,11 @@ Creating a project from scratch is quite simple with Zephyr. Here is a descripti
 
 10) After the project build is completed, check all the available files in the hello_world folder.
 
-   ![image](images/DEV_ProjectFromScratch/GeneratedFiles.jpg)
+   ![image](images/GeneratedFiles.jpg)
 
 11) Ensure that the connected kit is found and click __Flash__ in the ACTIONS menu.  
 
-   ![image](images/DEV_ProjectFromScratch/Flash.jpg)
+   ![image](images/Flash.jpg)
 
 12) Open a terminal program, for example the _Serial Terminal_ that is available in _nRF Connect for Desktop_
  
@@ -119,4 +119,4 @@ Creating a project from scratch is quite simple with Zephyr. Here is a descripti
 
 13) Reset the kit. The Zephyr boot message and "Hello World" string is shown in the terminal. 
 
-   ![image](images/DEV_ProjectFromScratch/NrfTerminal.jpg)
+   ![image](images/NrfTerminal.jpg)

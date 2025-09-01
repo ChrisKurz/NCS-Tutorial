@@ -10,15 +10,15 @@ Here is a simple comparison of a really simple project. I have used the [Zehpyr 
 
 1) Original Memory Footprint of the Zephyr Logging example. This one was tested with _nRF Connect SDK_ V3.0.0. 
 
-   ![image](images/ZOS_logging_minimal/NormalMemory.jpg)
+   ![image](images/NormalMemory.jpg)
 
 3) Completely removing Zephyr Logging (CONFIG_LOG=n, removing Logging related code in main.c file). This one was tested with _nRF Connect SDK_ v3.0.0.
 
-   ![image](images/ZOS_logging_minimal/DisabledMemory.jpg)
+   ![image](images/DisabledMemory.jpg)
 
 4) In this hands-on we will enable minimal mode for Logging. Enable minimal logging has very little footprint overhead on top of the printk() implementation for standard logging macros. Hexdump macros are also supported, with a small amount of code pulled in if used. Build time filtering is supported, but not runtime filtering. There are no timestamps, prefixes, colors, or asynchronous logging, and all messages are simply sent to printk(). Enabling minimal logging mode results for our test in following memory footprint. This one was tested with _nRF Connect SDK_ V3.0.0.
 
-   ![image](images/ZOS_logging_minimal/MinimalMemory.jpg)
+   ![image](images/MinimalMemory.jpg)
 
 If you compare these three projects, you will notice that Zephyr Logging occupies 10772 additional bytes in flash, while minimal Zephyr Logging occupies only 8248 additional bytes in flash. For larger projects, the difference can be much higher due to the much larger number of debug messages. 
 
@@ -50,4 +50,4 @@ If you compare these three projects, you will notice that Zephyr Logging occupie
 4) When doing the build, check the memory footprint.
 5) Check the termninal output. You should see that timestamp, prefix and color are no longer handled and the output string is minimized. 
 
-   ![image](images/ZOS_logging_minimal/Terminal.jpg)
+   ![image](images/Terminal.jpg)
