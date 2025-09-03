@@ -103,4 +103,4 @@ The kernel also provides a function that allows to get the elapsed time between 
 
    ![image](images/Terminal.jpg)
 
-   NOTE: In the terminal output you find the line "Uptime (64-bit) = 0 cycles". The API function k_cycle_get_64() is used here. This would read out a hardware counter value. However, on the used board (nRF52840DK) the MCU does not have a 64-bit counter. Because of that the value shown in the terminal is 0. You can also check if such a 64-bit counter is available by checking __CONFIG_TIMER_HAS_64BIT_CYCLE_COUNTER__ value in _nRF KCONFIG GUI_ or _GUICONFIG_ tool. 
+  > __NOTE:__ Above Serial Terminal screen shot shows the output of an nRF54L15DK. When you use an nRF52840DK you find in the terminal output the line "Uptime (64-bit) = 0 cycles". The API function k_cycle_get_64() is used here. It would read out a hardware counter value. However, on the nRF52840DK board the MCU does not have a 64-bit counter. Because of that the value shown in the terminal is 0. You can also check if such a 64-bit counter is available by checking __CONFIG_TIMER_HAS_64BIT_CYCLE_COUNTER__. Note that this is an invisible KCONFIG symbol!
