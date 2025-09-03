@@ -87,7 +87,7 @@ Creating a project from scratch is quite simple with Zephyr. Here is a descripti
 
 8) We add the following settings in the __add build configuration__ window:
  
-   ![image](images/DEV_ProjectFromScratch/BuildConfiguration.jpg)
+   ![image](images/BuildConfiguration.jpg)
 
    The first line on this windows shows you the seleced SDK version and toolchain version. You can change it by clicking on this line. Note that the drop down list shows only the installed SDK and toolchain versions. IF the version that you would like to select is not listed, then click in the Welcome menu on "Manage toolchains" or "Manage SDKs" and installed the required versions. Ensure the toolchain version __v3.0.0__ and SDK version __v3.0.0__ is selected for this hands-on.
 
