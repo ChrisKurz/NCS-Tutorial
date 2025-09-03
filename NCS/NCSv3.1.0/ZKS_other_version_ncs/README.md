@@ -45,4 +45,4 @@ Maybe you want also to read out the version number of the used _nRF Conned SDK_.
 
 > __Note:__ You can read the version number of the nRF Connect SDK more easily if you convert it to hexadecimal numbers.
 >
->  196608 (decimal) = 0x030000 (hexadecimal)
+>  196864 (decimal) = 0x030100 (hexadecimal)
