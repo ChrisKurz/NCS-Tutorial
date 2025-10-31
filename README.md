@@ -6,13 +6,8 @@ For the sake of clarity, the descriptions are divided into the following chapter
 1) [nRF Connect SDK](NCS/NCSv3.1.0/README.md) general topics (e.g. Zephyr RTOS related topics)
 2) [Bluetooth LE](BLE/NCSv3.0.0/README.md) related topics
 3) [Bootloader and DFU](DFU/NCSv3.0.0/README.md) related topics
-
-<br>
-<br>
-
-In the following chapter you find some tips and tricks about Visual Studio Code:
-
-[Visual Studio Code Tips and Tricks](VSC/README.md)
+4) [CMake Tips and Tricks](CMake/README.md)
+5) [Visual Studio Code Tips and Tricks](VSC/README.md)
 
 <br>
 <br>
