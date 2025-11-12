@@ -10,7 +10,7 @@ Zephyr allows to select one for the following C libraries:
 
    ![image](images/picolib_kconfig.jpg)
 
-Picolibc is a copmlete C library implementation written for the embedded systems, targetting C17 (ISO/IEC 9899_2018) and POSIX 2018 (IEEE Std 1003.1-2017) standards. Picolibc is an external [open source project](https://github.com/picolibc/picolibc) which is provided for Zephyr as a module, and included as part of the Zephyr SDK in precompiled from for each supported architecture (libc.a).
+Picolibc is a complete C library implementation written for the embedded systems, targetting C17 (ISO/IEC 9899_2018) and POSIX 2018 (IEEE Std 1003.1-2017) standards. Picolibc is an external [open source project](https://github.com/picolibc/picolibc) which is provided for Zephyr as a module, and included as part of the Zephyr SDK in precompiled from for each supported architecture (libc.a).
 
 
 ## Required Hardware/Software
