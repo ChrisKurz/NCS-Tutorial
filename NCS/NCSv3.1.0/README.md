@@ -102,6 +102,10 @@ The _nRF Connect SDK_ version used here is NCS version 3.1.0.
 
 ## Libraries
 
+### Standard C Libraries
+
+- [__Using PICOLIBC__](LIB_c-library_picolibc/README.md) 
+
 ### ZCBOR 
 
 - [__Add ZCBOR to project and handling of Encoding/Decoding__](LIB_zcbor_HelloWorld/README.md)
