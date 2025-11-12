@@ -47,6 +47,11 @@ The _nRF Connect SDK_ version used here is NCS version 3.1.0.
 
 ## Zephyr Kernel Services
 
+### Data Passing
+
+-[__FIFO__](ZKS_data-passing_fifo/README.md)
+
+
 ### Threads
 
 - [__Thread: Creating a Thread__](ZKS_threads_create/README.md) - This hands-on shows how to create a Thread.
