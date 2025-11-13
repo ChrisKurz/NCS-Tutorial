@@ -22,6 +22,8 @@ The _nRF Connect SDK_ version used here is NCS version 3.1.0.
   
 - [Zephyr Device Drivers](#zephyr-device-drivers)
 
+- [NRFX Drivers](#nrfx-drivers)
+  
 - [Libraries](#libraries)
 
 --------
