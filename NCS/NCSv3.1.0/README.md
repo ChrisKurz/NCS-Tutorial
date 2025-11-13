@@ -111,7 +111,9 @@ The _nRF Connect SDK_ version used here is NCS version 3.1.0.
 
 ## Zephyr Hardware Drivers
 
-- [ADC](ZHW_adc/README.md) - Single Channel ADC example
+- [ADC - single channel](ZHW_adc/README.md) 
+
+- [ADC - handling in a thread](ZHW_adc_thread/README.md)
 
 - [UART using polling](ZHW_uart_polling/README.md)
    
