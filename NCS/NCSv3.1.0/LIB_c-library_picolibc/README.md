@@ -1,6 +1,6 @@
 <sup>SDK version: NCS v3.1.0 </sup>
 
-# Zephyr's C Libraries:  PICOLIB
+# Zephyr's C Libraries:  PICOLIBC
 
 ## Introduction
 
