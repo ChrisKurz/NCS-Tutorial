@@ -12,7 +12,7 @@ Zephyr allows to select one for the following C libraries:
 
 Picolibc is a complete C library implementation written for the embedded systems, targetting C17 (ISO/IEC 9899_2018) and POSIX 2018 (IEEE Std 1003.1-2017) standards. Picolibc is an external [open source project](https://github.com/picolibc/picolibc) which is provided for Zephyr as a module, and included as part of the Zephyr SDK in precompiled from for each supported architecture (libc.a).
 
-Picolibc is mostly built from pieces of newlib, and retains the directory structure of that project. While there have been a lot of changes in the build system and per-thread data storage, the bulk of the source code remains unchanged. To keep picolibc and newlib code in sync, newlib changes will be regularly incorporated. 
+Picolibc is mostly built from pieces of Newlib, and retains the directory structure of that project. While there have been a lot of changes in the build system and per-thread data storage, the bulk of the source code remains unchanged. To keep Picolibc and Newlib code in sync, Newlib changes will be regularly incorporated. 
 
 ## Required Hardware/Software
 - Development kit [nRF54L15DK](https://www.nordicsemi.com/Products/Development-hardware/nRF54L15-DK), [nRF52840DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK), [nRF52833DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52833-DK), or [nRF52DK](https://www.nordicsemi.com/Products/Development-hardware/nrf52-dk) 
