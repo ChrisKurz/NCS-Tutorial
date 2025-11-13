@@ -114,7 +114,9 @@ The _nRF Connect SDK_ version used here is NCS version 3.1.0.
 - [ADC](ZHW_adc/README.md) - Single Channel ADC example
 
 - [UART using polling](ZHW_uart_polling/README.md)
-   
+
+- [UART with interrupt support](ZHW_uart_interrupt/README.md)
+  
 
 ## NRFX Drivers
 
