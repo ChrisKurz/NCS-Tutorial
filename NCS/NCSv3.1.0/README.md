@@ -22,6 +22,8 @@ The _nRF Connect SDK_ version used here is NCS version 3.1.0.
   
 - [Zephyr Device Drivers](#zephyr-device-drivers)
 
+- [NRFX Drivers](#nrfx-drivers)
+  
 - [Libraries](#libraries)
 
 --------
@@ -104,6 +106,10 @@ The _nRF Connect SDK_ version used here is NCS version 3.1.0.
 
 - [**Basics: Initializing Sensor Driver within user Code**](ZDD_sensor_basics_initApp/README.md) - Here we describe another way to initialize and start the sensor driver. In this case, the driver is started in the user application.
 
+
+## NRFX Drivers
+
+- [SPI](NRFX_spi/README.md)
 
 ## Libraries
 
