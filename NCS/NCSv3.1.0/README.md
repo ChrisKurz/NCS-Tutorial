@@ -110,7 +110,7 @@ The _nRF Connect SDK_ version used here is NCS version 3.1.0.
 
 - [__BME280: using sensor with nRF52840DK (sensor handling in main function)__](ZDD_sensor_bme280_nrf52840dk/README.md)
 
-- [__BME280: using sensor with nRF52840DK (sensor handling in Thread)__](ZDD_sensor_bme280_nrf52840dk_thread/REAMDE.md)
+- [__BME280: using sensor with nRF52840DK (sensor handling in Thread)__](ZDD_sensor_bme280_nrf52840dk_thread/README.md)
 
 ## Zephyr Hardware Drivers
 
