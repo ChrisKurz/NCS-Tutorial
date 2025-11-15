@@ -42,6 +42,8 @@ The _nRF Connect SDK_ version used here is NCS version 3.1.0.
 
 - [__Creating a Project from Scratch__](DEV_ProjectFromScratch/README.md) - This hands-on shows how to create a minimal project from scratch.
 
+- [__Defining a new Board__](DEV_NewBoard/README.md)
+
 ### KConfig
 
 - [__User-defined KCONFIG symbols__](DEV_kconfig_UserDefined/README.md) - You can use KCONFIG to add software modules from Zephyr repository or other repositories. You can also define your own KCONFIG symbols. This practical exercise demonstrates how to do this. It uses custom KCONFIG in C code.
