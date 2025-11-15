@@ -17,7 +17,7 @@ There are a large of drivers in the Zephyr RTOS. In this hands-on exercise, we w
 
 1) First connect the BME280 breakout board to the nRF52840DK as shown in the picture:
 
-    ![image not found](images/ZDD_Sensor_BME280_nRF52840DK_NCSv2.5.0.jpg)
+    ![image not found](images/BME280_nRF52840DK.jpg)
 
 ### Create your own Project based on _hello_world_ Example
 
@@ -127,7 +127,7 @@ We have included the driver with the previous steps. Now we will use the driver 
 
 11) Make sure that the connected kit has been found and click on __Flash__ in the ACTIONS menu. The code will now be downloaded to the kit. 
 
-![image not found](images/ZDD_Sensor_BME280_nRF52840_BuildFlash.jpg)
+![image not found](images/BuildFlash.jpg)
 
 
 ### Open Terminal and check Output
@@ -144,4 +144,4 @@ We have included the driver with the previous steps. Now we will use the driver 
     
 13) Reset the kit by pressing the Reset button on the board. The Zephyr boot message is displayed in the terminal, followed by an optional application startup output and the measurement results. 
 
-    ![image not found](images/ZDD_Sensor_BME280_nRF52840_NrfTerminal_NCSv2.5.2.jpg)
+    ![image not found](images/Terminal.jpg)
