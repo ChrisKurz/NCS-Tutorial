@@ -28,6 +28,8 @@ The _nRF Connect SDK_ version used here is NCS version 3.1.0.
   
 - [Libraries](#libraries)
 
+- [Tools](#tools)
+  
 --------
 
 ## Basics - Developing with _nRF Connect SDK_ and Zephyr
@@ -39,6 +41,8 @@ The _nRF Connect SDK_ version used here is NCS version 3.1.0.
 - [__Opening an existing sample__](DEV_OpenSample/README.md) - This step-by-step description explains how to create a copy of an existing sample project and open this copy.
 
 - [__Creating a Project from Scratch__](DEV_ProjectFromScratch/README.md) - This hands-on shows how to create a minimal project from scratch.
+
+- [__Defining a new Board__](DEV_NewBoard/README.md)
 
 ### KConfig
 
@@ -138,3 +142,9 @@ The _nRF Connect SDK_ version used here is NCS version 3.1.0.
 ### ZCBOR 
 
 - [__Add ZCBOR to project and handling of Encoding/Decoding__](LIB_zcbor_HelloWorld/README.md)
+
+
+## Tools
+
+- [Software Bill of Material: License Report](TOOL_LicenseReport/README.md)
+  
