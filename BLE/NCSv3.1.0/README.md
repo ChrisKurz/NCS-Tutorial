@@ -8,7 +8,7 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.1.0.
 
 ## Table of Content
 
-- [Basics](#broadcast_and_advertising)
+- [Broadcast and Advertising](#broadcast_and_advertising)
 
 - [Peripheral](#peripheral)
 --------
