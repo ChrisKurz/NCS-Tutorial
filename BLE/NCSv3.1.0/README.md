@@ -20,6 +20,9 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.1.0.
 
 ### Peripheral
 
+#### Security
+
+- [Enable Security within a connection](peripheral_security/README.md)
 
 #### Services
 
