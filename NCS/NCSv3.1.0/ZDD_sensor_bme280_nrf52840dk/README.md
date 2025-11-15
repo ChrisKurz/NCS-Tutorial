@@ -1,4 +1,4 @@
-<sup>SDK version: NCS v2.5.0; Board: nRF52840DK; Directory with Solution: https://github.com/ChrisKurz/nRF_Connect_SDK/tree/main/Workspace/NCSv2.5.0/ZDD_BME280_main</sup>
+<sup>SDK version: NCS v3.1.0 </sup>
 
 # Zephyr Device Driver: Adding BME280 Sensor Driver to an nRF52480 Project
 
@@ -8,20 +8,20 @@ There are a large of drivers in the Zephyr RTOS. In this hands-on exercise, we w
 - [nRF52840DK development kit](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK)
 - BME280 board (e.g. from [DigiKey](https://www.digikey.de/de/products/detail/pimoroni-ltd/PIM472/10329004?utm_adgroup=&utm_source=google&utm_medium=cpc&utm_campaign=PMax:%20Smart%20Shopping_Product_Zombie%20SKUs&utm_term=&productid=10329004&utm_content=&utm_id=go_cmp-18521752285_adg-_ad-__dev-c_ext-_prd-10329004_sig-CjwKCAiA1MCrBhAoEiwAC2d64UWWHbkjNYi9l8UAy99278xOGrYvVKB7msImOtXb-atsvhYavEF5iRoCC3MQAvD_BwE&gad_source=4&gclid=CjwKCAiA1MCrBhAoEiwAC2d64UWWHbkjNYi9l8UAy99278xOGrYvVKB7msImOtXb-atsvhYavEF5iRoCC3MQAvD_BwE) or [Mouser](https://www.mouser.de/ProductDetail/Pimoroni/PIM472?qs=P1JMDcb91o7p2TYl00AP7g%3D%3D&mgh=1&vip=1&gad_source=1&gclid=CjwKCAiA1MCrBhAoEiwAC2d64cqZCSacTMr-zg7ERu2WAsZ_KyYkPN1RFyjCxMJVKIW8GwCHrWX-vxoCImUQAvD_BwE))
 - Cable (e.g. from [DigiKey](https://www.digikey.de/de/products/detail/sparkfun-electronics/PRT-09140/5993845) or [Mouser](https://www.mouser.de/ProductDetail/SparkFun/PRT-09140?qs=WyAARYrbSnadDqOX3IDrug%3D%3D))
-- install the _nRF Connect SDK_ v2.5.0 and _Visual Studio Code_. The description of the installation can be found [here](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/2.5.0/nrf/getting_started/assistant.html#).
+- install the _nRF Connect SDK_ v3.1.0 and _Visual Studio Code_. The installation process is described [here](https://academy.nordicsemi.com/courses/nrf-connect-sdk-fundamentals/lessons/lesson-1-nrf-connect-sdk-introduction/topic/exercise-1-1/).
 
 
 ## Hands-on step-by-step description 
 
 ### Connecting the BME280 Breakout Board to the nRF52840DK
 
-1) First connect the BME280 Breakout Board to the nRF52840DK as shown in the next picutre:
+1) First connect the BME280 breakout board to the nRF52840DK as shown in the picture:
 
-    ![image not found](images/BME280_nRF52840DK.jpg)
+    ![image not found](images/ZDD_Sensor_BME280_nRF52840DK_NCSv2.5.0.jpg)
 
 ### Create your own Project based on _hello_world_ Example
 
-2) Create a new project based on Zephyr's _hello_world_ example (./zephyr/samples/hello_world).
+2) Create a new project based on Zephyr's _hello_world_ example (zephyr/samples/hello_world).
 
 3) The Zephyr _hello_world_ example does not include the __zephyr/kernel.h__ header file. We include this header file in the main.c file:
 
@@ -54,6 +54,7 @@ There are a large of drivers in the Zephyr RTOS. In this hands-on exercise, we w
                };
        };
 
+   __Note:__ You must perform an __pristine build__ after you have created the *.overlay file in Visual Studio Code. 
 
 ### Using the DeviceTree Definitions in our C-Code
 In the previous step, we defined the hardware usage for the BME280 sensor. Now we need to use these definitions in our C code. This is done in the following steps:
@@ -66,8 +67,6 @@ In the previous step, we defined the hardware usage for the BME280 sensor. Now w
            if (dev==NULL){
                /* No such node, or the node does not have status "okay". */
                printk("\nError: Device \"%s\" is not ready.\n", dev->name);
-               /* You can also use Zephyr Logging instead of printk() instruction, if Logging is enabled in your project. */
-               // LOG_ERR("Error: Device \"%s\" is not ready.", dev->name);
                return 0;
            }
 
@@ -128,7 +127,7 @@ We have included the driver with the previous steps. Now we will use the driver 
 
 11) Make sure that the connected kit has been found and click on __Flash__ in the ACTIONS menu. The code will now be downloaded to the kit. 
 
-![image not found](images/BuildFlash.jpg)
+![image not found](images/ZDD_Sensor_BME280_nRF52840_BuildFlash.jpg)
 
 
 ### Open Terminal and check Output
@@ -145,4 +144,4 @@ We have included the driver with the previous steps. Now we will use the driver 
     
 13) Reset the kit by pressing the Reset button on the board. The Zephyr boot message is displayed in the terminal, followed by an optional application startup output and the measurement results. 
 
-    ![image not found](images/Terminal.jpg)
+    ![image not found](images/ZDD_Sensor_BME280_nRF52840_NrfTerminal_NCSv2.5.2.jpg)
