@@ -34,4 +34,6 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.1.0.
 
 - [Battery Servcie (BAS)](peripheral_service_BAS/README.md)
 - [Device Information Service (DIS)](peripheral_service_DIS/README.md)
+- [Immediate Alert Service (IAS)](peripheral_service_IAS/README.md)
+
 
