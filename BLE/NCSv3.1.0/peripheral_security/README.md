@@ -18,7 +18,7 @@ Next, we add a requirement for a passkey that only allows the devices to connect
 
 ### Prepare the project
 
-1) Make a copy of the project [Peripheral with a Custom Service](../peripheral_custom-service). In the next steps we will modify this project and enable security.
+1) Make a copy of the project [Peripheral with a Custom Service](../peripheral_service_custom). In the next steps we will modify this project and enable security.
 
 ### Adding required Software Modules (Libraries)
 
