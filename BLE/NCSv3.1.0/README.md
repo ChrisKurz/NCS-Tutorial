@@ -23,5 +23,5 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.1.0.
 
 #### Services
 
-- [Device Information Service](Peripheral_DIS/README.md)
+- [Device Information Service](peripheral_DIS/README.md)
 - 
