@@ -1,4 +1,4 @@
-<sup>SDK version: NCS v2.6.0  -  Link to Hands-on solution: https://github.com/ChrisKurz/Bluetooth/tree/main/Workspace/NCSv2.6.0/03_Peripheral_CustomService</sup>
+<sup>SDK version: NCS v3.1.0 </sup>
 
 # Bluetooth Low Energy: Peripheral with a user-defined Service (Custom Service) - _Write without Response_
 
@@ -28,7 +28,7 @@ In this hands-on we use the "Write without Response" transfer operation. A smart
 
    So, the file/folder structure in your project folder should look like this:
 
-   ![image](images/03_ProjectFolder.jpg)
+   ![image](images/ProjectFolder.jpg)
 
 3) Add CustomSerice.c file to your project by changing the CMakeLists.txt file. The whole file should then look like this:
 	
@@ -174,30 +174,30 @@ In this hands-on we use the "Write without Response" transfer operation. A smart
 
 14) Finally, build the project ("Pristine Build"!!!). 
  
-15) Use the _Serial Terminal_ to check the debug output. First connect Terminal, then perfrom a reset by pressing the reset button on the development kit. Following output should be seen on the terminal:
+15) Use the _Serial Terminal_ to check the debug output. First connect Terminal, then perform a reset by pressing the reset button on the development kit. Following output should be seen on the terminal:
     
-    ![](images/03_Testing_startAdvertising_NCSv2.6.0.jpg)
+    ![](images/startAdvertising.jpg)
     
 16) Use the _nRF Connect_ Smartphone app and start scanning. The app should find our device (device name: "Custom Service Peripheral")
     
-    ![](images/03_Testing_Scanning.jpg)
+    ![](images/Scanning.jpg)
     
-17) Click in the smartphone app the "Connect" button. Now a connection between the smartphone and the developement kit is established. In the Terminal you should see that the device went into "Connected" mode. 
+17) Click in the smartphone app the "Connect" button. Now a connection between the smartphone and the development kit is established. In the Terminal you should see that the device went into "Connected" mode. 
     
-    ![](images/03_Testing_connected_NCSv2.6.0.jpg)
+    ![](images/connected.jpg)
     
 18) And the smartphone should list the GATT database content in the "Client" tab:
     
-    ![](images/03_Testing_GATT.jpg)
+    ![](images/GATT.jpg)
     
-    In the GATT database you find an "Unkown Service" and an "Unknown Characteristic". Check its UUIDs and compare it to the UUIDs we defined in step 6.
+    In the GATT database you find an "Unknown Service" and an "Unknown Characteristic". Check its UUIDs and compare it to the UUIDs we defined in step 6.
 
-19) Open the "Unknown Characteristic" (click on the button with the arrow beside this chacteristic) and enter a hex value. For example: CAFE
+19) Open the "Unknown Characteristic" (click on the button with the arrow beside this characteristic) and enter a hex value. For example: CAFE
     
-    ![](images/03_Testing_testString.jpg)
+    ![](images/testString.jpg)
     
     Click on the "Write" button. 
     
 20) In the Terminal program you should see that the hex values were received:
     
-    ![](images/03_Testing_received_NCSv2.6.0.jpg)
+    ![](images/received.jpg)
