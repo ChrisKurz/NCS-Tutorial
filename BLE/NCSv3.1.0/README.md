@@ -8,10 +8,20 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.1.0.
 
 ## Table of Content
 
-- [Basics](#basics)
+- [Basics](#broadcast_and_advertising)
 
+- [Peripheral](#peripheral)
 --------
 
-### Basics
+### Broadcast and Advertising
 
 - [__iBeacon__](basics_beacon/README.md) - initialize Bluetooth stack and realize a broadcaster
+
+
+### Peripheral
+
+
+#### Services
+
+- [Device Information Service](peripheral_DIS/README.md)
+- 
