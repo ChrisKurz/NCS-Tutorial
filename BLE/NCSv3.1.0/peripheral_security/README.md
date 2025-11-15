@@ -1,4 +1,4 @@
-<sup>SDK version: NCS v2.6.0  -  Link to Hands-on solution: https://github.com/ChrisKurz/Bluetooth/tree/main/Workspace/NCSv2.6.0/10_Peripheral_Security </sup>
+<sup>SDK version: NCS v3.1.0 </sup>
 
 # Bluetooth Low Energy: Enable Security on a Bluetooth Peripheral Device
 
@@ -11,14 +11,14 @@ Next, we add a requirement for a passkey that only allows the devices to connect
 ## Required Hardware/Software
 - Development kit [nRF52840DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK), [nRF52833DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52833-DK), or [nRF52DK](https://www.nordicsemi.com/Products/Development-hardware/nrf52-dk)
 - a smartphone ([Android](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=de&gl=US&pli=1) or [iOS](https://apps.apple.com/de/app/nrf-connect-for-mobile/id1054362403)), which runs the __nRF Connect__ app 
-- install the _nRF Connect SDK_ v2.6.0 and _Visual Studio Code_. The installation process is described [here](https://academy.nordicsemi.com/courses/nrf-connect-sdk-fundamentals/lessons/lesson-1-nrf-connect-sdk-introduction/topic/exercise-1-1/).
+- install the _nRF Connect SDK_ v3.1.0 and _Visual Studio Code_. The installation process is described [here](https://academy.nordicsemi.com/courses/nrf-connect-sdk-fundamentals/lessons/lesson-1-nrf-connect-sdk-introduction/topic/exercise-1-1/).
 
 
 ## Hands-on step-by-step description
 
 ### Prepare the project
 
-1) Make a copy of the project [Peripheral with a Custom Service](https://github.com/ChrisKurz/Bluetooth/tree/main/Workspace/NCSv2.6.0/03_Peripheral_CustomService). In the next steps we will modify this project and enable security.
+1) Make a copy of the project [Peripheral with a Custom Service](../peripheral_custom-service). In the next steps we will modify this project and enable security.
 
 ### Adding required Software Modules (Libraries)
 
