@@ -104,9 +104,9 @@ The _nRF Connect SDK_ version used here is NCS version 3.1.0.
 
 ### Sensor Device Drivers
 
-- [**Basics: Initializing Sensor Driver during Zephyr Start-up**](ZDD_sensor_basics_initZephyr/README.md) - In this first basic hands-on we will explain how to initialize and start the sensor driver. There are various ways to start the driver. Here we look at how the driver is automatically started during Zephyr RTOS startup.
+- [__Basics: Initializing Sensor Driver during Zephyr Start-up__](ZDD_sensor_basics_initZephyr/README.md) - In this first basic hands-on we will explain how to initialize and start the sensor driver. There are various ways to start the driver. Here we look at how the driver is automatically started during Zephyr RTOS startup.
 
-- [**Basics: Initializing Sensor Driver within user Code**](ZDD_sensor_basics_initApp/README.md) - Here we describe another way to initialize and start the sensor driver. In this case, the driver is started in the user application.
+- [__Basics: Initializing Sensor Driver within user Code__](ZDD_sensor_basics_initApp/README.md) - Here we describe another way to initialize and start the sensor driver. In this case, the driver is started in the user application.
 
 - [__BME280: using sensor with nRF52840DK__](ZDD_sensor_bme280_nrf52840dk/README.md)
 
@@ -123,7 +123,9 @@ The _nRF Connect SDK_ version used here is NCS version 3.1.0.
 
 ## NRFX Drivers
 
-- [SPI](NRFX_spi/README.md)
+- [__ADC__](NRFX_adc/README.md)
+
+- [__SPI__](NRFX_spi/README.md)
 
 ## Libraries
 
