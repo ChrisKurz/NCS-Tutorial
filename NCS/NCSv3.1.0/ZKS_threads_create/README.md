@@ -1,6 +1,6 @@
 <sup>SDK version: NCS v3.1.0 </sup>
 
-# Zephyr Kernel Services - Threads
+# Zephyr Kernel Services - Create Threads
 
 ## Introduction
 
