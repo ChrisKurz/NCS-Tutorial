@@ -23,7 +23,6 @@ This example demonstrates how to suspend a thread.
 
    <sup>_C:/Nordic/Workspace/threads_create/src/main.c_ => main() function</sup>
    
-           k_tid_t my_tid1 = k_thread_create(
            while (1)
            {
                k_msleep(15000);           // sleep 15 seconds
