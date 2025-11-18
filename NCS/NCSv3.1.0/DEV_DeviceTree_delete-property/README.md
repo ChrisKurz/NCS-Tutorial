@@ -4,7 +4,7 @@
 
 ## Introduction
 
-If you want to use an existing board definition for your own project, you can use an overlay file to extend the existing board definition or change definitions that have already been made. 
+If you want to use an existing board definition for your own project, you can use an overlay file to extend the existing board definition or change definitions that have already been made. Sometimes it is also necessary to delete existing definitions. This can be done using __/delete-property/__. An example of this is shown in this hands-on guide. 
 
 
 ## Required Hardware/Software
