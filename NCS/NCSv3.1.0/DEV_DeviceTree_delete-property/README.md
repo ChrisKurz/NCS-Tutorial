@@ -1,6 +1,6 @@
 <sup>SDK version: NCS v3.1.0 </sup>
 
-# DeviceTree: Deleting a property
+# DeviceTree: Delete a property
 
 ## Introduction
 
@@ -23,13 +23,18 @@ If you want to use an existing board definition for your own project, you can us
 
 2) Add build configuration and build the project.
 
-3) Check the defined aliases in the zephyr.dts file. 
+3) Check the defined aliases in the _zephyr.dts_ file. 
 
-### Create an DeviceTree Overlay File
+   ![image](images/blinky_zephyr-dts.jpg)
 
-2) Add a DeviceTree overlay file to your project.
+> __Note:__ In a project, multiple files are often used for the definitions of the DeviceTree. Viewing these directly can sometimes make it difficult to understand which settings are ultimately used. During the build process, a _zephyr.dts_ file is therefore generated that contains the final settings of the DeviceTree. 
 
-3) The board definition files for the Nordic development kits define the available LEDs, like __led0__, __led1__, __led2__, and __led3__. Let's delete the definition of __led3__. 
+
+### Create an DeviceTree Overlay File and delete led3
+
+4) Add a DeviceTree overlay file to your project.
+
+5) The board definition files for the Nordic development kits define the available LEDs, like __led0__, __led1__, __led2__, and __led3__. Let's delete the definition of __led3__. 
 
    Therefore we will work with the LED device tree entry.
 
@@ -39,8 +44,11 @@ If you want to use an existing board definition for your own project, you can us
            aliases {
                /delete-property/ led3;
            };
+       };
 
-   
-## Testing
+6) Do a pristine build.
+7) Check the _zephyr.dts_ file.
 
-4) 
+   ![image](images/zpehyr-dts_delete.jpg)
+
+  > __Note:__ As expected, the alias property “led3” has been deleted and is no longer listed.
