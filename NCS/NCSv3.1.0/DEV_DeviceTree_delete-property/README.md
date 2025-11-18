@@ -23,7 +23,7 @@ If you want to use an existing board definition for your own project, you can us
 
 2) Add build configuration and build the project.
 
-3) Check the defined aliases in the _zephyr.dts_ file. 
+3) Check the defined aliases in the _zephyr.dts_ file. Please pay special attention to the alias __led3__.
 
    ![image](images/blinky_zephyr-dts.jpg)
 
