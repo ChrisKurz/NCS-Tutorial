@@ -51,4 +51,4 @@ If you want to use an existing board definition for your own project, you can us
 
    ![image](images/zpehyr-dts_delete.jpg)
 
-  > __Note:__ As expected, the alias property “led3” has been deleted and is no longer listed.
+  > __Note:__ As expected, the alias property __led3__ has been deleted and is no longer listed.
