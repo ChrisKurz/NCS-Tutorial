@@ -43,7 +43,7 @@ In this hands-on we take a look into the polling solution.
 
 4) Create an overlay file. (e.g. __nrf52840DK_nrf52840.overlay__)
 
-5) UART0 is already usind on the development kit for the logging. It's usage is already defined in the board definition files. We will use UART1 in our example here for our own UART communication. Add following lines in the device tree overlay file of your project. 
+5) UART0 is already used on the development kit for the logging. It's usage is already defined in the board definition files. We will use UART1 in our example here for our own UART communication. Add following lines in the device tree overlay file of your project. 
 
 	<sup>_nrf52840DK_nrf52840.overlay_</sup>
 
