@@ -1,0 +1,7 @@
+default: DEV_DeviceTree
+build_dir: C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/DEV_DeviceTree/build
+domains:
+  - name: DEV_DeviceTree
+    build_dir: C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/DEV_DeviceTree/build/DEV_DeviceTree
+flash_order:
+  - DEV_DeviceTree
