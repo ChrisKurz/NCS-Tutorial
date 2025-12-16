@@ -9,6 +9,7 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
 
 - [Zephyr Kernel Services](#zephyr-kernel-services)
     > [Data Passing](#data-passing)
+    > 
     > [Threads](#threads)
     >
     > [Timing](#timing)
