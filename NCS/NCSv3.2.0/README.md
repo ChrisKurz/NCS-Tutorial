@@ -8,6 +8,8 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
 - [Basics - Developing with _nRF Connect SDK_ and _Zephyr_](#first-steps)
 
 - [Zephyr Kernel Services](#zephyr-kernel-services)
+    > [Data Passing](#data-passing)
+    > 
     > [Threads](#threads)
     >
     > [Timing](#timing)
@@ -115,6 +117,8 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
 - [__BME280: using sensor with nRF52840DK (sensor handling in main function)__](ZDD_sensor_bme280_nrf52840dk/README.md)
 
 - [__BME280: using sensor with nRF52840DK (sensor handling in Thread)__](ZDD_sensor_bme280_nrf52840dk_thread/README.md)
+
+- [__LPS22HB: using sensor with nRF54LM20DK (sensor handling in main function)__](ZDD_sensor_lps22hb_nrf54LM20dk/README.md)
 
 ## Zephyr Hardware Drivers
 
