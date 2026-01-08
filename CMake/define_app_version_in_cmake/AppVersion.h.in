@@ -1,0 +1,6 @@
+// the configured options and settings for Tutorial
+#define MyApp_VERSION       "@MyApp_VERSION@"
+#define MyApp_VERSION_MAJOR @MyApp_VERSION_MAJOR@
+#define MyApp_VERSION_MINOR @MyApp_VERSION_MINOR@
+#define MyApp_VERSION_PATCH @MyApp_VERSION_PATCH@
+#define MyApp_VERSION_TWEAK @MyApp_VERSION_TWEAK@
