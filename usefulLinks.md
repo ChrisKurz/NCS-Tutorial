@@ -26,6 +26,11 @@ This is a collection of links to useful resources that cover the _nRF Connect SD
 [Thread aware Debugging - using SEGGER Ozone](https://devzone.nordicsemi.com/nordic/nordic-blog/b/blog/posts/thread-aware-debugging-with-nrf-connect-sdk) - In case you have installed SEGGER Ozone on your computer, you can also open it via the Visual Studio Action Menu link "Debug with Ozone". 
 
 
+## Trainings
+
+[Zephyr Training Partner Program](https://www.zephyrproject.org/training-partner-program/)
+
+
 ## Books
 
 [Zephyr RTOS Embedded C Programming](https://link.springer.com/book/10.1007/979-8-8688-0107-5) 
