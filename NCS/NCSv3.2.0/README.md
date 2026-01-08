@@ -60,7 +60,7 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
 ### Data Passing
 
 - [__FIFO__](ZKS_data-passing_fifo/README.md)
-
+- [__LIFO__](ZKS_data-passing_lifo/README.md)
 
 ### Threads
 
