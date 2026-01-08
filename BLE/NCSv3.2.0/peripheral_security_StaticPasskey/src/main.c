@@ -110,7 +110,7 @@ int main(void)
      int err;
 
      /* Set a fixed passkey */
-     err = bt\_passkey\_set(123456);
+     err = bt_passkey_set(123456);
      if (err) {
          printk("Definition of static passkey failed! (err %d)\\n", err);
          return 0;
