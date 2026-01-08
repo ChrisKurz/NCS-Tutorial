@@ -29,6 +29,9 @@ West is written in Python 3 and distributed through (PyPI)[https://pypi.org/proj
 
        pip3 show -f west 
 
+
+### Updating west
+
 4) Check the installed west version.
 
        west -V
