@@ -157,5 +157,5 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
 
 ### Command Line Tool: west
 
-- [__Installing west__](TOOL_CmdLine_west_install/README.md)
+- [__Installing and Updating west__](TOOL_CmdLine_west_install/README.md)
   
