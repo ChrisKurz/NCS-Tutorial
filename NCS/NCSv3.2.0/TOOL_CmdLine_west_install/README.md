@@ -4,7 +4,7 @@
 
 ## Introduction
 
-The Zephyr project includes a swiss-army knife command line tool named [west](https://docs.nordicsemi.com/bundle/ncs-latest/page/zephyr/develop/west/index.html#west-name). West is developed in its own (repository)[https://github.com/zephyrproject-rtos/west].
+The Zephyr project includes a swiss-army knife command line tool named [west](https://docs.nordicsemi.com/bundle/ncs-latest/page/zephyr/develop/west/index.html#west-name). West is developed in its own [repository](https://github.com/zephyrproject-rtos/west).
 
 West is written in Python 3 and distributed through [PyPI](https://pypi.org/project/west). Use pip3 to install or upgrade west:
 
