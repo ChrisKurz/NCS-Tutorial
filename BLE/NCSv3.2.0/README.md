@@ -26,7 +26,8 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.2.0.
 
 #### Security
 
-- [Enable Security within a connection](peripheral_security/README.md)
+- [Enable Security within a connection and use a random passkey](peripheral_security/README.md)
+- [Enable Security within a connection and use a static passkey](peripheral_security_StaticPasskey/README.md)
 
 #### Services
 
