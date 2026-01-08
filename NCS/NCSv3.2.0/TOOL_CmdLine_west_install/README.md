@@ -29,6 +29,8 @@ West is written in Python 3 and distributed through (PyPI)[https://pypi.org/proj
 
        pip3 show -f west 
 
+   ![image](images/west_info.jpg)
+
 
 ### Updating west
 
@@ -39,6 +41,9 @@ West is written in Python 3 and distributed through (PyPI)[https://pypi.org/proj
    or
 
        west --version
+
+   ![image](images/west_version.jpg)
+
 
 5) Updating west is done with the same instruction that is used for installation.
 
