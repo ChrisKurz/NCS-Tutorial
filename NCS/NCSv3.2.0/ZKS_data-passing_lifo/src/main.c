@@ -16,8 +16,7 @@
 #include <zephyr/sys/printk.h>
 #include <inttypes.h>
 
-#define SLEEP_TIME_MS	1
-
+#define SLEEP_TIME_MS	10000
 /*
  * Get button configuration from the devicetree sw0 alias. This is mandatory.
  */
@@ -40,18 +39,26 @@ struct k_lifo my_lifo;
 
 struct data_item_t{
         void *lifo_reserved;  
-        int counter;
+        int id;
+		int counter;
 };
-struct data_item_t my_data;
-
+struct data_item_t my_data1 = {NULL, 1, 0};
+struct data_item_t my_data2 = {NULL, 2, 0};
+struct data_item_t my_data3 = {NULL, 3, 0};
 
 void button_pressed(const struct device *dev, struct gpio_callback *cb,
 		    uint32_t pins)
 {
 	printk("Button pressed at %" PRIu32 "\n", k_cycle_get_32());
 
-	my_data.counter=my_data.counter+1;
-    k_lifo_put(&my_lifo, &my_data);
+	my_data1.counter=my_data1.counter+1;
+    k_lifo_put(&my_lifo, &my_data1);
+
+	my_data2.counter=my_data2.counter+2;
+    k_lifo_put(&my_lifo, &my_data2);
+
+	my_data3.counter=my_data3.counter+3;
+    k_lifo_put(&my_lifo, &my_data3);
 }
 
 int main(void)
@@ -111,12 +118,24 @@ int main(void)
 				gpio_pin_set_dt(&led, val);
 			}
 
-			struct data_item_t *my_getData;
-
-            my_getData = k_lifo_get(&my_lifo, K_FOREVER);
-            printk("Counter: %d\n",my_getData->counter);
-
 			k_msleep(SLEEP_TIME_MS);
+
+			struct data_item_t *my_getData1;
+			struct data_item_t *my_getData2;
+			struct data_item_t *my_getData3;
+
+			printk("------\n");
+
+            my_getData1 = k_lifo_get(&my_lifo, K_FOREVER);
+            printk("ID: %i, Counter: %d\n",my_getData1->id, my_getData1->counter);
+
+            my_getData2 = k_lifo_get(&my_lifo, K_FOREVER);
+            printk("ID: %i, Counter: %d\n",my_getData2->id, my_getData2->counter);
+
+            my_getData3 = k_lifo_get(&my_lifo, K_FOREVER);
+            printk("ID: %i, Counter: %d\n",my_getData3->id, my_getData3->counter);
+
+			printk("------\n");
 		}
 	}
 	return 0;
