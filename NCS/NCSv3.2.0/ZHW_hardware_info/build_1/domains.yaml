@@ -1,0 +1,7 @@
+default: ZHW_hardware_info
+build_dir: C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1
+domains:
+  - name: ZHW_hardware_info
+    build_dir: C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/ZHW_hardware_info
+flash_order:
+  - ZHW_hardware_info

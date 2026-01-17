@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/CMakeFiles/ZHW_hardware_info"
+		},
+		{
+			"file" : "C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/CMakeFiles/ZHW_hardware_info.rule"
+		},
+		{
+			"file" : "C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/CMakeFiles/ZHW_hardware_info-complete.rule"
+		},
+		{
+			"file" : "C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-build.rule"
+		},
+		{
+			"file" : "C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-configure.rule"
+		},
+		{
+			"file" : "C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-download.rule"
+		},
+		{
+			"file" : "C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-install.rule"
+		},
+		{
+			"file" : "C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-mkdir.rule"
+		},
+		{
+			"file" : "C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-patch.rule"
+		},
+		{
+			"file" : "C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"ZHW_hardware_info"
+		],
+		"name" : "ZHW_hardware_info"
+	}
+}

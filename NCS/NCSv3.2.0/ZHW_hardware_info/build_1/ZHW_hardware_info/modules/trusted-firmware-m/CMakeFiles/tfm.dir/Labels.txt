@@ -1,0 +1,13 @@
+# Target labels
+ tfm
+# Source files and their labels
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/ZHW_hardware_info/modules/trusted-firmware-m/CMakeFiles/tfm
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/ZHW_hardware_info/modules/trusted-firmware-m/CMakeFiles/tfm.rule
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/ZHW_hardware_info/modules/trusted-firmware-m/CMakeFiles/tfm-complete.rule
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/ZHW_hardware_info/modules/trusted-firmware-m/tfm-prefix/src/tfm-stamp/tfm-build.rule
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/ZHW_hardware_info/modules/trusted-firmware-m/tfm-prefix/src/tfm-stamp/tfm-configure.rule
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/ZHW_hardware_info/modules/trusted-firmware-m/tfm-prefix/src/tfm-stamp/tfm-download.rule
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/ZHW_hardware_info/modules/trusted-firmware-m/tfm-prefix/src/tfm-stamp/tfm-install.rule
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/ZHW_hardware_info/modules/trusted-firmware-m/tfm-prefix/src/tfm-stamp/tfm-mkdir.rule
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/ZHW_hardware_info/modules/trusted-firmware-m/tfm-prefix/src/tfm-stamp/tfm-patch.rule
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/ZHW_hardware_info/modules/trusted-firmware-m/tfm-prefix/src/tfm-stamp/tfm-update.rule

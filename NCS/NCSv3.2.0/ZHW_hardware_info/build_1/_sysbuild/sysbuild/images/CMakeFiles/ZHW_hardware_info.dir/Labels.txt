@@ -1,0 +1,13 @@
+# Target labels
+ ZHW_hardware_info
+# Source files and their labels
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/CMakeFiles/ZHW_hardware_info
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/CMakeFiles/ZHW_hardware_info.rule
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/CMakeFiles/ZHW_hardware_info-complete.rule
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-build.rule
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-configure.rule
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-download.rule
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-install.rule
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-mkdir.rule
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-patch.rule
+C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-update.rule

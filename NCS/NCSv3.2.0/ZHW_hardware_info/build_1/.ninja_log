@@ -1,0 +1,11 @@
+# ninja log v5
+1	307	7902809615011168	_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-mkdir	ab2d81727806897
+1	307	7902809615011168	C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-mkdir	ab2d81727806897
+308	391	7902809615825070	_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-download	d637fe7975715745
+308	391	7902809615825070	C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-download	d637fe7975715745
+391	466	7902809616592849	_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-update	511e06b9a2ece47f
+391	466	7902809616592849	C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-update	511e06b9a2ece47f
+467	536	7902809617298312	_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-patch	348a37fe8289fd36
+467	536	7902809617298312	C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-patch	348a37fe8289fd36
+537	631	7902809618242173	_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-configure	66caf64ea5a09bcb
+537	631	7902809618242173	C:/Nordic/Github/NCS-Tutorial/NCS/NCSv3.2.0/ZHW_hardware_info/build_1/_sysbuild/sysbuild/images/ZHW_hardware_info-prefix/src/ZHW_hardware_info-stamp/ZHW_hardware_info-configure	66caf64ea5a09bcb
