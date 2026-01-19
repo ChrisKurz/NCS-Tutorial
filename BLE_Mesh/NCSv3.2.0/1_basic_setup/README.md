@@ -348,7 +348,7 @@ Developers specify how many elements their node has and what models (like sensor
 
 #### Configuration Server
 
-A Bluetooth Mesh __Configuration Server__ is a mandatory, integrated model in every mesh node that manages network settings such as addressing, publishing, subscription, and security. It serves as a local repository for these parameters, which are set by a ___Configuration Client__ (e.g. a smartphone app or gateway) during provisioning and operation to define a node's role and communication within the distributed network. It is a foundational component, not a separate device, that controls the behavior of a node and integrates with other models (such as lighting, sensors) to enable devices to join and function within the mesh. 
+A Bluetooth Mesh __Configuration Server__ is a mandatory, integrated model in every mesh node that manages network settings such as addressing, publishing, subscription, and security. It serves as a local repository for these parameters, which are set by a __Configuration Client__ (e.g. a smartphone app or gateway) during provisioning and operation to define a node's role and communication within the distributed network. It is a foundational component, not a separate device, that controls the behavior of a node and integrates with other models (such as lighting, sensors) to enable devices to join and function within the mesh. 
 
 25) In this step, we define the Bluetooth mesh role to be assigned to this device. The following figure shows a typical mesh network topology and its node types.
 
