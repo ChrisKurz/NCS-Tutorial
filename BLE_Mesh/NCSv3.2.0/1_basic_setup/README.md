@@ -404,7 +404,9 @@ We used the function _bt_mesh_init()_ in step 17. The parameters used in this fu
         };
 
 
-28) We have already added the health server to the node composition in step 25. However, there are still some definitions missing. 
+28) We have already added the health server to the node composition in step 25. However, the appropriate functions for starting and stopping attention were not yet added. 
+
+   > __Note:__ “Bluetooth Mesh Attention” refers to the ability of devices in a Bluetooth Mesh network to attract attention, e.g. by flashing or beeping, often during provisioning or for status indication (health models), whereby a defined time span (TTL) is set for the attention to improve user-friendliness and troubleshooting.
 
     <sup>_src/App_BTMesh.c_</sup>
 
