@@ -184,8 +184,8 @@ We could put all the Bluetooth Mesh-specific code in the main.c file, as is ofte
 
 	<sup>_src/App_BTMesh.c_ => app_btmesh_start() function</sup>
 
-	/* This will be a no-op if settings_load() loaded provisioning info */
-	bt_mesh_prov_enable(BT_MESH_PROV_ADV | BT_MESH_PROV_GATT);
+        /* This will be a no-op if settings_load() loaded provisioning info */
+        bt_mesh_prov_enable(BT_MESH_PROV_ADV | BT_MESH_PROV_GATT);
 
 
 #### Define Device Name and enable Provisioning Bearer
