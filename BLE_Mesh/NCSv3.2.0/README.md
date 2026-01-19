@@ -16,7 +16,7 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.2.0.
 
 ## Basic Bluetooth Mesh Code Template
 
-- [__.__](abc/README.md)
+- [__Creating a Bluetooth Mesh basic template application from scratch__](1_basic_setup/README.md)
 
 
 ## Bluetooth Mesh Models
