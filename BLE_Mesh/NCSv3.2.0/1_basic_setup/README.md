@@ -306,7 +306,11 @@ In step 17, we used the _bt_mesh_init()_ function. _bt_mesh_init()_ in Bluetooth
 
 #### Node Composition
 
-24) The parameter __comp__ is also mentioned in step 17. So let's add the definition of the node composition. Here we define the Mesh Models that are used in our device. For the basic setup we have to use the mandatory health model and the configuration server.  
+The composition of a Bluetooth mesh node defines its structure with elements that group models (such as light, sensor) that determine functionality and are all contained in the device composition data (DCD). Each element is assigned a unique unicast address for communication, and nodes must have at least one primary element that supports various models for interoperability, with foundation models being mandatory for each device. Foundation models are core models (such as Configuration, Health) that are required for all nodes. 
+
+Developers specify how many elements their node has and what models (like sensor, switch) each element will contain. All of this is defined in the Device Composition Data (DCD).
+
+24) The parameter __comp__ is also mentioned in step 17. So let's add the definition of the node composition. Here we define the Mesh Models that are used in our device. For the basic setup, we must use the mandatory health model and configuration server.  
 
  <sup>_src/App_BTMesh.c_</sup>
 
@@ -343,6 +347,8 @@ In step 17, we used the _bt_mesh_init()_ function. _bt_mesh_init()_ in Bluetooth
 
 
 #### Configuration Server
+
+A Bluetooth Mesh __Configuration Server__ is a mandatory, integrated model in every mesh node that manages network settings such as addressing, publishing, subscription, and security. It serves as a local repository for these parameters, which are set by a ___Configuration Client__ (e.g. a smartphone app or gateway) during provisioning and operation to define a node's role and communication within the distributed network. It is a foundational component, not a separate device, that controls the behavior of a node and integrates with other models (such as lighting, sensors) to enable devices to join and function within the mesh. 
 
 25) In this step, we define the Bluetooth mesh role to be assigned to this device. The following figure shows a typical mesh network topology and its node types.
 
