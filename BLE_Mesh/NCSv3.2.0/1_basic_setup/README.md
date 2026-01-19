@@ -215,10 +215,16 @@ We could put all the Bluetooth Mesh-specific code in the main.c file, as is ofte
 
 #### Node Provisioning Information
 
-We used the function _bt_mesh_init()_ in step 17. The parameters used in this function are not yet defined. These parameters are __prov__ and __comp__.
+Provisioning is the secure process of adding an "unprovisioned device" to a Bluetooth mesh network, thereby transforming it into a "node". This is a mandatory step for any device to participate in mesh communication. 
 
-   - __prov__:  Node provisioning information. Provisioning properties and capabilities are defined here. 
-   - __comp__:  Node Composition. Here we define a few product related identifiers and list the Bluetooth Mesh Models used.
+Provisioning typically follows a standardized five-step sequence: 
+- __Beaconing__: The unprovisioned device broadcasts "Unprovisioned Device Beacons" (via PB-ADV) or advertises a Mesh Provisioning Service (via PB-GATT) to indicate it is ready to be added.
+- __Invitation__: The provisioner (usually a smartphone or tablet) scans for these beacons and sends an invitation to start the process.
+- __Public Key Exchange__: The devices exchange public keys (ECC Diffie-Hellman) to establish a secure channel.
+- __Authentication__: The provisioner verifies the identity of the device using Out-of-Band (OOB) methods, such as entering a code displayed on the device (Output OOB) or flashing an LED.
+- __Provisioning Data Transfer__: Once authenticated, the provisioner securely sends essential network data to the device.
+
+In step 17, we used the _bt_mesh_init()_ function. _bt_mesh_init()_ in Bluetooth Mesh initializes the mesh stack using the __prov__ (provisioning information) and __comp__ (composition data) structures as parameters. __prov__ defines the node identity/OOB data for joining. And __comp__ describes the elements and models of the node, both of which are essential for the node's function and its detection in the network after provisioning by a provisioner. 
 
 21) Let's start and define the __prov__ structure. We add this before the _bt_mesh_init()_ function call:
    
