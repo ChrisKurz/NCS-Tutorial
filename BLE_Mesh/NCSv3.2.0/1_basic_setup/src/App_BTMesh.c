@@ -47,6 +47,7 @@ static void provisioning_reset(void){
     bt_mesh_prov_enable(BT_MESH_PROV_ADV | BT_MESH_PROV_GATT);
 }    
 
+
 /* Node provisioning information (properties and capabilities) */
 const struct bt_mesh_prov prov = {
         .uuid = dev_uuid,
