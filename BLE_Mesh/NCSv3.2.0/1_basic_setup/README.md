@@ -391,6 +391,14 @@ A Bluetooth Mesh __Configuration Server__ is a mandatory, integrated model in ev
 
 #### Health Server
 
+A Bluetooth Mesh Health Server is a specialized model within a Bluetooth Mesh network that is responsible for diagnosing, reporting errors, and monitoring the status of mesh nodes by providing information about the status of the nodes and sending it to the Health Client to ensure the reliability of the network. It serves as an interface for administrators and other nodes to detect and manage issues such as error codes, malfunctions, and physical locations, which is essential for large, distributed IoT systems.
+
+Functions of the Health Server:
+- _Fault reporting_: Reports faults and the status of individual nodes to a Health Client.
+- _Diagnostics_: Enables the sending and receiving of diagnostic requests, such as test requests, to verify functionality.
+- _Location mapping_: Helps to physically map nodes, which is useful for troubleshooting large networks.
+- _Attention callbacks_: Provides callbacks to draw attention to specific states, e.g. device identification within a network.
+
 27) Let's add the Health Server model definition to the __App_BTMesh_HealthServer.c__ file:
 
     <sup>_src/App_BTMesh.c_</sup>
