@@ -184,8 +184,8 @@ We could put all the Bluetooth Mesh-specific code in the main.c file, as is ofte
 
 	<sup>_src/App_BTMesh.c_ => app_btmesh_start() function</sup>
 
-	/* This will be a no-op if settings_load() loaded provisioning info */
-	bt_mesh_prov_enable(BT_MESH_PROV_ADV | BT_MESH_PROV_GATT);
+        /* This will be a no-op if settings_load() loaded provisioning info */
+        bt_mesh_prov_enable(BT_MESH_PROV_ADV | BT_MESH_PROV_GATT);
 
 
 #### Define Device Name and enable Provisioning Bearer
@@ -215,10 +215,16 @@ We could put all the Bluetooth Mesh-specific code in the main.c file, as is ofte
 
 #### Node Provisioning Information
 
-We used the function _bt_mesh_init()_ in step 17. The parameters used in this function are not yet defined. These parameters are __prov__ and __comp__.
+Provisioning is the secure process of adding an "unprovisioned device" to a Bluetooth mesh network, thereby transforming it into a "node". This is a mandatory step for any device to participate in mesh communication. 
 
-   - __prov__:  Node provisioning information. Provisioning properties and capabilities are defined here. 
-   - __comp__:  Node Composition. Here we define a few product related identifiers and list the Bluetooth Mesh Models used.
+Provisioning typically follows a standardized five-step sequence: 
+- __Beaconing__: The unprovisioned device broadcasts "Unprovisioned Device Beacons" (via PB-ADV) or advertises a Mesh Provisioning Service (via PB-GATT) to indicate it is ready to be added.
+- __Invitation__: The provisioner (usually a smartphone or tablet) scans for these beacons and sends an invitation to start the process.
+- __Public Key Exchange__: The devices exchange public keys (ECC Diffie-Hellman) to establish a secure channel.
+- __Authentication__: The provisioner verifies the identity of the device using Out-of-Band (OOB) methods, such as entering a code displayed on the device (Output OOB) or flashing an LED.
+- __Provisioning Data Transfer__: Once authenticated, the provisioner securely sends essential network data to the device.
+
+In step 17, we used the _bt_mesh_init()_ function. _bt_mesh_init()_ in Bluetooth Mesh initializes the mesh stack using the __prov__ (provisioning information) and __comp__ (composition data) structures as parameters. __prov__ defines the node identity/OOB data for joining. And __comp__ describes the elements and models of the node, both of which are essential for the node's function and its detection in the network after provisioning by a provisioner. 
 
 21) Let's start and define the __prov__ structure. We add this before the _bt_mesh_init()_ function call:
    
@@ -300,7 +306,11 @@ We used the function _bt_mesh_init()_ in step 17. The parameters used in this fu
 
 #### Node Composition
 
-24) The parameter __comp__ is also mentioned in step 17. So let's add the definition of the node composition. Here we define the Mesh Models that are used in our device. For the basic setup we have to use the mandatory health model and the configuration server.  
+The composition of a Bluetooth mesh node defines its structure with elements that group models (such as light, sensor) that determine functionality and are all contained in the device composition data (DCD). Each element is assigned a unique unicast address for communication, and nodes must have at least one primary element that supports various models for interoperability, with foundation models being mandatory for each device. Foundation models are core models (such as Configuration, Health) that are required for all nodes. 
+
+Developers specify how many elements their node has and what models (like sensor, switch) each element will contain. All of this is defined in the Device Composition Data (DCD).
+
+24) The parameter __comp__ is also mentioned in step 17. So let's add the definition of the node composition. Here we define the Mesh Models that are used in our device. For the basic setup, we must use the mandatory health model and configuration server.  
 
  <sup>_src/App_BTMesh.c_</sup>
 
@@ -337,6 +347,8 @@ We used the function _bt_mesh_init()_ in step 17. The parameters used in this fu
 
 
 #### Configuration Server
+
+A Bluetooth Mesh __Configuration Server__ is a mandatory, integrated model in every mesh node that manages network settings such as addressing, publishing, subscription, and security. It serves as a local repository for these parameters, which are set by a __Configuration Client__ (e.g. a smartphone app or gateway) during provisioning and operation to define a node's role and communication within the distributed network. It is a foundational component, not a separate device, that controls the behavior of a node and integrates with other models (such as lighting, sensors) to enable devices to join and function within the mesh. 
 
 25) In this step, we define the Bluetooth mesh role to be assigned to this device. The following figure shows a typical mesh network topology and its node types.
 
@@ -378,6 +390,14 @@ We used the function _bt_mesh_init()_ in step 17. The parameters used in this fu
 
 
 #### Health Server
+
+A Bluetooth Mesh Health Server is a specialized model within a Bluetooth Mesh network that is responsible for diagnosing, reporting errors, and monitoring the status of mesh nodes by providing information about the status of the nodes and sending it to the Health Client to ensure the reliability of the network. It serves as an interface for administrators and other nodes to detect and manage issues such as error codes, malfunctions, and physical locations, which is essential for large, distributed IoT systems.
+
+Functions of the Health Server:
+- _Fault reporting_: Reports faults and the status of individual nodes to a Health Client.
+- _Diagnostics_: Enables the sending and receiving of diagnostic requests, such as test requests, to verify functionality.
+- _Location mapping_: Helps to physically map nodes, which is useful for troubleshooting large networks.
+- _Attention callbacks_: Provides callbacks to draw attention to specific states, e.g. device identification within a network.
 
 27) Let's add the Health Server model definition to the __App_BTMesh_HealthServer.c__ file:
 
