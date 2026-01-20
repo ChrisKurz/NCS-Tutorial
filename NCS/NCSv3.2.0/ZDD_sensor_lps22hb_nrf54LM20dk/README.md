@@ -1,6 +1,6 @@
 <sup>SDK version: NCS v3.2.0 </sup>
 
-# Zephyr Device Driver: Adding BME280 Sensor Driver to an nRF52480 Project
+# Zephyr Device Driver: Adding BME280 Sensor Driver to an nRF54LM20 Project
 
 There are a large of drivers in the Zephyr RTOS. In this hands-on exercise, we will take a closer look at the Sensor Drivers, specifically the BME280 sensor driver.
 
