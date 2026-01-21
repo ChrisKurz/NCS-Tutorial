@@ -50,10 +50,11 @@ The easiest way to use Bluetooth Low Energy is to realize a beacon application. 
 ### Configuration of Bluetooth Stack (Role, Device Name)
 
 5) The Bluetooth stack supports differnt roles:
-  - connection-less modes:
+ > <ins>connection-less modes:</ins>
  > - broadcaster (CONFIG_BT_BROADCASTER)
  > - observer (CONFIG_BT_OBSERVER)
-  - connection-oriented roles:
+
+ > <ins>connection-oriented roles:</ins>
  > - peripheral (CONFIG_BT_PERIPHERAL)
  > - central (CONFIG_BT_CENTRAL)
 
