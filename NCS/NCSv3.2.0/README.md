@@ -62,6 +62,7 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
 ### Threads
 
 - [__Creating a Thread__](ZKS_threads_create/README.md) - This hands-on shows how to create a Thread.
+- [__Thread Analyzer__](ZKS_threads_threadAnalyzer/REAMDE.md) - This section shows how to determine the thread stack size used.
 - [__Suspend and Resume a Thread__](ZKS_threads_suspend/README.md) - This hands-on shows how to suspend and resume a Thread.
 
 ### Timing
