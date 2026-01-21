@@ -31,15 +31,15 @@ There are various ways to use the Thread Analyzer. The analysis is performed on 
 
    <sup>_prj.conf_</sup>
 
-    # Enable Thread analyzer
-    CONFIG_THREAD_ANALYZER=y
+       # Enable Thread analyzer
+       CONFIG_THREAD_ANALYZER=y
 
 3) In our example, the thread analyzer should output the thread statistics every 20 seconds via the console. 
 
    <sup>_prj.conf_</sup>
 
-    CONFIG_THREAD_ANALYZER_AUTO=y
-    CONFIG_THREAD_ANALYZER_AUTO_INTERVAL=20
+       CONFIG_THREAD_ANALYZER_AUTO=y
+       CONFIG_THREAD_ANALYZER_AUTO_INTERVAL=20
 
 
 ## Testing
