@@ -38,9 +38,7 @@ This is a collection of links to useful resources that cover the _nRF Connect SD
 
 ## Documentation
 
-[_nRF Connect SDK_ docu ](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/index.html) - new page! Better use this one!
-
-[_nRF Connect SDK_ docu ](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/index.html) - old page, but still alive...
+[_nRF Connect SDK_ docu ](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/index.html) 
 
 [Zehpyr Project Documentation](https://docs.zephyrproject.org/latest/index.html) - official Zephyr documentation. Note that the _nRF Connect SDK_ documentation provides a copy of this under its __Zephyr Project__ tab.
 
