@@ -35,7 +35,7 @@ Several primary cell battery models are included in the library, such as Alkalin
 
     | __nPM2100EK__ | <-> | __nRF54L15DK__ |
     |---------------|-----|----------------|
-    | VOUT/VDDIO    | <-> |  Port1 VDDOP   |   
+    | VOUT/VDDIO    | <-> |     VDD        |   
     |    GND        | <-> |     GND        |
     |    SCL        | <-> |    P1.12       |
     |    SDA        | <-> |    P1.11       |
