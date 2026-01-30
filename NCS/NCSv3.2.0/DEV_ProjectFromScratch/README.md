@@ -6,6 +6,12 @@
 
 Creating a project from scratch is quite simple with Zephyr. Here is a description how to create the simplest version of a project. We use Visual Studio Code in this example.
 
+The application project can be placed in various locations. Zephyr distinguishes between different application types. 
+
+![image](images/ZephyrApplicationTypes.jpg)
+
+The most commonly used, namely Freestanding, is used in this hands-on guide.
+
 ## Required Hardware/Software
 - Development kit 
 [nRF54L15DK](https://www.nordicsemi.com/Products/Development-hardware/nRF54L15-DK), 
@@ -23,7 +29,7 @@ Creating a project from scratch is quite simple with Zephyr. Here is a descripti
 
 2) Our first project is "Hello World". So we create a project folder __hello_world__ in our workspace directory:    __C:/Nordic/Workspace/hello_world__
 
-  > __NOTE: Folder name should start with a letter and there should be no spaces in the folder name!__
+  > __NOTE:__ Folder name should start with a letter and there should be no spaces in the folder name!
 
 3) We need the following files in our project folder:
 
