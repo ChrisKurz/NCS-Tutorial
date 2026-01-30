@@ -49,40 +49,40 @@ Several primary cell battery models are included in the library, such as Alkalin
 
      <sup>__nRF54L15DK_nRF54L15_cpuapp.overlay__</sup>  
 
-                   &i2c21 {
-                       status = "okay";
-                       pinctrl-0 = <&i2c21_default>;
-                       pinctrl-1 = <&i2c21_sleep>;
-                       pinctrl-names = "default", "sleep";
+       &i2c21 {
+           status = "okay";
+           pinctrl-0 = <&i2c21_default>;
+           pinctrl-1 = <&i2c21_sleep>;
+           pinctrl-names = "default", "sleep";
 
-                       // list i2c attached peripherals
-                       npm2100ek_pmic: pmic@74 {
-                           compatible = "nordic,npm2100";
-                           reg = <0x74>;
+           // list i2c attached peripherals
+           npm2100ek_pmic: pmic@74 {
+               compatible = "nordic,npm2100";
+               reg = <0x74>;
 
-                           npm2100ek_vbat: vbat {
-                               compatible = "nordic,npm2100-vbat";
-                           };
-                       };
-                   };
+               npm2100ek_vbat: vbat {
+                   compatible = "nordic,npm2100-vbat";
+               };
+           };
+       };
 
-                   &pinctrl {
-                       i2c21_default: i2c21_default {
-                           group1 {
-                               psels = <NRF_PSEL(TWIM_SDA, 1, 11)>,
-                                       <NRF_PSEL(TWIM_SCL, 1, 12)>;
-                                       bias-pull-up;
-                           }; //GPIO Port 1, Pin 11 & 12
-	               };
+       &pinctrl {
+           i2c21_default: i2c21_default {
+               group1 {
+                   psels = <NRF_PSEL(TWIM_SDA, 1, 11)>,
+                           <NRF_PSEL(TWIM_SCL, 1, 12)>;
+                           bias-pull-up;
+               }; //GPIO Port 1, Pin 11 & 12
+	       };
        
-                       i2c21_sleep: i2c21_sleep {
-                           group1 {
-                               psels = <NRF_PSEL(TWIM_SDA, 1, 11)>,
-                                       <NRF_PSEL(TWIM_SCL, 1, 12)>;
-                                       low-power-enable;
-                          };
-                       };
-                    };
+           i2c21_sleep: i2c21_sleep {
+               group1 {
+                   psels = <NRF_PSEL(TWIM_SDA, 1, 11)>,
+                           <NRF_PSEL(TWIM_SCL, 1, 12)>;
+                           low-power-enable;
+               };
+           };
+       };
 
 
 ### Update _prj.conf_ file
@@ -180,27 +180,27 @@ Several primary cell battery models are included in the library, such as Alkalin
 
      <sup>__main.c__</sup>  
 
-       int fuel_gauge_update(const struct device *vbat) 
-       {
-           float voltage;
-           float temp;
-           float soc;
-           float delta;
-           int ret;
+        int fuel_gauge_update(const struct device *vbat) 
+        {
+            float voltage;
+            float temp;
+            float soc;
+            float delta;
+            int ret;
 
-           ret = read_sensors(vbat, &voltage, &temp);
-           if (ret < 0) {
-               printk("Error: Could not read from vbat device\n");
-               return ret;
-           }
+            ret = read_sensors(vbat, &voltage, &temp);
+            if (ret < 0) {
+                printk("Error: Could not read from vbat device\n");
+                return ret;
+            }
 
-           delta = (float)k_uptime_delta(&ref_time) / 1000.f;
-           soc = nrf_fuel_gauge_process(voltage, battery_current, temp, delta, NULL);
+            delta = (float)k_uptime_delta(&ref_time) / 1000.f;
+            soc = nrf_fuel_gauge_process(voltage, battery_current, temp, delta, NULL);
  
-           printk("V: %.3f, T: %.2f, SoC: %.2f\n", (double)voltage, (double)temp, (double)soc);
+            printk("V: %.3f, T: %.2f, SoC: %.2f\n", (double)voltage, (double)temp, (double)soc);
 
-           return 0;
-       }
+            return 0;
+        }
 
 11) Finally, in the main function we initialize the fuel gauge software and call periodically the <fuel_gauge_update()</code> function.
 
