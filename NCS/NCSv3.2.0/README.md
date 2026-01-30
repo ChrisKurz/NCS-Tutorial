@@ -100,7 +100,7 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
 
 ### Fuel Gauge Device Driver
 
-- [__Using the Fuel Gauge driver for primary batteries__](ZDD_pmic_pnm2100_fuelgauge/README.md)
+- [__Using the Fuel Gauge driver for primary batteries__](ZDD_pmic_npm2100_fuelgauge/README.md)
 
 ### Sensor Device Drivers
 
