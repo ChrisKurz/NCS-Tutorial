@@ -1,7 +1,7 @@
 <sup>SDK version: NCS v3.2.0 </sup>
 
 
-# Zephyr Fuel Gauge Device Drivers: Initializing and starting a Sensor Driver
+# Zephyr Fuel Gauge Device Drivers: Using the Fuel Gauge driver for primary batteries
 
 ## Introduction
 
