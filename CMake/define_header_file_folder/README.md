@@ -23,6 +23,9 @@ Sometimes you want to store the header files in a separate directory, e.g., the 
 
   > __Note:__ this instruction add a custom header directroy for the app target. 
 
+  > __Note:__ <code>target_include_directories()</code> versus <code>zephyr_include_diretories()</code>
+  > - <code>target_include_directories()</code>: This is typically used when the include path is located in the project directory. It will locate all headers in the defined folder (relative to the project) for the target app, e.g. <code>#include “my_header.h”</code>.
+  > - <code>zephyr_include_diretories()</code>: This is used for global Zephyr includes (e.g. out-of-tree drivers). You can then include the headers with angle brackets, e.g. <code>#include <my_driver.h></code>. 
 
 ## Testing
 
