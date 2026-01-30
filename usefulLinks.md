@@ -4,6 +4,8 @@ This is a collection of links to useful resources that cover the _nRF Connect SD
 
 ## Installing _nRF Connect SDK_ and _Visual Studio Code_
 
+[Nordic's Developer Academy: _nRF Connect SDK Fundamentals_ => Lesson 1 - nRF Connect SDK Introduction: Excercise 1 - Installing nRF Connect SDK and VS Cocde](https://www.youtube.com/playlist?list=PLzRQULb6-ipEgG3_ZR2qj3gO4U65l4BaM)
+
 [Install Visual Studio Code and nRF Connect SDK](https://www.youtube.com/watch?v=EAJdOqsL9m8&list=PLx_tBuQ_KSqEt7NK-H7Lu78lT2OijwIMl&index=1&pp=iAQB) - this is the recommended way to install the needed tools. 
 
 [Nordic TechDocs - Installing the nRF Connect SDK](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/installation.html) - some further details can be found here.
