@@ -98,6 +98,10 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
 
 ## Zephyr Device Drivers
 
+### Fuel Gauge Device Driver
+
+- [__Using the Fuel Gauge driver for primary batteries__](ZDD_pmic_pnm2100_fuelgauage/README.md)
+
 ### Sensor Device Drivers
 
 - [__Basics: Initializing Sensor Driver during Zephyr Start-up__](ZDD_sensor_basics_initZephyr/README.md) - In this first basic hands-on we will explain how to initialize and start the sensor driver. There are various ways to start the driver. Here we look at how the driver is automatically started during Zephyr RTOS startup.
