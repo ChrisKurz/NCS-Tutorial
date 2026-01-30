@@ -55,14 +55,12 @@ This is a collection of links to useful resources that cover the _nRF Connect SD
 #### Pin Control
 
 [Device Tree: Pin control](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/zephyr/hardware/pinctrl/index.html)
-
 [Zephyr Developer Summit 2022: Deep Dive into Pin Control in Zephyr](https://www.youtube.com/watch?v=bcTekbGN-Pk)
 
 
 ### Device Drivers
 
 [Zephyr Device Drivers](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/zephyr/kernel/drivers/index.html)
-
 [Zephyr Developer Summit 2022: Tutorial: Mastering Zephyr Device Driver Development](https://www.youtube.com/watch?v=o-f2qCd2AXo)
 
 
@@ -73,12 +71,10 @@ This is a collection of links to useful resources that cover the _nRF Connect SD
 
 ## Zephyr Developer Summits
 
+[Zephyr Developer Summit 2025](https://www.youtube.com/playlist?list=PLzRQULb6-ipEgG3_ZR2qj3gO4U65l4BaM)
 [Zephyr Developer Summit @ EOSS NA 2024](https://www.youtube.com/playlist?list=PLzRQULb6-ipHnRUuy2UJpqZjTM9FPWtWx)
-
 [Zephyr Project Developer Summit @ EOSS 2023](https://www.youtube.com/watch?v=v6kUPnKs4TU&list=PLbzoR-pLrL6rQLZttVSF_DwzncObtwyM3)
-
 [Zephyr Developer Summit 2022](https://www.youtube.com/playlist?list=PLzRQULb6-ipFDwFONbHu-Qb305hJR7ICe)
-
 [Zephyr Developer Summit 2021](https://www.youtube.com/playlist?list=PLzRQULb6-ipG39tVb-DEkIoSS5wQlbK6i)
 
 
