@@ -10,6 +10,8 @@ Zephyr allows to select one for the following C libraries:
 
    ![image](images/picolib_kconfig.jpg)
 
+> __Note:__ PICOLIBC is the default selection.   
+
 The most basic C library, named [minimal libc](https://docs.nordicsemi.com/bundle/ncs-latest/page/zephyr/develop/languages/c/minimal_libc.html), is part of the Zephyr codebase and provides the minimal subset of the standard C library required to meet the needs of Zephyr and its subsystems, primarily in the areas of string manipulation and display. It is very low footprint and is suitable for projects that do not rely on less frequently used portions of the ISO C standard library. It can also be used with a number of different toolchains.
 
 The minimal libc implementation can be found in _lib/libc/minimal_ in the main Zephyr tree.
