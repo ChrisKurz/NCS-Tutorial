@@ -31,15 +31,9 @@ Newlib is an older standard C library. There are newer standard C libraries, suc
 
 1) Create a new application. Use the _zephyr/samples/hello_world_ sample.  
 
-2) Let's have a look on how the C library is usually selected. You can use the __nRF KCONFIG GUI__ tool to check which C library is selected in this project. 
-
-   ![image](images/picolibc_selectedLibc.jpg)
-
-   The Picolibc library is included in the Zephyr toolchain and it is selected by default as the standard C library. 
-
-3) You can explicitly add Picolibc to your project by inlcuding following line in __prj.conf__ file.
+2) You can explicitly add Newlib to your project by inlcuding following line in __prj.conf__ file.
 
    <sup>__prj.conf__</sup>
 
-       # select C library PICOLIBC
-       CONFIG_PICOLIBC=y
+       # select C library Newlib
+       CONFIG_NEWLIB_LIBC=y
