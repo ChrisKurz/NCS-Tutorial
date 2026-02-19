@@ -10,6 +10,8 @@ Zephyr allows to select one for the following C libraries:
 
    ![image](images/picolib_kconfig.jpg)
 
+> __Note:__ PICOLIBC is the default selection.   
+
 The most basic C library, named [minimal libc](https://docs.nordicsemi.com/bundle/ncs-latest/page/zephyr/develop/languages/c/minimal_libc.html), is part of the Zephyr codebase and provides the minimal subset of the standard C library required to meet the needs of Zephyr and its subsystems, primarily in the areas of string manipulation and display. It is very low footprint and is suitable for projects that do not rely on less frequently used portions of the ISO C standard library. It can also be used with a number of different toolchains.
 
 The minimal libc implementation can be found in _lib/libc/minimal_ in the main Zephyr tree.
@@ -56,7 +58,11 @@ The minimal libc implementation can be found in _lib/libc/minimal_ in the main Z
    | CONFIG_MINIMAL_LIBC_NON_REENTRANT_FUNCTIONS  |   y     | Enable non-reentrant functions that make use of the globals, e.g. <code>rand()</code> and <code>gmtime()</code>. The globals must be put into a dedicated C library memory partition when CONFIG_USERSPACE=y, and enabling this option may require an additional memory protection region. |
    | CONFIG_MINIMAL_LIBC_OPTIMIZE_STRING_FOR_SIZE |   y     | Enable smaller but potentially slower implementations of <code>memcpy</code> and <code>memset</code>. On the Cortex-M0+ this reduces the total code size by 120 bytes. |
 
-   
+   <sup>__prj.conf__</sup>
 
-
-
+       CONFIG_MINIMAL_LIBC_RAND=n
+       CONFIG_MINIMAL_LIBC_TIME=y
+       CONFIG_MINIMAL_LIBC_LL_PRINTF=n
+       CONFIG_MINIMAL_LIBC_STRING_ERROR_TABLE=n
+       CONFIG_MINIMAL_LIBC_NON_REENTRANT_FUNCTIONS=y
+       CONFIG_MINIMAL_LIBC_OPTIMIZE_STRING_FOR_SIZE=y
