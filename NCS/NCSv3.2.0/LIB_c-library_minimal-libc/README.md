@@ -33,15 +33,30 @@ The minimal libc implementation can be found in _lib/libc/minimal_ in the main Z
 
 1) Create a new application. Use the _zephyr/samples/hello_world_ sample.  
 
-2) Let's have a look on how the C library is usually selected. You can use the __nRF KCONFIG GUI__ tool to check which C library is selected in this project. 
-
-   ![image](images/picolibc_selectedLibc.jpg)
-
-   The Picolibc library is included in the Zephyr toolchain and it is selected by default as the standard C library. 
-
-3) You can explicitly add Picolibc to your project by inlcuding following line in __prj.conf__ file.
+2) In the previous hands-on session on picolibc, we already saw that picolibc is selected by default. Therefore, we will now change this setting by selecting minimal libc.
 
    <sup>__prj.conf__</sup>
 
-       # select C library PICOLIBC
-       CONFIG_PICOLIBC=y
+       # select C library: minimal libc
+       CONFIG_MINIMAL_LIBC=y
+
+
+3) Let's have a look on how the C library is usually selected. You can use the __nRF KCONFIG GUI__ tool to check which C library is selected in this project. 
+
+   ![image](images/minimallibc_selectedLibC.jpg)
+
+4) There are additional settings that allow you to enable or disable minimal libc library functions. Here is a list:
+
+   | Kconfig Name                                 | Default | Description                       |
+   |----------------------------------------------|---------|-----------------------------------|
+   | CONFIG_MINIMAL_LIBC_RAND                     |   n     | Enable <code>rand_r()</code>      | 
+   | CONFIG_MINIMAL_LIBC_TIME                     |   y     | Enable <code>time()</code> and <code>gmtime_r()</code>      |
+   | CONFIG_MINIMAL_LIBC_LL_PRINTF                |   n     | Build with long long printf enabled. This will increase the size of the image. |
+   | CONFIG_MINIMAL_LIBC_STRING_ERROR_TABLE       |   n     | Select this option to ensure that <code>strerror()</code>, <code>strerror_r()</code> produce strings corresponding to the descriptions in __errno.h__. The string error table can add ~2kiB to ROM. As such, it is disabled by default. In this case, <code>strerror()</code> and <code>strerror_r()</code> symbols are still present, but the functions produce an empty string. |
+   | CONFIG_MINIMAL_LIBC_NON_REENTRANT_FUNCTIONS  |   y     | Enable non-reentrant functions that make use of the globals, e.g. <code>rand()</code> and <code>gmtime()</code>. The globals must be put into a dedicated C library memory partition when CONFIG_USERSPACE=y, and enabling this option may require an additional memory protection region. |
+   | CONFIG_MINIMAL_LIBC_OPTIMIZE_STRING_FOR_SIZE |   y     | Enable smaller but potentially slower implementations of <code>memcpy</code> and <code>memset</code>. On the Cortex-M0+ this reduces the total code size by 120 bytes. |
+
+   
+
+
+
