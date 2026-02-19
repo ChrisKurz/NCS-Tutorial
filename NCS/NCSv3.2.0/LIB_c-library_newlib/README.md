@@ -6,9 +6,11 @@
 
 The C standard library provides macros, type definitions and functions for tasks such as string manipulation, mathematical computation, input/output processing, memory managenet, and input/output. 
 
-Zephyr allows to select one for the following C libraries:
+Zephyr allows to select one for the following C libraries):
 
    ![image](images/picolib_kconfig.jpg)
+
+> __Note:__ PICOLIBC is the default selection.
 
 [Newlib](https://docs.nordicsemi.com/bundle/ncs-latest/page/zephyr/develop/languages/c/newlib.html) is a complete C library implementation written for the embedded systems. It is a separate open source project and is not included in source code form with Zephyr. Instead, the Zephyr SDK includes a precompiled library for each supported architecture (libc.a and libm.a).
 
