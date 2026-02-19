@@ -28,7 +28,7 @@ Picolibc is mostly built from pieces of Newlib, and retains the directory struct
 
 ### Create needed Folders and Files
 
-1) Create a new application. Use the _zephyr/samples/hello_world_ sample. Change the project name to __picolibc_HelloWorld__, so it is easier lateron to identify this project.  
+1) Create a new application. Use the _zephyr/samples/hello_world_ sample. 
 
 2) Let's have a look on how the C library is usually selected. You can use the __nRF KCONFIG GUI__ tool to check which C library is selected in this project. 
 
