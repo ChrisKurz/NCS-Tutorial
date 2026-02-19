@@ -129,7 +129,8 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
 
 ### Standard C Libraries
 
-- [__Using PICOLIBC__](LIB_c-library_picolibc/README.md) 
+- [__PICOLIBC__](LIB_c-library_picolibc/README.md) - This Standard C Library is selected by default within Zephyr.
+- [__Minimal libc__](LIB_c-library_minimal-libc/README.md)
 
 ### ZCBOR 
 
