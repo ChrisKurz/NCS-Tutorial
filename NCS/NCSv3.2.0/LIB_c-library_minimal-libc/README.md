@@ -56,7 +56,11 @@ The minimal libc implementation can be found in _lib/libc/minimal_ in the main Z
    | CONFIG_MINIMAL_LIBC_NON_REENTRANT_FUNCTIONS  |   y     | Enable non-reentrant functions that make use of the globals, e.g. <code>rand()</code> and <code>gmtime()</code>. The globals must be put into a dedicated C library memory partition when CONFIG_USERSPACE=y, and enabling this option may require an additional memory protection region. |
    | CONFIG_MINIMAL_LIBC_OPTIMIZE_STRING_FOR_SIZE |   y     | Enable smaller but potentially slower implementations of <code>memcpy</code> and <code>memset</code>. On the Cortex-M0+ this reduces the total code size by 120 bytes. |
 
-   
+   <sup>__prj.conf__</sup>
 
-
-
+       CONFIG_MINIMAL_LIBC_RAND=n
+       CONFIG_MINIMAL_LIBC_TIME=y
+       CONFIG_MINIMAL_LIBC_LL_PRINTF=n
+       CONFIG_MINIMAL_LIBC_STRING_ERROR_TABLE=n
+       CONFIG_MINIMAL_LIBC_NON_REENTRANT_FUNCTIONS=y
+       CONFIG_MINIMAL_LIBC_OPTIMIZE_STRING_FOR_SIZE=y
