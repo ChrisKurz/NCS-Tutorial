@@ -75,7 +75,7 @@ The following explains how you can create your own project in your workspace fol
 
     ![image](images/BoardTarget.jpg)   
 
- > __NOTE:__ The board name is using Hardware Modle V2 implementation from Zephyr. This means that beside the board name, the input also includes the emulated SoC, and if available the core which is used. In above example only the board (__nRF52840DK__) and the SoC (__nRF52840__) is used.
+ > __NOTE:__ The board name is using Hardware Model V2 implementation from Zephyr. This means that beside the board name, the input also includes the emulated SoC, and if available the core which is used. Further information about Hardware Model V2 and the related board termology can be found [here](https://docs.nordicsemi.com/bundle/ncs-latest/page/zephyr/hardware/porting/board_porting.html#board_terminology). In above example only the board (__nRF52840DK__) and the SoC (__nRF52840__) is used.
 
 14) Finally, we generate and build the project by scrolling down and clicking the button. 
 
