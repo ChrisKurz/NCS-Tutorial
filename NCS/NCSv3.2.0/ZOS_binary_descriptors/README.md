@@ -187,7 +187,7 @@
  | Length: 0x0013 = 19 Bytes   | 13 | 00 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
  | String: "Test: Hello World!"| 54 | 65 | 73 | 74 | 3A | 20 | 48 | 65 | 6C | 6C | 6F | 20 | 77 | 6F | 72 | 6C | 64 | 21 | 00 | 00 |
  |                             |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
- | Descriptors end (0xFFFF)    | FF | FF | _00_ | _00_ |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+ | Descriptors end (0x[F](https://github.com/nrfconnect/sdk-zephyr/blob/4b6df5ff11b1a10a2ffa89dab7450c0af98c9e3a/include/zephyr/bindesc.h#L43)FFF)    | FF | FF | _00_ | _00_ |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
   
 ### Reading Binary Descriptors from C Code
 
