@@ -18,7 +18,9 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
     >> [Version](#version)
 
 - [Zephyr OS Services](#zephyr-os-services)
-    > [Logging](#logging)
+    > [Binary Descriptors](#binary_descriptors)
+    >
+    >  [Logging](#logging)
     >
     > [Shell](#shell)
   
