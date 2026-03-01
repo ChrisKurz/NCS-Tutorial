@@ -132,7 +132,7 @@
 
    You should see following response:
 
-   ![image](images/TerimalHost.jpg)
+   ![image](images/TerminalHost.jpg)
 
 
 
