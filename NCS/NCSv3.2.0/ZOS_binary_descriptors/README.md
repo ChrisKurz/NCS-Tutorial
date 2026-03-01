@@ -163,31 +163,31 @@
 
  Let's take a closer look at the bytes we saw in the Intel Hex file viewer:
 
- |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |   Description               |
- |----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|-----------------------------|
- | 46 | 60 | A4 | 7E | 5A | 3E | 86 | B9 |    |    |    |    |    |    |    |    |    |    |    |    | Magic: 0xB9863E5A7EA46046   |
- |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |                             |
- | 01 | 18 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Tag:  0x1800                |
- | 11 | 00 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Length: 0x0011 = 17 Bytes   |
- | 31 | 2E | 32 | 2E | 33 | 2D | 75 | 6E | 73 | 74 | 61 | 62 | 6C | 65 | 31 | 32 | 00 | _00_ | _00_ | _00_ | String: "1.2.3-unstable12"  | 
- |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |                             |
- | 08 | 1A |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Tag:  0x1A08                |
- | 0B | 00 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Length: 0x000B = 11 Bytes   |
- | 32 | 30 | 32 | 36 | 2D | 30 | 33 | 2D | 30 | 31 | 00 | _00_ |    |    |    |    |    |    |    |    | String: "2026-03-01"        |  
- |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |                             |    
- | 01 | 1B |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Tag:  0x1B01                |    
- | 04 | 00 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Length: 0x0004 = 4 Bytes    |    
- | 47 | 4E | 55 | 00 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | String: "GNU"               |    
- |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |                             |    
- | 00 | 19 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Tag:  0x1900                |    
- | 07 | 00 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Length: 0x0007 = 7 Bytes    |    
- | 34 | 2E | 32 | 2E | 39 | 39 | 00 | _00_ |    |    |    |    |    |    |    |    |    |    |    |    | String: "4.2.99"           |    
- |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |                             |    
- | 02 | 10 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Tag:  0x1002                |    
- | 13 | 00 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Length: 0x0013 = 19 Bytes   |    
- | 54 | 65 | 73 | 74 | 3A | 20 | 48 | 65 | 6C | 6C | 6F | 20 | 77 | 6F | 72 | 6C | 64 | 21 | 00 | 00 | String: "Test: Hello World!"|
- |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |                             |    
- | FF | FF | _00_ | _00_ |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Descriptors end (0xFFFF)  |    
+ |   Description               |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+ |-----------------------------|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+ | Magic: 0xB9863E5A7EA46046   | 46 | 60 | A4 | 7E | 5A | 3E | 86 | B9 |    |    |    |    |    |    |    |    |    |    |    |    |
+ |                             |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+ | Tag:  0x [1](https://github.com/nrfconnect/sdk-zephyr/blob/4b6df5ff11b1a10a2ffa89dab7450c0af98c9e3a/include/zephyr/bindesc.h#L41) [800](https://github.com/nrfconnect/sdk-zephyr/blob/4b6df5ff11b1a10a2ffa89dab7450c0af98c9e3a/include/zephyr/bindesc.h#L63)               | 00 | 18 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+ | Length: 0x0011 = 17 Bytes   | 11 | 00 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+ | String: "1.2.3-unstable12"  |  31 | 2E | 32 | 2E | 33 | 2D | 75 | 6E | 73 | 74 | 61 | 62 | 6C | 65 | 31 | 32 | 00 | _00_ | _00_ | _00_ |
+ |                             |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+ | Tag:  0x [1](https://github.com/nrfconnect/sdk-zephyr/blob/4b6df5ff11b1a10a2ffa89dab7450c0af98c9e3a/include/zephyr/bindesc.h#L41) [A08](https://github.com/nrfconnect/sdk-zephyr/blob/4b6df5ff11b1a10a2ffa89dab7450c0af98c9e3a/include/zephyr/bindesc.h#L123)                | 08 | 1A |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+ | Length: 0x000B = 11 Bytes   | 0B | 00 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+ | String: "2026-03-01"        | 32 | 30 | 32 | 36 | 2D | 30 | 33 | 2D | 30 | 31 | 00 | _00_ |    |    |    |    |    |    |    |    |
+ |                             |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+ | Tag:  0x [1](https://github.com/nrfconnect/sdk-zephyr/blob/4b6df5ff11b1a10a2ffa89dab7450c0af98c9e3a/include/zephyr/bindesc.h#L41) [B01](https://github.com/nrfconnect/sdk-zephyr/blob/4b6df5ff11b1a10a2ffa89dab7450c0af98c9e3a/include/zephyr/bindesc.h#L132)                | 01 | 1B |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    
+ | Length: 0x0004 = 4 Bytes    | 04 | 00 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+ | String: "GNU"               | 47 | 4E | 55 | 00 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+ |                             |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+ | Tag:  0x [1](https://github.com/nrfconnect/sdk-zephyr/blob/4b6df5ff11b1a10a2ffa89dab7450c0af98c9e3a/include/zephyr/bindesc.h#L41) [900](https://github.com/nrfconnect/sdk-zephyr/blob/4b6df5ff11b1a10a2ffa89dab7450c0af98c9e3a/include/zephyr/bindesc.h#L81)                | 00 | 19 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+ | Length: 0x0007 = 7 Bytes    | 07 | 00 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+ | String: "4.2.99"            | 34 | 2E | 32 | 2E | 39 | 39 | 00 | _00_ |    |    |    |    |    |    |    |    |    |    |    |    |
+ |                             |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+ | Tag:  0x [1](https://github.com/nrfconnect/sdk-zephyr/blob/4b6df5ff11b1a10a2ffa89dab7450c0af98c9e3a/include/zephyr/bindesc.h#L41) 002                | 02 | 10 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+ | Length: 0x0013 = 19 Bytes   | 13 | 00 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+ | String: "Test: Hello World!"| 54 | 65 | 73 | 74 | 3A | 20 | 48 | 65 | 6C | 6C | 6F | 20 | 77 | 6F | 72 | 6C | 64 | 21 | 00 | 00 |
+ |                             |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+ | Descriptors end (0xFFFF)    | FF | FF | _00_ | _00_ |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
   
 ### Reading Binary Descriptors from C Code
 
