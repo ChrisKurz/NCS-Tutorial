@@ -151,7 +151,44 @@
     ![image](images/TerminalUser.jpg)
 
 
+### Let's analyze the Intel Hex code
 
+14) We will now use a hex editor to see where the binary descriptors are stored. The following screenshot shows where the descriptors are stored in the merged.hex file.
+
+    ![image](images/IntelHex.jpg)
+
+   The binary descriptor header starts with the magic number <code>0xb9863e5a7ea46046</code>. It’s followed by the TLVs, and ends with the DESCRIPTORS_END (<code>0xffff</code>) tag. The tags are always aligned to 32 bits. If the value of the previous descriptor had a non-aligned length, zero padding will be added to ensure that the current tag is aligned.
+
+   > __Note:__ Magic, tag, and length are stored in little endian format.
+
+ Let's take a closer look at the bytes we saw in the Intel Hex file viewer:
+
+ |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |   Description               |
+ |----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|-----------------------------|
+ | 46 | 60 | A4 | 7E | 5A | 3E | 86 | B9 |    |    |    |    |    |    |    |    |    |    |    |    | Magic: 0xB9863E5A7EA46046   |
+ |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |                             |
+ | 01 | 18 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Tag:  0x1800                |
+ | 11 | 00 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Length: 0x0011 = 17 Bytes   |
+ | 31 | 2E | 32 | 2E | 33 | 2D | 75 | 6E | 73 | 74 | 61 | 62 | 6C | 65 | 31 | 32 | 00 | _00_ | _00_ | _00_ | String: "1.2.3-unstable12"  | 
+ |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |                             |
+ | 08 | 1A |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Tag:  0x1A08                |
+ | 0B | 00 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Length: 0x000B = 11 Bytes   |
+ | 32 | 30 | 32 | 36 | 2D | 30 | 33 | 2D | 30 | 31 | 00 | _00_ |    |    |    |    |    |    |    |    | String: "2026-03-01"        |  
+ |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |                             |    
+ | 01 | 1B |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Tag:  0x1B01                |    
+ | 04 | 00 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Length: 0x0004 = 4 Bytes    |    
+ | 47 | 4E | 55 | 00 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | String: "GNU"               |    
+ |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |                             |    
+ | 00 | 19 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Tag:  0x1900                |    
+ | 07 | 00 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Length: 0x0007 = 7 Bytes    |    
+ | 34 | 2E | 32 | 2E | 39 | 39 | 00 | _00_ |    |    |    |    |    |    |    |    |    |    |    |    | String: "4.2.99"           |    
+ |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |                             |    
+ | 02 | 10 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Tag:  0x1002                |    
+ | 13 | 00 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Length: 0x0013 = 19 Bytes   |    
+ | 54 | 65 | 73 | 74 | 3A | 20 | 48 | 65 | 6C | 6C | 6F | 20 | 77 | 6F | 72 | 6C | 64 | 21 | 00 | 00 | String: "Test: Hello World!"|
+ |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |                             |    
+ | FF | FF | _00_ | _00_ |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Descriptors end (0xFFFF)  |    
+  
 ### Reading Binary Descriptors from C Code
 
 Please take a look at the [Reading Descriptors](https://docs.nordicsemi.com/bundle/ncs-latest/page/zephyr/services/binary_descriptors/index.html#reading_descriptors) chapter. 

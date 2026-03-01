@@ -18,7 +18,9 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
     >> [Version](#version)
 
 - [Zephyr OS Services](#zephyr-os-services)
-    > [Logging](#logging)
+    > [Binary Descriptors](#binary-descriptors)
+    >
+    >  [Logging](#logging)
     >
     > [Shell](#shell)
   
@@ -82,6 +84,11 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
 
 ## Zephyr OS Services
 
+### Binary Descriptors
+
+- [__Adding a Binary Descriptor__](ZOS_binary_descriptors/README.md) - adding descriptors to application image and reading it either from PC command line (Intel Hex file) or from C Code.
+
+ 
 ### Logging
 
 - [__Adding Zephyr Logging__](ZOS_logging_uart/README.md) - Here we add Zephyr Logging to our project. This allows us to get debug messages during runtime. In this sample we use UART backend.
