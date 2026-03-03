@@ -59,7 +59,7 @@ And it can also be used for your own application. We will have a closer look at 
                     LOG_LEVEL_ERR   => ERROR:   write only LOG_ERR messages
                     LOG_LEVEL_WRN   => WARNING: write LOG_WRN and LOG_ERR messages
                     LOG_LEVEL_INF   => INFO:    write LOG_INF, LOG_WRN, and LOG_ERR messages
-                    LOG_LEVEL_DBG   => DEBUG:   write LOG_DBF, LOG_INF, LOG_WRN, and LOG_ERR messages
+                    LOG_LEVEL_DBG   => DEBUG:   write LOG_DBG, LOG_INF, LOG_WRN, and LOG_ERR messages
        **/
        LOG_MODULE_REGISTER(MyApp,LOG_LEVEL_WRN);
 
