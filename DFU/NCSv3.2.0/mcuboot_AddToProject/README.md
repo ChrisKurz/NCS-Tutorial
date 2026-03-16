@@ -1,4 +1,4 @@
-<sup>SDK version: NCS v3.0.0 - Link to Hands-on solution: [helloWorld](https://github.com/ChrisKurz/NCS-Tutorial/tree/main/Workspace/DFU/NCSv3.0.0/helloWorld)</sup>
+<sup>SDK version: NCS v3.2.0 </sup>
 
 # MCUboot:  Adding MCUboot to a Project
 
@@ -11,9 +11,13 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 ## Required Hardware/Software
 
-- Development kit [nRF54L15DK](https://www.nordicsemi.com/Products/Development-hardware/nRF54L15-DK), [nRF52840DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK), [nRF52833DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52833-DK), or [nRF52DK](https://www.nordicsemi.com/Products/Development-hardware/nrf52-dk) 
+- Development kit
+[nRF54L15DK](https://www.nordicsemi.com/Products/Development-hardware/nRF54L15-DK),
+[nRF52840DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK),
+[nRF52833DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52833-DK), or
+[nRF52DK](https://www.nordicsemi.com/Products/Development-hardware/nrf52-dk) 
 
-- install the _nRF Connect SDK_ v3.0.0 and _Visual Studio Code_. The installation process is described [here](https://academy.nordicsemi.com/courses/nrf-connect-sdk-fundamentals/lessons/lesson-1-nrf-connect-sdk-introduction/topic/exercise-1-1/).
+- install the _nRF Connect SDK_ v3.2.0 and _Visual Studio Code_. The installation process is described [here](https://academy.nordicsemi.com/courses/nrf-connect-sdk-fundamentals/lessons/lesson-1-nrf-connect-sdk-introduction/topic/exercise-1-1/).
 
 
 ## Hands-on step-by-step description 
@@ -28,7 +32,7 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 &nbsp;  The Build Configuration should look like this:
 
-![missing image](images/mcuboot_AddToProject/AddBuildConfiguration.jpg)
+![missing image](images/AddBuildConfiguration.jpg)
 
 &nbsp; It is important to select "Use sysbuild" for the System build! 
 
@@ -114,7 +118,7 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 8) In the Programmer you should see two blocks:
 
-   ![missing image](images/mcuboot_AddToProject/Programmer.jpg)
+   ![missing image](images/Programmer.jpg)
 
 &nbsp;  The orange block at the bottom is the bootloader image. It is located at address 0x0000. Starting at address 0xC000 you find the green block, which is the _hello world_ application image. 
 
@@ -122,7 +126,7 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 10) When programming is completed, check the Terminal output. In case nothing is shown in the terminal, press the RESET button on the development kit.
 
-  ![missing image](images/mcuboot_AddToProject/Terminal.jpg)
+  ![missing image](images/Terminal.jpg)
   
 __Note__: The application is printing just once after a reset. So you have to press the Reset button on the development kit to see the output in the terminal window.
 
