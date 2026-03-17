@@ -28,3 +28,26 @@ The possible swap types, and their meanings, are:
 - BOOT_SWAP_TYPE_FAIL: Swap failed because image to be run is not valid.
 - BOOT_SWAP_TYPE_PANIC: Swapping encountered an unrecoverable error.
 
+In this hands-on we take a closer look at swap type "test". 
+
+
+## Required Hardware/Software
+
+- Development kit
+[nRF54L15DK](https://www.nordicsemi.com/Products/Development-hardware/nRF54L15-DK),
+[nRF52840DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK),
+[nRF52833DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52833-DK), or
+[nRF52DK](https://www.nordicsemi.com/Products/Development-hardware/nrf52-dk) 
+
+- install the _nRF Connect SDK_ v3.2.0 and _Visual Studio Code_. The installation process is described [here](https://academy.nordicsemi.com/courses/nrf-connect-sdk-fundamentals/lessons/lesson-1-nrf-connect-sdk-introduction/topic/exercise-1-1/).
+
+
+## Hands-on step-by-step description 
+
+### Copy previous project
+
+1) Copy the previous project and reanme it. 
+
+   > __Note:__ Do not use "mcuboot" as your project name here! 
+
+   Use the same Build Configuration as in previous project.
