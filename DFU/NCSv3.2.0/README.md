@@ -9,7 +9,7 @@ Here, we will first look at the bootloader — specifically MCUboot. For now, we
 
 1) [Adding MCUboot to a project](mcuboot_AddToProject/README.md)
 
-2) [Defining an Appication Image Version]()
+2) [Defining an Appication Image Version](mcuboot_ApplikationImageVersion/README.md)
 
 [Create Update Image that uses Swap Type "Permanent"]()
 
