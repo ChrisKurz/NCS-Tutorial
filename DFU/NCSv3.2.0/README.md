@@ -28,11 +28,13 @@ Here, we will first look at the bootloader — specifically MCUboot. For now, we
 
 The firmware update image is typically downloaded by the application. This is particularly useful for applications that use a wireless stack. This way, the wireless stack does not need to be included a second time in the MCUBoot project, thereby avoiding wasted memory. However, there are exceptions. For example, MCUBoot offers a serial recovery feature that allows MCUBoot to download upgrade images via serial interfaces. 
 
-Here, we'll take a look at both this serial recovery solution and a few solutions via the application.
 
 ### DFU handled within MCUboot (Serial Recovery)
+
+In this chapter, we will look at the solution for serial recovery.
 
 1) [Adding Serial Recovery via UART](mcuboot_SerialRecoveryUART/README.md) to previous project
 
 ### DFU handled by application firmware
 
+Here, we'll look at some examples of how to download the update image from the application firmware.
