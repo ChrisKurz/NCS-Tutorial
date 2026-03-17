@@ -53,7 +53,7 @@ If MCUboot is integrated via sysbuild, as demonstrated in the previous hands-on,
 
 	<sup>_src/main.c_ => main() function</sup>
 
-           printf("Application version (VERSION_MAJOR|VERSION_MINOR|PATCHLEVEL|VERSION_TWEAK): %s\n", APPVERSION);
+           printf("Application version (VERSION_MAJOR|VERSION_MINOR|PATCHLEVEL|VERSION_TWEAK): %s\n", APP_VERSION_TWEAK_STRING);
 
 ## Testing
 5) Build the project. Note that a _pristine build_ is needed! Then donwload it to your development kit. 
