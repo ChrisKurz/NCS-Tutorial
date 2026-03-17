@@ -51,5 +51,5 @@ Using a version number for the application image is recommended and is even requ
 
 	<sup>_src/main.c_ => main() function</sup>
 
-            printf("Application version (VERSION_MAJOR|VERSION_MINOR|PATCHLEVEL|VERSION_TWEAK): %s\n", APPVERSION);
+           printf("Application version (VERSION_MAJOR|VERSION_MINOR|PATCHLEVEL|VERSION_TWEAK): %s\n", APPVERSION);
 
