@@ -108,6 +108,16 @@ In this hands-on we take a closer look at swap type "test".
 => VS code does not generate intel hex file that is placed in upper memory... => can imgtool be used to generate a address corrected file?
 
 
+   use following command line instruction to change the start address of the intel hex file image. 
+
+    arm-none-eabi-objcopy --change-addresses <offset> input.hex output.hex
+
+    <offset> =   0x10000
+
+    if in the input.hex file the start address is 0x080000000 then the start address in output.hex is 0x08010000
+
+    note that the <offset> can also be negative.
+
 
 
 
