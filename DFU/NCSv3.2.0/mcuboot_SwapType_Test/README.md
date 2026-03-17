@@ -44,10 +44,89 @@ In this hands-on we take a closer look at swap type "test".
 
 ## Hands-on step-by-step description 
 
-### Copy previous project
+### Original Application Image
 
-1) Copy the previous project and reanme it. 
+1) Let's use the previous project as the original application image. The Intel Hex file of previous project can be downloaded [here](Intel_Hex_Files/AppImage_merged.hex).
+
+### Update Image
+
+#### Copy previous project
+
+2) Copy the previous project and reanme it. 
 
    > __Note:__ Do not use "mcuboot" as your project folder name here! 
 
    Use the same Build Configuration as in previous project.
+
+#### Update Version and output in main function
+
+3) Update VERSION file:
+
+    <sup>VERSION</sup>   
+
+        VERSION_MAJOR = 2
+        VERSION_MINOR = 2
+        PATCHLEVEL = 3
+        VERSION_TWEAK = 4
+        EXTRAVERSION = test-1
+
+4) And change output string "Image: MCUboot1" to the following:
+
+   <sup>_src/main.c_ => main() function</sup>
+
+       printf("Image: MCUboot2 \n");
+
+
+## Testing
+
+5) Start "Programmer" in nRF Connect for Desktop. 
+
+6) Connect to your development kit. 
+
+7) Click "Add File" and select the original Application Image file [AppImage_merged.hex](Intel_Hex_Files/AppImage_merged.hex).
+
+8) In the Programmer you should see two blocks:
+
+   ![missing image](images/Programmer_AppImage.jpg)
+
+9) Click "Erase & Write" button.
+10) You should see in the Serial Terminal that first MCUboot starts and then the application image is executed.
+
+   ![image](images/Terminal_AppImage.jpg)
+
+
+
+
+
+
+
+
+
+
+11) Let's add the update Image in the programmer. Click "Add File" and select in your project folder /build/<_project folder name_>/zephyr/zephyr.hex file. 
+
+=> VS code does not generate intel hex file that is placed in upper memory... => can imgtool be used to generate a address corrected file?
+
+
+
+
+
+
+
+
+
+
+8) In the Programmer you should see two blocks:
+
+   ![missing image](images/Programmer.jpg)
+
+&nbsp;  The orange block at the bottom is the bootloader image. It is located at address 0x0000. Starting at address 0xC000 you find the green block, which is the _hello world_ application image. 
+
+9) In the Programmer tool click "Earse all" and afterwards "Erase & write".
+
+10) When programming is completed, check the Terminal output. In case nothing is shown in the terminal, press the RESET button on the development kit.
+
+  ![missing image](images/Terminal.jpg)
+  
+__Note__: The application is printing just once after a reset. So you have to press the Reset button on the development kit to see the output in the terminal window.
+
