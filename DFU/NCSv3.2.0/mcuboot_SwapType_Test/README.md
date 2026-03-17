@@ -48,6 +48,6 @@ In this hands-on we take a closer look at swap type "test".
 
 1) Copy the previous project and reanme it. 
 
-   > __Note:__ Do not use "mcuboot" as your project name here! 
+   > __Note:__ Do not use "mcuboot" as your project folder name here! 
 
    Use the same Build Configuration as in previous project.
