@@ -1,11 +1,11 @@
 # Bootloader and Device Firmware Updates (DFU)
 
-A firmware update consists of several steps. First, an update image must be loaded into the MCU. Once this is complete, the image can be verified and, if necessary, applied. 
-
-Here, we will first look at the bootloader — specifically MCUboot. For now, we will skip downloading the image via software and use the _Programmer_ tool from _nRF Connect for Desktop_ instead. Later, we will add the software that handles the firmware update (see DFU chapter). 
+A firmware update consists of several steps. First, an update image must be loaded into the MCU. Once this is complete, the image can be checked and, if verified as correct, used as the new application image. 
 
 
 ## MCUboot
+
+Here, we will first look at the bootloader — specifically MCUboot. For now, we will skip downloading the image via the application firmware and use the _Programmer_ tool from _nRF Connect for Desktop_ instead. Later, we will add the software that handles the firmware update (see DFU chapter). 
 
 1) [Adding MCUboot to a project](mcuboot_AddToProject/README.md)
 
