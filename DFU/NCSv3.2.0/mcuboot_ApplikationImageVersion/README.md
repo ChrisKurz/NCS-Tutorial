@@ -55,3 +55,8 @@ If MCUboot is integrated via sysbuild, as demonstrated in the previous hands-on,
 
            printf("Application version (VERSION_MAJOR|VERSION_MINOR|PATCHLEVEL|VERSION_TWEAK): %s\n", APPVERSION);
 
+## Testing
+5) Build the project and donwload it to your development kit. 
+6) In the terminal you should see following outuput:
+
+   ![image](images/Terminal.jpg)
