@@ -2,6 +2,8 @@
 
 Using a version number for the application image is recommended and is even required for some enabled MCUboot features, such as Downgrade Protection. There are several ways to define a version number for the application. It is recommended to do this via a VERSION file.
 
+If MCUboot is integrated via sysbuild, as demonstrated in the previous hands-on, then MCUboot also uses the VERSION file from the application image and can thus implement features such as downgrade protection. 
+
 ## Required Hardware/Software
 
 - Development kit
