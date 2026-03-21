@@ -36,6 +36,7 @@ This is a collection of links to useful resources that cover the _nRF Connect SD
 ## Books
 
 [Zephyr RTOS Embedded C Programming](https://link.springer.com/book/10.1007/979-8-8688-0107-5) 
+
 [Zephyr RTOS Cookbook](https://www.packtpub.com/en-us/product/zephyr-rtos-cookbook-9781807429164) - Publishing in June 2026, [link to Amazon](https://www.amazon.com/Zephyr-RTOS-Cookbook-portable-hands/dp/1807429172/)
 
 ## Documentation
