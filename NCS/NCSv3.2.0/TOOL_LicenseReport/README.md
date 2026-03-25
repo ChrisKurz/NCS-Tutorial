@@ -47,7 +47,7 @@ Before using the _Software Bill of Materials_ tool, you have to build the projec
 
        west ncs-sbom -d build
 
-   > __Note:__ Generating the SBOM will take some time. Please wait until the prompt is shown again in the terminal window.
+   > __Note:__ Generating the SBOM may take a long time. Please wait until the prompt reappears in the terminal window.
  
    The following screen shot shows the terminal window in case of a successful run. 
 
