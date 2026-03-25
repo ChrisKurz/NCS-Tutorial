@@ -30,7 +30,7 @@ Further details about licenses can be found [here](https://docs.nordicsemi.com/b
 
 Before using the _Software Bill of Materials_ tool, you have to build the project that you would like to check. Build can be done in Visual Studio Code or in command line. Here I am showing how to do it the command line:
 
-3) Go to the patch where your project is stored.
+3) Go to the applicatoin directory.
 
    ![image](images/sbom_ProjectPath.jpg)
 
