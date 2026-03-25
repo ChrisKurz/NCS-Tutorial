@@ -43,6 +43,12 @@ Before using the _Software Bill of Materials_ tool, you have to build the projec
 
 5) And now you can run the _Software Bill of Materials_ tool by entering following command:
 
+       west ncs-sbom -d build
+
+   > __Note:__ Generting the SBOM will take some time. Please wait until the prompt is shown again in the terminal window.
+ 
+   The following screen shot shows the terminal window in case of a successful run. 
+
    ![image](images/sbom_sbom.jpg)
    
 ### License Report
