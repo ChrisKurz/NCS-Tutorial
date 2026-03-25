@@ -22,7 +22,8 @@ Further details about licenses can be found [here](https://docs.nordicsemi.com/b
 
 2) You can check if the tool is installed by entering the following command in the command line. 
 
-       ncs ncs-sbom -h
+       west ncs-sbom -h
+
 
        
 ### First, build your Project
