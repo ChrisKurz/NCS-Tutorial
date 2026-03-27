@@ -22,18 +22,21 @@ Further details about licenses can be found [here](https://docs.nordicsemi.com/b
 
 2) You can check if the tool is installed by entering the following command in the command line. 
 
-       ncs ncs-sbom -h
+       west ncs-sbom -h
+
 
        
 ### First, build your Project
 
 Before using the _Software Bill of Materials_ tool, you have to build the project that you would like to check. Build can be done in Visual Studio Code or in command line. Here I am showing how to do it the command line:
 
-3) Go to the patch where your project is stored.
+3) Go to the applicatoin directory.
 
    ![image](images/sbom_ProjectPath.jpg)
 
-4) Then build the project. 
+4) Then build the project.
+
+       west build -b nrf52840dk/nrf52840       
 
    ![image](images/sbom_Build.jpg)
 
@@ -41,6 +44,12 @@ Before using the _Software Bill of Materials_ tool, you have to build the projec
 ### Generate the License Report
 
 5) And now you can run the _Software Bill of Materials_ tool by entering following command:
+
+       west ncs-sbom -d build
+
+   > __Note:__ Generating the SBOM may take a long time. Please wait until the prompt reappears in the terminal window.
+ 
+   The following screen shot shows the terminal window in case of a successful run. 
 
    ![image](images/sbom_sbom.jpg)
    
