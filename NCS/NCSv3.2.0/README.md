@@ -149,7 +149,7 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
 
 ### License Report
 
-- [__Software Bill of Material: License Report__](TOOL_LicenseReport/README.md)
+- [__Software Bill of Material: License Report__](TOOL_LicenseReport_Nordic/README.md)
 
 
 ### Command Line Tool: west
