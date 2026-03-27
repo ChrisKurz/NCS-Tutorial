@@ -1,65 +1,40 @@
-<sup>SDK version: NCS v3.2.0</sup>
-
 # Getting started: Generating a License Report
 
 ## Introduction
 
-At some point in your development process you will probably also be concerned about the different licenses of the software you are using. The _nRF Connect SDK_ provides a tool that allows you to browse the software modules you are using and it then generates a corresponding license report. 
+At some point in your development process you will probably also be concerned about the different licenses of the software you are using. In addition to Nordic’s solution, Zephyr also offers a similar solution. This tool scans comments containing SPDX license identifiers in source files and then lists them in the generated SPDX documents. It generates SPDX tag-value documents and establishes relationships between source files and the corresponding generated build files.
 
-Further details about licenses can be found [here](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/dev_model_and_contributions/licenses.html) and information about the _Software Bill of Materials_ tool can be found [here](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/scripts/west_commands/sbom/README.html). 
+Further details about licenses can be found [here](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/dev_model_and_contributions/licenses.html) and information about the Zephyr _Software Bill of Materials_ tool can be found [here](https://docs.nordicsemi.com/bundle/ncs-3.1.0/page/zephyr/develop/west/zephyr-cmds.html#software_bill_of_materials_west_spdx). 
 
 
 ## Required Hardware/Software
 - install the _nRF Connect SDK_ v3.2.0 and _Visual Studio Code_. 
-- _Software Bill of Materials_ tool requires installation of additional Python packages. 
 
 
 ## Step-by-step description 
 
-### Ensure the needed software packages are installed on your computer
+1) Before we build the project, we first need to set up the build directory. We do this using the following command-line instruction:
 
-1) The _Software Bill of Materials_ tools requires additional Python packages. These has to be installed once. [Here](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/scripts/west_commands/sbom/README.html#requirements) you find the installation description.
+       west spdx --init -d build_sbom/< project name >
 
-2) You can check if the tool is installed by entering the following command in the command line. 
+   > __Note:__ Replace <code>< project name ></code> with your own project name. For example, if a <code>hello_world</code> project includes MCUBoot, then both the <code>hello_world</code> and <code>mcuboot</code> projects would be found within this SYSBUILD project. In that case, we would use <code>hello_world</code> as the < project name >. 
 
-       west ncs-sbom -h
+2) Now, let's build the project. However, we have to set CONFIG_BUILD_OUTPUT_META=y to generated the required data during build.
+
+       west build -d buld_sbom -b nrf54l15dk/nrf54l15/cpuapp -- -DCONFIG_BUILD_OUTPUT_META=y
+
+3) And finally, we generate the SPDX documents based on this build directory.
+
+       west spdx -d build_sbom
 
 
-       
-### First, build your Project
+This generates the following SPDX bill-of-material (BOM) documents in <code>build_som/spdx</code> folder:
+- __app.spdx__: BOM for the application source files used for the build
+- __zephyr.spdx__: BOM for the specific Zephyr source code files used for the build
+- __build.spdx__: BOM for the built output files
+- __modules-dpes.spdx__: BOM for the modules dependencies.
 
-Before using the _Software Bill of Materials_ tool, you have to build the project that you would like to check. Build can be done in Visual Studio Code or in command line. Here I am showing how to do it the command line:
+> __Note:__ Above command line instructions generate SPDX documents covering compiled source code files (e.g. <code>.c</code>, <code>.s</code>). Header files can be included by using <code>--analyze-includes</code> in the <code>west spdx -d build_sbom</code> instruction.
 
-3) Go to the applicatoin directory.
-
-   ![image](images/sbom_ProjectPath.jpg)
-
-4) Then build the project.
-
-       west build -b nrf52840dk/nrf52840       
-
-   ![image](images/sbom_Build.jpg)
-
-   
-### Generate the License Report
-
-5) And now you can run the _Software Bill of Materials_ tool by entering following command:
-
-       west ncs-sbom -d build
-
-   > __Note:__ Generating the SBOM may take a long time. Please wait until the prompt reappears in the terminal window.
- 
-   The following screen shot shows the terminal window in case of a successful run. 
-
-   ![image](images/sbom_sbom.jpg)
-   
-### License Report
-
-6) The license report file _sbom_report.html_ is created in the project's folder _build_.
-
-   ![image](images/sbom_ReportFile.jpg)
-
-7) In our case the license report looks like this:
-
-   ![image](images/sbom_Report.jpg)
- 
+Further information can be found here:
+- [EmbeddedOSSummit: "Practical SBOM Management with Zephyr and SPDX"](https://zephyrproject.org/practical-sbom-management-with-zephyr-and-spdx-benjamin-cabe-the-linux-foundation/)
