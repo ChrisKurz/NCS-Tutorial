@@ -52,7 +52,7 @@ In this hands-on we take a closer look at swap type "test".
 
 #### Copy previous project
 
-2) Copy the previous project and reanme it. 
+2) Copy the previous project and rename it. 
 
    > __Note:__ Do not use "mcuboot" as your project folder name here! 
 
