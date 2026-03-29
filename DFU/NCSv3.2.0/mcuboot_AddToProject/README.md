@@ -90,15 +90,15 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 
 
-4) Build the project and take a look at the **build**, **build/MCUboot1/zephyr**, and **build/mcuboot/zephyr** folders. Adding MCUboot and the associated activation of a multi-image build results in additional files being generated in these folders. The most important files are:
+4) Build the project and take a look at the **build**, **build/hello_world/zephyr**, and **build/mcuboot/zephyr** folders. Adding MCUboot and the associated activation of a multi-image build results in additional files being generated in these folders. The most important files are:
 
+&nbsp;  - __build/hello_world/zephyr/zephyr.hex__: This file contains the image of the application project. However, the image is not signed!
 
-
-&nbsp;  - __build/01\_MCUboot1/zephyr/zephyr.hex__: This file contains the image of the application project.
+&nbsp;  - __build/hello_world/zephyr/zephyr.signed.hex__: This file contains the image of the application project. It is signed. In this project we used the default key for signature that is for debugging only!
 
 &nbsp;  - __build/mcuboot/zephyr/zephyr.hex__: This file contains the image of the bootloader, the mcuboot project. 
 
-&nbsp;  - __build/merged.hex__: The different zephyr.hex files of a multi-image build are merged together and stored in the __merged.hex__ file. So in our example the zephyr.hex files of the _MCUboot1_ project and the mcuboot project are merged. 
+&nbsp;  - __build/merged.hex__: The __zephyr.signed.hex__ file from the application build (_hello_world_) and the __zephyr.hex__ file from mcuboot are merged and stored in the __merged.hex__ file.
 
 &nbsp;  
 
