@@ -4,21 +4,7 @@
 
 ## Introduction
 
-MCUboot supports various operating modes that define how an update image is handled. The following operational modes of MCUboot exist:
-- __Swap using Scratch__: Implements an algorithm for swapping images between a slot containing the image to be processed (_slot 0_) and a slot containing the updated image (_slot 1_). The swap is performed using a scratch memory area. 
-- __Swap using Move__: Implements an algorithm for swapping images between two slots by moving sectors; offers greater efficiency than swap operations based on a scratch memory area and is suitable only for memory with uniform erase block sizes.
-- __Swap using offset__: Introduces a new algorithm for swapping images between two slots, which shifts sectors and improves speed through optimizations; applicable to memory with uniform erase block sizes.
-- __Overwrite__: 	Uses a simple algorithm to overwrite the execution images (_slot 0_) with the update image (_slot 1_). 
-- __Direct-XIP__: Enables the execution of images directly from its slot memory (_slot 0_ or _slot 1_). A new image is loaded into an alternate slot, where code is also executed. This is eliminating the need to swap out or overwrite NVM.
-- __Direct-XIP with revert__: Enables dual-slot image execution directly from storage with additional support for reverting to a previous image if necessary, enhancing system reliability.
-- __Firmware loader__: Provides a dual-slot image firmware loading mode that allows dynamic selection of the image slot for booting the application, accommodating slots of different sizes.
-- __Single application__: Supports a single application image mode, utilized when only one application image is necessary and dual-slot operations are not required.
-
-With swap solutions in particular, you have the option to revert the image if problems arise with an update image. 
-
-Upgrading an old image with a new one by swapping can be a two-step process. In this process, MCUboot performs a “test” swap of image data in flash and boots the new image or it will be executed during operation. The new image can then update the contents of flash at runtime to mark itself “OK”, and MCUboot will then still choose to run it during the next boot. When this happens, the swap is made “permanent”. If this doesn’t happen, MCUboot will perform a “revert” swap during the next boot by swapping the image(s) back into its original location(s) , and attempting to boot the old image(s).
-
-On startup, MCUboot inspects the contents of flash to decide for each images which of these “swap types” to perform; this decision determines how it proceeds.
+At startup, MCUboot checks the contents of the flash memory to determine which of these “swap types” should be executed for the current image. This decision then determines the subsequent sequence of events.
 
 The possible swap types, and their meanings, are:
 - BOOT_SWAP_TYPE_NONE: The “usual” or “no upgrade” case; attempt to boot the contents of the primary slot.
@@ -28,7 +14,7 @@ The possible swap types, and their meanings, are:
 - BOOT_SWAP_TYPE_FAIL: Swap failed because image to be run is not valid.
 - BOOT_SWAP_TYPE_PANIC: Swapping encountered an unrecoverable error.
 
-In this hands-on we take a closer look at swap type "test". 
+In this hands-on we take a closer look at swap type "permanent". 
 
 
 ## Required Hardware/Software
@@ -48,6 +34,9 @@ In this hands-on we take a closer look at swap type "test".
 
 1) Let's use the previous project as the original application image. The Intel Hex file of previous project can be downloaded [here](Intel_Hex_Files/AppImage_merged.hex).
 
+   > __Note:__ This image is the one we prepared in the hands-on [Defining an Appication Image Version](../mcuboot_ApplikationImageVersion/README.md).
+
+
 ### Update Image
 
 #### Copy previous project
@@ -64,11 +53,11 @@ In this hands-on we take a closer look at swap type "test".
 
     <sup>VERSION</sup>   
 
-        VERSION_MAJOR = 2
-        VERSION_MINOR = 2
-        PATCHLEVEL = 3
-        VERSION_TWEAK = 4
-        EXTRAVERSION = test-1
+        VERSION_MAJOR = 6
+        VERSION_MINOR = 7
+        PATCHLEVEL = 8
+        VERSION_TWEAK = 9
+        EXTRAVERSION = test-2
 
 4) And change output string "Image: MCUboot1" to the following:
 
@@ -76,67 +65,81 @@ In this hands-on we take a closer look at swap type "test".
 
        printf("Image: MCUboot2 \n");
 
+5) Finally, we need to ensure that this image is marked as "permanent". To do this, we must set the status to "confirmed". The easiest way to do this is to use the corresponding KCONFIG symbol.
+
+   <sup>prj.conf</sup>
+
+       CONFIG_MCUBOOT_GENERATE_CONFIRMED_IMAGE=y
+
+6) Let's also disable Partition Manager and use Zephyr's DeviceTree for definition of memory partitions. 
+
+   <sup>sysbuild.conf</sup>
+
+       SB_CONFIG_PARTITION_MANAGER=n
+
+7) Now build the project.
+
+### Update Intel Hex file to place Update Image in slot 1
+
+8) The build has generated the file __zephyr.signed.confirmed.hex__. 
+
+   <sup>ommand line instruction</sup>
+
+       arm-zephyr-eabi-objcopy --change-addresses 0xA6000 zephyr.signed.confirmed.hex zephyr.signed.confirmed.moved.hex
+
+  > __Note:__ In the zephyr.dts file generated during the build, you can check which memory partitions were used. With the default settings for the nRF54L15DK, the code to be executed is placed in the “slot0_partition” (image-0), which starts at address 0x10000. Since we want to generate an update image here that should be located in the slot1_partition (image_1), we need to adjust the address in the Intel Hex file. slot1_partition starts at address 0xB6000. Therefore, we must shift the Intel Hex addresses by the offset 0xB6000 - 0x10000 = 0xA6000. 
+  > 
+  > ![image](images/zephyr.dts-jpg)> 
 
 ## Testing
 
-5) Start "Programmer" in nRF Connect for Desktop. 
+9) Start "Programmer" in nRF Connect for Desktop. 
 
-6) Connect to your development kit. 
+10) Connect to your development kit.
 
-7) Click "Add File" and select the original Application Image file [AppImage_merged.hex](Intel_Hex_Files/AppImage_merged.hex).
+### Use Programmer for Update Image
 
-8) In the Programmer you should see two blocks:
+11) Click "Add File" and select the original Application Image files [zephyr.hex (this is MCUboot)](Intel_Hex_Files/zephyr.hex) and [zephyr.signed.hex (this is the original application)](Intel_Hex_Files/zephyr.signed.hex).
+
+12) In the Programmer you should see two blocks:
 
    ![missing image](images/Programmer_AppImage.jpg)
 
-9) Click "Erase & Write" button.
-10) You should see in the Serial Terminal that first MCUboot starts and then the application image is executed.
+13) Click "Erase All" and aftwards "Erase & Write" button.
+14) You should see in the Serial Terminal that first MCUboot starts and then the application image is executed.
 
    ![image](images/Terminal_AppImage.jpg)
 
+15) Add the file [zephyr.signed.confirmed.moved.hex](images/zephyr.signed.confirmed.moved.hex) to Programmer and click "Erase & write". You should now see that the Update Image is placed in the upper slot-1.
+
+    ![image](images/Programmer_UpdateImage.jpg)
+
+16) The programmer is doing a reset as soon as the program download is completed. So you will see that immediatly the new image is used. Note that swap type is now "perm" (permanent).
+
+   ![image](images/Terminal_UpdateImage.jpg)
+
+   > __Note:__ When you again press the Reset button on the development kit, you will see that the swap type is changed to "none". 
 
 
+### Use nrfutil for Udpate Image
 
+17) Ensure that the original Application Image files [zephyr.hex (this is MCUboot)](Intel_Hex_Files/zephyr.hex) and [zephyr.signed.hex (this is the original application)](Intel_Hex_Files/zephyr.signed.hex) are the selected images in Programmer app. Then Press "Erase All" and afterwards "Erase & write".
 
+18) Terminal should show the original application software output. 
 
+   ![image](images/images/Terminal_AppImage_2.jpg)
 
+19) Now we use nrfutil to download the update image. Open the terminal in Visual Studio Code by clicking the "Open terminal" button.
 
+   ![image](images/OpenTerminal.jpg)
 
+20) Enter following instruction in the terminal:
 
-11) Let's add the update Image in the programmer. Click "Add File" and select in your project folder /build/<_project folder name_>/zephyr/zephyr.hex file. 
+        nrfutil device program --firmware zephyr.signed.confirmed.moved.hex --options chip_erase_mode=ERASE_NONE --traits jlink
 
-=> VS code does not generate intel hex file that is placed in upper memory... => can imgtool be used to generate a address corrected file?
+ > __Note:__ This instruction ensures that the memory is not erased and the new code is loaded into slot-1. This command will also not cause a Reset. This means, after execution of this command we have to press the Reset button on the nRF54L15DK.
 
+21) You should see in the terminal that the firmware was updated.
 
-   use following command line instruction to change the start address of the intel hex file image. 
-
-    arm-none-eabi-objcopy --change-addresses <offset> input.hex output.hex
-
-    <offset> =   0x10000
-
-    if in the input.hex file the start address is 0x080000000 then the start address in output.hex is 0x08010000
-
-    note that the <offset> can also be negative.
-
-
-
-
-
-
-
-
-
-8) In the Programmer you should see two blocks:
-
-   ![missing image](images/Programmer.jpg)
-
-&nbsp;  The orange block at the bottom is the bootloader image. It is located at address 0x0000. Starting at address 0xC000 you find the green block, which is the _hello world_ application image. 
-
-9) In the Programmer tool click "Earse all" and afterwards "Erase & write".
-
-10) When programming is completed, check the Terminal output. In case nothing is shown in the terminal, press the RESET button on the development kit.
-
-  ![missing image](images/Terminal.jpg)
-  
-__Note__: The application is printing just once after a reset. So you have to press the Reset button on the development kit to see the output in the terminal window.
+   ![image](images/Terminal_UpdateImage_2.jpg)
 
