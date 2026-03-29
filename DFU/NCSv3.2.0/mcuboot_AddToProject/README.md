@@ -51,21 +51,13 @@ So, first we will take a look on how to add MCUboot to an own project.
 >  __Note:__ In previous hands-on we used the function __printk()__, which is included in the Zephyr kernel. In the Zephyr hello\_world example the [PICOLIB](https://docs.nordicsemi.com/bundle/ncs-3.0.0/page/zephyr/develop/languages/c/picolibc.html) library is included. This library supports all standard C formatted input and output functions, like _printf()_. This is also the reason why _#include <stdio.h>_ is used in the code example.
 
 
-3) Now we want to add MCUboot to our project.
+3) Now we want to add MCUboot to our project. _Sysbuild_ allows us to handle two independent projects within a single project build. So it is basically doing a multi-image build. The images are:
+   - our own application image. In this hands-on it is the hello world project that also prints "Image: MCUboot1" and
+   - the MCUboot project itself, which is provided by the _nRF Connect SDK_ installation. So here we will only use KCONFIG to define the features that we would like to use from the provided MCUboot project. We will not change the MCUboot source code!
 
-&nbsp;  _Sysbuild_ allows us to handle two independent projects within a single project build. So it is basically doing a multi-image build. The images are:
+   We will use a _Sysbuild_ KConfig project file for doing all the needed sysbuild configurations. Add the file __sysbuild.conf__ to your project folder (this is the folder where the CMakeLists.txt file is located). The file structure of your project should look like this:
 
-&nbsp;   - our own application image. In this hands-on it is the hello world project that also prints "Image: MCUboot1" and
-
-&nbsp;   - the MCUboot project itself, which is provided by the _nRF Connect SDK_ installation. So here we will only use KCONFIG to define the features that we would like to use from the provided MCUboot project. We will not change the MCUboot source code!
-
-
-
-&nbsp;  We will use a _Sysbuild_ KConfig project file for doing all the needed sysbuild configurations. Add the file __sysbuild.conf__ to your project folder (this is the folder where the CMakeLists.txt file is located). The file structure of your project should look like this:
-
-
-
-&nbsp;   _Workspace folder_/helloWorld<br>
+   _Workspace folder_/helloWorld<br>
 
 &nbsp;   |--- src<br>
 &nbsp;   |--- |--- main.c<br>
@@ -78,7 +70,7 @@ So, first we will take a look on how to add MCUboot to an own project.
 > __NOTE:__ The folder and file structure shown above also contains a folder called _sysbuild_ and the file _mcuboot.conf_. This is not really necessary for this hands-on, as we are currently working with the default configuration of MCUboot. Later, we will add further MCUboot-specific KCONFIG settings to the file _sysbuild/mcuboot.conf_.
 
 
-&nbsp;  Adding MCUboot to our project is done by putting **SB\_CONFIG\_BOOTLOADER\_MCUBOOT=y** into the _sysbuild.conf_ file.
+Adding MCUboot to our project is done by putting **SB\_CONFIG\_BOOTLOADER\_MCUBOOT=y** into the _sysbuild.conf_ file.
 
 
 
@@ -89,21 +81,14 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 
 4) Build the project and take a look at the **build**, **build/hello_world/zephyr**, and **build/mcuboot/zephyr** folders. Adding MCUboot and the associated activation of a multi-image build results in additional files being generated in these folders. The most important files are:
+   - __build/hello_world/zephyr/zephyr.hex__: This file contains the image of the application project. However, the image is not signed!
+   - __build/hello_world/zephyr/zephyr.signed.hex__: This file contains the image of the application project. It is signed. In this project we used the default key for signature that is for debugging only!
+   - __build/mcuboot/zephyr/zephyr.hex__: This file contains the image of the bootloader, the mcuboot project. 
+   - __build/merged.hex__: The __zephyr.signed.hex__ file from the application build (_hello_world_) and the __zephyr.hex__ file from mcuboot are merged and stored in the __merged.hex__ file.
 
-&nbsp;  - __build/hello_world/zephyr/zephyr.hex__: This file contains the image of the application project. However, the image is not signed!
+  Further generated files are described [here](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/app_dev/config_and_build/output_build_files.html#common_output_build_files).
 
-&nbsp;  - __build/hello_world/zephyr/zephyr.signed.hex__: This file contains the image of the application project. It is signed. In this project we used the default key for signature that is for debugging only!
-
-&nbsp;  - __build/mcuboot/zephyr/zephyr.hex__: This file contains the image of the bootloader, the mcuboot project. 
-
-&nbsp;  - __build/merged.hex__: The __zephyr.signed.hex__ file from the application build (_hello_world_) and the __zephyr.hex__ file from mcuboot are merged and stored in the __merged.hex__ file.
-
-&nbsp;  
-
-&nbsp;  Further generated files are described [here](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/app_dev/config_and_build/output_build_files.html#common_output_build_files).
-
-
-
+> __Note:__ As mentioned above, a signed image is also generated during the build. Please note that the default debugging key included with MCUboot is used for this purpose. We strongly recommend using your own signing key before deploying the image in production.
 
 
 ## Testing
@@ -147,7 +132,7 @@ Let's run a few tests with the generated hex files in the next steps. We will lo
 
 13) You can see the two added hex images on the memory map in the programmer app.
 
-   ![image](images/Programmer_unsigned.jpg)
+   ![image](images/Programmer_signed.jpg)
 
 &nbsp;  The orange block at the bottom is again the bootloader image. Above this bootloader image you find the green block, which is the signed _hello_world_ application image.
 
@@ -155,7 +140,7 @@ Let's run a few tests with the generated hex files in the next steps. We will lo
 
 15) When programming is completed, check the Terminal output. In case nothing is shown in the terminal, try to change COM port and press the RESET button on the development kit. 
 
-    ![image](images/Terminal_unsigned.jpg)
+    ![image](images/Terminal_signed.jpg)
 
 > __Note:__ Here we have used the signed application image. The signature check done by MCUboot is successful and it finally starts execution of the application image. 
 
@@ -174,7 +159,7 @@ Let's run a few tests with the generated hex files in the next steps. We will lo
 
 19) When programming is completed, check the Terminal output. In case nothing is shown in the terminal, press the RESET button on the development kit.
 
-  ![missing image](images/Terminal.jpg)
+  ![missing image](images/Terminal_merged.jpg)
   
 __Note__: Since the merged.hex image uses also the singed application image, you should see that the application is executed.
 
