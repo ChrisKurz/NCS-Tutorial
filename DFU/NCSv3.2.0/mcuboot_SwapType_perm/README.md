@@ -71,78 +71,75 @@ In this hands-on we take a closer look at swap type "permanent".
 
        CONFIG_MCUBOOT_GENERATE_CONFIRMED_IMAGE=y
 
-6) Now build the project.
+6) Let's also disable Partition Manager and use Zephyr's DeviceTree for definition of memory partitions. 
+
+   <sup>sysbuild.conf</sup>
+
+       SB_CONFIG_PARTITION_MANAGER=n
+
+7) Now build the project.
 
 ### Update Intel Hex file to place Update Image in slot 1
 
-7) The build has generated the file __zephyr.signed.confirmed.hex__. 
+8) The build has generated the file __zephyr.signed.confirmed.hex__. 
 
    <sup>ommand line instruction</sup>
 
        arm-zephyr-eabi-objcopy --change-addresses 0xA6000 zephyr.signed.confirmed.hex zephyr.signed.confirmed.moved.hex
 
-
+  > __Note:__ In the zephyr.dts file generated during the build, you can check which memory partitions were used. With the default settings for the nRF54L15DK, the code to be executed is placed in the “slot0_partition” (image-0), which starts at address 0x10000. Since we want to generate an update image here that should be located in the slot1_partition (image_1), we need to adjust the address in the Intel Hex file. slot1_partition starts at address 0xB6000. Therefore, we must shift the Intel Hex addresses by the offset 0xB6000 - 0x10000 = 0xA6000. 
+  > 
+  > ![image](images/zephyr.dts-jpg)> 
 
 ## Testing
 
-5) Start "Programmer" in nRF Connect for Desktop. 
+9) Start "Programmer" in nRF Connect for Desktop. 
 
-6) Connect to your development kit. 
+10) Connect to your development kit.
 
-7) Click "Add File" and select the original Application Image file [AppImage_merged.hex](Intel_Hex_Files/AppImage_merged.hex).
+### Use Programmer for Update Image
 
-8) In the Programmer you should see two blocks:
+11) Click "Add File" and select the original Application Image files [zephyr.hex (this is MCUboot)](Intel_Hex_Files/zephyr.hex) and [zephyr.signed.hex (this is the original application)](Intel_Hex_Files/zephyr.signed.hex).
+
+12) In the Programmer you should see two blocks:
 
    ![missing image](images/Programmer_AppImage.jpg)
 
-9) Click "Erase & Write" button.
-10) You should see in the Serial Terminal that first MCUboot starts and then the application image is executed.
+13) Click "Erase All" and aftwards "Erase & Write" button.
+14) You should see in the Serial Terminal that first MCUboot starts and then the application image is executed.
 
    ![image](images/Terminal_AppImage.jpg)
 
+15) Add the file [zephyr.signed.confirmed.moved.hex](images/zephyr.signed.confirmed.moved.hex) to Programmer and click "Erase & write". You should now see that the Update Image is placed in the upper slot-1.
+
+    ![image](images/Programmer_UpdateImage.jpg)
+
+16) The programmer is doing a reset as soon as the program download is completed. So you will see that immediatly the new image is used. Note that swap type is now "perm" (permanent).
+
+   ![image](images/Terminal_UpdateImage.jpg)
+
+   > __Note:__ When you again press the Reset button on the development kit, you will see that the swap type is changed to "none". 
 
 
+### Use nrfutil for Udpate Image
 
+17) Ensure that the original Application Image files [zephyr.hex (this is MCUboot)](Intel_Hex_Files/zephyr.hex) and [zephyr.signed.hex (this is the original application)](Intel_Hex_Files/zephyr.signed.hex) are the selected images in Programmer app. Then Press "Erase All" and afterwards "Erase & write".
 
+18) Terminal should show the original application software output. 
 
+   ![image](images/images/Terminal_AppImage_2.jpg)
 
+19) Now we use nrfutil to download the update image. Open the terminal in Visual Studio Code by clicking the "Open terminal" button.
 
+   ![image](images/OpenTerminal.jpg)
 
+20) Enter following instruction in the terminal:
 
-11) Let's add the update Image in the programmer. Click "Add File" and select in your project folder /build/<_project folder name_>/zephyr/zephyr.hex file. 
+        nrfutil device program --firmware zephyr.signed.confirmed.moved.hex --options chip_erase_mode=ERASE_NONE --traits jlink
 
-=> VS code does not generate intel hex file that is placed in upper memory... => can imgtool be used to generate a address corrected file?
+ > __Note:__ This instruction ensures that the memory is not erased and the new code is loaded into slot-1. This command will also not cause a Reset. This means, after execution of this command we have to press the Reset button on the nRF54L15DK.
 
+21) You should see in the terminal that the firmware was updated.
 
-   use following command line instruction to change the start address of the intel hex file image. 
-
-    arm-none-eabi-objcopy --change-addresses <offset> input.hex output.hex
-
-    <offset> =   0x10000
-
-    if in the input.hex file the start address is 0x080000000 then the start address in output.hex is 0x08010000
-
-    note that the <offset> can also be negative.
-
-
-
-
-
-
-
-
-
-8) In the Programmer you should see two blocks:
-
-   ![missing image](images/Programmer.jpg)
-
-&nbsp;  The orange block at the bottom is the bootloader image. It is located at address 0x0000. Starting at address 0xC000 you find the green block, which is the _hello world_ application image. 
-
-9) In the Programmer tool click "Earse all" and afterwards "Erase & write".
-
-10) When programming is completed, check the Terminal output. In case nothing is shown in the terminal, press the RESET button on the development kit.
-
-  ![missing image](images/Terminal.jpg)
-  
-__Note__: The application is printing just once after a reset. So you have to press the Reset button on the development kit to see the output in the terminal window.
+   ![image](images/Terminal_UpdateImage_2.jpg)
 
