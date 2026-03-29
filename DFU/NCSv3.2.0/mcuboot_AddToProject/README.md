@@ -1,5 +1,3 @@
-<sup>SDK version: NCS v3.2.0 </sup>
-
 # MCUboot:  Adding MCUboot to a Project
 
 ## Introduction
@@ -114,19 +112,69 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 6) Connect to your development kit. 
 
-7) Click "Add File" and select in your project folder /build/merged.hex file.
+Let's run a few tests with the generated hex files in the next steps. We will look at the following combinations of the _hello_world_ application image and the _mcuboot_ image:
+- Application = zephyr.hex, MCUboot = zephyr.hex
+- Application = zephyr.signed.hex, MCUboot = zephyr.hex
+- Using merged.hex
 
-8) In the Programmer you should see two blocks:
 
-   ![missing image](images/Programmer.jpg)
+### Application = zephyr.hex, MCUboot = zephyr.hex
 
-&nbsp;  The orange block at the bottom is the bootloader image. It is located at address 0x0000. Starting at address 0xC000 you find the green block, which is the _hello world_ application image. 
+7) You have to add two hex images by clicking "Add File":
+   - select in your project folder build/hello_world/zephyr/zephyr.hex  and
+   - select mcuboot image in folder build/mcuboot/zephyr/zephyr.hex
 
-9) In the Programmer tool click "Earse all" and afterwards "Erase & write".
+8) You can see the two added hex images on the memory map in the programmer app.
 
-10) When programming is completed, check the Terminal output. In case nothing is shown in the terminal, press the RESET button on the development kit.
+   ![image](images/Programmer_unsigned.jpg)
+
+&nbsp;  The orange block at the bottom is the bootloader image. It is located at address 0x0000. Above this bootloader image you find the green block, which is the _hello_world_ application image.
+
+9) Ensure the Serial Terminal app is running on the PC. 
+10) In the Programmer tool click "Erase all" and afterwards "Erase & write".
+11) When programming is completed, check the Terminal output. In case nothing is shown in the terminal, try to change COM port and press the RESET button on the development kit. 
+
+    ![image](images/Terminal_unsigned.jpg)
+
+> __Note:__ We have used the unsigned application image. Since MCUboot is checking the signature of the application image before it is executed, it detects that the code is not valid and it blocks its execution.
+
+
+### Application = zephyr.signed.hex, MCUboot = zephyr.hex
+
+12) Clear the Programmer app's "file memory layout" by clicking "Clear files" button. Then test the same by using following hex files:
+   - select in your project folder build/hello_world/zephyr/zephyr.singed.hex  and
+   - select mcuboot image in folder build/mcuboot/zephyr/zephyr.hex
+
+13) You can see the two added hex images on the memory map in the programmer app.
+
+   ![image](images/Programmer_unsigned.jpg)
+
+&nbsp;  The orange block at the bottom is again the bootloader image. Above this bootloader image you find the green block, which is the signed _hello_world_ application image.
+
+14) In the Programmer tool click "Erase & write".
+
+15) When programming is completed, check the Terminal output. In case nothing is shown in the terminal, try to change COM port and press the RESET button on the development kit. 
+
+    ![image](images/Terminal_unsigned.jpg)
+
+> __Note:__ Here we have used the signed application image. The signature check done by MCUboot is successful and it finally starts execution of the application image. 
+
+
+### Using merged.hex
+
+16) Clear the Programmer app's "file memory layout" by clicking "Clear files" button. Then click "Add File" and select in your project folder /build/merged.hex file.
+
+17) In the Programmer you should see two blocks:
+
+   ![missing image](images/Programmer_merged.jpg)
+
+&nbsp;  As the merged.hex file uses the signed application image and the mcuboot image, the result should be the same as in pevious test.
+
+18) In the Programmer tool click "Erase & write".
+
+19) When programming is completed, check the Terminal output. In case nothing is shown in the terminal, press the RESET button on the development kit.
 
   ![missing image](images/Terminal.jpg)
   
-__Note__: The application is printing just once after a reset. So you have to press the Reset button on the development kit to see the output in the terminal window.
+__Note__: Since the merged.hex image uses also the singed application image, you should see that the application is executed.
 
