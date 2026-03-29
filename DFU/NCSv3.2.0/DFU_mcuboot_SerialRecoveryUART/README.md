@@ -1,4 +1,4 @@
-<sup>SDK version: NCS v3.2.0 </sup>
+__!!! UNDER CONSTRUCTION !!!__
 
 # MCUboot: Serial Recovery - UART
 
