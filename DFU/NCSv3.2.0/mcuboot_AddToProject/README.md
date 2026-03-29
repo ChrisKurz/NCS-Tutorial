@@ -147,7 +147,7 @@ Let's run a few tests with the generated hex files in the next steps. We will lo
 
 13) You can see the two added hex images on the memory map in the programmer app.
 
-   ![image](images/Programmer_unsigned.jpg)
+   ![image](images/Programmer_signed.jpg)
 
 &nbsp;  The orange block at the bottom is again the bootloader image. Above this bootloader image you find the green block, which is the signed _hello_world_ application image.
 
@@ -155,7 +155,7 @@ Let's run a few tests with the generated hex files in the next steps. We will lo
 
 15) When programming is completed, check the Terminal output. In case nothing is shown in the terminal, try to change COM port and press the RESET button on the development kit. 
 
-    ![image](images/Terminal_unsigned.jpg)
+    ![image](images/Terminal_signed.jpg)
 
 > __Note:__ Here we have used the signed application image. The signature check done by MCUboot is successful and it finally starts execution of the application image. 
 
@@ -174,7 +174,7 @@ Let's run a few tests with the generated hex files in the next steps. We will lo
 
 19) When programming is completed, check the Terminal output. In case nothing is shown in the terminal, press the RESET button on the development kit.
 
-  ![missing image](images/Terminal.jpg)
+  ![missing image](images/Terminal_merged.jpg)
   
 __Note__: Since the merged.hex image uses also the singed application image, you should see that the application is executed.
 
