@@ -98,8 +98,6 @@ So, first we will take a look on how to add MCUboot to an own project.
 
 &nbsp;  - __build/merged.hex__: The __zephyr.signed.hex__ file from the application build (_hello_world_) and the __zephyr.hex__ file from mcuboot are merged and stored in the __merged.hex__ file.
 
-&nbsp;  
-
 &nbsp;  Further generated files are described [here](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/app_dev/config_and_build/output_build_files.html#common_output_build_files).
 
 > __Note:__ As mentioned above, a signed image is also generated during the build. Please note that the default debugging key included with MCUboot is used for this purpose. We strongly recommend using your own signing key before deploying the image in production.
