@@ -4,21 +4,7 @@
 
 ## Introduction
 
-MCUboot supports various operating modes that define how an update image is handled. The following operational modes of MCUboot exist:
-- __Swap using Scratch__: Implements an algorithm for swapping images between a slot containing the image to be processed (_slot 0_) and a slot containing the updated image (_slot 1_). The swap is performed using a scratch memory area. 
-- __Swap using Move__: Implements an algorithm for swapping images between two slots by moving sectors; offers greater efficiency than swap operations based on a scratch memory area and is suitable only for memory with uniform erase block sizes.
-- __Swap using offset__: Introduces a new algorithm for swapping images between two slots, which shifts sectors and improves speed through optimizations; applicable to memory with uniform erase block sizes.
-- __Overwrite__: 	Uses a simple algorithm to overwrite the execution images (_slot 0_) with the update image (_slot 1_). 
-- __Direct-XIP__: Enables the execution of images directly from its slot memory (_slot 0_ or _slot 1_). A new image is loaded into an alternate slot, where code is also executed. This is eliminating the need to swap out or overwrite NVM.
-- __Direct-XIP with revert__: Enables dual-slot image execution directly from storage with additional support for reverting to a previous image if necessary, enhancing system reliability.
-- __Firmware loader__: Provides a dual-slot image firmware loading mode that allows dynamic selection of the image slot for booting the application, accommodating slots of different sizes.
-- __Single application__: Supports a single application image mode, utilized when only one application image is necessary and dual-slot operations are not required.
-
-With swap solutions in particular, you have the option to revert the image if problems arise with an update image. 
-
-Upgrading an old image with a new one by swapping can be a two-step process. In this process, MCUboot performs a “test” swap of image data in flash and boots the new image or it will be executed during operation. The new image can then update the contents of flash at runtime to mark itself “OK”, and MCUboot will then still choose to run it during the next boot. When this happens, the swap is made “permanent”. If this doesn’t happen, MCUboot will perform a “revert” swap during the next boot by swapping the image(s) back into its original location(s) , and attempting to boot the old image(s).
-
-On startup, MCUboot inspects the contents of flash to decide for each images which of these “swap types” to perform; this decision determines how it proceeds.
+At startup, MCUboot checks the contents of the flash memory to determine which of these “swap types” should be executed for the current image. This decision then determines the subsequent sequence of events.
 
 The possible swap types, and their meanings, are:
 - BOOT_SWAP_TYPE_NONE: The “usual” or “no upgrade” case; attempt to boot the contents of the primary slot.
@@ -28,7 +14,7 @@ The possible swap types, and their meanings, are:
 - BOOT_SWAP_TYPE_FAIL: Swap failed because image to be run is not valid.
 - BOOT_SWAP_TYPE_PANIC: Swapping encountered an unrecoverable error.
 
-In this hands-on we take a closer look at swap type "test". 
+In this hands-on we take a closer look at swap type "permanent". 
 
 
 ## Required Hardware/Software
@@ -48,6 +34,9 @@ In this hands-on we take a closer look at swap type "test".
 
 1) Let's use the previous project as the original application image. The Intel Hex file of previous project can be downloaded [here](Intel_Hex_Files/AppImage_merged.hex).
 
+   > __Note:__ This image is the one we prepared in the hands-on [Defining an Appication Image Version](../mcuboot_ApplikationImageVersion/README.md).
+
+
 ### Update Image
 
 #### Copy previous project
@@ -64,17 +53,34 @@ In this hands-on we take a closer look at swap type "test".
 
     <sup>VERSION</sup>   
 
-        VERSION_MAJOR = 2
-        VERSION_MINOR = 2
-        PATCHLEVEL = 3
-        VERSION_TWEAK = 4
-        EXTRAVERSION = test-1
+        VERSION_MAJOR = 6
+        VERSION_MINOR = 7
+        PATCHLEVEL = 8
+        VERSION_TWEAK = 9
+        EXTRAVERSION = test-2
 
 4) And change output string "Image: MCUboot1" to the following:
 
    <sup>_src/main.c_ => main() function</sup>
 
        printf("Image: MCUboot2 \n");
+
+5) Finally, we need to ensure that this image is marked as "permanent". To do this, we must set the status to "confirmed". The easiest way to do this is to use the corresponding KCONFIG symbol.
+
+   <sup>prj.conf</sup>
+
+       CONFIG_MCUBOOT_GENERATE_CONFIRMED_IMAGE=y
+
+6) Now build the project.
+
+### Update Intel Hex file to place Update Image in slot 1
+
+7) The build has generated the file __zephyr.signed.confirmed.hex__. 
+
+   <sup>ommand line instruction</sup>
+
+       arm-zephyr-eabi-objcopy --change-addresses 0xA6000 zephyr.signed.confirmed.hex zephyr.signed.confirmed.moved.hex
+
 
 
 ## Testing
