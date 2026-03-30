@@ -1,6 +1,4 @@
-<sup>SDK version: NCS v3.2.0 </sup>
-
-# MCUboot's Swap Type "Test"
+# MCUboot's Swap Type "perm"
 
 ## Introduction
 
