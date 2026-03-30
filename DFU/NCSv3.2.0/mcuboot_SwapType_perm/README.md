@@ -125,7 +125,7 @@ In this hands-on we take a closer look at swap type "permanent".
 
 18) Terminal should show the original application software output. 
 
-   ![image](images/images/Terminal_AppImage_2.jpg)
+   ![image](images/Terminal_AppImage_2.jpg)
 
 19) Now we use nrfutil to download the update image. Open the terminal in Visual Studio Code by clicking the "Open terminal" button.
 
