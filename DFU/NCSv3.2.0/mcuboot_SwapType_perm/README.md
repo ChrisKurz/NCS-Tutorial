@@ -87,7 +87,7 @@ In this hands-on we take a closer look at swap type "permanent".
 
   > __Note:__ In the zephyr.dts file generated during the build, you can check which memory partitions were used. With the default settings for the nRF54L15DK, the code to be executed is placed in the “slot0_partition” (image-0), which starts at address 0x10000. Since we want to generate an update image here that should be located in the slot1_partition (image_1), we need to adjust the address in the Intel Hex file. slot1_partition starts at address 0xB6000. Therefore, we must shift the Intel Hex addresses by the offset 0xB6000 - 0x10000 = 0xA6000. 
   > 
-  > ![image](images/zephyr.dts-jpg)> 
+  > ![image](images/zephyr.dts.jpg)> 
 
 ## Testing
 
