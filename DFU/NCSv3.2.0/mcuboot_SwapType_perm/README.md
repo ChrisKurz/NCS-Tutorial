@@ -1,4 +1,4 @@
-# MCUboot's Swap Type "perm"
+# MCUboot's Swap Type "permanent"
 
 ## Introduction
 
