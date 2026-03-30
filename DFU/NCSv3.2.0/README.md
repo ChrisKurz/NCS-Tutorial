@@ -11,17 +11,7 @@ Here, we will first look at the bootloader — specifically MCUboot. For now, we
 
 2) [Defining an Appication Image Version](mcuboot_ApplikationImageVersion/README.md)
 
-[Create Update Image that uses Swap Type "Permanent"]()
-
-[Using on Signature Key for Application Image]()
-
-[Using External Flash]()
-
-[Image Encryption]()
-
-[Downgrade prevention]()
-
-[Swap with Scratch ???]()
+3) [Create Update Image that uses Swap Type "Permanent"](mcuboot_SwapType_perm/README.md) - creating a confirmed update image.
 
 
 ## Device Firmware Update (DFU) 
