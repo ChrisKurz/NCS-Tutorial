@@ -31,10 +31,13 @@ The latest _nRF Connect SDK_ version used here is NCS version 3.2.0.
 
 #### Services
 
+##### User-defined Profiles
 - [__Custom Service__](peripheral_service_custom/README.md) - "Write without Response" transfer operation
 
+##### Bluetooth Profiles
 - [__Bluetooth SIG-defined service: Battery Servcie (BAS)__](peripheral_service_BAS/README.md)
 - [__Bluetooth SIG-defined service: Device Information Service (DIS)__](peripheral_service_DIS/README.md)
 - [__Bluetooth SIG-defined service: Immediate Alert Service (IAS)__](peripheral_service_IAS/README.md)
+
 
 
