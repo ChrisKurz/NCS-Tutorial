@@ -7,6 +7,13 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
 
 - [Basics - Developing with _nRF Connect SDK_ and _Zephyr_](#first-steps)
 
+- [Debugging](#debugging)
+    >  [CPU Load](#cpu-load)
+    >
+    >  [Logging](#logging)
+    >
+    >  [Thread Analyzer](#thread-analyzer)
+
 - [Zephyr Kernel Services](#zephyr-kernel-services)
     > [Data Passing](#data-passing)
     > 
@@ -19,8 +26,6 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
 
 - [Zephyr OS Services](#zephyr-os-services)
     > [Binary Descriptors](#binary-descriptors)
-    >
-    >  [Logging](#logging)
     >
     > [Shell](#shell)
   
