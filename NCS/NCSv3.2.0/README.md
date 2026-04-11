@@ -65,7 +65,7 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
 ### CPU Load
 
 - [__periodically CPU Load measurement__](ZOS_cpuload_periodically/README.md) - measuring periodically CPU load
-- [__CPU Load measurement in software__](ZOS_cpuload_software/README.md) - software reads CPU load measurement value. Measurement is done via software by reading CPU cycles.
+- [__CPU Load measurement in software__](ZOS_cpuload_software/README.md) - user software reads CPU load measurement result. Measurement is done via software by reading CPU cycles.
 
 
 ### Logging
