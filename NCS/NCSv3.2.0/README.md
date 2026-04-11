@@ -7,6 +7,13 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
 
 - [Basics - Developing with _nRF Connect SDK_ and _Zephyr_](#first-steps)
 
+- [Debugging](#debugging)
+    >  [CPU Load](#cpu-load)
+    >
+    >  [Logging](#logging)
+    >
+    >  [Thread Analyzer](#thread-analyzer)
+
 - [Zephyr Kernel Services](#zephyr-kernel-services)
     > [Data Passing](#data-passing)
     > 
@@ -19,8 +26,6 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
 
 - [Zephyr OS Services](#zephyr-os-services)
     > [Binary Descriptors](#binary-descriptors)
-    >
-    >  [Logging](#logging)
     >
     > [Shell](#shell)
   
@@ -54,6 +59,27 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
 - [__Getting DeviceTree Properties__](DEV_DeviceTree/README.md) - This example shows how to read DeviceTree properties from C code. 
 - [__Delete a property__](DEV_DeviceTree_delete-property/README.md) 
 
+
+## Debugging 
+
+### CPU Load
+
+- [__periodically CPU Load measurement__](ZOS_cpuload_periodically/README.md) - measuring periodically CPU load
+
+
+### Logging
+
+- [__Adding Zephyr Logging__](ZOS_logging_uart/README.md) - Here we add Zephyr Logging to our project. This allows us to get debug messages during runtime. In this sample we use UART backend.
+- [__Zephyr Logging in modules with multiple files__](ZOS_logging_declare/README.md) - This hands-on shows how to add Logging to a module that consist of multiple files.
+- [__Zephyr Logging with minimal Memory Footprint__](ZOS_logging_minimal/README.md) - This hands-on shows how to optimize memory footprint of Zephyr Logging.
+- [__User-defined Log Level KCONFIG__](ZOS_logging_userKconfig/README.md) - This practical examples shows how to use the KCONFIG Logging template to allow users to define Log Level via a user-define KCONFIG.
+
+
+### Thread Analyzer
+
+- [__Thread Analyzer__](ZKS_threads_threadAnalyzer/README.md) - This section shows how to determine the thread stack size used.
+
+
 ## Zephyr Kernel Services
 
 ### Data Passing
@@ -64,7 +90,6 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
 ### Threads
 
 - [__Creating a Thread__](ZKS_threads_create/README.md) - This hands-on shows how to create a Thread.
-- [__Thread Analyzer__](ZKS_threads_threadAnalyzer/README.md) - This section shows how to determine the thread stack size used.
 - [__Suspend and Resume a Thread__](ZKS_threads_suspend/README.md) - This hands-on shows how to suspend and resume a Thread.
 
 ### Timing
@@ -88,15 +113,7 @@ The _nRF Connect SDK_ version used here is NCS version 3.2.0.
 
 - [__Adding a Binary Descriptor__](ZOS_binary_descriptors/README.md) - adding descriptors to application image and reading it either from PC command line (Intel Hex file) or from C Code.
 
- 
-### Logging
-
-- [__Adding Zephyr Logging__](ZOS_logging_uart/README.md) - Here we add Zephyr Logging to our project. This allows us to get debug messages during runtime. In this sample we use UART backend.
-- [__Zephyr Logging in modules with multiple files__](ZOS_logging_declare/README.md) - This hands-on shows how to add Logging to a module that consist of multiple files.
-- [__Zephyr Logging with minimal Memory Footprint__](ZOS_logging_minimal/README.md) - This hands-on shows how to optimize memory footprint of Zephyr Logging.
-- [__User-defined Log Level KCONFIG__](ZOS_logging_userKconfig/README.md) - This practical examples shows how to use the KCONFIG Logging template to allow users to define Log Level via a user-define KCONFIG.
-
-
+  
 ### Shell
 
 - [__Adding Zephyr Shell__](ZOS_shell/README.md) - Here we add Zephyr Shell to our project. It is a UNIX-like shell. In this simple hands-on we add our own commands to switch on/off a LED on the used development kit. 
