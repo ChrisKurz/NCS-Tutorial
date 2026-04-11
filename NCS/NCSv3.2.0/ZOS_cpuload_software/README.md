@@ -8,6 +8,8 @@ Sometimes it can be helpful to determine how much CPU load a piece of software i
 
 In this hands-on session, we'll take a look at how the user software can read the CPU load.
 
+Note that in this example the cycle measurement is done by using Zephyr's <code>k_cycle_get_32()</code> function. 
+
 
 ## Required Hardware/Software
 - Development kit 
