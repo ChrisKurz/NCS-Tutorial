@@ -31,7 +31,7 @@ Sometimes it can be helpful to determine how much CPU load a piece of software i
        # Zephyr Logging must be enabled to allow CPU Load module to output result
        CONFIG_LOG=y
 
-       # Enable Logging and define a periodical interval of 2 seconds
+       # Enable CPU Load and define a periodical interval of 2 seconds
        CONFIG_CPU_LOAD=y
        CONFIG_CPU_LOAD_LOG_PERIODICALLY=2000
 
