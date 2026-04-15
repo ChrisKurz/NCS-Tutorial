@@ -1,0 +1,209 @@
+# Bluetooth Low Energy: Peripheral with a user-defined Service (Custom Service) - _Notification_
+
+## Introduction
+
+The Bluetooth Standard mentions different data transfer operations. An overview is shown in this picture:
+
+![](images/03_TransferOperations.jpg)
+
+In this hands-on we use the "Notification" transfer operation. A Bluetooth Low Energy _Notification_ is a mechanism that allows a GATT Server (typically a peripheral device based on an nRF54L Series SoC) to push data to a GATT Client (typically a central device like a smartphone) without the client needing to continuously poll for updates
+
+
+## Required Hardware/Software
+- Development kit 
+[nRF54LM20DK](https://www.nordicsemi.com/Products/Development-hardware/nRF54LM20-DK),
+[nRF54L15DK](https://www.nordicsemi.com/Products/Development-hardware/nRF54L15-DK), 
+[nRF52840DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK), 
+[nRF52833DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52833-DK), or 
+[nRF52DK](https://www.nordicsemi.com/Products/Development-hardware/nrf52-dk) 
+- a smartphone ([Android](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=de&gl=US&pli=1) or [iOS](https://apps.apple.com/de/app/nrf-connect-for-mobile/id1054362403)), which runs the __nRF Connect__ app 
+- install the _nRF Connect SDK_ v3.3.0 and _Visual Studio Code_. The installation process is described [here](https://academy.nordicsemi.com/courses/nrf-connect-sdk-fundamentals/lessons/lesson-1-nrf-connect-sdk-introduction/topic/exercise-1-1/).
+
+
+
+## Hands-on step-by-step description
+
+### Prepare the project
+
+1) Make a copy of the project [Peripheral with Device Information Service](../peripheral_service_DIS/README.md). We will add a custom service and characteristic to this project.
+
+2) Add new folder "services" to the project. Create the files CustomService_notify.c and CustomService_notify.h in this new folder.
+
+   So, the file/folder structure in your project folder should look like this:
+
+   ![image](images/ProjectFolder.jpg)
+
+3) Add CustomSerice_notify.c file to your project by changing the CMakeLists.txt file. The whole file should then look like this:
+	
+	  _CMakeLists.txt_
+	  
+       # SPDX-License-Identifier: Apache-2.0
+
+       cmake_minimum_required(VERSION 3.21.0)
+
+       # Find external Zephyr project, and load its settings
+       find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
+
+       # Set project name
+       project(MyPeripheralCusSer)
+
+       # Add sources
+       target_sources(app PRIVATE src/main.c
+                                  services/CustomService_notify.c)
+			
+			
+### Adding Custom Service
+
+4) We need two transmission buffers for transmitting and receiving data. Add following lines to CustomService_notify.c:
+
+	<sup>_services/CustomService_notify.c_</sup>
+	
+       #include "CustomService_notify.h"
+
+       #define MAX_TRANSMIT_SIZE 240
+       uint8_t data_buffer_rx[MAX_TRANSMIT_SIZE];
+       uint8_t data_buffer_tx[MAX_TRANSMIT_SIZE];
+
+       int CustomService_notify_init(void)
+       {   int err = 0;
+   
+           memset(&data_buffer_tx, 0, MAX_TRANSMIT_SIZE);
+
+           return err;
+       }
+
+5) Add the declaration of CustomService_notify_init() function to header file __CustomService_notify.h__:
+
+	<sup>_services/CustomService_notify.h_</sup>
+
+       int CustomService_notify_init(void); 
+
+6) We need a UUID for the custom service and also for the custom TX and RX characteristics. Create two UUIDs at https://www.uuidgenerator.net. And add them to CusomtService.c:
+  
+	<sup>_services/CustomService_notify.c_</sup>
+
+       /*Note that UUIDs have Least Significant Byte ordering */
+       #define CUSTOM_SERVICE_NOTIFY_UUID   0x6f, 0xAD, 0x86, 0xF9, 0xE8, 0x21, 0x63, 0x8B, 0x67, 0x46, 0x01, 0x38, 0x69, 0x7A, 0x61, 0xCA                       
+       #define CUSTOM_CHARACTERISTIC_TX_UUID 0xFD, 0x17, 0x2D, 0x6C, 0x63, 0xE3, 0x1D, 0x9C, 0xBF, 0x4A, 0x9C, 0x18, 0x64, 0x00, 0x7B, 0xFF
+
+   __Note:__ Sometimes a random UUID is generated for the Service only and the Characteristic only uses an incremented Service UUID (_Service UUID_ + 1). 
+
+7) The custom UUIDs have to be declared. Let's do this within the next two stpes. First, prepare the UUIDs. Add following lines in CustomService_notify.c:
+
+	<sup>_services/CustomService_notify.c_</sup>
+
+       #define BT_UUID_CUSTOM_SERIVCE_NOTIFY   BT_UUID_DECLARE_128(CUSTOM_SERVICE_NOTIFY_UUID)
+       #define BT_UUID_CUSTOM_CHAR_NOTIFY_TX   BT_UUID_DECLARE_128(CUSTOM_CHARACTERISTIC_TX_UUID)
+
+   This also requires to add the bluetooth uuid.h header file to the CustomService_notify.c file:
+
+	<sup>_services/CustomService_notify.c_</sup>
+	
+       #include <zephyr/bluetooth/uuid.h>
+
+8) And the next step for declaration is to define and register our service and its characteristics. By using the following helper macro we statically register our Service in our BLE host stack.
+
+   Add the following lines __after the lines we added in step 7__ in CustomService_notify.c:
+
+<sup>_services/CustomService_notify.c_</sup>
+
+    /* Custom Service Declaration and Registration */
+    BT_GATT_SERVICE_DEFINE(CustomService_notify,
+                    BT_GATT_PRIMARY_SERVICE(BT_UUID_CUSTOM_SERIVCE_NOTIFY),
+                    BT_GATT_CHARACTERISTIC(BT_UUID_CUSTOM_CHAR_NOTIFY_TX,
+                                           BT_GATT_CHRC_NOTIFY,
+                                           BT_GATT_PERM_READ, 
+                                           NULL, NULL, NULL),
+    );
+
+
+9) And this also requires the gatt.h header file. Include it in the CustomServices.c file:
+   
+   <sup>_services/CustomService.c_</sup>
+   
+       #include <zephyr/bluetooth/gatt.h>     ?????????????????
+
+
+### Add data transfer to the project
+
+10) Let's add a function which sends a notification containing the specified data to a client. If successful, the “on_sent()” callback is also called.
+
+    <sup>_services/CustomService_notify.c_</sup>
+
+        void my_service_send(struct bt_conn *conn, const u8_t *data, uint16_t len)
+        {
+            struct bt_gatt_notify_params params = 
+            {
+                .uuid = BT_UUID_CUSTOM_CHAR_NOTIFY_TX,
+                .attr = attr,
+                .data = data,
+                .len  = len,
+                .func = on_sent
+        };
+
+11) And we also need the _on_sent()_ callback function. Add it before the _my_service_send()_ function.
+
+    <sup>_services/CustomService_notify.c_</sup>
+
+        /* This function is called whenever a Notification has been sent via the TX Characteristic */
+        static void on_sent(struct bt_conn *conn, void *user_data)
+        {
+            ARG_UNUSED(user_data);
+
+            const bt_addr_le_t * addr = bt_conn_get_dst(conn);
+        
+            printk("Data sent to Address 0x %02X %02X %02X %02X %02X %02X \n", addr->a.val[0]
+                                                                             , addr->a.val[1]
+                                                                             , addr->a.val[2]
+                                                                             , addr->a.val[3]
+                                                                             , addr->a.val[4]
+                                                                             , addr->a.val[5]);
+        }
+
+12) Add the following function declaration to _CustomService_notify.h_, it is the function we call from main whenever we want to send a notification.
+
+    <sup>_services/CustomService_notify.h_</sup>
+
+        void my_service_send(struct bt_conn *conn, const u8_t *data, uint16_t len);
+ 
+### Using the _Notification_ functions
+
+13) We initialize our _Notification_ service bay adding the following line after the <code>bt_enable()</code> function.
+
+    <sup>_src/main.c_ => after bt_enable was called</sup>
+
+        /* Initalize Notification services */
+        err = my_service_init();
+
+
+### Testing
+
+14) Finally, build the project ("Pristine Build"!!!). 
+ 
+15) Use the _Serial Terminal_ to check the debug output. First connect Terminal, then perform a reset by pressing the reset button on the development kit. Following output should be seen on the terminal:
+    
+    ![](images/startAdvertising.jpg)
+    
+16) Use the _nRF Connect_ Smartphone app and start scanning. The app should find our device (device name: "Custom Service Peripheral")
+    
+    ![](images/Scanning.jpg)
+    
+17) Click in the smartphone app the "Connect" button. Now a connection between the smartphone and the development kit is established. In the Terminal you should see that the device went into "Connected" mode. 
+    
+    ![](images/connected.jpg)
+    
+18) And the smartphone should list the GATT database content in the "Client" tab:
+    
+    ![](images/GATT.jpg)
+    
+    In the GATT database you find an "Unknown Service" and an "Unknown Characteristic". Check its UUIDs and compare it to the UUIDs we defined in step 6.
+
+19) Open the "Unknown Characteristic" (click on the button with the arrow beside this characteristic) and enter a hex value. For example: CAFE
+    
+    ![](images/testString.jpg)
+    
+    Click on the "Write" button. 
+    
+20) In the Terminal program you should see that the hex values were received:
+    
+    ![](images/received.jpg)
