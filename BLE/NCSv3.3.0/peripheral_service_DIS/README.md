@@ -146,6 +146,16 @@ _prj.conf_
              }
         }
 
+> > __NOTE:__ !!!! WORK IN PROGRESS !!!!
+> >
+> > BT_LE_ADV_CONN_NAME was deprecated (not removed) in Zephyr 3.7.0, which is the underlying Zephyr version used in NCS v2.8.0 and later. It was deprecated because the advertiser options BT_LE_ADV_OPT_USE_NAME and BT_LE_ADV_OPT_FORCE_NAME_IN_AD were deprecated.
+> >
+> > The migration guide recommends that application developers now include the device name explicitly in the advertising or scan response data, for example: __Migration guide Zephyr v3.7.0__
+> >
+> > BT_DATA(BT_DATA_NAME_COMPLETE, CONFIG_BT_DEVICE_NAME, sizeof(CONFIG_BT_DEVICE_NAME) - 1)
+> >
+> > For the precise status (deprecated vs. fully removed) in NCS v3.3.0 specifically, I'd recommend checking the official NCS v3.3.0 release notes or migration guide directly on the Nordic documentation portal.
+
 12) We will start adertising in main function, when the bluetooth stack was successfully started. Add following line: 
 
 	<sup>_src/main.c_ => main() function</sup>
