@@ -91,8 +91,12 @@ _prj.conf_
 
 	<sup>_prj.conf_</sup>
 
-       CONFIG_BT_DIS_MANUF="Zephyr"
-       CONFIG_BT_DIS_MODEL="Zephyr Model"
+       #CONFIG_BT_DIS_MANUF="Zephyr" -> _deprecated KCONFIG symbol_
+       CONFIG_BT_DIS_MANUF_NAME=y
+       CONFIG_BT_DIS_MANUF_NAME_STR="Zephyr"   
+       #CONFIG_BT_DIS_MODEL="Zephyr Model" -> _deprecated KCONFIG symbol_
+       CONFIG_BT_DIS_MODEL_NUMBER=y
+       CONFIG_BT_DIS_MODEL_NUMBER_STR="Zephyr Model"      
        CONFIG_BT_DIS_SERIAL_NUMBER=y
        CONFIG_BT_DIS_SERIAL_NUMBER_STR="Zephyr Serial"
        CONFIG_BT_DIS_HW_REV=y
@@ -108,9 +112,9 @@ _prj.conf_
        #CONFIG_BT_DIS_PNP_VER=0x01   not used in this example
 
  > __Note:__ In older versions of the _nRF Connect SDK_, DIS service KCONFIG symbols were used. These have been marked as deprecated in the current version. The following KCONFIG symbols are affected and will be replaced by new KCONFIG symbols as described.
-> - _CONFIG_BT_DIS_MODEL_: Use <code>CONFIG_BT_DIS_MODEL_NUMBER</code> and <code>CONFIG_BT_DIS_MODEL_NUMBER_STR</code> instead.
->   
 > - _CONIFG_BT_DIS_MANUF_: Use <code>CONFIG_BT_DIS_MANUF_NAME</code> and <code>CONFIG_BT_DIS_MANUF_NAME_STR</code> instead.
+>
+> - _CONFIG_BT_DIS_MODEL_: Use <code>CONFIG_BT_DIS_MODEL_NUMBER</code> and <code>CONFIG_BT_DIS_MODEL_NUMBER_STR</code> instead.   
 
 9) Some Bluetooth services in the Zephyr project require interaction with the user's main function. The corresponding API functions are declared in dedicated service header files located in __zephyr/include/zephyr/bluetooth/services__ folder. 
 
