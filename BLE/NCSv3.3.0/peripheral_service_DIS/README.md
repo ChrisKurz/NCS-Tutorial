@@ -91,10 +91,10 @@ _prj.conf_
 
 	<sup>_prj.conf_</sup>
 
-       #CONFIG_BT_DIS_MANUF="Zephyr" -> _deprecated KCONFIG symbol_
+       #CONFIG_BT_DIS_MANUF="Zephyr"         ->   *** deprecated KCONFIG symbol ***
        CONFIG_BT_DIS_MANUF_NAME=y
        CONFIG_BT_DIS_MANUF_NAME_STR="Zephyr"   
-       #CONFIG_BT_DIS_MODEL="Zephyr Model" -> _deprecated KCONFIG symbol_
+       #CONFIG_BT_DIS_MODEL="Zephyr Model"   ->  *** deprecated KCONFIG symbol ***
        CONFIG_BT_DIS_MODEL_NUMBER=y
        CONFIG_BT_DIS_MODEL_NUMBER_STR="Zephyr Model"      
        CONFIG_BT_DIS_SERIAL_NUMBER=y
