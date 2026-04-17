@@ -107,6 +107,10 @@ _prj.conf_
        #CONFIG_BT_DIS_PNP_VID_SRC=1  not used in this example
        #CONFIG_BT_DIS_PNP_VER=0x01   not used in this example
 
+ > __Note:__ In older versions of the _nRF Connect SDK_, DIS service KCONFIG symbols were used. These have been marked as deprecated in the current version. The following KCONFIG symbols are affected and will be replaced by new KCONFIG symbols as described.
+> - _CONFIG_BT_DIS_MODEL_: Use <code>CONFIG_BT_DIS_MODEL_NUMBER</code> and <code>CONFIG_BT_DIS_MODEL_NUMBER_STR</code> instead.
+> _ _CONIFG_BT_DIS_MANUF_: Use <code>CONFIG_BT_DIS_MANUF_NAME</code> and <code>CONFIG_BT_DIS_MANUF_NAME_STR</code> instead.
+
 9) Some Bluetooth services in the Zephyr project require interaction with the user's main function. The corresponding API functions are declared in dedicated service header files located in __zephyr/include/zephyr/bluetooth/services__ folder. 
 
    The _Device Information Service_ does not require such API functions. Nevertheless, an empty header file was prepared for it. So including a header for DIS would not be necessary, but for completness we will also include the DIS header file in our project. Add following line in main.c file:
