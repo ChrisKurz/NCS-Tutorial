@@ -175,35 +175,41 @@ In this hands-on we use the "Notification" transfer operation. A Bluetooth Low E
         /* Initalize Notification services */
         err = my_service_init();
 
+14) The declaration of the function <code>my_service_init()</code> is done by including the header file _CostumSerice.h_. 
+
+    <sup>_src/main.c_ </sup>
+
+        #include <CustomService_notify_h>
+
 
 ### Testing
 
-14) Finally, build the project ("Pristine Build"!!!). 
+15) Finally, build the project ("Pristine Build"!!!). 
  
-15) Use the _Serial Terminal_ to check the debug output. First connect Terminal, then perform a reset by pressing the reset button on the development kit. Following output should be seen on the terminal:
+16) Use the _Serial Terminal_ to check the debug output. First connect Terminal, then perform a reset by pressing the reset button on the development kit. Following output should be seen on the terminal:
     
     ![](images/startAdvertising.jpg)
     
-16) Use the _nRF Connect_ Smartphone app and start scanning. The app should find our device (device name: "Custom Service Peripheral")
+17) Use the _nRF Connect_ Smartphone app and start scanning. The app should find our device (device name: "Custom Service Peripheral")
     
     ![](images/Scanning.jpg)
     
-17) Click in the smartphone app the "Connect" button. Now a connection between the smartphone and the development kit is established. In the Terminal you should see that the device went into "Connected" mode. 
+18) Click in the smartphone app the "Connect" button. Now a connection between the smartphone and the development kit is established. In the Terminal you should see that the device went into "Connected" mode. 
     
     ![](images/connected.jpg)
     
-18) And the smartphone should list the GATT database content in the "Client" tab:
+19) And the smartphone should list the GATT database content in the "Client" tab:
     
     ![](images/GATT.jpg)
     
     In the GATT database you find an "Unknown Service" and an "Unknown Characteristic". Check its UUIDs and compare it to the UUIDs we defined in step 6.
 
-19) Open the "Unknown Characteristic" (click on the button with the arrow beside this characteristic) and enter a hex value. For example: CAFE
+20) Open the "Unknown Characteristic" (click on the button with the arrow beside this characteristic) and enter a hex value. For example: CAFE
     
     ![](images/testString.jpg)
     
     Click on the "Write" button. 
     
-20) In the Terminal program you should see that the hex values were received:
+21) In the Terminal program you should see that the hex values were received:
     
     ![](images/received.jpg)
