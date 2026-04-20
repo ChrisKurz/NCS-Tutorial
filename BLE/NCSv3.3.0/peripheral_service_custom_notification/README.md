@@ -139,9 +139,10 @@ In this hands-on we use the "Notification" transfer operation. A Bluetooth Low E
                 .data = data,
                 .len  = len,
                 .func = on_sent
-        };
+            };
+        }
 
-11) And we also need the _on_sent()_ callback function. Add it before the _my_service_send()_ function.
+12) And we also need the _on_sent()_ callback function. Add it before the _my_service_send()_ function.
 
     <sup>_services/CustomService_notify.c_</sup>
 
@@ -160,7 +161,7 @@ In this hands-on we use the "Notification" transfer operation. A Bluetooth Low E
                                                                              , addr->a.val[5]);
         }
 
-12) Add the following function declaration to _CustomService_notify.h_, it is the function we call from main whenever we want to send a notification.
+13) Add the following function declaration to _CustomService_notify.h_, it is the function we call from main whenever we want to send a notification.
 
     <sup>_services/CustomService_notify.h_</sup>
 
