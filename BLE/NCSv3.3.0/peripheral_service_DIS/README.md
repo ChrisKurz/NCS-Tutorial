@@ -93,18 +93,18 @@ _prj.conf_
 
        #CONFIG_BT_DIS_MANUF="Zephyr"         ->   *** deprecated KCONFIG symbol ***
        CONFIG_BT_DIS_MANUF_NAME=y
-       CONFIG_BT_DIS_MANUF_NAME_STR="Zephyr"   
+       CONFIG_BT_DIS_MANUF_NAME_STR="Nordic Semiconductor"   
        #CONFIG_BT_DIS_MODEL="Zephyr Model"   ->  *** deprecated KCONFIG symbol ***
        CONFIG_BT_DIS_MODEL_NUMBER=y
        CONFIG_BT_DIS_MODEL_NUMBER_STR="Zephyr Model"      
        CONFIG_BT_DIS_SERIAL_NUMBER=y
        CONFIG_BT_DIS_SERIAL_NUMBER_STR="Zephyr Serial"
        CONFIG_BT_DIS_HW_REV=y
-       CONFIG_BT_DIS_HW_REV_STR="Zephyr Hardware"
+       CONFIG_BT_DIS_HW_REV_STR="Zephyr Hardware Version"
        CONFIG_BT_DIS_FW_REV=y
-       CONFIG_BT_DIS_FW_REV_STR="Zephyr Firmware"
+       CONFIG_BT_DIS_FW_REV_STR="Zephyr Firmware Version"
        CONFIG_BT_DIS_SW_REV=y
-       CONFIG_BT_DIS_SW_REV_STR="Zephyr Software"
+       CONFIG_BT_DIS_SW_REV_STR="Zephyr Software Version"
        CONFIG_BT_DIS_PNP=n
        #CONFIG_BT_DIS_PNP_PID=0x00   not used in this example
        #CONFIG_BT_DIS_PNP_VID=0x00   not used in this example
@@ -137,20 +137,23 @@ _prj.conf_
 
 	<sup>_src/main.c_</sup>
 
-        //static const struct bt_data ad[] = {
-        //     BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
-        //     BT_DATA_BYTES(BT_DATA_UUID16_ALL, BT_UUID_16_ENCODE(BT_UUID_DIS_VAL)),
-        //};
+		/* Set advertising data */
         static const struct bt_data ad[] = {
              BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
-             BT_DATA(BT_DATA_NAME_COMPLETE, DEVICE_NAME, DEVICE_NAME_LEN),
+             BT_DATA_BYTES(BT_DATA_UUID16_ALL, BT_UUID_16_ENCODE(BT_UUID_DIS_VAL)),
+        };
+
+        /* Set Scan Response data */
+        static const struct bt_data sd[] = {
+             BT_DATA(BT_DATA_NAME_COMPLETE, CONFIG_BT_DEVICE_NAME, sizeof(DEVICE_NAME) - 1),
         };
 
         void start_advertising(void)
         {
              int err;
 	   
-             err = bt_le_adv_start(BT_LE_ADV_CONN_NAME, ad, ARRAY_SIZE(ad), NULL, 0);
+             err = bt_le_adv_start(BT_LE_ADV_CONN_FAST_1, ad, ARRAY_SIZE(ad),
+                                                          sd, ARRAY_SIZE(sd));
              if (err) {
                  printk("Advertising failed to start (err %d)\n", err);
              }
@@ -159,15 +162,12 @@ _prj.conf_
              }
         }
 
-> > __NOTE:__ !!!! WORK IN PROGRESS !!!!
-> >
-> > BT_LE_ADV_CONN_NAME was deprecated (not removed) in Zephyr 3.7.0, which is the underlying Zephyr version used in NCS v2.8.0 and later. It was deprecated because the advertiser options BT_LE_ADV_OPT_USE_NAME and BT_LE_ADV_OPT_FORCE_NAME_IN_AD were deprecated.
-> >
-> > The migration guide recommends that application developers now include the device name explicitly in the advertising or scan response data, for example: __Migration guide Zephyr v3.7.0__
-> >
-> > BT_DATA(BT_DATA_NAME_COMPLETE, CONFIG_BT_DEVICE_NAME, sizeof(CONFIG_BT_DEVICE_NAME) - 1)
-> >
-> > For the precise status (deprecated vs. fully removed) in NCS v3.3.0 specifically, I'd recommend checking the official NCS v3.3.0 release notes or migration guide directly on the Nordic documentation portal.
+> __NOTE:__ In this example, we use Scan Response to also send the device name when advertising. This makes it easier for us to find our Bluetooth device in the NRF Connect for Mobile smartphone app. 
+>
+> __Scan Response:__
+> A Bluetooth Low Energy _Scan Response_ is an additional advertising packet that a peripheral sends to a central device upon request, allowing it to transmit more data (e.g. device name, UUIDs) than can fit into a single advertising message.
+
+
 
 12) We will start adertising in main function, when the bluetooth stack was successfully started. Add following line: 
 
