@@ -78,7 +78,7 @@ In this hands-on we take a closer look at swap type "permanent".
 
 7) Now build the project.
 
-### Update Intel Hex file to place Update Image in slot 1
+### Change Intel Hex file to place Update Image in slot 1
 
 8) The build has generated the file __zephyr.signed.confirmed.hex__. 
 
