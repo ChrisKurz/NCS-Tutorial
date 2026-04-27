@@ -151,7 +151,7 @@ A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Blueto
   > __Note:__ The following overview shows the possible values that can be sent by the client:
   >  | Value written into CCCD       | Description                  |
   >  |-------------------------------|------------------------------|
-  >  | 0x0000                        | Notifications are turned off |
+  >  | 0x0000                        | Notifications/Indications are turned off |
   >  | 0x0001 (BT_GATT_CCC_NOTIFY)   | Notifications are enabled    |
   >  | 0x0002 (BT_GATT_CCC_INDICATE) | Indications are enabled      |
 	
