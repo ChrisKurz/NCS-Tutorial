@@ -126,6 +126,8 @@ In this hands-on we use the "Notification" transfer operation. A Bluetooth Low E
 ### Adding _Client Characteristic Configuration Descriptor_
 A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Bluetooth LE notifications. The CCCD is a writable descriptor that allows the GATT client to enable or disable notifications (or indications) for a specific characteristic. Without this descriptor, the client cannot receive notifications. That is why we are now adding it to our project.
 
+> __Note:__ Notification and Indication are initiated by the server, but the GATT client must subscribe to the desired data in order to receive the messages.
+
 10) We need to complete the definition of <code>BT_GATT_SERVICE_DEFINE(CustomService_notify,</code> by adding the following section at the end of this macro:
 
    <sup>_services/CustomService.c_</sup>
