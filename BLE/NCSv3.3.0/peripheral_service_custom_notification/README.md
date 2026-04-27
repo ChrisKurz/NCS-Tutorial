@@ -123,6 +123,37 @@ In this hands-on we use the "Notification" transfer operation. A Bluetooth Low E
    
        #include <zephyr/bluetooth/gatt.h>     ?????????????????
 
+### Adding _Client Characteristic Configuration Descriptor_
+A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Bluetooth LE notifications. The CCCD is a writable descriptor that allows the GATT client to enable or disable notifications (or indications) for a specific characteristic. Without this descriptor, the client cannot receive notifications. That is why we are now adding it to our project.
+
+10) We need to complete the definition of <code>BT_GATT_SERVICE_DEFINE(CustomService_notify,</code> by adding the following section at the end of this macro:
+
+   <sup>_services/CustomService.c_</sup>
+
+    BT_GATT_CCC(CustomService_notify_ccc_cfg_changed,
+                BT_GATT_PERM_READ | BT_GATT_PERM_WRITE),
+
+  > __Note:__ The <code>BT_GATT_CCC</code> macro has two parameters. The first parameter is a callback function that is called when a client changes the CCCD value (e.g. enables or disables notifications). The second parameter allows you to specify the access rights for the attribute (a bitmap of bt_gatt_perm values) – typically <code>BT_GATT_PERM_READ | BT_GATT_PERM_WRITE</code>.
+
+11) Now we just need the callback function.
+
+   <sup>_services/CustomService.c_</sup>
+
+    bool notify_enabled = false;
+
+    static void CustomService_notify_ccc_cfg_changed(const struct bt_gatt_attr *attr, uint16_t value)
+    {
+        notify_enabled = (value == BT_GATT_CCC_NOTIFY);
+    }
+
+  > __Note:__ The following overview shows the possible values that can be sent by the client:
+  >  | Value written into CCCD       | Description                  |
+  >  |-------------------------------|------------------------------|
+  >  | 0x0000                        | Notifications are turned off |
+  >  | 0x0001 (BT_GATT_CCC_NOTIFY)   | Notifications are enabled    |
+  >  | 0x0002 (BT_GATT_CCC_INDICATE) | Indications are enabled      |
+	
+12) 
 
 ### Add data transfer to the project
 
