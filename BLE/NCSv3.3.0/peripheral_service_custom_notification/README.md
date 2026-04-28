@@ -123,8 +123,8 @@ A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Blueto
 
    <sup>_services/CustomService.c_</sup>
 
-    BT_GATT_CCC(ccc_changed_cb,
-                BT_GATT_PERM_READ | BT_GATT_PERM_WRITE),
+       BT_GATT_CCC(ccc_changed_cb,
+                   BT_GATT_PERM_READ | BT_GATT_PERM_WRITE),
 
   > __Note:__ The <code>BT_GATT_CCC</code> macro has two parameters. The first parameter is a callback function that is called when a client changes the CCCD value (e.g. enables or disables notifications). The second parameter allows you to specify the access rights for the attribute (a bitmap of bt_gatt_perm values) – typically <code>BT_GATT_PERM_READ | BT_GATT_PERM_WRITE</code>.
 
@@ -132,13 +132,13 @@ A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Blueto
 
    <sup>_services/CustomService.c_</sup>
 
-    bool notify_enabled = false;
+       bool notify_enabled = false;
 
-    static void ccc_changed_cb(const struct bt_gatt_attr *attr, uint16_t value)
-    {
-        notify_enabled = (value == BT_GATT_CCC_NOTIFY);
-        printk("\nNotifications %s\n", notify_enabled ? "enabled" : "disabled");
-    }
+       static void ccc_changed_cb(const struct bt_gatt_attr *attr, uint16_t value)
+       {
+           notify_enabled = (value == BT_GATT_CCC_NOTIFY);
+           printk("\nNotifications %s\n", notify_enabled ? "enabled" : "disabled");
+       }
 
   > __Note:__ The following overview shows the possible values that can be sent by the client:
   >  | Value written into CCCD       | Description                  |
