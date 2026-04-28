@@ -94,12 +94,13 @@ In this hands-on we use the "Notification" transfer operation. A Bluetooth Low E
 
    __Note:__ Sometimes a random UUID is generated for the Service only and the Characteristic only uses an incremented Service UUID (_Service UUID_ + 1). 
 
-7) The custom UUIDs have to be declared. Let's do this within the next two stpes. First, prepare the UUIDs. Add following lines in CustomService_notify.c:
+7) The custom UUIDs must be declared. We’ll do that in the next two steps. Prepare the UUIDs by inserting the following lines into the “CustomService_notify.c” file:
 
 	<sup>_services/CustomService_notify.c_</sup>
 
        #define BT_UUID_CUSTOM_SERIVCE_NOTIFY   BT_UUID_DECLARE_128(CUSTOM_SERVICE_NOTIFY_UUID)
        #define BT_UUID_CUSTOM_CHAR_NOTIFY_TX   BT_UUID_DECLARE_128(CUSTOM_CHARACTERISTIC_TX_UUID)
+       #define BT_UUID_CUSTOM_CHAR_NOTIFY_RX   BT_UUID_DECLARE_128(CUSTOM_CHARACTERISTIC_RX_UUID)   
 
    This also requires to add the bluetooth uuid.h header file to the CustomService_notify.c file:
 
@@ -107,7 +108,7 @@ In this hands-on we use the "Notification" transfer operation. A Bluetooth Low E
 	
        #include <zephyr/bluetooth/uuid.h>
 
-8) And the next step for declaration is to define and register our service and its characteristics. By using the following helper macro we statically register our Service in our BLE host stack.
+9) And the next step for declaration is to define and register our service and its characteristics. By using the following helper macro we statically register our Service in our BLE host stack.
 
    Add the following lines __after the lines we added in step 7__ in CustomService_notify.c:
 
