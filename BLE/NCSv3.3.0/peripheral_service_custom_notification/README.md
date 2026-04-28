@@ -50,6 +50,9 @@ In this hands-on we use the "Notification" transfer operation. A Bluetooth Low E
        # Add sources
        target_sources(app PRIVATE src/main.c
                                   services/CustomService_notify.c)
+
+       # Add include directories
+       target_include_directories(app PRIVATE services)
 			
 			
 ### Adding Custom Service
