@@ -1,6 +1,3 @@
-# --- WORK IN PROGRESS ---
------
-
 # Bluetooth Low Energy: Peripheral with a user-defined Service (Custom Service) - _Notification_
 
 ## Introduction
