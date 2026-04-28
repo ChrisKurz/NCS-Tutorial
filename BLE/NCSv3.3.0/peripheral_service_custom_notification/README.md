@@ -76,7 +76,12 @@ In this hands-on we use the "Notification" transfer operation. A Bluetooth Low E
 
 	<sup>_services/CustomService_notify.h_</sup>
 
+       #ifndef INCLUDE_CUSTOM_SERVICE_NOTIFY_H_
+       #define INCLUDE_CUSTOM_SERVICE_NOTIFY_H_
+
        int CustomService_notify_init(void); 
+
+       #endif /* INCLUDE_CUSTOM_SERVICE_NOTIFY_H_ */
 
 6) We need a UUID for the custom service and also for the custom TX and RX characteristics. Create two UUIDs at https://www.uuidgenerator.net. And add them to CusomtService.c:
   
