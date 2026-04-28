@@ -65,6 +65,8 @@ Before we add the code to our project, we should think about what our GATT datab
 
 Follow these steps to add the _CustomService_notify_ service:
 
+#### Adding _CustomService_notify_ Characteristic
+
 4) We need two transmission buffers for transmitting and receiving data. Add following lines to CustomService_notify.c:
 
 	<sup>_services/CustomService_notify.c_</sup>
@@ -145,7 +147,7 @@ Follow these steps to add the _CustomService_notify_ service:
    
        #include <zephyr/bluetooth/gatt.h>
 
-### Adding _Client Characteristic Configuration Descriptor_
+#### Adding _Client Characteristic Configuration Descriptor_
 A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Bluetooth LE notifications. The CCCD is a writable descriptor that allows the GATT client to enable or disable notifications (or indications) for a specific characteristic. Without this descriptor, the client cannot receive notifications. That is why we are now adding it to our project.
 
 > __Note:__ Notification and Indication are initiated by the server (for example _nRF54L15DK_), but the GATT client (for example smartphone) must subscribe to the desired data in order to receive the messages.
