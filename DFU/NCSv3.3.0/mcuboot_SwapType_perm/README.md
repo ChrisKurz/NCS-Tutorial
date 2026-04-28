@@ -78,7 +78,7 @@ In this hands-on we take a closer look at swap type "permanent".
 
 7) Now build the project.
 
-### Update Intel Hex file to place Update Image in slot 1
+### Change Intel Hex file to place Update Image in slot 1
 
 8) The build has generated the file __zephyr.signed.confirmed.hex__. 
 
@@ -86,7 +86,7 @@ In this hands-on we take a closer look at swap type "permanent".
 
        arm-zephyr-eabi-objcopy --change-addresses 0xA6000 zephyr.signed.confirmed.hex zephyr.signed.confirmed.moved.hex
 
-  > __Note:__ In the zephyr.dts file generated during the build, you can check which memory partitions were used. With the default settings for the nRF54L15DK, the code to be executed is placed in the “slot0_partition” (image-0), which starts at address 0x10000. Since we want to generate an update image here that should be located in the slot1_partition (image_1), we need to adjust the address in the Intel Hex file. slot1_partition starts at address 0xB6000. Therefore, we must shift the Intel Hex addresses by the offset 0xB6000 - 0x10000 = 0xA6000. 
+  > __Note:__ In the _zephyr.dts_ file generated during the build, you can check which memory partitions were used. With the default settings for the nRF54L15DK, the executable code is stored in the <code>slot0_partition</code> (image-0), which starts at address 0x10000. During the build, a binary file and an Intel Hex file can be created. While the binary file does not contain any address information, the Intel Hex file specifies the addresses where the machine code is to be placed. So if we want to place the code directly at the addresses to be processed, that’s fine. However, our image is an update image. Although it should be processed in slot-0, it must first be placed in slot-1 during the download. Therefore, we need to adjust the addresses in the Intel Hex file. The <code>slot1_partition</code> starts at address 0xB6000. Therefore, we must shift the Intel Hex addresses by the offset 0xB6000 – 0x10000 = 0xA6000. 
   > 
   > ![image](images/zephyr.dts.jpg)> 
 

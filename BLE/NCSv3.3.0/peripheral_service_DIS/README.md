@@ -111,7 +111,7 @@ _prj.conf_
        #CONFIG_BT_DIS_PNP_VID_SRC=1  not used in this example
        #CONFIG_BT_DIS_PNP_VER=0x01   not used in this example
 
- > __Note:__ In older versions of the _nRF Connect SDK_, DIS service KCONFIG symbols were used. These have been marked as deprecated in the current version. The following KCONFIG symbols are affected and will be replaced by new KCONFIG symbols as described.
+ > __Note:__ In older versions of the _nRF Connect SDK_, a few DIS KCONFIG symbols were used. Some of these have been marked as deprecated in the current version. The following KCONFIG symbols are affected and will be replaced by new KCONFIG symbols as described.
 > - _CONIFG_BT_DIS_MANUF_: Use <code>CONFIG_BT_DIS_MANUF_NAME</code> and <code>CONFIG_BT_DIS_MANUF_NAME_STR</code> instead.
 >
 > - _CONFIG_BT_DIS_MODEL_: Use <code>CONFIG_BT_DIS_MODEL_NUMBER</code> and <code>CONFIG_BT_DIS_MODEL_NUMBER_STR</code> instead.   
