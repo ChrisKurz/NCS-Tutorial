@@ -220,7 +220,7 @@ A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Blueto
     <sup>_src/main.c_ => after bt_enable was called</sup>
 
             /* Initalize Notification services */
-            err = my_service_init();
+            err = CustomService_notify_init();
             if (err) {
                 printk("Custom Service initialization failed (err %d)\n", err);
                 return 0;
