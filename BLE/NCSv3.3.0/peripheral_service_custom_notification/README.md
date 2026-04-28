@@ -133,10 +133,11 @@ Follow these steps to add the CustomService_notify service:
                     BT_GATT_PRIMARY_SERVICE(BT_UUID_CUSTOM_SERIVCE_NOTIFY),
                     BT_GATT_CHARACTERISTIC(BT_UUID_CUSTOM_CHAR_NOTIFY_TX,
                                            BT_GATT_CHRC_NOTIFY,
-                                           BT_GATT_PERM_READ, 
+                                           BT_GATT_PERM_NONE, 
                                            NULL, NULL, NULL),
     );
 
+  > __Note:__ For a Bluetooth LE notification-only characteristic, you should use <code>BT_GATT_PERM_NONE</code> as the permission. This is because the characteristic value itself is not directly read or written by the client — data is pushed to the client via notifications.
 
 9) And this also requires the gatt.h header file. Include it in the CustomServices.c file:
    
