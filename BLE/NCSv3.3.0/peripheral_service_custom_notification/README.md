@@ -205,7 +205,7 @@ A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Blueto
 
     <sup>_services/CustomService_notify.h_</sup>
 
-        void my_service_send(struct bt_conn *conn, const u8_t *data, uint16_t len);
+        void my_service_send(struct bt_conn *conn, const uint8_t *data, uint16_t len);
  
 ### Using the _Notification_ functions
 
