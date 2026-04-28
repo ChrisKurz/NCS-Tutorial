@@ -148,7 +148,7 @@ A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Blueto
   >  | 0x0002 (BT_GATT_CCC_INDICATE) | Indication is enabled      |
 
 	
-### Add data transfer to the project
+### Add data transfer to the Custom Service
 
 10) Let's add a function which sends a notification containing the specified data to a client.
 
