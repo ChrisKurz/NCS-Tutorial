@@ -59,7 +59,7 @@ In this hands-on we use the "Notification" transfer operation. A Bluetooth Low E
 			
 			
 ### Adding Custom Service
-Before we add the code to our project, we should think about what our GATT database should look like. We created our project based on the Device Information Service (DIS) example, which means that the DIS service is already included here. We will now add an additional service, namely the _CustomService_notify_. This service will contain a characteristic used for sending notifications. With a notification, it is also necessary for the client to be able to subscribe to the notification. To do this, we need to add a Client Characteristic Configuration (CCC). Now that we've added the _CustomService_notify_ service, our GATT database should look like this
+Before we add the code to our project, we should think about what our GATT database should look like. We created our project based on the Device Information Service (DIS) example, which means that the DIS service is already included here. We will now add an additional service, namely the _CustomService_notify_. This service will contain a characteristic used for sending notifications. With a notification, it is also necessary for the client to be able to subscribe to the notification. To do this, we need to add a Client Characteristic Configuration (CCC). After adding the “CustomService_notify” service, our GATT database should look like this:
 
 ![image](images/gatt.jpg)
 
