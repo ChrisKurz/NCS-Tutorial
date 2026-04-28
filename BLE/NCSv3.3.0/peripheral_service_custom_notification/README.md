@@ -59,6 +59,11 @@ In this hands-on we use the "Notification" transfer operation. A Bluetooth Low E
 			
 			
 ### Adding Custom Service
+Before we add the code to our project, we should think about what our GATT database should look like. We created our project based on the Device Information Service (DIS) example, which means that the DIS service is already included here. We will now add an additional service, namely the _CustomService_notify_. This service will contain a characteristic used for sending notifications. With a notification, it is also necessary for the client to be able to subscribe to the notification. To do this, we need to add a Client Characteristic Configuration (CCC). Now that we've added the _CustomService_notify_ service, our GATT database should look like this
+
+![image](images/gatt.jpg)
+
+Follow these steps to add the CustomService_notify service:
 
 4) We need two transmission buffers for transmitting and receiving data. Add following lines to CustomService_notify.c:
 
@@ -85,11 +90,14 @@ In this hands-on we use the "Notification" transfer operation. A Bluetooth Low E
        #ifndef INCLUDE_CUSTOM_SERVICE_NOTIFY_H_
        #define INCLUDE_CUSTOM_SERVICE_NOTIFY_H_
 
+       #include <zephyr/kernel.h>
+       #include <zephyr/bluetooth/conn.h>
+
        int CustomService_notify_init(void); 
 
        #endif /* INCLUDE_CUSTOM_SERVICE_NOTIFY_H_ */
 
-6) We need a UUID for the custom service and also for the custom TX and RX characteristics. Create two UUIDs at https://www.uuidgenerator.net. And add them to CusomtService.c:
+7) We need a UUID for the custom service and also for the custom TX and RX characteristics. Create two UUIDs at https://www.uuidgenerator.net. And add them to CusomtService.c:
   
 	<sup>_services/CustomService_notify.c_</sup>
 
@@ -100,7 +108,7 @@ In this hands-on we use the "Notification" transfer operation. A Bluetooth Low E
 
    __Note:__ Sometimes a random UUID is generated for the Service only and the Characteristic only uses an incremented Service UUID (_Service UUID_ + 1). 
 
-7) The custom UUIDs must be declared. We’ll do that in the next two steps. Prepare the UUIDs by inserting the following lines into the “CustomService_notify.c” file:
+8) The custom UUIDs must be declared. We’ll do that in the next two steps. Prepare the UUIDs by inserting the following lines into the “CustomService_notify.c” file:
 
 	<sup>_services/CustomService_notify.c_</sup>
 
@@ -134,7 +142,7 @@ In this hands-on we use the "Notification" transfer operation. A Bluetooth Low E
    
    <sup>_services/CustomService.c_</sup>
    
-       #include <zephyr/bluetooth/gatt.h>     ?????????????????
+       #include <zephyr/bluetooth/gatt.h>
 
 ### Adding _Client Characteristic Configuration Descriptor_
 A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Bluetooth LE notifications. The CCCD is a writable descriptor that allows the GATT client to enable or disable notifications (or indications) for a specific characteristic. Without this descriptor, the client cannot receive notifications. That is why we are now adding it to our project.
