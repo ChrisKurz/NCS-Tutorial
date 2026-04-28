@@ -63,7 +63,7 @@ Before we add the code to our project, we should think about what our GATT datab
 
 ![image](images/project_gatt.jpg)
 
-Follow these steps to add the CustomService_notify service:
+Follow these steps to add the _CustomService_notify_ service:
 
 4) We need two transmission buffers for transmitting and receiving data. Add following lines to CustomService_notify.c:
 
