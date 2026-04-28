@@ -224,7 +224,7 @@ A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Blueto
 
     <sup>_src/main.c_ </sup>
 
-        #include <CustomService_notify_h>
+        #include <CustomService_notify.h>
 
 
 ### Testing
