@@ -35,14 +35,14 @@ Different devices support different subset of flags. Use hwinfo_get_supported_re
 
    <sup>prj.conf </sup>
 
-      # enable hardware info driver
-      CONFIG_HWINFO=y
+       # enable hardware info driver
+       CONFIG_HWINFO=y
 
 3) Include the header file that defines the Hardware Info API.
 
    <sup>main.c </sup>
 
-      #include <zephyr/drivers/hwinfo.h>
+       #include <zephyr/drivers/hwinfo.h>
 
 ### Get Device ID
 
