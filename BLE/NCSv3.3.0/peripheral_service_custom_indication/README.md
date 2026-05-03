@@ -149,7 +149,7 @@ A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Blueto
     static void ccc_changed_cb(const struct bt_gatt_attr *attr, uint16_t value)
     {
         indicate_enabled = (value == BT_GATT_CCC_NOTIFY);
-        printk("\nNotifications %s\n", indicate_enabled ? "enabled" : "disabled");
+        printk("\nIndications %s\n", indicate_enabled ? "enabled" : "disabled");
     }
 
   > __Note:__ The following overview shows the possible values that can be sent by the client. Since we want to implement a notification in our project, we select BT_GATT_CCC_INDICATE.
