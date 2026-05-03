@@ -65,7 +65,7 @@ Follow these steps to add the _CustomService_notify_ service:
 
 #### Adding _CustomService_notify_ Service and Characteristic
 
-4) We need a UUID for the custom service and also for the custom TX and RX characteristics. Create two UUIDs at https://www.uuidgenerator.net. And add them to CusomtService_notify.c:
+4) We need a UUID for the custom service and also for the custom TX characteristic. Create two UUIDs at https://www.uuidgenerator.net. And add them to CusomtService_notify.c:
   
 	<sup>_services/CustomService_notify.c_</sup>
 
