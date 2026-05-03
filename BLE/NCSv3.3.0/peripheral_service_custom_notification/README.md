@@ -105,9 +105,9 @@ Follow these steps to add the _CustomService_notify_ service:
 
   > __Note:__ For a Bluetooth LE notification-only characteristic, you should use <code>BT_GATT_PERM_NONE</code> as the permission. This is because the characteristic value itself is not directly read or written by the client — data is pushed to the client via notifications.
 
-7) And this also requires the gatt.h header file. Include it in the CustomServices.c file:
+7) And this also requires the gatt.h header file. Include it in the CustomServices_notify.c file:
    
-   <sup>_services/CustomService.c_</sup>
+   <sup>_services/CustomService_notify.c_</sup>
    
        #include <zephyr/bluetooth/gatt.h>
 
@@ -118,7 +118,7 @@ A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Blueto
 
 8) We need to complete the definition of <code>BT_GATT_SERVICE_DEFINE(CustomService_notify,</code> by adding the following section at the end of this macro:
 
-   <sup>_services/CustomService.c_</sup>
+   <sup>_services/CustomService_notify.c_</sup>
 
        BT_GATT_CCC(ccc_changed_cb,
                    BT_GATT_PERM_READ | BT_GATT_PERM_WRITE),
@@ -127,7 +127,7 @@ A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Blueto
 
 9) Now we just need the callback function.
 
-   <sup>_services/CustomService.c_</sup>
+   <sup>_services/CustomService_notify.c_</sup>
 
        bool notify_enabled = false;
 
@@ -230,15 +230,13 @@ A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Blueto
 
     ![image](images/read_client_char_config.jpg)
 	
-22) We can see that the notification is disabled. By clicking the button with the up arrow and entering the Boolean value “true,” we can enable the notification.
+21) We can see that the notification is disabled. By clicking the button with the up arrow and entering the Boolean value “true,” we can enable the notification.
 
 ![image](images/enable_notify.jpg)
 
   > __Note:__ We can also toggle the notification status (enabled or disabled) by clicking the button with the arrow pointing to the underscore.
 
-23) If notifications have been enabled, a message regarding the notification status should appear in the serial terminal, and if notifications are active, the counter reading in the serial terminal should increase every second.
+22) If notifications have been enabled, a message regarding the notification status should appear in the serial terminal, and if notifications are active, the counter reading in the serial terminal should increase every second.
 
    ![image](images/Terminal_count.jpg)
  
-
-
