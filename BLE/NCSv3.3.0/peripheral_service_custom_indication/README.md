@@ -165,7 +165,7 @@ A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Blueto
             if (indicate_enabled) 
             {
                 bt_gatt_indicate(NULL, &CustomService_indicate.attrs[1]);
-                printk("Notification sent with data: 0x%02x\r", *data);
+                printk("Indication sent with data: 0x%02x\r", *data);
             }
         }
 
