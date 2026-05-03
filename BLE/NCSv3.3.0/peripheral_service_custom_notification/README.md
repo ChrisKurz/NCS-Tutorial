@@ -6,7 +6,15 @@ The Bluetooth Standard mentions different data transfer operations. An overview 
 
 ![](images/03_TransferOperations.jpg)
 
-In this hands-on we use the "Notification" transfer operation. A Bluetooth Low Energy _Notification_ is a mechanism that allows a GATT Server (typically a peripheral device based on an nRF54L Series SoC) to push data to a GATT Client (typically a central device like a smartphone) without the client needing to continuously poll for updates
+Both _Notifications_ and _Indications_ are ways for a device (like a sensor) to push data to another device (like your phone) without the phone having to constantly ask for it. Here is a comparison of _Notification_ and _Indication_:
+
+| Notification                         | Indication                          |
+|--------------------------------------|-------------------------------------|
+|  faster                              | slightly slower                     |
+| No confirmation required             | Requires acknowledgment (ACK)       |
+| Data might be lost without detection | Guarantees delivery (more reliable) |
+
+In this hands-on we use the "Notification" transfer operation. A Bluetooth Low Energy _Notification_ is a mechanism that allows a GATT Server (typically a peripheral device based on an nRF54L Series SoC) to push data to a GATT Client (typically a central device like a smartphone) without the client needing to continuously poll for updates.
 
 
 ## Required Hardware/Software
