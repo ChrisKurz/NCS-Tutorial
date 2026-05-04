@@ -160,16 +160,35 @@ A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Blueto
 
     <sup>_services/CustomService_indicate.c_</sup>
 
-        void CustomService_indicate_send(struct bt_conn *conn, uint8_t *data, uint16_t len)
+        void CustomService_indicate_send(struct bt_conn *conn, uint8_t *data)
         {
             if (indicate_enabled) 
             {
-                bt_gatt_indicate(NULL, &CustomService_indicate.attrs[1]);
+                ind_params.attr = &CustomService_indicate.attrs[2]; // Assuming the characteristic is the second attribute in the service
+                ind_params.data = data;
+                ind_params.len = sizeof(*data);
+                ind_params.destroy = NULL;     // Optional: Set a callback function to be called when the indication is complete
+                ind_params.func = indicate_cb; // Optional: Set a callback function to be called when the indication is acknowledged by the client
+
+				bt_gatt_indicate(NULL, &CustomService_indicate.attrs[1]);
                 printk("Indication sent with data: 0x%02x\r", *data);
             }
         }
 
-11) Add the following function declaration to _CustomService_indicate.h_, it is the function we call from main whenever we want to send a indication.
+11) In this example, we want to display the feedback from the smartphone by outputting a corresponding message in the terminal. To do this, we define the function <code>indicate_cb</code>. Add the following callback function before <code>CustomService_indicate_send()</code>.
+
+    <sup>_services/CustomService_indicate.c_</sup>
+
+        void indicate_cb(struct bt_conn *conn, struct bt_gatt_indicate_params *params, uint8_t err)
+        {
+            if (err) {
+                printk("Indication failed with error: 0x%02x\n", err);
+            } else {
+                printk("Indication acknowledged by client\n");
+            }
+        }
+
+12) Add the following function declaration to _CustomService_indicate.h_, it is the function we call from main whenever we want to send a indication.
 
     <sup>_services/CustomService_indicate.h_</sup>
 
@@ -186,19 +205,19 @@ A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Blueto
  
 ### Using the _Indication_ functions
 
-12) The declaration of the function <code>CustomService_indicate_send()</code> is done by including the header file _CostumSerice_indicate.h_ in _main.c_. 
+13) The declaration of the function <code>CustomService_indicate_send()</code> is done by including the header file _CostumSerice_indicate.h_ in _main.c_. 
 
     <sup>_src/main.c_ </sup>
 
         #include <CustomService_indicate.h>
 
-13) In our example, we use a variable that is incremented every second.
+14) In our example, we use a variable that is incremented every second.
 
     <sup>_src/main.c_ => add in main() function </sup>
 
             uint8_t count = 0;
 	
-14) Now add an infinite loop that sends the notification with the counter value every second.
+15) Now add an infinite loop that sends the notification with the counter value every second.
 
     <sup>_src/main.c_ => add in main() function </sup>
 
@@ -213,21 +232,21 @@ A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Blueto
 
 ### Testing
 
-15) Finally, build the project ("Pristine Build"!!!). 
+16) Finally, build the project ("Pristine Build"!!!). 
  
-16) Use the _Serial Terminal_ to check the debug output. First connect Terminal, then perform a reset by pressing the reset button on the development kit. Following output should be seen on the terminal:
+17) Use the _Serial Terminal_ to check the debug output. First connect Terminal, then perform a reset by pressing the reset button on the development kit. Following output should be seen on the terminal:
     
     ![image](images/startAdvertising.jpg)
     
-17) Use the _nRF Connect_ Smartphone app and start scanning. The app should find our device (device name: "DIS peripheral")
+18) Use the _nRF Connect_ Smartphone app and start scanning. The app should find our device (device name: "DIS peripheral")
     
     ![image](images/Scanning.jpg)
     
-18) Click in the smartphone app the "Connect" button. Now a connection between the smartphone and the development kit is established. In the Terminal you should see that the device went into "Connected" mode. 
+19) Click in the smartphone app the "Connect" button. Now a connection between the smartphone and the development kit is established. In the Terminal you should see that the device went into "Connected" mode. 
     
     ![image](images/connected.jpg)
     
-19) And the smartphone should list the GATT database content in the "Client" tab:
+20) And the smartphone should list the GATT database content in the "Client" tab:
     
     ![image](images/gatt_1.jpg)
 
@@ -235,17 +254,17 @@ A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Blueto
 
     ![image](images/gatt_2.jpg)
 
-20) Let's take a look at CustomerService_notify. Here, we can view the current settings for the smartphone's subscription to the notification service. In the Client Characteristic Configuration (2902) box, click the button with the down arrow.
+21) Let's take a look at CustomerService_notify. Here, we can view the current settings for the smartphone's subscription to the notification service. In the Client Characteristic Configuration (2902) box, click the button with the down arrow.
 
     ![image](images/read_client_char_config.jpg)
 	
-21) We can see that the notification is disabled. By clicking the button with the up arrow and entering the Boolean value “true,” we can enable the notification.
+22) We can see that the notification is disabled. By clicking the button with the up arrow and entering the Boolean value “true,” we can enable the notification.
 
 ![image](images/enable_notify.jpg)
 
   > __Note:__ We can also toggle the notification status (enabled or disabled) by clicking the button with the arrow pointing to the underscore.
 
-22) If notifications have been enabled, a message regarding the notification status should appear in the serial terminal, and if notifications are active, the counter reading in the serial terminal should increase every second.
+23) If notifications have been enabled, a message regarding the notification status should appear in the serial terminal, and if notifications are active, the counter reading in the serial terminal should increase every second.
 
    ![image](images/Terminal_count.jpg)
  
