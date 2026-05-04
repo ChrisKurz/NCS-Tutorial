@@ -167,7 +167,7 @@ A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Blueto
                 ind_params.attr = &CustomService_indicate.attrs[2]; // Assuming the characteristic is the second attribute in the service
                 ind_params.data = data;
                 ind_params.len = sizeof(*data);
-                ind_params.destroy = NULL;     // Optional: Set a callback function to be called when the indication is complete (optional)
+                ind_params.destroy = NULL;     // Optional: Set a callback function to be called when the indication is complete
                 ind_params.func = indicate_cb; // Optional: Set a callback function to be called when the indication is acknowledged by the client
 
 				bt_gatt_indicate(NULL, &CustomService_indicate.attrs[1]);
