@@ -1,7 +1,3 @@
-# WORK IN PROGRESS
-
------
-
 # Bluetooth Low Energy: Peripheral with a user-defined Service (Custom Service) - _Indication_
 
 ## Introduction
@@ -254,17 +250,17 @@ A _Client Characteristic Configuration Descriptor_ (CCCD) is required for Blueto
 
     ![image](images/gatt_2.jpg)
 
-21) Let's take a look at CustomerService_notify. Here, we can view the current settings for the smartphone's subscription to the notification service. In the Client Characteristic Configuration (2902) box, click the button with the down arrow.
+21) Let's take a look at CustomerService_indicate. Here, we can view the current settings for the smartphone's subscription to the indication service. In the Client Characteristic Configuration (2902) box, click the button with the down arrow.
 
     ![image](images/read_client_char_config.jpg)
 	
-22) We can see that the notification is disabled. By clicking the button with the up arrow and entering the Boolean value “true,” we can enable the notification.
+22) We can see that the indication is disabled. By clicking the button with the up arrow and entering the Boolean value “true,” we can enable the indication.
 
 ![image](images/enable_notify.jpg)
 
-  > __Note:__ We can also toggle the notification status (enabled or disabled) by clicking the button with the arrow pointing to the underscore.
+  > __Note:__ We can also toggle the indication status (enabled or disabled) by clicking the button with the up/down arrow.
 
-23) If notifications have been enabled, a message regarding the notification status should appear in the serial terminal, and if notifications are active, the counter reading in the serial terminal should increase every second.
+23) If indication has been enabled, a message regarding the indication status should appear in the serial terminal, and if indication are active, the counter reading in the serial terminal should increase every second. Compared to notifications, however, an additional function call is made to confirm that the smartphone has received the counter reading. 
 
    ![image](images/Terminal_count.jpg)
  
