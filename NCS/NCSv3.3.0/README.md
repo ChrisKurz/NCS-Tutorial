@@ -52,7 +52,7 @@ The version of the _nRF Connect SDK_ used here is NCS version 3.3.0.
 ### Custom Board
 
 - [__Defining a new Board__](DEV_NewBoard/README.md)
-- [__Adding a new Board Revision__](DEV_NewBoardVersion/REAMDE.md)
+- [__Adding a new Board Revision__](DEV_NewBoardVersion/README.md)
 
 ### KConfig
 
