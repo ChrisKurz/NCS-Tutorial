@@ -1,0 +1,16 @@
+board:
+  name: mein_Board
+  full_name: mein_Board
+  vendor: ChrisKurz
+  socs:
+  - name: nrf5340
+    variants:
+    - name: ns
+      cpucluster: cpuapp
+  revision:
+    format: major.minor.patch
+    default: 1.0.0
+    exact: true
+    revisions:
+      - name: 1.0.0  # original version
+      - name: 1.1.0  # new version

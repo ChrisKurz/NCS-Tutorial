@@ -1,0 +1,43 @@
+/dts-v1/;
+
+#include <nordic/nrf5340_cpuapp_qkaa.dtsi>
+#include "mein_Board-pinctrl.dtsi"
+
+/ {
+	model = "My first custom-designed test board (CPUAPP)";
+	compatible = "ChrisKurz,mein-Board-cpuapp";
+
+	chosen {
+		zephyr,sram = &sram0_image;
+		zephyr,flash = &flash0;
+		zephyr,code-partition = &slot0_partition;
+		zephyr,sram-secure-partition = &sram0_s;
+		zephyr,sram-non-secure-partition = &sram0_ns;
+	};
+
+        aliases {
+            led0 = &led0;
+        };
+
+        leds {
+            compatible = "gpio-leds";
+              
+            led0: led_0 {
+                gpios = <&gpio0 28 GPIO_ACTIVE_LOW>;
+                label = "LED0 (green)";
+            };
+        };
+
+};
+
+
+&gpio0 {
+     status = "okay";
+};
+ 
+&gpiote {
+     status = "okay";
+};   
+   
+#include "mein_Board-cpuapp_partitioning.dtsi"
+#include "mein_Board-shared_sram.dtsi"

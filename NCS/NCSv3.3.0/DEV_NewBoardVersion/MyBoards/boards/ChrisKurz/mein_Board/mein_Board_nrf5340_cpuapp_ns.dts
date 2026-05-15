@@ -1,0 +1,18 @@
+/dts-v1/;
+
+#include <arm/nordic/nrf5340_cpuapp_ns_qkaa.dtsi>
+#include "mein_Board-pinctrl.dtsi"
+
+/ {
+	model = "My first custom-designed test board (CPUAPP Non-Secure)";
+	compatible = "ChrisKurz,mein-Board-cpuapp-ns";
+
+	chosen {
+		zephyr,sram = &sram0_ns_app;
+		zephyr,flash = &flash0;
+		zephyr,code-partition = &slot0_ns_partition;
+	};
+};
+
+#include "mein_Board-cpuapp_partitioning.dtsi"
+#include "mein_Board-shared_sram.dtsi"
