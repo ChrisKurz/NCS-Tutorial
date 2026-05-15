@@ -1,0 +1,10 @@
+identifier: mein_Board/nrf5340/cpuapp/ns
+name: My first custom-designed test board
+vendor: ChrisKurz
+type: mcu
+arch: arm
+ram: 192
+flash: 192
+toolchain:
+  - zephyr
+supported: []

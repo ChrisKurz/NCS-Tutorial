@@ -1,0 +1,9 @@
+board:
+  name: mein_Board
+  full_name: mein_Board
+  vendor: ChrisKurz
+  socs:
+  - name: nrf5340
+    variants:
+    - name: ns
+      cpucluster: cpuapp
