@@ -48,7 +48,11 @@ The version of the _nRF Connect SDK_ used here is NCS version 3.3.0.
 - [__Installation of _nRF Connect SDK___](DEV_installation/README.md) - This step-by-step description explains how to install the _nRF Connect SDK_.
 - [__Opening an existing sample__](DEV_OpenSample/README.md) - This step-by-step description explains how to create a copy of an existing sample project and open this copy.
 - [__Creating a Project from Scratch__](DEV_ProjectFromScratch/README.md) - This hands-on shows how to create a minimal project from scratch.
+
+### Custom Board
+
 - [__Defining a new Board__](DEV_NewBoard/README.md)
+- [__Adding a new Board Revision__](DEV_NewBoardVersion/REAMDE.md)
 
 ### KConfig
 
