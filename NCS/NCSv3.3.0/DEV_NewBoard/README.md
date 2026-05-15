@@ -30,34 +30,36 @@ In this hands-on, we define a very simple board that essentially consists of jus
    Create the new directory __C:/Nordic/MyBoards__. 
 2) The _nRF Connect_ extension within _Visual Studio Code_ also offers a Board Wizard that helps with defining new Boards. Let's use this wizard.
 
-   Click on __Create a new board__.
+   Click on __Create a new board__. If multiple _nRF Connect SDK_ versions are installed, the next step is to select the SDK version. The __nRF Connect SDK Board__ window will open:
 
       ![missing image](images/CreateNewBoard.jpg)
    
 4)  Within Visual Studio Code you will see that the __Create New Board__ Wizards will guide you through 5 steps:
-    - "Enter a human-readable name for your board." - Enter here for example __My Test Board__.
-
+    - A __Board name__ is needed. For the board name, enter something like "my_board".
+      
       ![missing image](images/NewBoard-1.jpg)
 
       > **_Note:_**
       > 
-      > When naming your custom board, there are a few conventions that you should follow:
-      > - You must give your board a unique name. Run __west boards__ in the nRF Connect Terminal to get a list of names already assigned; you cannot name your custom board with a name that is already in use.
-      > - It is recommended that the name of your board also contains the name of the SoC. For example, let's say we want to create a new board called __MyBoard__ based on the nRF52833 SoC. Then it is recommended to name your board "__MyBoard nRF52833__".
-
-    - Then a __board ID__ is needed. The wizard automatically generates an ID based on the previous entry. Nevertheless, you could also define a own ID. Let's use the automatically generated board ID.
+      > You must give your board a unique name. Run __west boards__ in the nRF Connect Terminal to get a list of names already assigned; you cannot name your custom board with a name that is already in use.
+      
+   
+    - In the __Description__ text box, enter a human-readable name for your board. For exxample, enter "My first custom-designed test board".
 
       ![missing image](images/NewBoard-2.jpg)
-    - In the next step we select the SoC which is used on our board. Here it is important to select the exact SoC number (nRF52840, nRF52832, ...) as well as its variant (QIAA, CIAA, ...).
+
+    - In the __Vendor name__ text box, enter the name of the company that made this board. - The DeviceTree requires for its _compatible_ property a vendor name (or company name). The name we enter will be used. So use your own company name here. 
 
       ![missing image](images/NewBoard-3.jpg)
-    - Now input the path in which the new board should be created. Here we select the directory we created in step 1: __C:/Nordic/MyBoards__.
+
+    - In the next step we select the __SoC__ which is used on our board. Here it is important to select the exact SoC number (nRF54L15, nRF5340, nRF52840, nRF52832, ...) as well as its variant (QFAA, QKAA, QIAA, CIAA, ...) from the given list.
 
       ![missing image](images/NewBoard-4.jpg)
-    - "Enter the name of the company that made this board." - The DeviceTree requires for its _compatible_ property a vendor name (or company name). The name we enter will be used. So use your own company name here. 
+    - Now input the path in which the new board should be created (__Board root__). Here we select the directory we created in step 1: "C:/Nordic/MyBoards".
 
       ![missing image](images/NewBoard-5.jpg)
-5) If the previous board wizard steps have been done, then the following files should be present in our __C:/Nordic/MyBoards__ directory.
+    - And finally, click on the ‘Create board’ button. 
+5) If the previous board wizard steps have been done, then the following folders and files should be present in our __C:/Nordic/MyBoards__ directory.
 
    ![missing image](images/NewBoard-directory.jpg)
 
@@ -88,22 +90,24 @@ Usually, however, much more points should be considered here. Such as:
 
 The defined development kit boards in Zephyr and nrf folder of the SDK may help here to find appropriate settings.
 
-#### KCONFIG file ("my_test_board_defconfig")
+We are changing the board files only for one variant. We use _cpuapp_ (ARM Cortex-M33 application core) and run the project in secure domain. Because of this we update only _my_board_nrf5340_cpuapp_? files.
+
+#### KCONFIG file ("my_board_nrf5340_cpuapp_defconfig")
 7) KCONFIG settings are defined in this file specifically for the custom board. In our example, we only want to use the LED. Therefore we have to include the Zephyr software module for the use of GPIOs. 
    
-   Add following lines in the __my_test_board_defconfig__ file.
+   Add following lines in the __my_board_nrf5340_cpuapp_defconfig__ file.
 
-   <sup> __c:/Nordic/MyBoards/boards/arm/my_test_board/my_test_board_defconfig__</sup>
+   <sup> __c:/Nordic/MyBoards/boards/arm/my_board/my_board_nrf5340_cpuapp_defconfig__</sup>
 
        # Enable GPIO
        CONFIG_GPIO=y
 
-#### DeviceTree file ("my_test_board.dts")
+#### DeviceTree file ("my_board_nrf5340_cpuapp.dts")
 
 
 8) Let's enable the GPIO that is used for the LED. So in the DeviceTree Source file (DTS file) we add following lines:
 
-   <sup>__c:/Nordic/MyBoards/boards/arm/my_test_board/my_test_board.dts__</sup>
+   <sup>__c:/Nordic/MyBoards/boards/arm/my_test_board/my_board_nrf5340_cpuapp.dts__</sup>
 
        &gpio0 {
             status = "okay";
@@ -119,14 +123,14 @@ The defined development kit boards in Zephyr and nrf folder of the SDK may help 
 
    The default blinky sample is using ALIAS to access the node. I don't want to change the blinky source code, so we will also define an ALIAS for the LED0 in the DeviceTree file.
 
-   <sup>__c:/Nordic/MyBoards/boards/arm/my_test_board/my_test_board.dts__</sup>
+   <sup>__c:/Nordic/MyBoards/boards/arm/my_test_board/my_board_nrf5340_cpuapp.dts__</sup>
 
        / {
            leds {
                compatible = "gpio-leds";
                
                led0: led_0 {
-                   gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
+                   gpios = <&gpio0 28 GPIO_ACTIVE_LOW>;
                    label = "LED0 (green)";
                };
            };
@@ -136,12 +140,12 @@ The defined development kit boards in Zephyr and nrf folder of the SDK may help 
            };
        };
 
-> **_Note:_** The property __gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;__ specifies that pin P0.13 is used for LED0. Please check where the LED is connected on your board and change the setting of the port or pin number if necessary.
+> **_Note:_** The property __gpios = <&gpio0 28 GPIO_ACTIVE_LOW>;__ specifies that pin P0.28 is used for LED0. Please check where the LED is connected on your board and change the setting of the port or pin number if necessary.
 
 
 ## Testing
 
-11) Build the project and flash it to the development kit. You should see the LED blinking.
+11) Do a pristine Build  and flash the project to the development kit. You should see the LED blinking.
 
 12) The blinky project also enables GPIO in its __prj.conf__ file. Remove the __CONFIG_GPIO=y__ line in the project's __prj.conf__ file. Build and flash the project again. LED should still blink, because the GPIO software module is added in the custom board definition.
 

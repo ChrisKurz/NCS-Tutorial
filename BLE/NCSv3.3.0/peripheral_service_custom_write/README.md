@@ -194,7 +194,7 @@ In this hands-on we use the "Write" (with Acknowledge) transfer operation. A sma
     
     In the GATT database you find an "Unknown Service" and an "Unknown Characteristic". Check its UUIDs and compare it to the UUIDs we defined in step 6.
 
-19) Open the "Unknown Characteristic" (click on the button with the arrow beside this characteristic) and enter a hex value. For example: CAFE
+19) Open the "Unknown Characteristic" (click on the button with the arrow beside this characteristic) and enter a byte array value. For example: 1234 (for bytes 12 and 34)
     
     ![](images/testString.jpg)
     
