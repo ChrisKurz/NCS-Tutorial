@@ -23,7 +23,7 @@ The firmware update image is typically downloaded by the application. This is pa
 
 In this chapter, we will look at the solution for serial recovery.
 
-1) [Adding Serial Recovery via UART](mcuboot_SerialRecoveryUART/README.md) to previous project
+1) [Adding Serial Recovery via UART](DFU_mcuboot_SerialRecoveryUART/README.md) to previous project
 
 ### DFU handled by application firmware
 
