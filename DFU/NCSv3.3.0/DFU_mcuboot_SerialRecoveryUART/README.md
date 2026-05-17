@@ -49,33 +49,17 @@ MCUboot is usually not taking care about upgrade image download. This is usually
        CONFIG_UART_CONSOLE=n
 
 
-### Enable Logging for MCUboot (optional)
-
-5) While during development the logging might be quite helpful, you may disable Logging for your software release. Enabling is done by adding following lines to __mcuboot.conf__ file.
-
-    <sup>sysbuild/mcuboot.conf</sup>
-    
-       CONFIG_LOG=y
-       CONFIG_MCUBOOT_LOG_LEVEL_INF=y
-       CONFIG_USE_SEGGER_RTT=y
-       CONFIG_LOG_BACKEND_RTT=y
-       CONFIG_LOG_MODE_IMMEDIATE=y
-
-> __Note:__ In this case, the Logging is using RTT, because UART will be used by McuMgr for firmware download.
-> 
-
-
 ### Bootloader indication LED and button
 
 We use a button press while a reset to start serial recovery. Moreover we use the bootloader LED indication to highlight when bootloader is in Serial Recovery mode.
 
-6) Adding LED indication is done by the following MCUboot KCONFIG.
+5) Adding LED indication is done by the following MCUboot KCONFIG.
 
     <sup>sysbuild/mcuboot.conf</sup>
 
        CONFIG_MCUBOOT_INDICATION_LED=y
 
-7) We also have to define in DeviceTree which button and which LED is used by MCUboot. So first add in folder __sysbuild__ the file __mcuboot.overlay__.
+6) We also have to define in DeviceTree which button and which LED is used by MCUboot. So first add in folder __sysbuild__ the file __mcuboot.overlay__.
 
     <sup>sysbuild/mcuboot.overlay</sup>
 
@@ -89,8 +73,8 @@ We use a button press while a reset to start serial recovery. Moreover we use th
 
 ### Version number of our application
 
-8) Add the file __VERSION__ to the project folder (same folder where __CMakeLists.txt__ file is stored).
-9) And add following to the __VERSION__ file.
+7) Add the file __VERSION__ to the project folder (same folder where __CMakeLists.txt__ file is stored).
+8) And add following to the __VERSION__ file.
 
     <sup>VERSION</sup>   
 
