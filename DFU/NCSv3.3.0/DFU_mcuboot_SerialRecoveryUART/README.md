@@ -1,4 +1,6 @@
-__!!! UNDER CONSTRUCTION !!!__
+# !!! UNDER CONSTRUCTION !!!
+
+-----
 
 # MCUboot: Serial Recovery - UART
 
