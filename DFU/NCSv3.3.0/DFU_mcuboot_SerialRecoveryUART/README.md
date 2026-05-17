@@ -57,6 +57,7 @@ MCUboot is usually not taking care about upgrade image download. This is usually
        CONFIG_MCUBOOT_LOG_LEVEL_INF=y
        CONFIG_USE_SEGGER_RTT=y
        CONFIG_LOG_BACKEND_RTT=y
+       CONFIG_LOG_MODE_IMMEDIATE=y
 
 > __Note:__ In this case, the Logging is using RTT, because UART will be used by McuMgr for firmware download.
 > 
