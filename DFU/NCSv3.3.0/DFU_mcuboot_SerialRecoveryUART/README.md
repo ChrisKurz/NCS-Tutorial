@@ -31,6 +31,8 @@ MCUboot is usually not taking care about upgrade image download. This is usually
 
 > __NOTE:__ We could change the MCUboot prj.conf file in the SDK folder, but this would change the SDK and possibly cause problems later on. What we want to do here is to implement the MCUboot configuration in our own project. This leaves the SDK unchanged and the MCUboot setting is contained in our own project.
 
+> __NOTE:__ Here we are using mcuboot.conf file. Instead, we could also create an __sysbuild/mcuboot__ folder and place the file __prj.conf__ there. This file would also allow to do the MCUboot configuration. 
+
 3) And add following KCONIFGs to enable serial recovery.
 
     <sup>sysbuild/mcuboot.conf</sup>
