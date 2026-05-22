@@ -50,12 +50,12 @@
 
 Let's use the data RX and notification enabled/disabled callback functions in our project. First, we register the used callbacks.
 
-    <sup>_src/main.c_</sup>
+  <sup>_src/main.c_</sup>
 
-       struct bt_nus_cb nus_listener = {
-           .notif_enabled = notif_enabled,
-           .received = received,
-       };
+    struct bt_nus_cb nus_listener = {
+       .notif_enabled = notif_enabled,
+       .received = received,
+    };
 
 
 5) Then we add the two functions <code>notif_enabled()</code> and <code>received</code>.
@@ -88,9 +88,11 @@ Let's use the data RX and notification enabled/disabled callback functions in ou
                 return err;
             }
 
-7) And finally, we send
+7) And finally, we send a test string "Hello World!":
 
+    <sup>_src/main.c_ => main() function</sup>
 
+            while (true) {
                 const char *hello_world = "Hello World!\n";
 
                 err = bt_nus_send(NULL, hello_world, strlen(hello_world));
@@ -99,6 +101,9 @@ Let's use the data RX and notification enabled/disabled callback functions in ou
                 if (err < 0 && (err != -EAGAIN) && (err != -ENOTCONN)) {
                     return err;
                 }
+
+                k_sleep(K_SECONDS(3));
+            }
 
 
 ## Testing
