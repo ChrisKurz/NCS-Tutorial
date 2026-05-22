@@ -35,9 +35,23 @@ This is a collection of links to useful resources that cover the _nRF Connect SD
 
 ## Books
 
+[Zephyr RTOS Cookbook: Build portable and scalable embedded systems through hands-on recipes](https://www.packtpub.com/en-us/product/zephyr-rtos-cookbook-9781807429164) - Publishing in June 2026, [link to Amazon](https://www.amazon.com/Zephyr-RTOS-Cookbook-portable-hands/dp/1807429172/)
+
+[Foundations of nRF Zephyr RTOS C Programming: Using the nRF Connect SDK](https://www.amazon.de/Foundations-nRF-Zephyr-RTOS-Programming/dp/B0GLTHVYVM/ref=asc_df_B0GLTHVYVM?mcid=1e74c77e029c3709a9d785c9ef85a1ac&th=1&psc=1&tag=googshopde-21&linkCode=df0&hvadid=805508025279&hvpos=&hvnetw=g&hvrand=5282201950723822193&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9042480&hvtargid=pla-2483355824045&psc=1&hvocijid=5282201950723822193-B0GLTHVYVM-&hvexpln=0)
+
+[Zephyr RTOS for Embedded Developers: Theory, Tools, and Projects](https://www.amazon.de/Zephyr-RTOS-Embedded-Developers-Projects/dp/B0G5F9YN1F/ref=asc_df_B0G5F9YN1F?mcid=95c66af2405a3094979ddb3120880624&th=1&psc=1&tag=googshopde-21&linkCode=df0&hvadid=783321372677&hvpos=&hvnetw=g&hvrand=5282201950723822193&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9042480&hvtargid=pla-2456986802293&psc=1&hvocijid=5282201950723822193-B0G5F9YN1F-&hvexpln=0)
+
+[REAL-TIME SCHEDULING IN ZEPHYR RTOS APPLICATIONS](https://www.amazon.de/REAL-TIME-SCHEDULING-ZEPHYR-RTOS-APPLICATIONS/dp/B0FTY4YSLJ/ref=asc_df_B0FTY4YSLJ?mcid=5344acd314473fa78ec0abb7ecfbd106&th=1&psc=1&tag=googshopde-21&linkCode=df0&hvadid=784182020615&hvpos=&hvnetw=g&hvrand=5282201950723822193&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9042480&hvtargid=pla-2449099711902&psc=1&hvocijid=5282201950723822193-B0FTY4YSLJ-&hvexpln=0)
+
+[THE COMPLETE ZEPHYR RTOS - GUIDE FOR EMBEDDED SYSTEMS](https://www.amazon.de/COMPLETE-ZEPHYR-GUIDE-EMBEDDED-SYSTEMS/dp/B0FXMVJ3RS/ref=asc_df_B0FXMVJ3RS?mcid=0755a9947ef63eaa91b03d290216f31b&th=1&psc=1&tag=googshopde-21&linkCode=df0&hvadid=783436929300&hvpos=&hvnetw=g&hvrand=5282201950723822193&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9042480&hvtargid=pla-2450298373163&psc=1&hvocijid=5282201950723822193-B0FXMVJ3RS-&hvexpln=0)
+
+[Zephyr RTOS Projects for Beginners](https://www.amazon.de/Zephyr-RTOS-Projects-Beginners-Hands/dp/B0FX9GXMSV/ref=asc_df_B0FX9GXMSV?mcid=8517f1dbac1c37c184edfd416dbd8a72&th=1&psc=1&tag=googshopde-21&linkCode=df0&hvadid=783321372677&hvpos=&hvnetw=g&hvrand=5282201950723822193&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9042480&hvtargid=pla-2449098693782&psc=1&hvocijid=5282201950723822193-B0FX9GXMSV-&hvexpln=0)
+
+[Zephyr RTOS in Action](https://www.amazon.de/Zephyr-RTOS-Action-Production-Devicetree/dp/B0FXG1GJM2/ref=asc_df_B0FXG1GJM2?mcid=1824bbe4d5863f70a6b4e5f148d18830&th=1&psc=1&tag=googshopde-21&linkCode=df0&hvadid=732096195817&hvpos=&hvnetw=g&hvrand=5282201950723822193&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9042480&hvtargid=pla-2449561025476&psc=1&hvocijid=5282201950723822193-B0FXG1GJM2-&hvexpln=0)
+
 [Zephyr RTOS Embedded C Programming](https://link.springer.com/book/10.1007/979-8-8688-0107-5) 
 
-[Zephyr RTOS Cookbook: Build portable and scalable embedded systems through hands-on recipes](https://www.packtpub.com/en-us/product/zephyr-rtos-cookbook-9781807429164) - Publishing in June 2026, [link to Amazon](https://www.amazon.com/Zephyr-RTOS-Cookbook-portable-hands/dp/1807429172/)
+
 
 ## Documentation
 

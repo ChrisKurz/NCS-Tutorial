@@ -43,7 +43,7 @@ In an _nRF Connect SDK_ Bluetooth project, the Bluetooth device address (MAC add
 
            bt_addr_le_to_str(&addr, addr_str, sizeof(addr_str));
 
-           printk("Bluetooth API -> BT Address: %s\n", addr_str);
+           printk("Public Bluetooth Address: %s\n", addr_str);
        }
 
 3) Call the <code>print_bt_addr()</code> function after the Bluetooth Stack was successfully enabled.
@@ -60,4 +60,5 @@ In an _nRF Connect SDK_ Bluetooth project, the Bluetooth device address (MAC add
 5) Check the output in the Serial Terminal.
 
    ![image](images/terminal.jpg)
-   
+
+6) Use a smartphone and the _nRF Connect for Mobile_ app to check the Bluetooth Address of the Beacon. You should see that a different address is used. Above we have read the public Bluetooth Address. By default, _nRF Connect SDK_ or Zephyr often uses privacy (resolvable private addresses). If privacy is enabled (CONFIG_BT_PRIVACY=y), the address you see in advertising will change and not match the public address you set. 
