@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In an _nRF Connect SDK_ Bluetooth project, the Bluetooth device address (MAC address) can come from a few places depending on how the beacon is configured. Let's take a look at a few solutions here.
+In an _nRF Connect SDK_ Bluetooth project, the Bluetooth device address (MAC address) can be read in different ways. Let's take a look at the most common way. 
 
 
 ## Required Hardware/Software
@@ -52,29 +52,12 @@ In an _nRF Connect SDK_ Bluetooth project, the Bluetooth device address (MAC add
    
            print_bt_addr();
 
-### Get the Address by reading Nordic chip's FICR Register
-
-4) Nordic chips store the public Bluetooth Address in FICR registers. Let's read the content of these registers.
-
-	<sup>_main.c_</sup>
-
-       #include <hal/nrf_ficr.h>
-
-       uint32_t low  = NRF_FICR->DEVICEADDR[0];
-       uint32_t high = NRF_FICR->DEVICEADDR[1];
-
-5) And output the number to the Serial Terminal.
-
-	<sup>_main.c_ => before main entire loop</sup>
-
-           printk("FICR register content -> BT Address: %8x %8x\n", high, low);
-
    
 ## Testing
 
-6) Build the project and download it to your development kit.
+4) Build the project and download it to your development kit.
 
-7) Check the output in the Serial Terminal.
+5) Check the output in the Serial Terminal.
 
    ![image](images/terminal.jpg)
    
