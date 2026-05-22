@@ -22,6 +22,7 @@ The _nRF Connect SDK_ version used here is NCS version 3.3.0.
 
 #### Generic Features
 
+- [__Get the Device Bluetooth Address at runtime__](peripheral_btaddr/README.md)
 - [__Switch to 2M PHY__](peripheral_2mphy/README.md)
 
 #### Security
