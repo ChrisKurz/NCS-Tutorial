@@ -36,6 +36,7 @@ myapp.SOURCES += utils.c
 > Example:
 > 
 > <code>add_library(mylib STATIC)</code>
+>
 > <code>target_sources(mylib PRIVATE a.c)</code>
 
 
