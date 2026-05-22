@@ -39,6 +39,9 @@ The _nRF Connect SDK_ version used here is NCS version 3.3.0.
 - [__Custom Service using "Notification"__](peripheral_service_custom_notification/README.md) - "Notification" data transfer operation (without acknowledge)
 - [__Custom Service using "Indication"__](peripheral_service_custom_indication/README.md) - "Indication" data transfer operation (with acknowledge)
 
+##### Nordic Services
+- [__Nordic-defined Service: Nordic UART Service (NUS)__](peripheral_service_Nordic_NUS/README.md)
+
 ##### Bluetooth Services
 - [__Bluetooth SIG-defined service: Battery Servcie (BAS)__](peripheral_service_BAS/README.md)
 - [__Bluetooth SIG-defined service: Device Information Service (DIS)__](peripheral_service_DIS/README.md)
