@@ -114,3 +114,6 @@ Let's use the data RX and notification enabled/disabled callback functions in ou
    
    ![missing image](images/terminal.jpg)
 
+10) Use the _nRF Connect for Mobile_ app and connect with the developement kit. Open the Nordic UART Service and Read the TX Characteristic value. It should state "Hello World!"
+
+   ![image](images/smartphone.jpg)
