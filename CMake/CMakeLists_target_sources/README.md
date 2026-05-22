@@ -3,9 +3,13 @@
 <code>target_sources()</code> is a CMake command used to assign additional source files to an existing target.
 
 Syntax:
+
     target_sources( <target>
+    
                     <PRIVATE|PUBLIC|INTERFACE>
+                    
                     <sources...>
+                    
     )
 
 Example: <code> target_sources(app PRIVATE src/main.c) </code>
