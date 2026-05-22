@@ -4,3 +4,4 @@
 - [Define a folder where header files are stored](define_header_file_folder/README.md)
 - [Checking nRF Connect SDK Version in CMake](ncs_version_check_in_cmake/README.md)
 - [Defining the Application Version number in CMakeLists.txt file](define_app_version_in_cmake/README.md)
+- [CMakeLists.txt File: target_sources](CMakeLists_target_sources/README.md)
