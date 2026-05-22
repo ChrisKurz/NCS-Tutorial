@@ -43,7 +43,7 @@ In an _nRF Connect SDK_ Bluetooth project, the Bluetooth device address (MAC add
 
            bt_addr_le_to_str(&addr, addr_str, sizeof(addr_str));
 
-           printk("Bluetooth API -> BT Address: %s\n", addr_str);
+           printk("Public Bluetooth Address: %s\n", addr_str);
        }
 
 3) Call the <code>print_bt_addr()</code> function after the Bluetooth Stack was successfully enabled.
