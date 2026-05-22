@@ -41,9 +41,7 @@ myapp.SOURCES += utils.c
 
 ### Deep-Dive: Where is the <code>app</code> target defined in Zephyr 
 
-The <code>app</code> target in Zephyr is created by the Zephyr CMake build system itself when you call <code>find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})</code> in your application's CMakeLists.txt.
-
-The actual <code>app</code> target is defined inside Zephyr’s CMake infrastructure, not in your application. It is defined in the file _<ZEPHYR_BASE>/cmake/modules/kernel.cmake_ by using [following macro call](https://github.com/nrfconnect/sdk-zephyr/blob/544950b66a38cde53c651a4259a76d392d390006/cmake/modules/kernel.cmake#L225): 
+The <code>app</code> target in Zephyr is created by the Zephyr CMake infrastructure, not in your application. It is defined when you call <code>find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})</code> in your application's CMakeLists.txt. The definition is done in the file _<ZEPHYR_BASE>/cmake/modules/kernel.cmake_ by using [following macro call](https://github.com/nrfconnect/sdk-zephyr/blob/544950b66a38cde53c651a4259a76d392d390006/cmake/modules/kernel.cmake#L225): 
 
 <code>zephyr_library_named(app)</code>
 
