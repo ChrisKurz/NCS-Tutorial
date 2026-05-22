@@ -100,6 +100,19 @@ Let's use the data RX and notification enabled/disabled callback functions in ou
                     return err;
                 }
 
+            while (true) {
+                const char *hello_world = "Hello World!\n";
+
+                err = bt_nus_send(NULL, hello_world, strlen(hello_world));
+                printk("Data send - Result: %d\n", err);
+
+                if (err < 0 && (err != -EAGAIN) && (err != -ENOTCONN)) {
+                    return err;
+                }
+
+                k_sleep(K_SECONDS(3));
+            }
+
 
 ## Testing
 8) Build the project and download to a development kit.
