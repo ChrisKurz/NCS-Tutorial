@@ -54,14 +54,19 @@ This is the canonical definition of the app library target used by <code>target_
 The target gets created during <code>find_package(Zephyr)</code> from your application CMakeLists.txt. Typical call chain is roughly:
 
 > find_package(Zephyr)
+> 
 >    -> zephyr-config.cmake
+> 
 >    -> boilerplate.cmake / kernel.cmake
+> 
 >    -> add_library(app STATIC)
 
 Depending on Zephyr version, nearby files involved include:
 
 > cmake/modules/extensions.cmake
+> 
 > cmake/modules/kernel.cmake
+> 
 > share/zephyr-package/cmake/ZephyrConfig.cmake
 
 But kernel.cmake is the one that actually defines <code>app</code>.
