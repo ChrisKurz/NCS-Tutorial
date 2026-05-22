@@ -4,6 +4,8 @@
 
 Another service is the _Battery Service_ (BAS). Here we will add the BAS service to our project.
 
+The Zephyr _Battery Service (BAS)_ covers Bluetooth [Battery Service 1.0](https://www.bluetooth.com/specifications/specs/battery-service-1-0/) specification.
+
 ## Required Hardware/Software
 
 - Development kit 
