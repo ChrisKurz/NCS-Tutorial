@@ -47,6 +47,8 @@ The actual <code>app</code> target is defined inside Zephyr’s CMake infrastruc
 
 <code>zephyr_library_named(app)</code>
 
+So, the kernel.cmake is the one that actually defines the target <code>app</code>.
+
 The macro [<code>zpephyr_library_named()</code>](https://github.com/nrfconnect/sdk-zephyr/blob/544950b66a38cde53c651a4259a76d392d390006/cmake/modules/extensions.cmake#L460) is defined in the file _<ZEPHYR_BASE>/cmake/modules/extensions.cmake_. Here you will find the macro definition <code>macro(zephyr_library_named name)</code>. There, the target creation is done with the instruction <code>add_library(${name} STATIC "")</code>. 
 
 This is the canonical definition of the app library target used by <code>target_sources(app PRIVATE src/main.c)</code>.
@@ -61,15 +63,6 @@ The target gets created during <code>find_package(Zephyr)</code> from your appli
 > 
 >    -> add_library(app STATIC)
 
-Depending on Zephyr version, nearby files involved include:
-
-> cmake/modules/extensions.cmake
-> 
-> cmake/modules/kernel.cmake
-> 
-> share/zephyr-package/cmake/ZephyrConfig.cmake
-
-But kernel.cmake is the one that actually defines <code>app</code>.
 
 ## PRIVATE/PUBLIC/INTERFACE
 
