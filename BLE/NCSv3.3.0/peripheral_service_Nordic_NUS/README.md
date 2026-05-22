@@ -88,17 +88,9 @@ Let's use the data RX and notification enabled/disabled callback functions in ou
                 return err;
             }
 
-7) And finally, we send
+7) And finally, we send a test string "Hello World!":
 
-
-                const char *hello_world = "Hello World!\n";
-
-                err = bt_nus_send(NULL, hello_world, strlen(hello_world));
-                printk("Data send - Result: %d\n", err);
-
-                if (err < 0 && (err != -EAGAIN) && (err != -ENOTCONN)) {
-                    return err;
-                }
+    <sup>_src/main.c_ => main() function</sup>
 
             while (true) {
                 const char *hello_world = "Hello World!\n";
