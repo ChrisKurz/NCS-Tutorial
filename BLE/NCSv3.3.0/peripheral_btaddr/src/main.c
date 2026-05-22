@@ -15,7 +15,7 @@ void print_bt_addr(void)
 
     bt_addr_le_to_str(&addr, addr_str, sizeof(addr_str));
 
-    printk("Bluetooth API -> BT Address: %s\n", addr_str);
+    printk("Public Bluetooth Address: %s\n", addr_str);
 }
 
 
