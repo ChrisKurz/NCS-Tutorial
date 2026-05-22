@@ -32,7 +32,9 @@ In principle, this is similar to:
 myapp.SOURCES += utils.c
 
 > Important: <code>target_sources()</code> does not create a new target. The target must already exist.
-> Examle:
+> 
+> Example:
+> 
 > <code>add_library(mylib STATIC)</code>
 > <code>target_sources(mylib PRIVATE a.c)</code>
 
