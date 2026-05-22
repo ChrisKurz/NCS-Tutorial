@@ -52,10 +52,10 @@ Let's use the data RX and notification enabled/disabled callback functions in ou
 
   <sup>_src/main.c_</sup>
 
-       struct bt_nus_cb nus_listener = {
-           .notif_enabled = notif_enabled,
-           .received = received,
-       };
+    struct bt_nus_cb nus_listener = {
+       .notif_enabled = notif_enabled,
+       .received = received,
+    };
 
 
 5) Then we add the two functions <code>notif_enabled()</code> and <code>received</code>.
