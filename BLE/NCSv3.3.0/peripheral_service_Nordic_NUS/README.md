@@ -50,7 +50,7 @@
 
 Let's use the data RX and notification enabled/disabled callback functions in our project. First, we register the used callbacks.
 
-    <sup>_src/main.c_</sup>
+  <sup>_src/main.c_</sup>
 
        struct bt_nus_cb nus_listener = {
            .notif_enabled = notif_enabled,
