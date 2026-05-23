@@ -61,4 +61,3 @@ In an _nRF Connect SDK_ Bluetooth project, the Bluetooth device address (MAC add
 
    ![image](images/terminal.jpg)
 
-6) Use a smartphone and the _nRF Connect for Mobile_ app to check the Bluetooth Address of the Beacon. You should see that a different address is used. Above we have read the public Bluetooth Address. By default, _nRF Connect SDK_ or Zephyr often uses privacy (resolvable private addresses). If privacy is enabled (CONFIG_BT_PRIVACY=y), the address you see in advertising will change and not match the public address you set. 
