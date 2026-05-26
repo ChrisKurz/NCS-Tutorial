@@ -81,6 +81,10 @@ The DIS sample is already starting a single advertising. Here we will update the
    
    <sup>_main.c_</sup>
 
+       static const struct bt_le_ext_adv_cb adv_cb = {
+           .connected = connected
+       };
+
        static int advertising_set_create(struct bt_le_ext_adv **adv,
             const struct bt_le_adv_param *param,
             const struct bt_data *ad, size_t ad_len,
@@ -89,7 +93,7 @@ The DIS sample is already starting a single advertising. Here we will update the
            int err;
            struct bt_le_ext_adv *adv_set;
 
-           err = bt_le_ext_adv_create(param, &conn_callbacks, adv);
+           err = bt_le_ext_adv_create(param, &adv_cb, adv);
 	         if (err) {
                printk("Error while creating new advertising (err=%i)\n", err);
                return err;
@@ -106,7 +110,7 @@ The DIS sample is already starting a single advertising. Here we will update the
            return bt_le_ext_adv_start(adv_set, BT_LE_EXT_ADV_START_DEFAULT);
        }
 
-6) And we use the above function to start connectable and non-connectable advertising.
+7) And we use the above function to start connectable and non-connectable advertising.
 
    <sup>_main.c_</sup>   
 
@@ -138,14 +142,14 @@ The DIS sample is already starting a single advertising. Here we will update the
 	         return err;
        }
 
-7) Following defines are used by above function.
+8) Following defines are used by above function.
 
    <sup>_main.c_</sup>   
 
        #define NON_CONNECTABLE_ADV_IDX 0
        #define CONNECTABLE_ADV_IDX     1
 
-8) And finally we start the advertising by calling the functions <code>non_connectable_adv_create()</code> and <code>connectable_adv_create()</code>.
+9) And finally we start the advertising by calling the functions <code>non_connectable_adv_create()</code> and <code>connectable_adv_create()</code>.
 
    <sup>_main.c_ => add these lines after Bluetooth Stack was successfully initiallized</sup>
    
