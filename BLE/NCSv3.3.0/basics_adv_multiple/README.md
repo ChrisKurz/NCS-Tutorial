@@ -149,17 +149,17 @@ The DIS sample is already starting a single advertising. Here we will update the
 
    <sup>_main.c_ => add these lines after Bluetooth Stack was successfully initiallized</sup>
    
-           err = non_connectable_adv_create();
-           if (err) {
-               return 0;
-           }
-           printk("Non-connectable advertising started\n");
+            err = non_connectable_adv_create();
+            if (err) {
+                return 0;
+            }
+            printk("Non-connectable advertising started\n");
 
-           err = connectable_adv_create();
-           if (err) {
-               return 0;
-           }
-           printk("Connectable advertising started\n");
+            err = connectable_adv_create();
+            if (err) {
+                return 0;
+            }
+            printk("Connectable advertising started\n");
 
 ## Testing
 a) Build the project and download to a development kit.
