@@ -89,7 +89,7 @@ The DIS sample is already starting a single advertising. Here we will update the
            int err;
            struct bt_le_ext_adv *adv_set;
 
-           err = bt_le_ext_adv_create(param, &adv_cb, adv);
+           err = bt_le_ext_adv_create(param, &conn_callbacks, adv);
 	         if (err) {
                printk("Error while creating new advertising (err=%i)\n", err);
                return err;
