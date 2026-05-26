@@ -25,7 +25,7 @@ Multiple advertisements are often required. For example, if an OTA firmware upgr
 1) Make a copy of the [DIS Service sample](../peripheral_service_DIS)
 
 
-### Adding a beacon 
+### Adding a beacon (2nd Advertising)
 
 The DIS sample is already starting a single advertising. Here we will update the code so that a beacon advertising is also done.
 
