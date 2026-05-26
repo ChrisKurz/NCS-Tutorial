@@ -169,7 +169,7 @@ The DIS sample is already starting a single advertising. Here we will update the
 
    <sup>_main.c_ => repleace <code>start_advertising()</code> in disconnected callback function</sup>
    
-        err = connectable_adv_create();
+        int err = connectable_adv_create();
         if (err) {
             return 0;
         }
