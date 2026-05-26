@@ -195,3 +195,5 @@ b) Check the output in the Serial Terminal.
    ![missing image](images/terminal.jpg)
 
 c) Use a smartphone and the __nRF Connect__ app and look for "DIS peripheral" and "My Beacon" device.
+
+   ![missing image](images/smartphone.jpg)
