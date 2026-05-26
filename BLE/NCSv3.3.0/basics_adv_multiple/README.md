@@ -1,5 +1,3 @@
-# ---- WORK IN PROGRESS !!! ---
------
 # Bluetooth Low Energy: Multiple Advertising
 
 ## Introduction
