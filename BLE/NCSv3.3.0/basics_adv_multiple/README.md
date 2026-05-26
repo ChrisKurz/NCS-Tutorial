@@ -161,6 +161,11 @@ The DIS sample is already starting a single advertising. Here we will update the
             }
             printk("Connectable advertising started\n");
 
+### Changes required in original DIS sample
+
+9) Remove <code>start_advertising()</code> from main function and disconnected callback function.
+10) the function <code>void start_advertising(void)</code> is not needed anylonger. So remove it.
+
 ## Testing
 a) Build the project and download to a development kit.
 b) Check the output in the Serial Terminal.
