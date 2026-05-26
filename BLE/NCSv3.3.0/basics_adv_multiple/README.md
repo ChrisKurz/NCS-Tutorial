@@ -165,6 +165,16 @@ The DIS sample is already starting a single advertising. Here we will update the
             }
             printk("Connectable advertising started\n");
 
+10) Replace the line <code>start_advertising()</code> in the __disconnected__ callback funtion by following lines:
+
+   <sup>_main.c_ => repleace <code>start_advertising()</code> in disconnected callback function</sup>
+   
+        err = connectable_adv_create();
+        if (err) {
+            return 0;
+        }
+        printk("Connectable advertising started\n");
+
 ### Changes required in original DIS sample
 
 9) Remove <code>start_advertising()</code> from main function and disconnected callback function.
