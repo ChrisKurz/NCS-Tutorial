@@ -175,10 +175,16 @@ The DIS sample is already starting a single advertising. Here we will update the
         }
         printk("Connectable advertising started\n");
 
+11) We need the following function declaration at the top of the main.c file:
+
+   <sup>_main.c_</sup>   
+
+        static int connectable_adv_create(void);
+
 ### Changes required in original DIS sample
 
-9) Remove <code>start_advertising()</code> from main function and disconnected callback function.
-10) the function <code>void start_advertising(void)</code> is not needed anylonger. So remove it.
+12) Remove <code>start_advertising()</code> from main function.
+13) the function <code>void start_advertising(void)</code> is not needed anylonger. So remove it.
 
 ## Testing
 a) Build the project and download to a development kit.
