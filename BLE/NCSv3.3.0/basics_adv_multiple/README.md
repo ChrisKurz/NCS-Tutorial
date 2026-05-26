@@ -33,7 +33,7 @@ The DIS sample is already starting a single advertising. Here we will update the
 
    <sup>_prj.conf_</sup>
 
-       # Enable extended advertising, e.g. required for advertising with mulitple adverstiing sets.
+       # Enable extended advertising, e.g. required for advertising with mulitple advertising sets.
        # maximum 2 simultaneous advertising sets
        CONFIG_BT_EXT_ADV=y
        CONFIG_BT_EXT_ADV_MAX_ADV_SET=2
