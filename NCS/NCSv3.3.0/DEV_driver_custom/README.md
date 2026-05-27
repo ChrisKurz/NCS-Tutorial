@@ -185,13 +185,13 @@ This hands-on shows how to create a simple custom LED driver in Zephyr that:
 
        find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 
-        project(my_led_project)
+       project(my_led_project)
 
-        add_subdirectory(drivers/my_led)
+       add_subdirectory(drivers/my_led)
 
-        target_sources(app PRIVATE src/main.c)
+       target_sources(app PRIVATE src/main.c)
 
-        target_include_directories(app PRIVATE drivers/my_led)
+       target_include_directories(app PRIVATE drivers/my_led)
 
 ### Create prj.conf
 
