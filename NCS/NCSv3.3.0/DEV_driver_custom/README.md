@@ -30,43 +30,179 @@ This hands-on shows how to create a simple custom LED driver in Zephyr that:
    
    
 
-### Adding a new Board Revision
+### Create the Driver Header File (my_led.h)
 
-3) Add the new revision to C:/Nordic/MyBoards/boards/ChrisKurz/mein_Board/board.yaml (or the path based on the Vendor and Board name you used) to inform the build system of the new options. Following section should be place in the __board:__ structure:
+2) Content of my_led.h file:
 
-   <sup>__board.yml__</sup>
+   <sup>__drivers/my_led/my_led.h__</sup>
 
-         revision:
-           format: major.minor.patch
-           default: 1.0.0
-           exact: true
-           revisions:
-           - name: 1.0.0   # original version
-           - name: 1.1.0   # new version
+    #ifndef MY_LED_H
+    #define MY_LED_H
+
+    #include <zephyr/kernel.h>
+
+    int my_led_init(void);
+    int my_led_on(void);
+    int my_led_off(void);
+    void my_led_blink_start(uint32_t interval_ms);
+    void my_led_blink_stop(void);
+
+    #endif
+
+### Create the Driver Source File (my_led.c)
+
+3) Content of my_led.c file:
+
+   <sup>__drivers/my_led/my_led.c__</sup>
+
+       #include "my_led.h"
+
+       #include <zephyr/device.h>
+       #include <zephyr/drivers/gpio.h>
+       #include <zephyr/kernel.h>
+       #include <zephyr/devicetree.h>
+
+       #define LED_NODE DT_ALIAS(led0)
+
+       static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED_NODE, gpios);
+
+       static struct k_timer blink_timer;
+
+       static bool blinking = false;
+       static bool led_state = false;
+
+       static void blink_timer_handler(struct k_timer *timer)
+       {
+           ARG_UNUSED(timer);
+
+           led_state = !led_state;
+           gpio_pin_set_dt(&led, led_state);
+       }
+
+       int my_led_init(void)
+       {
+           if (!gpio_is_ready_dt(&led)) {
+               return -ENODEV;
+           }
    
-5) Add a new file in the Board folder which uses the same board name as the orignal board. We just add a version number by adding "_1_1_0" at the end of the board name. The file extension must now be __.overlay__.
+           int ret = gpio_pin_configure_dt(&led, GPIO_OUTPUT_INACTIVE);
+           if (ret < 0) {
+               return ret;
+           }
+           k_timer_init(&blink_timer, blink_timer_handler, NULL);
 
-   Example:    mein_Board_nrf5340_cpuapp_1_1_0.overlay
+           return 0;
+       }
 
-6) We now add the changes in this overlay file:
+       int my_led_on(void)
+       {
+           blinking = false;
+           k_timer_stop(&blink_timer);
+           led_state = true;
+           return gpio_pin_set_dt(&led, 1);
+       }  
 
-   <sup>__mein_Board_nrf5340_cpuapp_1_1_0.overlay__</sup>
+       int my_led_off(void)
+       {
+           blinking = false;
+           k_timer_stop(&blink_timer);
+           led_state = false;
+           return gpio_pin_set_dt(&led, 0);
+       }
 
-       &led0{
-           gpios = <&gpio0 31 GPIO_ACTIVE_LOW>;
-       };
+       void my_led_blink_start(uint32_t interval_ms)
+       {
+           blinking = true;
 
- 7) In case, any changes would be done in the KCONFIG definition, then we would need a new KCONFIG file that also mentiones the version number (_<board name>_1_1_0_defconfig).
+           k_timer_start(
+               &blink_timer,
+               K_MSEC(interval_ms),
+               K_MSEC(interval_ms));
+       }
 
-    Example: mein_board_nrf5340_cpuapp_1_1_0_defconfig
+       void my_led_blink_stop(void)
+       {
+           blinking = false;
+           k_timer_stop(&blink_timer);
+          gpio_pin_set_dt(&led, 0);
+          led_state = false;
+       }
 
-  > __Note:__ We are not changing any KCONFIG settings. Because of this this file is empty. 
 
+### Create the Driver CMake File
+
+4) Content of drivers/my_led/CMakeLists.txt file:
+
+   <sup>__drivers/my_led/CMakeLists.txt__</sup>
+
+       zephyr_library()
+       zephyr_library_sources(my_led.c)
+
+### Create the main Application
+
+5) Add following test code in the main.c file.
+
+   <sup>__src/main.c__</sup>
+
+       #include <zephyr/kernel.h>
+       #include "my_led.h"
+
+       int main(void)
+       {
+           int ret;
+
+           ret = my_led_init();
+           if (ret < 0) {
+               return 0;
+           }
+
+           while (1) {
+
+               my_led_on();
+               k_sleep(K_SECONDS(2));
+
+               my_led_off();
+               k_sleep(K_SECONDS(2));
+  
+               my_led_blink_start(500);
+               k_sleep(K_SECONDS(5));
+
+               my_led_blink_stop();
+               k_sleep(K_SECONDS(2));
+           }
+
+           return 0;
+       }
+
+   ### Create the Top-Level CMake File
+
+   6) Add following lines in CMakeLists.txt file.
+
+   <sup>__src/main.c__</sup>
+
+       cmake_minimum_required(VERSION 3.20.0)
+
+       find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
+
+        project(my_led_project)
+
+        add_subdirectory(drivers/my_led)
+
+        target_sources(app PRIVATE src/main.c)
+
+        target_include_directories(app PRIVATE drivers/my_led)
+
+### Create prj.conf
+
+8) Enable GPIO support.
+
+   <sup>__prj.conf__</sup>
+
+       CONFIG_GPIO=y
 
 ## Testing
 
-8) Enter revision 1.0.0 when adding build configuration. Do a pristine build and flash the project to the development kit. LED1 should blink. 
+9) Build the project and download to a development kit.
+10) Check the output in Serial Terminal. 
 
-9) Use the revision 1.1.0 when adding build configuration. Do a pristine Build and flash the project to the development kit. You should see the LED blinking (e.g. LED4).
-
-10) Check which LED is toggling when Revision field is blank in add build configuration.
+   ![missing image](images/terminal.jpg)
