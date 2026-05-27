@@ -65,6 +65,9 @@ The version of the _nRF Connect SDK_ used here is NCS version 3.3.0.
 - [__Getting DeviceTree Properties__](DEV_DeviceTree/README.md) - This example shows how to read DeviceTree properties from C code. 
 - [__Delete a property__](DEV_DeviceTree_delete-property/README.md) 
 
+### Custom Device Driver
+
+- [__Creating a custom Device Driver within the Application Project Folder__](DEV_driver_custom/README.md)
 
 ## Debugging 
 
