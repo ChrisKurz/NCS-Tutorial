@@ -174,11 +174,12 @@ This hands-on shows how to create a simple custom LED driver in Zephyr that:
            return 0;
        }
 
-   ### Create the Top-Level CMake File
 
-   6) Add following lines in CMakeLists.txt file.
+### Create the Top-Level CMake File
 
-   <sup>__src/main.c__</sup>
+6) Add following lines in CMakeLists.txt file.
+
+   <sup>__CMakeLists.txt__</sup>
 
        cmake_minimum_required(VERSION 3.20.0)
 
