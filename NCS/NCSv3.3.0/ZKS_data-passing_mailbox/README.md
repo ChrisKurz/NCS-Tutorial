@@ -147,3 +147,5 @@ Detailed description can be found [here](https://docs.nordicsemi.com/bundle/ncs-
 
 8) Build the project and download to a development kit.
 9) Check the output in Serial Terminal. 
+
+   ![missing image](images/terminal.jpg)
