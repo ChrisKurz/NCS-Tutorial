@@ -86,7 +86,7 @@ Detailed description can be found [here](https://docs.nordicsemi.com/bundle/ncs-
 
 	<sup>_src/main.c_</sup>   
  
-       void producer(void)
+       void producer(void *a, void *b, void *c)
        {
            struct sensor_msg msg;
            int counter = 0;
@@ -119,7 +119,7 @@ Detailed description can be found [here](https://docs.nordicsemi.com/bundle/ncs-
 
 	<sup>_src/main.c_</sup>   
 
-       void consumer(void)
+       void consumer(void *a, void *b, void *c)
        {
            struct sensor_msg msg;
 
