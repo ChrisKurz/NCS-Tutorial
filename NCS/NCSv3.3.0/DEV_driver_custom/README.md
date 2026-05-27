@@ -129,18 +129,9 @@ This hands-on shows how to create a simple custom LED driver in Zephyr that:
        }
 
 
-### Create the Driver CMake File
-
-4) Content of drivers/my_led/CMakeLists.txt file:
-
-   <sup>__drivers/my_led/CMakeLists.txt__</sup>
-
-       zephyr_library()
-       zephyr_library_sources(my_led.c)
-
 ### Create the main Application
 
-5) Add following test code in the main.c file.
+4) Add following test code in the main.c file.
 
    <sup>__src/main.c__</sup>
 
@@ -177,7 +168,7 @@ This hands-on shows how to create a simple custom LED driver in Zephyr that:
 
 ### Create the Top-Level CMake File
 
-6) Add following lines in CMakeLists.txt file.
+5) Add following lines in CMakeLists.txt file.
 
    <sup>__CMakeLists.txt__</sup>
 
@@ -189,13 +180,14 @@ This hands-on shows how to create a simple custom LED driver in Zephyr that:
 
        add_subdirectory(drivers/my_led)
 
-       target_sources(app PRIVATE src/main.c)
+       target_sources(app PRIVATE src/main.c
+                                  drivers/my_led/my_led.c)
 
        target_include_directories(app PRIVATE drivers/my_led)
 
 ### Create prj.conf
 
-8) Enable GPIO support.
+6) Enable GPIO support.
 
    <sup>__prj.conf__</sup>
 
@@ -203,7 +195,7 @@ This hands-on shows how to create a simple custom LED driver in Zephyr that:
 
 ## Testing
 
-9) Build the project and download to a development kit.
-10) Check the output in Serial Terminal. 
+7) Build the project and download to a development kit.
+8) Check the output in Serial Terminal. 
 
    ![missing image](images/terminal.jpg)
