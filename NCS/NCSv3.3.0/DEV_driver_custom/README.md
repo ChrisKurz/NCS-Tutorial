@@ -36,18 +36,18 @@ This hands-on shows how to create a simple custom LED driver in Zephyr that:
 
    <sup>__drivers/my_led/my_led.h__</sup>
 
-    #ifndef MY_LED_H
-    #define MY_LED_H
+       #ifndef MY_LED_H
+       #define MY_LED_H
 
-    #include <zephyr/kernel.h>
+       #include <zephyr/kernel.h>
 
-    int my_led_init(void);
-    int my_led_on(void);
-    int my_led_off(void);
-    void my_led_blink_start(uint32_t interval_ms);
-    void my_led_blink_stop(void);
+       int my_led_init(void);
+       int my_led_on(void);
+       int my_led_off(void);
+       void my_led_blink_start(uint32_t interval_ms);
+       void my_led_blink_stop(void);
 
-    #endif
+       #endif
 
 ### Create the Driver Source File (my_led.c)
 
