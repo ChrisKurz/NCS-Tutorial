@@ -178,8 +178,6 @@ This hands-on shows how to create a simple custom LED driver in Zephyr that:
 
        project(my_led_project)
 
-       add_subdirectory(drivers/my_led)
-
        target_sources(app PRIVATE src/main.c
                                   drivers/my_led/my_led.c)
 
