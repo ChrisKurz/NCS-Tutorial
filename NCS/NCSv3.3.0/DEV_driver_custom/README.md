@@ -194,6 +194,8 @@ This hands-on shows how to create a simple custom LED driver in Zephyr that:
 ## Testing
 
 7) Build the project and download to a development kit.
-8) Check the output in Serial Terminal. 
-
-   ![missing image](images/terminal.jpg)
+8) Check the LED on your development kit. You should see:
+   - LED on for 2 seconds
+   - LED off for 2 seconds
+   - LED blinks every 500ms for 5 seconds
+   - Repeat forever
