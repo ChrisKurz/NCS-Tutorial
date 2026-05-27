@@ -92,6 +92,7 @@ The version of the _nRF Connect SDK_ used here is NCS version 3.3.0.
 - [__FIFO__](ZKS_data-passing_fifo/README.md)
 - [__LIFO__](ZKS_data-passing_lifo/README.md)
 - [__Mailbox__](ZKS_data-passing_mailbox/README.md)
+- [__Message Queue__](ZKS_data-passing_msgqueue/README.md)
 
 ### Threads
 
