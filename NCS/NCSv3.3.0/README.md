@@ -19,6 +19,8 @@ The version of the _nRF Connect SDK_ used here is NCS version 3.3.0.
     > 
     > [Threads](#threads)
     >
+    > [Thread Synchronization](#thread-synchronization)
+    > 
     > [Timing](#timing)
     >
     > [Other](#other)
@@ -98,6 +100,10 @@ The version of the _nRF Connect SDK_ used here is NCS version 3.3.0.
 
 - [__Creating a Thread__](ZKS_threads_create/README.md) - This hands-on shows how to create a Thread.
 - [__Suspend and Resume a Thread__](ZKS_threads_suspend/README.md) - This hands-on shows how to suspend and resume a Thread.
+
+### Thread Synchronizsation
+
+- [__using Semaphores__](ZKS_synchronization_semaphores/README.md)
 
 ### Timing
 
