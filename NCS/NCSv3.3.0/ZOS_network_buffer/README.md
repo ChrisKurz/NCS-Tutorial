@@ -28,13 +28,20 @@ Zephyr provides a flexible buffer system called <code>net_buf</code>. A <code>ne
 
 ### Add Network Buffer Support
 
-3) Now we include Zephyr network buffer support. First, start with the header file.
+3) Let's add the Network Buffer software module.
+
+   <sup>__prj.conf__</sup>
+
+       # Network Buffer Support
+       CONFIG_NET_BUF=y
+
+4) Now we include Zephyr network buffer support. First, start with the header file.
 
    <sup>__main.c__</sup>
 
        #include <zephyr/net_buf.h>
 
-4) Create a Buffer Pool
+5) Create a Buffer Pool
 
    <sup>__main.c__</sup>
 
@@ -49,7 +56,7 @@ Zephyr provides a flexible buffer system called <code>net_buf</code>. A <code>ne
                            4,            /* Optional user metadata */
                            NULL);        /* Cleanup callback */
 
-5) Now we allocate a buffer from the pool.
+6) Now we allocate a buffer from the pool.
 
    <sup>__main.c__ => main() function</sup>
 
@@ -66,7 +73,7 @@ Zephyr provides a flexible buffer system called <code>net_buf</code>. A <code>ne
 
 ### Add and Read Data via Network Buffer
 
-6) Now we store payload data inside the buffer.
+7) Now we store payload data inside the buffer.
 
    <sup>__main.c__ => main() function</sup>
 
@@ -77,7 +84,7 @@ Zephyr provides a flexible buffer system called <code>net_buf</code>. A <code>ne
            printk("Buffer length: %d\n", buf->len);
            printk("Stored message: %s\n", buf->data);
 
-7) Now we read data from the buffer.
+8) Now we read data from the buffer.
 
    <sup>__main.c__ => main() function</sup>
 
@@ -89,7 +96,7 @@ Zephyr provides a flexible buffer system called <code>net_buf</code>. A <code>ne
 
 ### Release Network Buffer
 
-8) Allocated buffers must be released again.
+9) Allocated buffers must be released again.
 
    <sup>__main.c__ => main() function</sup>
    
@@ -102,8 +109,8 @@ Zephyr provides a flexible buffer system called <code>net_buf</code>. A <code>ne
 
 ## Testing
 
-9) Build the project and download it to your development kit.
+10) Build the project and download it to your development kit.
 
-10) Check the output in the Serial Terminal.
+11) Check the output in the Serial Terminal.
 
    ![image](images/terminal.jpg)
