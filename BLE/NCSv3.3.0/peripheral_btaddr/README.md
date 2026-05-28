@@ -75,6 +75,6 @@ In an _nRF Connect SDK_ Bluetooth project, the Bluetooth device address (MAC add
 
    ![image](images/terminal.jpg)
 
-7) Check on Smartphone (note that only the Anrdoid app shows the Bluetooth address when scanning).
+7) Check on Smartphone by using _nRF Connect for Mobile_ app (note that only the Anrdoid app shows the Bluetooth address when scanning).
 
    ![image](images/smartphone.jpg)
