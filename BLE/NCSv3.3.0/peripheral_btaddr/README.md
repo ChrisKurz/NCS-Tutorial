@@ -32,7 +32,9 @@ In an _nRF Connect SDK_ Bluetooth project, the Bluetooth device address (MAC add
 
  > __Note:__ The key difference between <code>BT_LE_ADV_NCONN</code> and <code>BT_LE_ADV_NCONN_IDENTITY</code> lies in the Bluetooth address used during advertising. While <code>BT_LE_ADV_NCONN</code> uses a private (random) address, <code>BT_LE_ADV_NCONN_IDENTIY</code> uses the static identity address that is stored in the device FICR control registers.
 
-> __Warning:__ Using <code>BT_LE_ADV_NCONN_IDENTITY</code> will compromise the privacy of the device. A fixed identity address (public or random static) never changes, so anyone with a Bluetooth scanner can detect and track the physical location of the device over time, since the same address always appears in the advertising packets. Using a fixed identity address makes your device trackable.
+> __Warning: Using a fixed identity address makes your device trackable.__
+>
+> Using <code>BT_LE_ADV_NCONN_IDENTITY</code> will compromise the privacy of the device. A fixed identity address (public or random static) never changes, so anyone with a Bluetooth scanner can detect and track the physical location of the device over time, since the same address always appears in the advertising packets. 
 
 
 ### Get the Address with Zephyr Bluetooth API
