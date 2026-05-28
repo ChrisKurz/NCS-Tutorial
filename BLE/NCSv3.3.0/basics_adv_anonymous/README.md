@@ -113,20 +113,20 @@ The aim of anonymous advertising is to reduce tracking by avoiding persistent id
 
 	<sup>_src/main.c_ => main() funtion</sup>   
 
-    struct bt_le_adv_param param = {
-        .id = BT_ID_DEFAULT,
+       struct bt_le_adv_param param = {
+           .id = BT_ID_DEFAULT,
 
-        /* IMPORTANT:
-         * EXT_ADV is required for ANONYMOUS
-         */
-        .options =
-            BT_LE_ADV_OPT_EXT_ADV |   /* use Extended Advertising */
-            BT_LE_ADV_OPT_ANONYMOUS,  /* make it anonymous */
+           /* IMPORTANT:
+            * EXT_ADV is required for ANONYMOUS
+            */
+           .options =
+              BT_LE_ADV_OPT_EXT_ADV |   /* use Extended Advertising */
+              BT_LE_ADV_OPT_ANONYMOUS,  /* make it anonymous */
 
-        /* 100 ms */
-        .interval_min = BT_GAP_ADV_FAST_INT_MIN_2,
-        .interval_max = BT_GAP_ADV_FAST_INT_MAX_2,
-    };
+           /* 100 ms */
+           .interval_min = BT_GAP_ADV_FAST_INT_MIN_2,
+           .interval_max = BT_GAP_ADV_FAST_INT_MAX_2,
+       };
 
 7) Next, we prepare the actual payload. <code>bt_le_ext_adv_set_data()</code> sets the actual payload bytes that will be transmitted in an Extended Advertising packet.
 
