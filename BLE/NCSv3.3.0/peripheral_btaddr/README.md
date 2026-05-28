@@ -30,6 +30,11 @@ In an _nRF Connect SDK_ Bluetooth project, the Bluetooth device address (MAC add
 
        err = bt_le_adv_start(BT_LE_ADV_NCONN_IDENTITY, ad, ARRAY_SIZE(ad), NULL, 0);
 
+ > __Note:__ The key difference between <code>BT_LE_ADV_NCONN</code> and <code>BT_LE_ADV_NCONN_IDENTITY</code> lies in the Bluetooth address used during advertising. While <code>BT_LE_ADV_NCONN</code> uses a private (random) address, <code>BT_LE_ADV_NCONN_IDENTIY</code> uses the static identity address that is stored in the device FICR control registers.
+
+> __Warning:__ Using <code>BT_LE_ADV_NCONN_IDENTITY</code> will compromise the privacy of the device. 
+
+
 ### Get the Address with Zephyr Bluetooth API
 
 3) In the beacon application, use the Zephyr Bluetooth API to read the Bluetooth address.
