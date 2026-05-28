@@ -53,6 +53,7 @@ Zephyr provides a flexible buffer system called <code>net_buf</code>. A <code>ne
 
    <sup>__main.c__ => main() function</sup>
 
+           /* Allocate a buffer from the pool */
            struct net_buf *buf;   
 
            buf = net_buf_alloc(&my_buf_pool, K_NO_WAIT);
@@ -69,6 +70,7 @@ Zephyr provides a flexible buffer system called <code>net_buf</code>. A <code>ne
 
    <sup>__main.c__ => main() function</sup>
 
+           /* Add Data to Network Buffer */
            const char *message = "Hello from net_buf";
 
            net_buf_add_mem(buf, message, strlen(message));
@@ -78,7 +80,8 @@ Zephyr provides a flexible buffer system called <code>net_buf</code>. A <code>ne
 7) Now we read data from the buffer.
 
    <sup>__main.c__ => main() function</sup>
-   
+
+           /* Read data from the buffer */
            char rx_data[64];
 
            memcpy(rx_data, buf->data, buf->len);
