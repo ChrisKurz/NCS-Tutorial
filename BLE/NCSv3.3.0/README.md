@@ -17,6 +17,7 @@ The _nRF Connect SDK_ version used here is NCS version 3.3.0.
 
 - [__iBeacon__](basics_beacon/README.md) - initialize Bluetooth stack and realize a broadcaster
 - [__Advertising Interval__](basics_beacon_advInterval/README.md) - measure and adjust the Advertising Interval
+- [__Anonymous Advertising__](basics_adv_anonymous/README.md) - advertising without Bluetooth address in Advertising packet
 - [__Multiple Advertising__](basics_adv_multiple/README.md) - multiple advertisments are sent 
 
 ### Peripheral
