@@ -59,7 +59,8 @@ static void bt_ready(int err){
     print_bt_addr();
 
     /* Start advertising */
-    err = bt_le_adv_start(BT_LE_ADV_NCONN, ad, ARRAY_SIZE(ad), NULL, 0);
+//  err = bt_le_adv_start(BT_LE_ADV_NCONN, ad, ARRAY_SIZE(ad), NULL, 0);
+    err = bt_le_adv_start(BT_LE_ADV_NCONN_IDENTITY, ad, ARRAY_SIZE(ad), NULL, 0);
     if (err) {
         printk("Advertising failed to start (err %d)\n", err);
     return;
