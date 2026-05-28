@@ -44,7 +44,13 @@ This project demonstrates how to use Bluetooth Low Energy Privacy in the Nordic 
     # Number of Bluetooth identities
     CONFIG_BT_ID_MAX=1
 
-3) Before we start advertising, add following lines.
+3) To use the settings library, we habe to include the settings.h file.
+
+  <sup>__main.c__</sup>   
+
+    #include <zephyr/settings/settings.h>
+
+4) Before we start advertising, add following lines.
 
   <sup>__main.c__</sup>   
 
@@ -55,7 +61,7 @@ This project demonstrates how to use Bluetooth Low Energy Privacy in the Nordic 
 
 > __Note:__ The <code>settings_load()</code> function loads bonding information, IRKs, and identity data. This is needed for Bluetooth LE Privacy. Without stored IRKs, trusted devices cannot resolve RPAs.
 
-4) Add following while loop in main() function to read current address and output on Serial Terminal. 
+5) Add following while loop in main() function to read current address and output on Serial Terminal. 
 
   <sup>__main.c__</sup>   
   
@@ -80,12 +86,8 @@ This project demonstrates how to use Bluetooth Low Energy Privacy in the Nordic 
    
 ## Testing
 
-5) Build the project and download it to your development kit.
+6) Build the project and download it to your development kit.
 
-6) Check the output in the Serial Terminal.
+7) Check the output in the Serial Terminal.
 
    ![image](images/terminal.jpg)
-
-7) Check on Smartphone by using _nRF Connect for Mobile_ app (note that only the Anrdoid app shows the Bluetooth address when scanning).
-
-   ![image](images/smartphone.jpg)
