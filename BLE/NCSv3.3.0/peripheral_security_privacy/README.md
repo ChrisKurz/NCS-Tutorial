@@ -185,8 +185,13 @@ This project demonstrates how to use Bluetooth Low Energy Privacy in the Nordic 
         .passkey_display = passkey_display,
     }; 
     
-    /* * Pairing information callbacks. */ static struct bt_conn_auth_info_cb auth_info_cb = { .pairing_complete = pairing_complete, .pairing_failed = pairing_failed, };
-
+    /* 
+     * Pairing information callbacks. 
+     */ 
+    static struct bt_conn_auth_info_cb auth_info_cb = { 
+        .pairing_complete = pairing_complete, 
+        .pairing_failed = pairing_failed, 
+    };
 
    
 ## Testing
