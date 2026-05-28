@@ -152,3 +152,25 @@ Further information about ZMS can be found [here](https://docs.nordicsemi.com/bu
 15) Check the output in the Serial Terminal.
 
    ![image](images/terminal.jpg)
+
+16) Let's check if the test string was written into the storage_partition. First, find the start of the storage partition. Check here either __zephyr.dts__ file in the _Output files_ directory or open board DTS file. For the nRF54L15DK we can find the following:
+
+   <sup> __nrf54l15dk_nrf54l15_cpuapp.dts__ points to __nRF54L15_cpuapp_parittion.dtsi__ with following definition: </sup>
+
+<code>      storage_partition: partition@15c000 { </code>
+
+<code>          label = "storage"; </code>
+
+<code>          reg = <0x15c000 DT_SIZE_K(36)>; </code>
+
+<code>      }; </code>
+
+   So, we are interested in seeing content of address 0x15C000 and following addresses. 
+
+   Let's check the content by using __nrfutil__. Click on _Open terminal_ in "Welcome" section of __nrf Connect__. Then enter following command in the command line terminal:
+
+    nrfutil device read --address 0x15C000 --bytes 64
+
+   You should see following (note that code execution was started twice here):
+
+   ![image](images/nrfutil.jpg)
