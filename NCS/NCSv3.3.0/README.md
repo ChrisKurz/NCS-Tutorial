@@ -32,6 +32,8 @@ The version of the _nRF Connect SDK_ used here is NCS version 3.3.0.
     > [Network Buffer](#network-buffer)
     > 
     > [Shell](#shell)
+    >
+    > [Storage](#storage)
   
 - [Zephyr Device Drivers](#zephyr-device-drivers)
 
