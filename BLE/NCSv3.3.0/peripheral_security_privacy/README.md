@@ -59,24 +59,24 @@ This project demonstrates how to use Bluetooth Low Energy Privacy in the Nordic 
 
   <sup>__main.c__</sup>   
   
-        while (1) {
-            /*
-             * Print current identity address.  
-             *  
-             * With privacy enabled, 
-             * this address changes periodically. 
-             */ 
-            bt_addr_le_t addr; 
-            size_t count = 1; 
+         while (1) {
+             /*
+              * Print current identity address.  
+              *  
+              * With privacy enabled, 
+              * this address changes periodically. 
+              */ 
+             bt_addr_le_t addr; 
+             size_t count = 1; 
             
-            bt_id_get(&addr, &count); 
+             bt_id_get(&addr, &count); 
             
-            char addr_str[BT_ADDR_LE_STR_LEN]; 
+             char addr_str[BT_ADDR_LE_STR_LEN]; 
             
-            bt_addr_le_to_str(&addr, addr_str, sizeof(addr_str)); 
+             bt_addr_le_to_str(&addr, addr_str, sizeof(addr_str)); 
             
-            printk("Current address: %s", addr_str); k_sleep(K_SECONDS(30)); 
-        }
+             printk("Current address: %s", addr_str); k_sleep(K_SECONDS(30)); 
+         }
    
 ## Testing
 
