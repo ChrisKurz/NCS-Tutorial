@@ -81,7 +81,7 @@ This project demonstrates how to use Bluetooth Low Energy Privacy in the Nordic 
             
              bt_addr_le_to_str(&addr, addr_str, sizeof(addr_str)); 
             
-             printk("Current address: %s", addr_str); k_sleep(K_SECONDS(30)); 
+             printk("Current address: %s\n", addr_str); k_sleep(K_SECONDS(30)); 
          }
    
 ## Testing
