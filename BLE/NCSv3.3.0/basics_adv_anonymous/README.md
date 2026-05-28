@@ -107,7 +107,7 @@ The aim of anonymous advertising is to reduce tracking by avoiding persistent id
            BT_DATA(BT_DATA_MANUFACTURER_DATA,
                    mfg_data,
                    sizeof(mfg_data)),
-           };
+       };
 
 6) In the next step we prepare the <code>struct bt_le_adv_param</code>. It is the configuration structure that defines how Bluetooth advertising should behave. It describes things like advertising type, intervals, connectability, PHY mode, anonymity, address behavior, and channel usage. 
 
