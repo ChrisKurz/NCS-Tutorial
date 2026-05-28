@@ -116,10 +116,10 @@ Further information about ZMS can be found [here](https://docs.nordicsemi.com/bu
         /* Write Data */
         const char write_data[] = "Hello ZMS!";
         
-        rc = zms_write(&fs,     /* file system */
-                       1,       /* key ID */
-                       data,    /* data pointer */
-                       strlen(data) + 1);  /* data size */  
+        rc = zms_write(&fs,          /* file system */
+                       1,            /* key ID */
+                       write_data,   /* data pointer */
+                       strlen(write_data) + 1);  /* data size */  
         if (rc < 0) {
             printk("Failed to write data: %d\n", rc);
             return 0;
@@ -136,8 +136,8 @@ Further information about ZMS can be found [here](https://docs.nordicsemi.com/bu
         
         rc = zms_read(&fs, 
                       1, 
-                      buffer, 
-                      sizeof(buffer));
+                      read_buffer, 
+                      sizeof(read_buffer));
         if (rc < 0) {
             printk("Failed to read data: %d\n", rc);
             return 0;
