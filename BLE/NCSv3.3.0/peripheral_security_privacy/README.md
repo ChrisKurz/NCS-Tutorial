@@ -85,6 +85,109 @@ This project demonstrates how to use Bluetooth Low Energy Privacy in the Nordic 
             
              printk("Current address: %s\n", addr_str); k_sleep(K_SECONDS(30)); 
          }
+
+
+### Adding Passkey Handling 
+
+6) When a successful connection was done, we request higher security level.
+
+  <sup>__main.c__</sup>   
+
+        /* 
+         * Request security level 2. 
+         * 
+         * This triggers pairing if needed. 
+         * 
+         * Security level 2: 
+         * - Encryption enabled 
+         * - Unauthenticated pairing 
+         * 
+         * Level 3 would require authenticated pairing. 
+         */ 
+        err = bt_conn_set_security(conn, BT_SECURITY_L2); 
+        if (err) { 
+            printk("Failed to set security (err %d)\n", err); 
+        } else { 
+            printk("Security requested\n"); 
+        }
+
+7) Let's add the security_changed callback function.
+   
+  <sup>__main.c__</sup>   
+
+    /* 
+     * Callback called when security changes. 
+    */ 
+    static void security_changed(struct bt_conn *conn, bt_security_t level, enum bt_security_err err) 
+    { 
+        if (err) 
+        { 
+            printk("Security failed (err %d)\n", err);
+        } else { 
+            printk("Security changed: level %u\n", level);
+        }
+    } 
+    
+    /*
+     * Register connection callbacks. 
+    */ 
+    BT_CONN_CB_DEFINE(conn_callbacks) = {
+        .connected = connected, 
+        .disconnected = disconnected, 
+        .security_changed = security_changed, 
+    };
+
+> __Note:__ The definition of connected and disconnected callback function exists already in the DIS sample. Replace it by the definition used above.
+
+8) Let's add the handling of the passkey.
+
+  <sup>__main.c__</sup>   
+
+    /*
+     * Display passkey callback. 
+     * 
+     * Called when the stack wants to display 
+     * a passkey to the user. 
+     */ 
+    static void passkey_display(struct bt_conn *conn, unsigned int passkey) 
+    { 
+        char addr[BT_ADDR_LE_STR_LEN]; 
+        bt_addr_le_to_str(bt_conn_get_dst(conn), addr, sizeof(addr)); 
+        printk("Passkey for %s: %06u\n", addr, passkey);
+    } 
+    
+    /* 
+     * Pairing complete callback. 
+     */ 
+    static void pairing_complete(struct bt_conn *conn, bool bonded) 
+    {
+        char addr[BT_ADDR_LE_STR_LEN]; 
+        bt_addr_le_to_str(bt_conn_get_dst(conn), addr, sizeof(addr)); 
+        printk("Pairing completed with %s, bonded: %d\n", addr, bonded); 
+    } 
+    
+    /*
+     * Pairing failed callback. 
+     */ 
+    static void pairing_failed(struct bt_conn *conn, enum bt_security_err reason) 
+    {
+        char addr[BT_ADDR_LE_STR_LEN]; 
+        bt_addr_le_to_str(bt_conn_get_dst(conn), addr, sizeof(addr)); 
+        printk("Pairing failed with %s, reason %d\n", addr, reason); 
+    } 
+    
+    /*
+     * Authentication callbacks. 
+     * 
+     * These handle passkey display and pairing. 
+     */ 
+    static struct bt_conn_auth_cb auth_cb_display = { 
+        .passkey_display = passkey_display,
+    }; 
+    
+    /* * Pairing information callbacks. */ static struct bt_conn_auth_info_cb auth_info_cb = { .pairing_complete = pairing_complete, .pairing_failed = pairing_failed, };
+
+
    
 ## Testing
 
