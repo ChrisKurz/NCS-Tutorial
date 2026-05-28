@@ -129,6 +129,9 @@ The version of the _nRF Connect SDK_ used here is NCS version 3.3.0.
 
 - [__Adding a Binary Descriptor__](ZOS_binary_descriptors/README.md) - adding descriptors to application image and reading it either from PC command line (Intel Hex file) or from C Code.
 
+### Network Buffer
+
+- [__Adding and using a Network Buffer__](ZOS_network_buffer/README.md)
   
 ### Shell
 
