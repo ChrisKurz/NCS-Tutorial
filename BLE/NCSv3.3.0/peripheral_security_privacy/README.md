@@ -48,10 +48,10 @@ This project demonstrates how to use Bluetooth Low Energy Privacy in the Nordic 
 
   <sup>__main.c__</sup>   
 
-    /* Load stored settings. 
-     * Required for bonding information and IRKs. 
-     */
-    settings_load();
+         /* Load stored settings. 
+          * Required for bonding information and IRKs. 
+          */
+         settings_load();
 
 > __Note:__ The <code>settings_load()</code> function loads bonding information, IRKs, and identity data. This is needed for Bluetooth LE Privacy. Without stored IRKs, trusted devices cannot resolve RPAs.
 
