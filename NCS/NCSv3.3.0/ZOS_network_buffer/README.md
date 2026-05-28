@@ -93,11 +93,11 @@ Zephyr provides a flexible buffer system called <code>net_buf</code>. A <code>ne
 
    <sup>__main.c__ => main() function</sup>
    
-       /*
-        * Release the buffer back to the pool
-        */
-       net_buf_unref(buf);
-       printk("Buffer released\n");
+           /*
+            * Release the buffer back to the pool
+            */
+           net_buf_unref(buf);
+           printk("Buffer released\n");
 
 
 ## Testing
