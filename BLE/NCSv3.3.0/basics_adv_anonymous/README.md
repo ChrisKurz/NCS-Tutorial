@@ -18,10 +18,8 @@ The aim of anonymous advertising is to reduce tracking by avoiding persistent id
 [nRF52DK](https://www.nordicsemi.com/Products/Development-hardware/nrf52-dk)
 - Micro USB Cable (Note that the cable is not included in the previous mentioned development kits.)
 - install the _nRF Connect SDK_ v3.3.0 and _Visual Studio Code_. The installation process is described [here](https://academy.nordicsemi.com/courses/nrf-connect-sdk-fundamentals/lessons/lesson-1-nrf-connect-sdk-introduction/topic/exercise-1-1/).
-- a smartphone ([Android](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=de&gl=US&pli=1), which runs the __nRF Connect__ app 
-
-   optional you can also use the smartphone app __Locate Beacon__ from Radius Networks ([Android](https://play.google.com/store/apps/details?id=com.radiusnetworks.locate&hl=en&gl=US) or [iOS](https://apps.apple.com/de/app/locate-beacon/id738709014))
-
+- a smartphone ([Android](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=de&gl=US&pli=1), which runs the __nRF Connect__ app)
+  
 
 ## Hands-on step-by-step description 
 
