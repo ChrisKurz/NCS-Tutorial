@@ -22,10 +22,17 @@ In an _nRF Connect SDK_ Bluetooth project, the Bluetooth device address (MAC add
 
 1) Make a copy of the project [Beacon](basics/beacon). 
 
+### Use Identity Address
+
+2) Change the start advertising code line <code>err = bt_le_adv_start(BT_LE_ADV_NCONN, ad, ARRAY_SIZE(ad), NULL, 0);</code> to the following:
+
+	<sup>_main.c_ => in <code>bt_ready()</code> function</sup>
+
+       err = bt_le_adv_start(BT_LE_ADV_NCONN_IDENTITY, ad, ARRAY_SIZE(ad), NULL, 0);
 
 ### Get the Address with Zephyr Bluetooth API
 
-2) In the beacon application, use the Zephyr Bluetooth API to read the Bluetooth address.
+3) In the beacon application, use the Zephyr Bluetooth API to read the Bluetooth address.
 
 	<sup>_main.c_</sup>
    
@@ -46,7 +53,7 @@ In an _nRF Connect SDK_ Bluetooth project, the Bluetooth device address (MAC add
            printk("Public Bluetooth Address: %s\n", addr_str);
        }
 
-3) Call the <code>print_bt_addr()</code> function after the Bluetooth Stack was successfully enabled.
+4) Call the <code>print_bt_addr()</code> function after the Bluetooth Stack was successfully enabled.
 
 	<sup>_main.c_ => after successful <code>bt_enable()</code> call</sup>
    
@@ -55,9 +62,12 @@ In an _nRF Connect SDK_ Bluetooth project, the Bluetooth device address (MAC add
    
 ## Testing
 
-4) Build the project and download it to your development kit.
+5) Build the project and download it to your development kit.
 
-5) Check the output in the Serial Terminal.
+6) Check the output in the Serial Terminal.
 
    ![image](images/terminal.jpg)
 
+7) Check on Smartphone (note that only the Anrdoid app shows the Bluetooth address when scanning).
+
+   ![image](images/smartphone.jpg)
