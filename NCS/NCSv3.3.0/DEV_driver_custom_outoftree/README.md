@@ -1,6 +1,6 @@
 # !!! WORK IN PROGRESS !!!
 -----
-# Creating a custom Device Driver within the Application Project Folder
+# Writing a user-defined driver located in a separate driver directory outside the SDK
 
 ## Introduction
 
@@ -34,12 +34,16 @@ The driver is done as a Zephyr external module stored in its own folder outside 
 
 ### Register the Folder as a Zephyr Module
 
+In Zephyr, external drivers are typically integrated as __modules__. This means your driver can be located entirely outside the Zephyr or _nRF Connect SDK_ repository.
+
+How does Zephyr find external modules? During the build, Zephyr scans the main project and all registered modules. A module is identified by the <code>zephyr/module.yml</code> file. This <code>module.yml</code> file tells Zephyr where Kconfig is located, where CMake is located, and any optional additional metadata.
+
 2) Zephyr discovers external code through __zephyr/module.yml__. Create <code>modules/app_led_driver/zephyr/module.yml</code>.
 
    <sup>__modules/app_led_driver/zephyr/module.yml__</sup>
 
 ```yaml
-name: app_led_driver
+name: my_led_driver
 build:
   kconfig: Kconfig
   cmake: .
@@ -51,11 +55,37 @@ build:
 > - <cmake> and <kconfig> point to the module root build files
 > - <code>dts_root</code> tells Zephyr to pick up custom DeviceTree bindings from this module
 
-### Integrating the Module into CMake and Kconfig
 
-3) 
+### Integrate the Module into CMake and Kconfig
+
+3) Here are the required CMakeLists.txt files. 
+
+  ![image](images/cmake.jpg)
+
+   <sup>__myDrivers/CMakeLists.txt__</sup>
+
+    add_subdirectory(drivers)
+    zephyr_include_directories(include)
+
+-----
+   <sup>__myDrivers/drivers/CMakeLists.txt__</sup>
+
+    add_subdirectory_ifdef(CONFIG_APP_LED led)
+-----
+   <sup>__myDrivers/drivers/CMakeLists.txt__</sup>
+
+    add_subdirectory_ifdef(CONFIG_APP_LED_GPIO gpio)
+
+4) And here are the required Kconfig files.
+
+   ![image](images/kconfig.jpg)
 
 
+
+
+
+
+-----------------------------------------------------
        #include "my_led.h"
 
        #include <zephyr/device.h>
