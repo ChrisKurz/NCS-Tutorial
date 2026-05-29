@@ -52,7 +52,7 @@ build:
 ```
 
 > __Note:__
-> - <cmake> and <kconfig> point to the module root build files
+> - <code>cmake</code> and <code>kconfig</code> point to the module root build files
 > - <code>dts_root</code> tells Zephyr to pick up custom DeviceTree bindings from this module
 
 
