@@ -55,6 +55,15 @@ build:
 > - <code>cmake</code> and <code>kconfig</code> point to the module root build files
 > - <code>dts_root</code> tells Zephyr to pick up custom DeviceTree bindings from this module
 
+> __Note:__ _Why are the fields <code>cmake</code> and <code>kconfig</code> differently handled?_
+>
+> Both fields live under <code>build:</code> in <code>module.yml</code>, but they do not mean the same thing. That's why we use <code>cmake: .</code> together with <code>kconfig: Kconfig</code>, despite both files are located in the same folder.
+>
+> The <code>cmake:</code> field expects a directory in which the file <code>CMakeLists.txt</code> can be found. While the field <code>kconfig:</code> expects a file path to the Kconfig file to include.
+>
+> <code>build:</code> <br>
+> <code>  cmake: .          # directory → ./CMakeLists.txt </code> <br>
+> <code>  kconfig: Kconfig  # file     → ./Kconfig </code> 
 
 ### Integrate the Module into CMake and Kconfig
 
