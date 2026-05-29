@@ -63,7 +63,7 @@ build:
 >
 > <code>build:</code> <br>
 > <code>  cmake: .          # directory → ./CMakeLists.txt </code> <br>
-> <code>  kconfig: Kconfig  # file     → ./Kconfig </code> 
+> <code>  kconfig: Kconfig  # file      → ./Kconfig </code> 
 
 ### Integrate the Module into CMake and Kconfig
 
