@@ -133,6 +133,8 @@ x) In __app/CMakeLists.txt__ fille add <code>EXTRA_ZEPHYR_MODULES</code> __befor
 
   > __Note:__ <code>EXTRA_ZEPHYR_MODULES</code> merges your module into the build without modifying the SDK. This is the recommended approach for freestanding applications.
 
+  > __Note:__ <code>CMAKE_CURRENT_SOURCE_DIR</code> is a built-in CMake variable that stores the absolute path to the directory containing the CMakeLists.txt file currently being processed. It is the most reliable way to reference local source file relative to your current processing scope.
+
   > __Alternative:__ Add the module to _west.yml_ so <code>west update</code> clones it automatically. For a module that already exists locally, <code>EXTRA_ZEPHYR_MODULE</code> is simpler.> 
 
 
