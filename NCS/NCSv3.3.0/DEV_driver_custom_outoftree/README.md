@@ -52,9 +52,18 @@ build:
 ```
 
 > __Note:__
-> - <cmake> and <kconfig> point to the module root build files
+> - <code>cmake</code> and <code>kconfig</code> point to the module root build files
 > - <code>dts_root</code> tells Zephyr to pick up custom DeviceTree bindings from this module
 
+> __Note:__ _Why are the fields <code>cmake</code> and <code>kconfig</code> differently handled?_
+>
+> Both fields live under <code>build:</code> in <code>module.yml</code>, but they do not mean the same thing. That's why we use <code>cmake: .</code> together with <code>kconfig: Kconfig</code>, despite both files are located in the same folder.
+>
+> The <code>cmake:</code> field expects a directory in which the file <code>CMakeLists.txt</code> can be found. While the field <code>kconfig:</code> expects a file path to the Kconfig file to include.
+>
+> <code>build:</code> <br>
+> <code>  cmake: .          # directory → ./CMakeLists.txt </code> <br>
+> <code>  kconfig: Kconfig  # file      → ./Kconfig </code> 
 
 ### Integrate the Module into CMake and Kconfig
 
@@ -81,146 +90,88 @@ build:
    ![image](images/kconfig.jpg)
 
 
+### Create the DeviceTree Binding
 
+5) The binding file describe valid DeviceTree nodes.
 
+   <sup>myDriver/dts/bindings/my_led_driver/mycompany,led_driver.yaml
 
-
------------------------------------------------------
-       #include "my_led.h"
-
-       #include <zephyr/device.h>
-       #include <zephyr/drivers/gpio.h>
-       #include <zephyr/kernel.h>
-       #include <zephyr/devicetree.h>
-
-       #define LED_NODE DT_ALIAS(led0)
-
-       static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED_NODE, gpios);
-
-       static struct k_timer blink_timer;
-
-       static bool blinking = false;
-       static bool led_state = false;
-
-       static void blink_timer_handler(struct k_timer *timer)
-       {
-           ARG_UNUSED(timer);
-
-           led_state = !led_state;
-           gpio_pin_set_dt(&led, led_state);
-       }
-
-       int my_led_init(void)
-       {
-           if (!gpio_is_ready_dt(&led)) {
-               return -ENODEV;
-           }
+       description: GPIO LED with on/off/blink driver
    
-           int ret = gpio_pin_configure_dt(&led, GPIO_OUTPUT_INACTIVE);
-           if (ret < 0) {
-               return ret;
-           }
-           k_timer_init(&blink_timer, blink_timer_handler, NULL);
+       compatible: "app-led-gpio"
+   
+       include: base.yaml
+   
+       properties:
+          led-gpios:
+              type: phandle-array
+              required: true
+              description: GPIO connected to the LED.
+   
+          blink-period-ms:
+              type: int
+              default: 0
+              description: |
+                Initial blink period in milliseconds. 0 means LED starts off.
+                Half of this value is used for ON time and half for OFF time.
 
-           return 0;
-       }
-
-       int my_led_on(void)
-       {
-           blinking = false;
-           k_timer_stop(&blink_timer);
-           led_state = true;
-           return gpio_pin_set_dt(&led, 1);
-       }  
-
-       int my_led_off(void)
-       {
-           blinking = false;
-           k_timer_stop(&blink_timer);
-           led_state = false;
-           return gpio_pin_set_dt(&led, 0);
-       }
-
-       void my_led_blink_start(uint32_t interval_ms)
-       {
-           blinking = true;
-
-           k_timer_start(
-               &blink_timer,
-               K_MSEC(interval_ms),
-               K_MSEC(interval_ms));
-       }
-
-       void my_led_blink_stop(void)
-       {
-           blinking = false;
-           k_timer_stop(&blink_timer);
-          gpio_pin_set_dt(&led, 0);
-          led_state = false;
-       }
+### Define the Driver API
 
 
-### Create the main Application
-
-4) Add following test code in the main.c file.
-
-   <sup>__src/main.c__</sup>
-
-       #include <zephyr/kernel.h>
-       #include "my_led.h"
-
-       int main(void)
-       {
-           int ret;
-
-           ret = my_led_init();
-           if (ret < 0) {
-               return 0;
-           }
-
-           while (1) {
-
-               my_led_on();
-               k_sleep(K_SECONDS(2));
-
-               my_led_off();
-               k_sleep(K_SECONDS(2));
-  
-               my_led_blink_start(500);
-               k_sleep(K_SECONDS(5));
-
-               my_led_blink_stop();
-               k_sleep(K_SECONDS(2));
-           }
-
-           return 0;
-       }
+### Implement the Driver
 
 
-### Create the Top-Level CMake File
+### Connect the Module to your Application
 
-5) Add following lines in CMakeLists.txt file.
+#### Tell CMake where the Module lives
 
-   <sup>__CMakeLists.txt__</sup>
+x) In __app/CMakeLists.txt__ fille add <code>EXTRA_ZEPHYR_MODULES</code> __before__ <code>find_package(Zephyr ...)</code>. 
 
-       cmake_minimum_required(VERSION 3.20.0)
+   <sup>__app/CMakeLists.txt__</sup>
 
-       find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
+    list(APPEND EXTRA_ZEPHYR_MODULES ${CMAKE_CURRENT_SOURCE_DIR}/../myDrivers/drivers)
 
-       project(my_led_project)
+  > __Note:__ <code>EXTRA_ZEPHYR_MODULES</code> merges your module into the build without modifying the SDK. This is the recommended approach for freestanding applications.
 
-       target_sources(app PRIVATE src/main.c
-                                  drivers/my_led/my_led.c)
+  > __Note:__ <code>CMAKE_CURRENT_SOURCE_DIR</code> is a built-in CMake variable that stores the absolute path to the directory containing the CMakeLists.txt file currently being processed. It is the most reliable way to reference local source file relative to your current processing scope.
 
-       target_include_directories(app PRIVATE drivers/my_led)
+  > __Alternative:__ Add the module to _west.yml_ so <code>west update</code> clones it automatically. For a module that already exists locally, <code>EXTRA_ZEPHYR_MODULE</code> is simpler.> 
 
-### Create prj.conf
 
-6) Enable GPIO support.
+#### Enable the Driver in Kconfig
 
-   <sup>__prj.conf__</sup>
+x) The driver is added to the application project via its Kconfig symbol. 
 
-       CONFIG_GPIO=y
+   <sup>__app/prj.conf__</sup>
+
+    CONFIG_GPIO=y
+    CONFIG_APP_LED=y
+    CONFIG_APP_LED_GPIO=y
+
+    CONFIG_LOG=y
+    CONFIG_APP_LED_LOG_LEVEL_DBG=y
+   
+
+#### Describe the Hardware in DeviceTree
+
+x) Create the file __app/boards/nrf54l15dk_nrf54l15_cpuapp.overlay. 
+
+   <sup>__app/boards/nrf54l15dk_nrf54l15_cpuapp.overlay__</sup>
+
+    / {
+        app_led0: app-led-0 {
+            compatible = "app-led-gpio";
+            led-gpios = <&gpio2 9 GPIO_ACTIVE_LOW>;
+            blink-period-ms = <0>;
+        };
+    };
+
+> __Note:__ Set <code>blink-period-ms = <1000></code> if you want blinking to start automatically at boot.
+
+
+### Write the Application
+
+
 
 ## Testing
 
