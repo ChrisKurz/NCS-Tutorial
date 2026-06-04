@@ -191,6 +191,8 @@ We’ll leave that out for the launcher. The launcher is placed at the start add
 
 > __Note:__ You should see that both images are located at different start addresses. 
 
+  ![image](images/programmer.jpg)
+
 12) Click on "Erase & write" button and check the Serial Terminal output. 
 
    ![image](images/terminal.jpg)
