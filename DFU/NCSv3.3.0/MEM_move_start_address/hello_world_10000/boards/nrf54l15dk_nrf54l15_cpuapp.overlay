@@ -1,0 +1,19 @@
+/ {
+    chosen {
+        zephyr,code-partition = &app_slot;
+    };
+};
+
+&cpuapp_rram {
+
+    partitions {
+        compatible = "fixed-partitions";
+        #address-cells = <1>;
+        #size-cells = <1>;
+
+        app_slot: partition@10000 {
+            label = "app_slot";
+            reg = <0x00010000 0x00070000>;
+        };
+    };
+};
