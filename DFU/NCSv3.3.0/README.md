@@ -28,3 +28,9 @@ In this chapter, we will look at the solution for serial recovery.
 ### DFU handled by application firmware
 
 Here, we'll look at some examples of how to download the update image from the application firmware.
+
+
+## Memory Partitions
+
+
+1) Let's start with a simple example: [Place the Project at a Custom Start Address (nRF54L only!)](MEM_move_start_address/README.md)
