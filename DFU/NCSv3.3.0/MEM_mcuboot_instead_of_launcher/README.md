@@ -71,7 +71,7 @@ Let's use a common memory partition definition for the application and MCUboot.
            };
        };
 
-> __Note:__ Lateron we will do some changes in this file. 
+> __Note:__ We will make some changes to this file later.
 
 4) The original DeviceTree overlay file will just link to the new DTSI file.
 
