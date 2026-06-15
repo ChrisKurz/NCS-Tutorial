@@ -240,6 +240,10 @@ _prj.conf_
              
              start_advertising();
 
+   > __Important Note__: Although the connection is no longer active from the application's perspective, the Bluetooth stack's internal cleanup related to the disconnected connection may not yet be fully complete at this point. The resources occupied by the connection object, like the advertising set, the controller status, the buffers, etc. may not yet have been fully released. The callback <code>recycled</code> is executed as soon as the advertising object has been fully released and is ready to be reused. Please note, however, that the <code>disconnected</code> or <code>recycled</code> callbacks are still executed within the context of the Bluetooth Stack, and a <code>bt_le_adv_start()</code> should not be called here.
+> 
+> We’ll keep this example simple and leave that out. If any issues arise when restarting the advertising, the code should be adjusted accordingly. 
+
 
 ## Testing
 17) Build the project and download to a development kit.
