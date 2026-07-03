@@ -1,6 +1,6 @@
 # nRF Connect SDK (NCS)
 
-The version of the _nRF Connect SDK_ used here is NCS version 3.3.0.
+The version of the _nRF Connect SDK_ used here is NCS version 3.4.0.
 
 --------
 ## Table of Content
