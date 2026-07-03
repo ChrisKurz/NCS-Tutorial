@@ -98,7 +98,7 @@ The most commonly used, namely Freestanding, is used in this hands-on guide.
  
    ![image](images/BuildConfiguration.jpg)
 
-   The first line on this windows shows you the seleced SDK version and toolchain version. You can change it by clicking on this line. Note that the drop down list shows only the installed SDK and toolchain versions. IF the version that you would like to select is not listed, then click in the Welcome menu on "Manage toolchains" or "Manage SDKs" and installed the required versions. Ensure the toolchain version __v3.0.0__ and SDK version __v3.0.0__ is selected for this hands-on.
+   The first line on this windows shows you the seleced SDK version and toolchain version. You can change it by clicking on this line. Note that the drop down list shows only the installed SDK and toolchain versions. IF the version that you would like to select is not listed, then click in the Welcome menu on "Manage toolchains" or "Manage SDKs" and installed the required versions. Ensure the toolchain version __v3.4.0__ and SDK version __v3.4.0__ is selected for this hands-on.
 
    In the __Board__ drop down list enter the board name of your development kit. When you enter the name you should see that the list will be filtered. 
 
