@@ -69,6 +69,8 @@ Note that the Application Version Management is a functionality that was first t
 > ![image](images/warning.jpg)
 >
 > There is the __APP_BUILD_VERSION__ symbol, which holds the output of the Git command <code>git describe --abbrev=12 --always</code> run from the application's repository. This means it reflects the Git-derived version description of the source tree at build time - not the fields defined in __VERSION__ file.
+> 
+> We can ignore this warning in our example, because we are only interested to read the version numbers for the __VERSION__ file. 
 
 6) In the terminal you should see following outuput:
 
