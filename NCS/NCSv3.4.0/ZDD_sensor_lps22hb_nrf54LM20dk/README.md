@@ -168,6 +168,8 @@ We have included the driver with the previous steps. Now we will use the driver 
 
 ## Testing
 
+> __Note:__ Usually the default supply voltage of the development kit is 1.8 V. This is not enough for the sensor board. So we have to adjust the nRF54L dev kit supply voltage by opening [_Board Configurator_](https://docs.nordicsemi.com/r/bundle/nrf-connect-for-desktop/page/board-configurator-app) and increasing the supply voltage, e.g. 3.0 V.
+
 ### Build the Project and Download to the Development Kit
 
 10) Click on the "Build" button in the ACTIONS menu. 
