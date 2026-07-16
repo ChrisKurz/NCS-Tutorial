@@ -1,0 +1,260 @@
+# Bluetooth Low Energy: Peripheral with Device Information Service (DIS)
+
+## Introduction
+
+The easiest way to use Bluetooth Low Energy is to realize a beacon application. However, a connection between two devices is usually required. A connection enables the exchange of data. In this example, we will look at a peripheral solution that lets you read the Device Information Service. 
+
+
+## Required Hardware/Software
+- Development kit 
+[nRF54LM20DK](https://www.nordicsemi.com/Products/Development-hardware/nRF54LM20-DK),
+[nRF54L15DK](https://www.nordicsemi.com/Products/Development-hardware/nRF54L15-DK), 
+[nRF52840DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK), 
+[nRF52833DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52833-DK), or 
+[nRF52DK](https://www.nordicsemi.com/Products/Development-hardware/nrf52-dk) 
+- a smartphone ([Android](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=de&gl=US&pli=1) or [iOS](https://apps.apple.com/de/app/nrf-connect-for-mobile/id1054362403)), which runs the __nRF Connect__ app 
+- install the _nRF Connect SDK_ v3.4.0 and _Visual Studio Code_. The installation process is described [here](https://academy.nordicsemi.com/courses/nrf-connect-sdk-fundamentals/lessons/lesson-1-nrf-connect-sdk-introduction/topic/exercise-1-1/).
+
+
+## Hands-on step-by-step description
+
+### Create a new Project
+
+1) Make a copy of the _Creating a Project from Scratch_ hands-on and store it in your workspace folder, e.g.  C:/Nordic/Workspace/02_Peripheral_DIS 
+
+2) Start Visual Studio Code and open the __02_Peripheral_DIS__ project.
+
+### Enable Bluetooth Stack 
+
+3) Add Bluetooth software module to the application by setting the appropriate Kconfig.
+
+   <sup>_prj.conf_</sup>
+
+       # Enable Bluetooth support
+       CONFIG_BT=y
+
+4) Enable the Bluetooth Stack in the main function:
+
+	<sup>_src/main.c_ => main() function</sup>
+
+            int err;
+
+            /* Initialize the Bluetooth Subsystem */
+            err = bt_enable(NULL);
+            if (err) {
+                printk("Bluetooth init failed (err %d)\n", err);
+                return 0;
+            }
+            printk("Bluetooth initialized\n");
+
+   > **_Note:_** The _bt_enable()_ function allows you to define a callback function that is called as soon as the Bluetooth stack is initialized. We keep the code simple in this example and do without this callback function. Therefore the parameter in _bt_enable()_ is set to NULL. 
+
+
+### Configuration of Bluetooth Stack (Role, Device Name)
+
+5) The Bluetooth stack supports differnt roles:
+ > <ins>connection-less modes:</ins>
+ > - broadcaster (CONFIG_BT_BROADCASTER)
+ > - observer (CONFIG_BT_OBSERVER)
+
+ > <ins>connection-oriented roles:</ins>
+ > - peripheral (CONFIG_BT_PERIPHERAL)
+ > - central (CONFIG_BT_CENTRAL)
+
+   In the hands-on we select the Peripheral role.    
+
+_prj.conf_
+	   
+    #------ Define Bluetooth LE Role 
+    CONFIG_BT_PERIPHERAL=y
+
+6) There is also a Kconfig symbol that can be used to define the Bluetooth Device Name. In our case this will be the name that is shown on the smartphone when advertising is done. 
+
+_prj.conf_
+	   
+    #------ Define Bluetooth Device Name
+    CONFIG_BT_DEVICE_NAME="DIS peripheral"
+
+
+### Add Software module for _Device Information Service_ (DIS) and set its paramters
+
+7) This is done via the KCONFIG settings. So we have to add following lines in the __prj.conf__ file:
+
+	<sup>_prj.conf_</sup>
+	   
+       #------ Device Information Service (DIS)
+       CONFIG_BT_DIS=y
+
+8) The _Device Information Service_ parameters are also defined via KCONFIG. Please check the Bluetooth DIS specification and compare it with the below parameters. (see https://www.bluetooth.com/de/specifications/specs/)
+
+   So we define the DIS parameters by adding following lines in __prj.conf__ file:
+
+	<sup>_prj.conf_</sup>
+
+       #CONFIG_BT_DIS_MANUF="Zephyr"         ->   *** deprecated KCONFIG symbol ***
+       CONFIG_BT_DIS_MANUF_NAME=y
+       CONFIG_BT_DIS_MANUF_NAME_STR="Nordic Semiconductor"   
+       #CONFIG_BT_DIS_MODEL="Zephyr Model"   ->  *** deprecated KCONFIG symbol ***
+       CONFIG_BT_DIS_MODEL_NUMBER=y
+       CONFIG_BT_DIS_MODEL_NUMBER_STR="Zephyr Model"      
+       CONFIG_BT_DIS_SERIAL_NUMBER=y
+       CONFIG_BT_DIS_SERIAL_NUMBER_STR="Zephyr Serial"
+       CONFIG_BT_DIS_HW_REV=y
+       CONFIG_BT_DIS_HW_REV_STR="Zephyr Hardware Version"
+       CONFIG_BT_DIS_FW_REV=y
+       CONFIG_BT_DIS_FW_REV_STR="Zephyr Firmware Version"
+       CONFIG_BT_DIS_SW_REV=y
+       CONFIG_BT_DIS_SW_REV_STR="Zephyr Software Version"
+       CONFIG_BT_DIS_PNP=n
+       #CONFIG_BT_DIS_PNP_PID=0x00   not used in this example
+       #CONFIG_BT_DIS_PNP_VID=0x00   not used in this example
+       #CONFIG_BT_DIS_PNP_VID_SRC=1  not used in this example
+       #CONFIG_BT_DIS_PNP_VER=0x01   not used in this example
+
+ > __Note:__ In older versions of the _nRF Connect SDK_, a few DIS KCONFIG symbols were used. Some of these have been marked as deprecated in the current version. The following KCONFIG symbols are affected and will be replaced by new KCONFIG symbols as described.
+> - _CONIFG_BT_DIS_MANUF_: Use <code>CONFIG_BT_DIS_MANUF_NAME</code> and <code>CONFIG_BT_DIS_MANUF_NAME_STR</code> instead.
+>
+> - _CONFIG_BT_DIS_MODEL_: Use <code>CONFIG_BT_DIS_MODEL_NUMBER</code> and <code>CONFIG_BT_DIS_MODEL_NUMBER_STR</code> instead.   
+
+9) Some Bluetooth services in the Zephyr project require interaction with the user's main function. The corresponding API functions are declared in dedicated service header files located in __zephyr/include/zephyr/bluetooth/services__ folder. 
+
+   The _Device Information Service_ does not require such API functions. Nevertheless, an empty header file was prepared for it. So including a header for DIS would not be necessary, but for completness we will also include the DIS header file in our project. Add following line in main.c file:
+
+	<sup>_src/main.c_</sup>
+	
+       #include <zephyr/bluetooth/services/dis.h>
+
+
+### Start Advertising
+
+10) First, we include the header file __uuid.h__ into our project. There are pre-defined UUIDs of standard Bluetooth Services and Characteristics. Beside that if offers also macros that are used to create the advertising data. 
+
+	<sup>_src/main.c_</sup>
+
+        #include <zephyr/bluetooth/uuid.h>
+
+11) Next, we add an __advertising_start()__ function. The advertising will be started on different places in our code. So using a function makes sense. Add following code to main.c file:
+
+	<sup>_src/main.c_</sup>
+
+		/* Set advertising data */
+        static const struct bt_data ad[] = {
+             BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
+             BT_DATA_BYTES(BT_DATA_UUID16_ALL, BT_UUID_16_ENCODE(BT_UUID_DIS_VAL)),
+        };
+
+        /* Set Scan Response data */
+        static const struct bt_data sd[] = {
+             BT_DATA(BT_DATA_NAME_COMPLETE, CONFIG_BT_DEVICE_NAME, sizeof(DEVICE_NAME) - 1),
+        };
+
+        void start_advertising(void)
+        {
+             int err;
+	   
+             err = bt_le_adv_start(BT_LE_ADV_CONN_FAST_1, ad, ARRAY_SIZE(ad),
+                                                          sd, ARRAY_SIZE(sd));
+             if (err) {
+                 printk("Advertising failed to start (err %d)\n", err);
+             }
+             else {
+                 printk("Advertising successfully started\n");
+             }
+        }
+
+> __NOTE:__ In this example, we use Scan Response to also send the device name when advertising. This makes it easier for us to find our Bluetooth device in the NRF Connect for Mobile smartphone app. 
+>
+> __Scan Response:__
+> A Bluetooth Low Energy _Scan Response_ is an additional advertising packet that a peripheral sends to a central device upon request, allowing it to transmit more data (e.g. device name, UUIDs) than can fit into a single advertising message.
+
+
+
+12) We will start advertising in main function, when the bluetooth stack was successfully started. Add following line: 
+
+	<sup>_src/main.c_ => main() function</sup>
+             
+              start_advertising();
+
+
+### Add handling of connect/disconnect events
+
+13) We need to include the header file __conn.h__ to get access to the appropriated definitions for connection handling. So we add following line:
+
+	<sup>_src/main.c_</sup>
+
+        #include <zephyr/bluetooth/conn.h> 
+
+14) We define two callback functions, which are called by the Bluetooth stack. The execution of these callback functions is triggered when a connection is established, or a disconnect happens. Let's prepare the appropriate structure.
+
+   There are two possibilities. Either you use the Macro that is defined in the Bluetooth stack or you define it as a structure.
+
+   - __Either use the pre-defined macro from the Bluetooth Stack, ...__
+
+<sup>_src/main.c_</sup>
+
+    /* Register a callback structure for connection events. */
+    BT_CONN_CB_DEFINE(conn_callbacks) = {
+        .connected = connected,
+        .disconnected = disconnected,
+    };
+       
+> **_Note:_** Calling the function _bt_conn_cb_register()_ is not needed when using the macro!       
+
+   - __... or define the callback structure in the following way:__
+
+<sup>_src/main.c_</sup>
+
+    static struct bt_conn_cb conn_callbacks = {
+        .connected = connected,
+        .disconnected = disconnected,
+    };
+
+    void main(void) {
+         ...
+         /* Register a callback structure for connection events. */
+         bt_conn_cb_register(&conn_callbacks);
+         ...	  
+    }
+
+15) Define the Callback functions used for a connect or disconnect events. In our case we will use these functions just for debug messages. 
+
+	<sup>_src/main.c_</sup>
+
+        static void connected(struct bt_conn *conn, uint8_t err)
+        {
+             if (err) {
+                  printk("Connection failed (err 0x%02x)\n", err);
+             } else {
+                  printk("Connected\n");
+             }
+        }
+
+        static void disconnected(struct bt_conn *conn, uint8_t reason)
+        {
+             printk("Disconnected (reason 0x%02x)\n", reason);
+        }
+
+16) We start advertising again when a disconnect happened. So add following line in the __disconnected()__ function:
+
+	<sup>_src/main.c_ => disconnected() function</sup>
+             
+             start_advertising();
+
+   > __Important Note__: Although the connection is no longer active from the application's perspective, the Bluetooth stack's internal cleanup related to the disconnected connection may not yet be fully complete at this point. The resources occupied by the connection object, like the advertising set, the controller status, the buffers, etc. may not yet have been fully released. The callback <code>recycled</code> is executed as soon as the advertising object has been fully released and is ready to be reused. Please note, however, that the <code>disconnected</code> or <code>recycled</code> callbacks are still executed within the context of the Bluetooth Stack, and a <code>bt_le_adv_start()</code> should not be called here. A better solution here would be to place the <code>bt_le_adv_start()</code> call in a workqueue. 
+> 
+> We’ll keep this example simple and leave that out. If any issues, like EALREADY, EBUSY, or ENOMEM errors, arise when restarting the advertising, the code should be adjusted accordingly. 
+
+
+## Testing
+17) Build the project and download to a development kit.
+18) Ensure the code is executed on your development kit. This can be done by checking the debug output on a serial terminal. 
+
+   You should see following output:
+   
+   ![missing image](images/terminal.jpg)
+
+19) Use a smartphone and the __nRF Connect__ app and look for "DIS peripheral" device. Check the GATT database.
+
+   Here is a screen shot of an iPhone showing the GATT database:
+   
+   ![missing image](images/GattDatabase.jpg)
