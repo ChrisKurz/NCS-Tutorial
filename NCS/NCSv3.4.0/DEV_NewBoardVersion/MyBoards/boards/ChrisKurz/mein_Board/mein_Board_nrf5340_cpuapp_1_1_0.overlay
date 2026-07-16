@@ -1,0 +1,3 @@
+&led0 {
+    gpios = <&gpio0 31 GPIO_ACTIVE_LOW>;
+};

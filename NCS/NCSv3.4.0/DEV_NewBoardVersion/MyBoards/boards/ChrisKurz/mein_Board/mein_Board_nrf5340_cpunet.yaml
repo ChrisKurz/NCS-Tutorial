@@ -1,0 +1,10 @@
+identifier: mein_Board/nrf5340/cpunet
+name: My first custom-designed test board
+vendor: ChrisKurz
+type: mcu
+arch: arm
+ram: 64
+flash: 92
+toolchain:
+  - zephyr
+supported: []

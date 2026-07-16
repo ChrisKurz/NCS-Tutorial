@@ -1,0 +1,20 @@
+# MyApp configuration
+menu "MyApp Settings"
+   config MYFUNC
+         bool "Enable MyFunc software module"
+         default y
+         help 
+            Include the user-defined software
+      
+
+   config MYFUNC_NAME
+         string "Name of my function."
+        default "name is not defined"
+        depends on MYFUNC
+        help 
+            Name of the user-defined software.
+endmenu
+
+menu "Zephyr Kernel"
+  source "Kconfig.zephyr"
+endmenu
