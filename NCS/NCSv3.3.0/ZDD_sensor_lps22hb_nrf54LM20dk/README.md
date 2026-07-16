@@ -1,4 +1,4 @@
-# Zephyr Device Driver: Adding LPS22HB Sensor Driver to an nRF54LM20 Project
+# Zephyr Device Driver: Adding LPS22HB Sensor Driver to an nRF54LM20DK
 
 The Zephyr RTOS includes a wide range of drivers. In this practical exercise, we will take a closer look at the sensor drivers, specifically the BME280 sensor driver.
 
