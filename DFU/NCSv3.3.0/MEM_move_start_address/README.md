@@ -40,9 +40,17 @@ a launcher app — also based on Zephyr's <code>hello_world</code> — that allo
    >
    > _System build (sysbuild)_: Use sysbuild
 
+2) Disable _Partition Manager_ by adding file <code>sysbuild.conf</sup> and adding following lines.
+
+   <sup>sysbuild.conf</sup>
+
+       # Disable Partition Manager
+       SB_CONFIG_PARTITION_MANAGER=n
+
+
 #### Adding the DeviceTree Overlay File
    
-2) Add the file <code>boards/nrf54l15dk_nrf54l15_cpuapp</code>:
+3) Add the file <code>boards/nrf54l15dk_nrf54l15_cpuapp</code>:
 
    <sup>_boards/nrf54l15_nrf54l15_cpuapp_</sup>
 
@@ -70,7 +78,7 @@ a launcher app — also based on Zephyr's <code>hello_world</code> — that allo
 Please note that, by default, the linker uses the KCONFIG settings <code>CONFIG_ROM_START_OFFSET=0</code> and places the code at the start address 0x00000000. 
 Even if we define a different start address in the DeviceTree overlay file, this KCONFIG setting would still be used. We need to switch to using the DTS file by setting <code>CONFIG_USE_DT_CODE_PARTITION=y</code>.
 
-3) Enable Linker to use DTS file settings.
+4) Enable Linker to use DTS file settings.
 
    <sup>_prj.conf_</sup>
 
@@ -79,7 +87,7 @@ Even if we define a different start address in the DeviceTree overlay file, this
 
 #### Add a Debug Output Message in main
 
-4) Let's read the start address of the custom Memory Partition.
+5) Let's read the start address of the custom Memory Partition.
 
    <sup>_main.c_</sup>
 
@@ -90,7 +98,7 @@ Even if we define a different start address in the DeviceTree overlay file, this
        #define APP_PARTITION_NODE DT_CHOSEN(zephyr_code_partition)
        #define APP_START_ADDRESS DT_REG_ADDR(APP_PARTITION_NODE)
 
-5) And output the start address in the serial terminal.
+6) And output the start address in the serial terminal.
 
    <sup>_main.c_</sup>
 
@@ -102,7 +110,7 @@ Even if we define a different start address in the DeviceTree overlay file, this
 
 #### Start with <code>hello_world</code> Project
 
-6) Create a new application based on the /zephyr/samples/hello_world sample project.
+7) Create a new application based on the /zephyr/samples/hello_world sample project.
 
    > __Build Configuration__:
    >
@@ -110,9 +118,17 @@ Even if we define a different start address in the DeviceTree overlay file, this
    >
    > _System build (sysbuild)_: Use sysbuild
 
+8) Disable _Partition Manager_ by adding file <code>sysbuild.conf</sup> and adding following lines.
+
+   <sup>sysbuild.conf</sup>
+
+       # Disable Partition Manager
+       SB_CONFIG_PARTITION_MANAGER=n
+
+
 #### Adding the DeviceTree Overlay File
    
-7) Add the file <code>boards/nrf54l15dk_nrf54l15_cpuapp.overlay</code>:
+9) Add the file <code>boards/nrf54l15dk_nrf54l15_cpuapp.overlay</code>:
 
    <sup>_boards/nrf54l15_nrf54l15_cpuapp.overlay_</sup>
 
@@ -143,7 +159,7 @@ We’ll leave that out for the launcher. The launcher is placed at the start add
 
 #### Add Code that starts <code>hello_world</code> App 
 
-8) Let's read the address from DeviceTree overlay file.
+10) Let's read the address from DeviceTree overlay file.
 
    <sup>_main.c_</sup>
 
@@ -154,7 +170,7 @@ We’ll leave that out for the launcher. The launcher is placed at the start add
        #define TARGET_NODE DT_CHOSEN(myapp_target_partition)
        #define TARGET_ADDRESS DT_REG_ADDR(TARGET_NODE)
    
-9) Add a function that jumps into the other project.
+11) Add a function that jumps into the other project.
 
     <sup>_main.c_</sup>
 
@@ -176,7 +192,7 @@ We’ll leave that out for the launcher. The launcher is placed at the start add
            entry();
        }    
 
-10) And finally call the <code>start_application()</code> function.
+12) And finally call the <code>start_application()</code> function.
 
     <sup>_main.c_</sup>
 
@@ -185,7 +201,7 @@ We’ll leave that out for the launcher. The launcher is placed at the start add
     
 ## Testing
 
-11) Use the __Programmer__ from _nRF Connect for Desktop_ and add following files:
+13) Use the __Programmer__ from _nRF Connect for Desktop_ and add following files:
     - __hello_world_10000/build/hello_world_10000/zephyr/zephyr.hex__
     - __hello_world_launcher/build/hello_world_launcher/zephyr/zephyr.hex__
 
@@ -193,6 +209,6 @@ We’ll leave that out for the launcher. The launcher is placed at the start add
 
   ![image](images/programmer.jpg)
 
-12) Click on "Erase & write" button and check the Serial Terminal output. 
+14) Click on "Erase & write" button and check the Serial Terminal output. 
 
    ![image](images/terminal.jpg)
