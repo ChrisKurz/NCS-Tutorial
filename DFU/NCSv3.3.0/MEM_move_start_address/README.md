@@ -115,7 +115,7 @@ Even if we define a different start address in the DeviceTree overlay file, this
 7) Create a new application based on the /zephyr/samples/hello_world sample project.
 
    > __Build Configuration__:
-   >
+   > 
    > _Board Target:_ nrf54l15dk/nrf54l15/cpuapp
    >
    > _System build (sysbuild)_: Use sysbuild
@@ -130,7 +130,7 @@ Even if we define a different start address in the DeviceTree overlay file, this
 
 #### Adding the DeviceTree Overlay File
    
-9) Add the file <code>boards/nrf54l15dk_nrf54l15_cpuapp.overlay</code>:
+9) Add the file <code>boards/nrf54l15dk_nrf54l15_cpuapp.overlay</code>: 
 
    <sup>_boards/nrf54l15_nrf54l15_cpuapp.overlay_</sup>
 
