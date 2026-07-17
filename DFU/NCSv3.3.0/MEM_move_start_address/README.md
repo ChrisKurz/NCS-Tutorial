@@ -47,8 +47,8 @@ a launcher app — also based on Zephyr's <code>hello_world</code> — that allo
        # Disable Partition Manager
        SB_CONFIG_PARTITION_MANAGER=n
 
+    __Note:__ _Partition Manager_ was deprecated in _nRF Connect SDK_ version 3.3.0. It is still included in the SDK, but it was already announced that _nRF Connect SDK_ version that will be published in December 2026 will remove _Partition Manager_
 
-> __Note:__ _Partition Manager_ was deprecated in _nRF Connect SDK_ version 3.3.0. It is still included in the SDK, but it was already announced that _nRF Connect SDK_ version that will be published in December 2026 will remove _Partition Manager_.
 
 #### Adding the DeviceTree Overlay File
    
