@@ -112,9 +112,9 @@ Even if we define a different start address in the DeviceTree overlay file, this
 
 #### Adding the DeviceTree Overlay File
    
-7) Add the file <code>boards/nrf54l15dk_nrf54l15_cpuapp</code>:
+7) Add the file <code>boards/nrf54l15dk_nrf54l15_cpuapp.overlay</code>:
 
-   <sup>_boards/nrf54l15_nrf54l15_cpuapp_</sup>
+   <sup>_boards/nrf54l15_nrf54l15_cpuapp.overlay_</sup>
 
        / {
            chosen {
