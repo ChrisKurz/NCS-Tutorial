@@ -120,7 +120,7 @@ Even if we define a different start address in the DeviceTree overlay file, this
    >
    > _System build (sysbuild)_: Use sysbuild
 
-8) Disable _Partition Manager_ by adding file <code>sysbuild.conf</sup> and adding following lines.
+8) Disable _Partition Manager_ by adding file <code>sysbuild.conf</code> and adding following lines.
 
    <sup>sysbuild.conf</sup>
 
