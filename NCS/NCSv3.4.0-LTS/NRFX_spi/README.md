@@ -27,7 +27,7 @@ We will write and read a single character via SPI.
 
 	<sup>_prj.conf_</sup>
 
-       CONFIG_NRFX_SPI1=y
+       CONFIG_NRFX_SPI=y
 
 3) In order to use the SPI driver API we also need to add the corresponding header file to our _main.c_ file:
 
