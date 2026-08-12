@@ -145,7 +145,7 @@ _prj.conf_
 
         /* Set Scan Response data */
         static const struct bt_data sd[] = {
-             BT_DATA(BT_DATA_NAME_COMPLETE, CONFIG_BT_DEVICE_NAME, sizeof(DEVICE_NAME) - 1),
+             BT_DATA(BT_DATA_NAME_COMPLETE, CONFIG_BT_DEVICE_NAME, sizeof(CONFIG_BT_DEVICE_NAME) - 1),
         };
 
         void start_advertising(void)
