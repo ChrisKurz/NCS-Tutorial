@@ -42,12 +42,18 @@ static void connected(struct bt_conn *conn, uint8_t err)
 static void disconnected(struct bt_conn *conn, uint8_t reason)
 {
     printk("Disconnected (reason 0x%02x)\n", reason);
-    start_advertising();    
+}
+
+static void recycled_cb(void)
+{
+    printk("Connection object available from previous conn. Disconnect is complete!\n");
+    start_advertising();
 }
 
 static struct bt_conn_cb conn_callbacks = {
     .connected = connected,
     .disconnected = disconnected,
+    .recycled = recycled_cb,
 };
 
 int main (void) 
