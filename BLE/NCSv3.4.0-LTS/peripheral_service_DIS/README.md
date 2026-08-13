@@ -184,7 +184,7 @@ _prj.conf_
 
         #include <zephyr/bluetooth/conn.h> 
 
-14) We define two callback functions, which are called by the Bluetooth stack. The execution of these callback functions is triggered when a connection is established, or a disconnect happens. Let's prepare the appropriate structure.
+14) We define three callback functions, which are called by the Bluetooth stack. The execution of these callback functions is triggered when a connection is established, immediately when a disconnect happens without waiting for proper connection object clean-up, and finally when all connection objects are released (recycled). Let's prepare the appropriate structure.
 
    There are two possibilities. Either you use the Macro that is defined in the Bluetooth stack or you define it as a structure.
 
@@ -196,6 +196,7 @@ _prj.conf_
     BT_CONN_CB_DEFINE(conn_callbacks) = {
         .connected = connected,
         .disconnected = disconnected,
+        .recycled = recycled_cb,		
     };
        
 > **_Note:_** Calling the function _bt_conn_cb_register()_ is not needed when using the macro!       
@@ -207,6 +208,7 @@ _prj.conf_
     static struct bt_conn_cb conn_callbacks = {
         .connected = connected,
         .disconnected = disconnected,
+        .recycled = recycled_cb,				
     };
 
     void main(void) {
@@ -216,7 +218,7 @@ _prj.conf_
          ...	  
     }
 
-15) Define the Callback functions used for a connect or disconnect events. In our case we will use these functions just for debug messages. 
+15) Define the Callback functions used for a connect, disconnect, and recycled events. In our case we will use these functions just for debug messages. 
 
 	<sup>_src/main.c_</sup>
 
@@ -234,13 +236,17 @@ _prj.conf_
              printk("Disconnected (reason 0x%02x)\n", reason);
         }
 
-16) We start advertising again when a disconnect happened. So add following line in the __disconnected()__ function:
+        static void recycled_cb(void)
+        {
+            printk("Connection object available from previous conn. Disconnect is complete!\n");
+            start_advertising();
+        }
 
-	<sup>_src/main.c_ => disconnected() function</sup>
-             
-             start_advertising();
-
-   > __Important Note__: Although the connection is no longer active from the application's perspective, the Bluetooth stack's internal cleanup related to the disconnected connection may not yet be fully complete at this point. The resources occupied by the connection object, like the advertising set, the controller status, the buffers, etc. may not yet have been fully released. The callback <code>recycled</code> is executed as soon as the advertising object has been fully released and is ready to be reused. Please note, however, that the <code>disconnected</code> or <code>recycled</code> callbacks are still executed within the context of the Bluetooth Stack, and a <code>bt_le_adv_start()</code> should not be called here. A better solution here would be to place the <code>bt_le_adv_start()</code> call in a workqueue. 
+   > __Important Note about <code>disconnected()</code> function__: Although the connection is no longer active from the application's perspective, the Bluetooth stack's internal cleanup related to the disconnected connection may not yet be fully complete at this point. The resources occupied by the connection object, like the advertising set, the controller status, the buffers, etc. may not yet have been fully released. 
+   >
+   > __Note:__ We start advertising again when a disconnect completely happened. So the <code>start_advertising()</code> function call must be done within the __recycled_cb()__ function:
+   > 
+   > __Note:__ The callback <code>recycled</code> is executed as soon as the advertising object has been fully released and is ready to be reused. Please note, however, that the <code>disconnected</code> or <code>recycled</code> callbacks are still executed within the context of the Bluetooth Stack, and a <code>bt_le_adv_start()</code> should not be called here. A better solution here would be to place the <code>bt_le_adv_start()</code> call in a workqueue. 
 > 
 > We’ll keep this example simple and leave that out. If any issues, like EALREADY, EBUSY, or ENOMEM errors, arise when restarting the advertising, the code should be adjusted accordingly. 
 
