@@ -242,7 +242,7 @@ _prj.conf_
             start_advertising();
         }
 
-   > __Important Note about <code>disconnected()</code> function__: Although the connection is no longer active from the application's perspective, the Bluetooth stack's internal cleanup related to the disconnected connection may not yet be fully complete at this point. The resources occupied by the connection object, like the advertising set, the controller status, the buffers, etc. may not yet have been fully released. 
+   > __Important Note about <code>disconnected()</code> function__: Although the connection is no longer active from the application's perspective, the Bluetooth stack's internal cleanup related to the disconnected connection may not yet be fully complete at this point. The resources occupied by the connection object, like the advertising set, the controller status, the buffers, etc. may not yet have been fully released. Because of this a advertising should not be re-started here!
    >
    > __Note:__ We start advertising again when a disconnect completely happened. So the <code>start_advertising()</code> function call must be done within the __recycled_cb()__ function:
    > 
