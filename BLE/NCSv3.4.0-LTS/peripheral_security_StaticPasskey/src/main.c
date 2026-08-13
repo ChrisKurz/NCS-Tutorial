@@ -37,7 +37,12 @@ static void connected(struct bt_conn *conn, uint8_t err)
 static void disconnected(struct bt_conn *conn, uint8_t reason)
 {
      printk("Disconnected (reason 0x%02x)\n", reason);
-     start_advertising();    
+}
+
+static void recycled_cb(void)
+{
+    printk("Connection object available from previous conn. Disconnect is complete!\n");
+    start_advertising();
 }
 
 static void identity_resolved(struct bt_conn *conn, const bt_addr_le_t *rpa, const bt_addr_le_t *identity)
@@ -64,6 +69,7 @@ static void security_changed(struct bt_conn *conn, bt_security_t level, enum bt_
 BT_CONN_CB_DEFINE(conn_callbacks) = {
     .connected = connected,
     .disconnected = disconnected,
+    .recycled = recycled_cb,
     .identity_resolved = identity_resolved, 
     .security_changed = security_changed,       
 };
