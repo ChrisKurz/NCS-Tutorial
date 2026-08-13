@@ -80,18 +80,25 @@ static void connected(struct bt_conn *conn, uint8_t err)
 static void disconnected(struct bt_conn *conn, uint8_t reason)
 {
      printk("Disconnected (reason 0x%02x)\n", reason);
-//     start_advertising();    
-     int err = connectable_adv_create();
-     if (err) {
-         return 0;
-     }
-     printk("Connectable advertising started\n");
+}
+
+static void recycled_cb(void)
+{
+    printk("Connection object available from previous conn. Disconnect is complete!\n");
+//    start_advertising();
+    int err = connectable_adv_create();
+    if (err) {
+        return 0;
+    }
+    printk("Connectable advertising started\n");
+
 }
 
 /* Register a callback structure for connection events. */
 BT_CONN_CB_DEFINE(conn_callbacks) = {
     .connected = connected,
     .disconnected = disconnected,
+	.recycled = recycled_cb,
 };
 
 static const struct bt_le_ext_adv_cb adv_cb = {
