@@ -1,6 +1,6 @@
 # Zephyr's C Libraries:  Newlib
 
-## Introduction
+## Important Note: Newlib and Newlib-Nano C-libraries were removed
 
 The ‘Newlib’ and ‘Newlib-nano’ C libraries have been removed from the latest Zephyr SDK, as ‘Picolibc’ is now the default C library. ‘Picolibc’ offers a complete, resource-efficient C library solution specifically tailored to embedded systems, thereby rendering the more resource-intensive ‘Newlib’ and ‘Newlib-nano’ libraries redundant. 
 
