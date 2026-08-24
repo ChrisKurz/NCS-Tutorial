@@ -101,7 +101,7 @@ In the previous step, we defined the hardware usage for the LPS22HB sensor. Now 
     <sup>_src/main.c_ </sup>
 
     ```c
-       #include <zephyr/device.h>
+    #include <zephyr/device.h>
     ```
     
   __Note:__ The device.h header file is also included within the kernel.h. So there is no need to mention it again!
