@@ -26,8 +26,10 @@ The Zephyr RTOS includes a wide range of drivers. In this practical exercise, we
 
    <sup>_src/main.c_ </sup>
 
-       #include <zephyr/kernel.h>
-
+   ```c
+   #include <zephyr/kernel.h>
+   ```
+   
 ### Definition of Hardware Usage in DeviceTree Files
 
 4) Let us now configure the BME280 sensor driver in an DeviceTree Overlay file. The Overlay file allows us to overwrite definitions made in the pre-defined board file __nrf54lm20dk_nrf54lm20a_cpuapp.dts__. We will use the I2C definition of the Arduino Shield and modify it as described in the following text. 
@@ -84,21 +86,24 @@ In the previous step, we defined the hardware usage for the LPS22HB sensor. Now 
 
     <sup>_src/main.c_ - add following lines in __void main(void)__ function </sup>
 
-
-           #define SENSOR_NODE DT_NODELABEL(lps22hb)
-           const struct device *const dev = DEVICE_DT_GET(SENSOR_NODE);    
-           if (!device_is_ready(dev)) {
-              printk("Sensor is not ready %s\n", dev->name);
-              return 0;
-           }
-           printk("Sensor is ready!\n");
-
+    ```c
+    #define SENSOR_NODE DT_NODELABEL(lps22hb)
+    const struct device *const dev = DEVICE_DT_GET(SENSOR_NODE);    
+    if (!device_is_ready(dev)) {
+        printk("Sensor is not ready %s\n", dev->name);
+        return 0;
+    }
+    printk("Sensor is ready!\n");
+    ```
+    
 6) We use the __DEVICE_DT_GET__ macro here. This is a DeviceTree macro and is defined in the header file __device.h__. We must therefore include this header file in our project. Add the following line to the __main.c__ file
 
     <sup>_src/main.c_ </sup>
-    
-       #include <zephyr/device.h>
 
+    ```c
+       #include <zephyr/device.h>
+    ```
+    
   __Note:__ The device.h header file is also included within the kernel.h. So there is no need to mention it again!
 
 
@@ -125,46 +130,48 @@ We have included the driver with the previous steps. Now we will use the driver 
 8) We keep our software quite simple and handle the sensor measurements in the main entire loop. So insert following lines into the main function:
 
     <sup>_src/main.c_ - add following lines in __void main(void)__ function </sup>
-    
-           while(1){
-               struct sensor_value pressure, temp;
 
-               // Fetch a sample from the sensor and store it in an internal driver buffer
-               if (sensor_sample_fetch(dev) < 0) {
-                   printk("Error: Sensor sample update error\n");
-                   return;
-               }
+    ```c
+        while(1){
+            struct sensor_value pressure, temp;
 
-               // Get a reading from a sensor device (read pressure)
-               if (sensor_channel_get(dev, SENSOR_CHAN_PRESS, &pressure) < 0) {
-                  printk("Error: Cannot read LPS22HB pressure channel\n");
-                  return;
-               }
+            // Fetch a sample from the sensor and store it in an internal driver buffer
+            if (sensor_sample_fetch(dev) < 0) {
+                printk("Error: Sensor sample update error\n");
+                return;
+            }
 
-               // Get a reading from a sensor device (read temperature)	
-               if (sensor_channel_get(dev, SENSOR_CHAN_AMBIENT_TEMP, &temp) < 0) {
-                   printk("Error: Cannot read LPS22HB temperature channel\n");
-                   return;
-               }
+            // Get a reading from a sensor device (read pressure)
+            if (sensor_channel_get(dev, SENSOR_CHAN_PRESS, &pressure) < 0) {
+                printk("Error: Cannot read LPS22HB pressure channel\n");
+                return;
+            }
+
+            // Get a reading from a sensor device (read temperature)	
+            if (sensor_channel_get(dev, SENSOR_CHAN_AMBIENT_TEMP, &temp) < 0) {
+                printk("Error: Cannot read LPS22HB temperature channel\n");
+                return;
+            }
  
-               /* display pressure */
-               printk("pressure: %d.%d kPa, ", pressure.val1, pressure.val2);
-               //printk("Pressure: %.1f kPa, ", sensor_value_to_double(&pressure));
+            /* display pressure */
+            printk("pressure: %d.%d kPa, ", pressure.val1, pressure.val2);
+            //printk("Pressure: %.1f kPa, ", sensor_value_to_double(&pressure));
 
-               /* display temperature */
-               printk("Temperature: %.1f C\n", sensor_value_to_double(&temp));
+            /* display temperature */
+            printk("Temperature: %.1f C\n", sensor_value_to_double(&temp));
 
-               k_sleep(K_MSEC(1000));                
-           }
-
+            k_sleep(K_MSEC(1000));                
+        }
+    ```
 
 
 9) We use the functions __sensor_sample_fetch__ and __sensor_channel_get__ to trigger a measurement and read the conversion results. The use of these functions requires their declaration. This is done in the header file __sensor.h__. We must therefore include them in our project. Insert following line at the beginning of the main.c file:
 
     <sup>_src/main.c_ </sup>
-    
-       #include <zephyr/drivers/sensor.h>
 
+    ```c
+    #include <zephyr/drivers/sensor.h>
+    ```
 
 ## Testing
 
