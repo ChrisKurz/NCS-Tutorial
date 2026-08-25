@@ -50,3 +50,5 @@ How do you proceed to define a custom Kconfig file depending on the Zephyr versi
    Check the same with NCS v3.3.0. Here you have to enable the hidden items. Then you see that it is greyed out, because NCS v3.4.0 is based on Zephyr Version 4.3.99.
 
    ![image](images/KCONFIG_v4399.jpg)
+
+  > __Note:__ The text in the _Direct Dependencies_ section mentions 0x4036300. The "63" wihtin this hex number translates into decimal 99. 
