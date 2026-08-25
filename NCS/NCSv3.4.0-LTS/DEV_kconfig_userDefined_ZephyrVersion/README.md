@@ -34,6 +34,17 @@ How do you proceed to define a custom Kconfig file depending on the Zephyr versi
   	            bool "My feature"
                 depends on $(KERNELVERSION) >= 0x04040000
 
+> __Note:__ However, another question that arises is whether to skip the calls to KCONFIG and perform the queries directly in the C code. For example:
+>
+>  ```c
+>  #include <zephyr/version.h> 
+> 
+>  #if KERNEL_VERSION_NUMBER >= ZEPHYR_VERSION(4, 4, 0)
+>     /* using newer functionality from Zephyr 4.4.0 or later */ 
+>  #else 
+>     /* using old functionality from older Zephyr versions */
+>  #endif
+
 
 ## Testing
 
