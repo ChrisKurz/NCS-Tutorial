@@ -33,6 +33,7 @@ The version of the _nRF Connect SDK_ used here is NCS version 3.4.0.
 ### KConfig
 
 - [__User-defined KCONFIG symbols__](DEV_kconfig_UserDefined/README.md) - You can use KCONFIG to add software modules from Zephyr repository or other repositories. You can also define your own KCONFIG symbols. This practical exercise demonstrates how to do this. It uses custom KCONFIG in C code.
+- [__Defining own KCONFIG symbols that depends on Zephyr Version__](DEV_kconfig_userDefined_ZephyrVersion/README.md)
 
 ### DeviceTree
 
