@@ -5,6 +5,10 @@
 
 ---
 
+- [Save and Load Build Configuration](CMakePresets.md)
+
+---
+
 - [Install guide: Nordic MCP in VS Code with GitHub Copilot](NordicMCP.md)
 
 ---
