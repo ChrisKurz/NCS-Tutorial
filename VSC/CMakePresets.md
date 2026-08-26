@@ -1,4 +1,4 @@
-# Save and Re-Load Configuration as Preset
+# Save and Load Configuration as Preset
 
 CMake presets provide a standardised, cross-platform and text-based method (using JSON) for defining build configurations, toolchain paths and cache variables independently of any specific IDE. 
 
