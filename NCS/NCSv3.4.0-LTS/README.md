@@ -172,4 +172,4 @@ The version of the _nRF Connect SDK_ used here is NCS version 3.4.0.
 ### Command Line Tool: west
 
 - [__Installing and Updating west__](TOOL_CmdLine_west_install/README.md)
-  
+# [__Initialization Levels of Threads__](TOOL_CmdLine_west_initlevels/README.md)  
