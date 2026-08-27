@@ -1,4 +1,4 @@
-# Debugging: Profile each Boot Stage using GPIO
+# Debugging: Start-up Time - Profile each Boot Stage using GPIO
 
 ## Introduction
 
