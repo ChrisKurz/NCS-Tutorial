@@ -107,17 +107,17 @@ It is sometimes interesting to understand where time is spent during the start-u
    ![image](images/Scope.jpg)
 
    The measured times here for the _hello world_ project are:
-   - rising edge on RESET pin => <code>EARLY</code>:
+   - rising edge on RESET pin => <code>EARLY</code>: ~ 1.58 ms
      ![image](images/Scope_POR.jpg)
-   - <code>EARLY</code> => <code>PRE_KERNEL_1</code>:
+   - <code>EARLY</code> => <code>PRE_KERNEL_1</code>: ~ 428 ms
      ![image](images/Scope_EARLY.jpg)
-   - <code>PRE_KERNEL_1</code> => <code>PRE_KERNEL_2</code>: ~ 64 us
+   - <code>PRE_KERNEL_1</code> => <code>PRE_KERNEL_2</code>: ~ 80 us
      ![image](images/Scope_PRE-KERNEL-1.jpg)
-   - <code>PRE_KERNEL_2</code> => <code>POST_KERNEL</code>: ~ 1.82 ms
+   - <code>PRE_KERNEL_2</code> => <code>POST_KERNEL</code>: ~ 1.8 ms
      ![image](images/Scope_PRE-KERNEL-2.jpg)
-   - <code>POST_KERNEL</code> => <code>main()</code>: ~ 8.47 ms
+   - <code>POST_KERNEL</code> => <code>main()</code>: ~ 8.46 ms
      ![image](images/Scope_POST-KERNEL.jpg)
 
-   TOTAL: ~  ms
+   TOTAL: ~ 439 ms
    ![image](images/Scope_total.jpg)
    
