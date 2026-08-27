@@ -27,6 +27,7 @@ SYS_INIT(my_init, POST_KERNEL, 50);
 the initlevels target can help you inspect where <code>my_init()</code> ends up in Zephyr's initialization sequence.
 
 > __Note:__ The initlevels can also be found in the __nRF Connect_ extension by looking into the projects __Core overview | Initialization levels__. Here is a screenshot showing the information in the __nRF Connect__ extension:
+> 
 >  ![image](images/initlevels.jpg)
 
 ## Using <code>west build -t initlevels</code> together with SYSBUILD
