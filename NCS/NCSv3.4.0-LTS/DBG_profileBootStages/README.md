@@ -85,7 +85,7 @@ It is sometimes interesting to understand where time is spent during the start-u
    }
    ```
 
-#### Step 3: Place Markers at Each Boot Stage Using <code>SYS_INIT</sup>
+#### Step 3: Place Markers at Each Boot Stage Using <code>SYS_INIT</code>
 
 6) Register init functions at each boot level to toggle the pin, as shown in the boot time investigation example.
 
