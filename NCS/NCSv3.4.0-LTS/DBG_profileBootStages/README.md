@@ -106,7 +106,7 @@ It is sometimes interesting to understand where time is spent during the start-u
 
    Here are the measurement results for the _hello world_ project:
 
-   | Desciption | time      |
+   | Desciption | Measured Time      |
    |------------|-----------|
    | rising edge on RESET pin => <code>EARLY</code> | ~ 1.58 ms |
    | <code>EARLY</code> => <code>PRE_KERNEL_1</code> | ~ 428 ms |
