@@ -64,9 +64,9 @@ It is sometimes interesting to understand where time is spent during the start-u
    <sup>main.c</sup>
    
    ```c
-   if (pin_dbg.port) {
-       gpio_pin_configure_dt(&pin_dbg, GPIO_OUTPUT_INACTIVE);
-   }
+       if (pin_dbg.port) {
+           gpio_pin_configure_dt(&pin_dbg, GPIO_OUTPUT_INACTIVE);
+       }
    ```
 
 5) Toggle the pin to mark boot stages.
@@ -74,15 +74,15 @@ It is sometimes interesting to understand where time is spent during the start-u
    <sup>main.c</sup>
 
    ```c
-   if (pin_dbg.port) {
-       gpio_pin_set_dt(&pin_dbg, 1);  /* stage start */
-   }
+       if (pin_dbg.port) {
+           gpio_pin_set_dt(&pin_dbg, 1);  /* stage start */
+       }
    
-   /* ... */
-   
-   if (pin_dbg.port) {
-       gpio_pin_set_dt(&pin_dbg, 0);  /* stage end */
-   }
+       /* ... */
+    
+       if (pin_dbg.port) {
+           gpio_pin_set_dt(&pin_dbg, 0);  /* stage end */
+       }
    ```
 
 #### Step 3: Place Markers at Each Boot Stage Using <code>SYS_INIT</code>
