@@ -33,16 +33,12 @@ It is sometimes interesting to understand where time is spent during the start-u
    / {
        user_dbg_pin: user-dbg-pin {
            compatible = "nordic,gpio-pins";
-           gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
+           gpios = <&gpio2 9 GPIO_ACTIVE_HIGH>;
            status = "okay";
        };
    };
 
-   &gpio0 {
-       status = "okay";
-   };
-
-   &gpiote0 {
+   &gpio2 {
        status = "okay";
    };
    ```
@@ -59,72 +55,47 @@ It is sometimes interesting to understand where time is spent during the start-u
    static const struct gpio_dt_spec pin_dbg = GPIO_DT_SPEC_GET_OR(DT_NODELABEL(user_dbg_pin), gpios, {0});
    ```
 
-4) Initialize the pin.
-
-   <sup>main.c</sup>
-   
-   ```c
-       if (pin_dbg.port) {
-           gpio_pin_configure_dt(&pin_dbg, GPIO_OUTPUT_INACTIVE);
-       }
-   ```
-
-5) Toggle the pin to mark boot stages.
-
-   <sup>main.c</sup>
-
-   ```c
-       if (pin_dbg.port) {
-           gpio_pin_set_dt(&pin_dbg, 1);  /* stage start */
-       }
-   
-       /* ... */
-    
-       if (pin_dbg.port) {
-           gpio_pin_set_dt(&pin_dbg, 0);  /* stage end */
-       }
-   ```
-
 #### Step 3: Place Markers at Each Boot Stage Using <code>SYS_INIT</code>
 
-6) Register init functions at each boot level to toggle the pin, as shown in the boot time investigation example.
+4) Register init functions at each boot level to toggle the pin, as shown in the boot time investigation example.
 
   <sup>main.c</sup>
 
    ```c
-   int prek1_marker(const struct device *dev) {
-       gpio_pin_configure(GPIO1_DEV, 2, GPIO_OUTPUT);
-       gpio_pin_set(GPIO1_DEV, 2, 1);
+   int prek1_marker(void) {
+       gpio_pin_configure(&pin_dbg, 2, GPIO_OUTPUT);
+       gpio_pin_set(&pin_dbg, 2, 1);
        return 0;
    }
    SYS_INIT(prek1_marker, PRE_KERNEL_1, 0);
 
-   int prek2_marker(const struct device *dev) {
-       gpio_pin_set(GPIO1_DEV, 2, 0);
+   int prek2_marker(void) {
+       gpio_pin_set(&pin_dbg, 2, 0);
        return 0;
    }
    SYS_INIT(prek2_marker, PRE_KERNEL_2, 0);
   
-   int postk_marker(const struct device *dev) {
-       gpio_pin_set(GPIO1_DEV, 2, 1);
+   int postk_marker(void) {
+       gpio_pin_set(&pin_dbg, 2, 1);
        return 0;
    }
    SYS_INIT(postk_marker, POST_KERNEL, 0);
    
    int main(void) {
-       gpio_pin_set(GPIO1_DEV, 2, 0);
+       gpio_pin_set(&pin_dbg, 2, 0);
        /* ... */
    }   
    ```
 
 > __NOTE:__
 > - No extra Kconfig option is needed — the GPIO driver is enabled via the DTS overlay (status = "okay"). 
-> - The if (pin_dbg.port) guard means the debug code is automatically inactive if you build without the user-dbg-pin DTS node — a clean way to disable it for production builds.
 > - Observe the resulting square wave on a logic analyzer or oscilloscope to measure the time spent in each boot stage.
-> - To inspect the full initialization sequence order, you can also run west build -t initlevels. 
+> - To inspect the full initialization sequence order, you can also run west build -t initlevels or used the _nRF Connect_ Extension __Core oerview | Initialization levels__. 
 
 
 ## Testing
 
 3) Build the projecet (-> pristine build!) and flash it on your dev kit.
-4) Us a scope and check the Debug pin.
+4) Use a scope and check the Debug pin. Here is an example for Zephyr*s _hello world_ sample.
+
+   ![image](images/Scope.jpg)
