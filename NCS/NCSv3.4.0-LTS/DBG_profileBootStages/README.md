@@ -96,7 +96,7 @@ It is sometimes interesting to understand where time is spent during the start-u
 > __NOTE:__
 > - No extra Kconfig option is needed — the GPIO driver is enabled via the DTS overlay (status = "okay"). 
 > - Observe the resulting square wave on a logic analyzer or oscilloscope to measure the time spent in each boot stage.
-> - To inspect the full initialization sequence order, you can also run west build -t initlevels or used the _nRF Connect_ Extension __Core oerview | Initialization levels__. 
+> - To inspect the full initialization sequence order, you can also run west build -t initlevels or used the _nRF Connect_ Extension __Core overview | Initialization levels__. 
 
 
 ## Testing
