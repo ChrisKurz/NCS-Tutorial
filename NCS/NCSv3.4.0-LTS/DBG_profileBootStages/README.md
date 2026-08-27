@@ -28,6 +28,8 @@ It is sometimes interesting to understand where time is spent during the start-u
 2) Create your application's _.overlay_ file to declare a debug GPIO pin.
 
    <sup>nrf54l15dk_nrf54l15_cpuapp.overlay</sup>
+   
+   ```
    / {
        user_dbg_pin: user-dbg-pin {
            compatible = "nordic,gpio-pins";
@@ -43,8 +45,6 @@ It is sometimes interesting to understand where time is spent during the start-u
    &gpiote0 {
        status = "okay";
    };
-   ```dts
-
    ```
 
 #### Step 2: Include the pin in your application code
