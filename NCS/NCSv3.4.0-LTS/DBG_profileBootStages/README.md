@@ -100,7 +100,7 @@ It is sometimes interesting to understand where time is spent during the start-u
 
    ![image](images/Scope.jpg)
 
-   The measured times here are:
+   The measured times here for the _hello world_ project are:
    - <code>PRE_KERNEL_1</code> => <code>PRE_KERNEL_2</code>: ~ 64 us
    - <code>PRE_KERNEL_2</code> => <code>POST_KERNEL</code>: ~ 1.82 ms
    - <code>POST_KERNEL</code> => <code>main()</code>: ~ 8.47 ms
