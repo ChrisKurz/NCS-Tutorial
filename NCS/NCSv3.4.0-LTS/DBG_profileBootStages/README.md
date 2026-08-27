@@ -1,4 +1,4 @@
-# Debugging: Profile each Boot Stage using GPIO
+# Debugging: Start-up Time - Profile each Boot Stage using GPIO
 
 ## Introduction
 
@@ -62,8 +62,14 @@ It is sometimes interesting to understand where time is spent during the start-u
   <sup>main.c</sup>
 
    ```c
+   int early_marker(void) {
+       gpio_pin_configure_dt(&pin_dbg, GPIO_OUTPUT_ACTIVE);
+       gpio_pin_set_dt(&pin_dbg, 1);
+       return 0;
+   }
+   SYS_INIT(early_marker, EARLY, 0);
+
    int prek1_marker(void) {
-       gpio_pin_configure(&pin_dbg, 2, GPIO_OUTPUT);
        gpio_pin_set(&pin_dbg, 2, 1);
        return 0;
    }
@@ -96,6 +102,22 @@ It is sometimes interesting to understand where time is spent during the start-u
 ## Testing
 
 3) Build the projecet (-> pristine build!) and flash it on your dev kit.
-4) Use a scope and check the Debug pin. Here is an example for Zephyr*s _hello world_ sample.
+4) Use a scope and check the RESET input and Debug pin. Here is an example for Zephyr*s _hello world_ sample.
 
    ![image](images/Scope.jpg)
+
+   The measured times here for the _hello world_ project are:
+   - rising edge on RESET pin => <code>EARLY</code>:
+     ![image](images/Scope_POR.jpg)
+   - <code>EARLY</code> => <code>PRE_KERNEL_1</code>:
+     ![image](images/Scope_EARLY.jpg)
+   - <code>PRE_KERNEL_1</code> => <code>PRE_KERNEL_2</code>: ~ 64 us
+     ![image](images/Scope_PRE-KERNEL-1.jpg)
+   - <code>PRE_KERNEL_2</code> => <code>POST_KERNEL</code>: ~ 1.82 ms
+     ![image](images/Scope_PRE_KERNEL-2.jpg)
+   - <code>POST_KERNEL</code> => <code>main()</code>: ~ 8.47 ms
+     ![image](images/Scope_POST_KERNEL.jpg)
+
+   TOTAL: ~  ms
+   ![image](images/Scope_total.jpg)
+   

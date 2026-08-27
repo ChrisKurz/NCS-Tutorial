@@ -47,6 +47,8 @@ The version of the _nRF Connect SDK_ used here is NCS version 3.4.0.
 
 ## Debugging 
 
+- [__Start-up Time - Profile each Boot Stage using GPIO__](DBG_profileBootStages/README.md)
+
 ### CPU Load
 
 - [__periodically CPU Load measurement__](ZOS_cpuload_periodically/README.md) - measuring periodically CPU load and output it automatically via Logging in Serial Terminal
