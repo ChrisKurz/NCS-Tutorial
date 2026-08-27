@@ -104,7 +104,7 @@ It is sometimes interesting to understand where time is spent during the start-u
 3) Build the projecet (-> pristine build!) and flash it on your dev kit.
 4) Use a scope and check the RESET input and Debug pin. Here is an example for Zephyr*s _hello world_ sample.
 
-   Here are the measurement resultsfor the _hello world_ project:
+   Here are the measurement results for the _hello world_ project:
 
    | Desciption | time      |
    |------------|-----------|
