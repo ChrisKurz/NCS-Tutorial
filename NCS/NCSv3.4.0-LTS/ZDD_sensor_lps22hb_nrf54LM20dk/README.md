@@ -1,6 +1,6 @@
 # Zephyr Device Driver: Adding LPS22HB Sensor Driver to an nRF54LM20 Project
 
-The Zephyr RTOS includes a wide range of drivers. In this practical exercise, we will take a closer look at the sensor drivers, specifically the BME280 sensor driver.
+The Zephyr RTOS includes a wide range of drivers. In this practical exercise, we will take a closer look at the sensor drivers, specifically the LPS22HB sensor driver.
 
 ## Required Hardware and Software
 - [nRF54LM20DK development kit](https://www.nordicsemi.com/Products/Development-hardware/nRF54LM20-DK)
@@ -32,7 +32,7 @@ The Zephyr RTOS includes a wide range of drivers. In this practical exercise, we
    
 ### Definition of Hardware Usage in DeviceTree Files
 
-4) Let us now configure the BME280 sensor driver in an DeviceTree Overlay file. The Overlay file allows us to overwrite definitions made in the pre-defined board file __nrf54lm20dk_nrf54lm20a_cpuapp.dts__. We will use the I2C definition of the Arduino Shield and modify it as described in the following text. 
+4) Let us now configure the LPS22HB sensor driver in an DeviceTree Overlay file. The Overlay file allows us to overwrite definitions made in the pre-defined board file __nrf54lm20dk_nrf54lm20a_cpuapp.dts__. We will use the I2C definition of the Arduino Shield and modify it as described in the following text. 
  
     Create the file __nrf54lm20dk_nrf54lm20a_cpuapp.overlay__ in your project folder. (IMPORTANT: Make sure you use exactly this name, as we will overwrite the file __nrf54lm20dk_nrf54lm20_cpuapp.dts__ with this name!)
 
